@@ -50,5 +50,59 @@ form{
 
 input{
     height: 2.5rem;
-    font-size: large;
+    font-size: medium;
+    border-radius: 10px;
+    border: 1px solid;
+}
+
+button{
+    height: 2.5rem;
+    width: 5rem;
+    font-size: medium;
+    font-family: 'Poppins', sans-serif;
+    background-color: #17B2E2;
+    border-style: none;
+    border-radius: 15px;
+}
+
+button:hover {
+    filter: drop-shadow(0 0 0.2em #17B2E2);
+}
+
+#home-reg{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+a{
+    color:#3398cc;
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+.form {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+	gap: 0.5rem;
+}
+
+.checkbox {
+    display: flex;
+	flex-direction: row;
+	justify-content: center;
+	gap: 0.5rem;
+}
+
+.user-checkbox {
+    height: 15px;
+    padding: 0;
+    margin: 0;
+    vertical-align: bottom;
+    position: relative;
+    top: -1px;
 }

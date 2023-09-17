@@ -19,11 +19,19 @@ export default function Landing (){
         <div id='home-form'>
         <form>
         <Head2 text="Sign in"></Head2>
-        <InputField placeholder="Username"/>
-        <InputField placeholder="Password"/>
+        <InputField placeholder="Username" className="user-input"/>
+        <InputField placeholder="Password" className="user-input"/>
+        <div className="form">
+            <label className="checkbox"><input type="checkbox" className="user-checkbox"/> Remember me</label>
+            <Link to='/password'><p>Forgot Password?</p></Link>
+        </div>
         <Button label="Login"/>
         </form>
-        <Link to='/register'><p>Don't have an account?</p></Link> {/* not functioning yet bc there is no /register page ata */}
+
+        <div id='home-reg'>
+            <p>Don't have an account?&nbsp;</p>
+            <Link to='/register'>Sign up</Link>
+        </div>
         </div>
         </div>
     </main>
