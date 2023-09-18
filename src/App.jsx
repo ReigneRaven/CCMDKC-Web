@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import './App.css'
-import Landing from './landing-page/land-pg'
+import Landing from './pages/landing-page/land-pg'
 import { Route, Routes } from 'react-router-dom'
+import Register from './pages/register-page/register'
+import ForgotPassword from './pages/forgotpass-page/forgotpass'
 
 
 function App() {
@@ -11,6 +13,8 @@ function App() {
     <>
         <Routes>
           <Route path='/' element={<Landing />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/forgotpassword' element={<ForgotPassword />} />
         </Routes>
     </>
   )

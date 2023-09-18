@@ -1,0 +1,116 @@
+#root{
+    display: flex;
+    align-items: center;
+    height: 100vh;
+}
+
+main{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 0 auto;
+}
+
+.homepage{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#home-form{
+    background-color: whitesmoke;
+    height: 100vh;
+    width: 50vw;
+    margin: 0 auto;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#home-logo{
+    height: 100vh;
+    width: 50vw;
+    margin: 0 auto;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input{
+    height: 2.5rem;
+    font-size: medium;
+    border-radius: 10px;
+    border: 1px solid;
+}
+
+button{
+    height: 2.5rem;
+    width: 5rem;
+    font-size: medium;
+    font-family: 'Poppins', sans-serif;
+    background-color: #3398CC;
+    border-style: none;
+    border-radius: 15px;
+}
+
+button:hover {
+    filter: drop-shadow(0 0 0.2em #3398cc);
+}
+
+#home-reg{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+a{
+    color:#3398cc;
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+.password {
+    margin-top: -15px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+	gap: 0.5rem;
+}
+
+label.checkbox {
+    display: flex;
+    align-items: initial;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.user-checkbox {
+    display: flex;
+    height: 15px;
+    padding: 0;
+    margin: 0;
+    vertical-align: bottom;
+    position: relative;
+    top: -1px;
+}
