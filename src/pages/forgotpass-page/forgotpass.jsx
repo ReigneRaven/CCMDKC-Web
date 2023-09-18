@@ -1,0 +1,32 @@
+import React from 'react'
+import Head2 from '../../components/headers/header'
+import '../../components/headers/header.css'
+import InputField from '../../components/textfield/textfield'
+import Button from '../../components/buttons/button'
+import DiaLogo from '../../components/logo/logo'
+import ClientLogo from '../../assets/ccmdkc-logo.png'
+import {Link} from 'react-router-dom'
+
+export default function ForgotPassword (){
+    return(
+    <>
+    <main>
+        <div className='forgotpage'>
+            <div id='register-logo'><DiaLogo src={ClientLogo}/></div>
+        
+        <div id='register-form'>
+            <form>
+                <Head2 text="Forgot Password"></Head2>
+                <h3>Please enter the email address you'd like your password reset information sent to.</h3>
+            <div className="form1">
+                <InputField placeholder=" Email Address" className="user-input"/>
+            </div>
+                <Button label="Send"/>
+            </form>
+                <Link to='/'><p>Back to Login</p></Link>
+        </div>
+        </div>
+    </main>
+    </>
+    )
+}
