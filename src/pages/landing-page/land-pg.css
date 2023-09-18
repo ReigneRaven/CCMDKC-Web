@@ -42,7 +42,8 @@ form{
 
 #home-logo{
     height: 100vh;
-    width: 50vw;
+    width: 60vw;
+    object-fit: cover;
     margin: 0 auto;
     padding: 0;
     position: absolute;
@@ -51,6 +52,12 @@ form{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#home-logo img{
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
 }
 
 input{
@@ -66,6 +73,7 @@ button{
     font-size: medium;
     font-family: 'Poppins', sans-serif;
     background-color: #3398CC;
+    color: white;
     border-style: none;
     border-radius: 15px;
 }
@@ -89,12 +97,11 @@ a:hover{
     text-decoration: underline;
 }
 
-.password {
+.check-password {
     margin-top: -15px;
-    margin-bottom: 10px;
     display: flex;
     flex-direction: row;
-    align-items: baseline;
+    align-items: center;
 	gap: 0.5rem;
 }
 
@@ -105,12 +112,8 @@ label.checkbox {
 	justify-content: center;
 }
 
-.user-checkbox {
+.check-password .checkbox{
     display: flex;
-    height: 15px;
-    padding: 0;
-    margin: 0;
-    vertical-align: bottom;
-    position: relative;
-    top: -1px;
+    flex-direction: row;
+    align-items: center;
 }

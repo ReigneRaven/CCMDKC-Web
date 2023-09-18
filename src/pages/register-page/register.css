@@ -61,33 +61,12 @@ input{
     border: 1px solid;
 }
 
-button{
-    height: 2.5rem;
-    width: 5rem;
-    font-size: medium;
-    font-family: 'Poppins', sans-serif;
-    background-color: #3398cc;
-    border-style: none;
-    border-radius: 15px;
-}
 
-button:hover {
-    filter: drop-shadow(0 0 0.2em #3398cc);
-}
 
 #register-reg{
     display: flex;
     flex-direction: row;
     align-items: baseline;
-}
-
-a{
-    color:#3398cc;
-    text-decoration: none;
-}
-
-a:hover{
-    text-decoration: underline;
 }
 
 .form {

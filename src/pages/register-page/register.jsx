@@ -31,7 +31,7 @@ export default function Register (){
                 <div className="terms"> 
                     <Link to='/t&c'><p>Terms of Use and Privacy Policy</p></Link>
                 </div>
-                    <Button label="Login"/>
+                    <Button label="Sign Up"/>
                 </form>
             </div>
             </div>

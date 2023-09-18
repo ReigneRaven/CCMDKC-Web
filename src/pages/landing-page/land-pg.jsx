@@ -5,10 +5,17 @@ import '../../components/headers/header.css'
 import InputField from '../../components/textfield/textfield'
 import Button from '../../components/buttons/button'
 import DiaLogo from '../../components/logo/logo'
-import ClientLogo from '../../assets/ccmdkc-logo.png'
-import {Link} from 'react-router-dom'
+import ClientLogo from '../../assets/ccmdkc-bldg.png'
+import {Link, useNavigate} from 'react-router-dom'
 
 export default function Landing (){
+
+    const navigate = useNavigate()
+
+    function handleClick (){
+        navigate("/patient")
+    }
+
     return(
     <>
     <main>
@@ -20,11 +27,11 @@ export default function Landing (){
                 <Head2 text="Sign in"></Head2>
                 <InputField placeholder=" Username" className="user-input"/>
                 <InputField placeholder=" Password" className="user-input"/>
-            <div className="password">
-                <label className="checkbox"><input type="checkbox" className="user-checkbox"/>&nbsp;Remember&nbsp;me</label>
+            <div className="check-password">
+                <label className="checkbox"><input type="checkbox" />&nbsp;Remember&nbsp;me</label>
                 <Link to='/forgotpassword'><p>&nbsp;Forgot Password?</p></Link>
             </div>
-                <Button label="Login"/>
+                <Button label="Login" onClick={(e) => handleClick()}/>
             </form>
             <div id='home-reg'>
                 <p>Don't have an account?&nbsp;</p>
