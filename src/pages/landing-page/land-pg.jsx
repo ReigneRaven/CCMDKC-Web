@@ -5,7 +5,8 @@ import '../../components/headers/header.css'
 import InputField from '../../components/textfield/textfield'
 import Button from '../../components/buttons/button'
 import DiaLogo from '../../components/logo/logo'
-import ClientLogo from '../../assets/ccmdkc-bldg.png'
+import ClientLogo from '../../assets/ccmdkc-logo.png'
+import ClientBuilding from '../../assets/ccmdkc-bldg.png'
 import {Link, useNavigate} from 'react-router-dom'
 
 export default function Landing (){
@@ -20,10 +21,11 @@ export default function Landing (){
     <>
     <main>
         <div className='homepage'>
-            <div id='home-logo'><DiaLogo src={ClientLogo}/></div>
+            <div id='home-pic'><DiaLogo src={ClientBuilding}/></div>
         
         <div id='home-form'>
             <form>
+                <div id='home-logo'><DiaLogo src={ClientLogo}/></div>
                 <Head2 text="Sign in"></Head2>
                 <InputField placeholder=" Username" className="user-input"/>
                 <InputField placeholder=" Password" className="user-input"/>

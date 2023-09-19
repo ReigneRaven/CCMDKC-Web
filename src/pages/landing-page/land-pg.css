@@ -40,7 +40,7 @@ form{
     align-items: center;
 }
 
-#home-logo{
+#home-pic{
     height: 100vh;
     width: 60vw;
     object-fit: cover;
@@ -54,10 +54,12 @@ form{
     align-items: center;
 }
 
-#home-logo img{
+#home-pic img{
     object-fit: cover;
     width: 100vw;
     height: 100vh;
+    -webkit-mask-image: linear-gradient(black, transparent);
+    mask-image: linear-gradient(black, transparent);
 }
 
 input{
@@ -80,6 +82,11 @@ button{
 
 button:hover {
     filter: drop-shadow(0 0 0.2em #3398cc);
+}
+
+#home-logo img {
+    height: 100px;
+    width: 100px;
 }
 
 #home-reg{
