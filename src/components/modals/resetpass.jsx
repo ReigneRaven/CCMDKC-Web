@@ -9,7 +9,7 @@ function ResetModal({closeModal}){
                     <button onClick={() => closeModal(false)}> X </button>
                 </div>
                 <div className="title">
-                    <h1>Confirmation</h1>
+                    <h1>Sent!</h1>
                 </div>
                 <div className="body">
                     <p>Thank you! An email has been sent for you to reset your password</p>
