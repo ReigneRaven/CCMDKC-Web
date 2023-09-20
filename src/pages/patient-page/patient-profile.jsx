@@ -40,11 +40,6 @@ export default function PtnProfile (){
                     <Link to="/announcements" className="link-div"><MdOutlineAnnouncement/>&nbsp;Announcements</Link>
                 </li>
             </ul>
-            <ul>
-                <li>
-                    <Link to="/Schedule">Schedule</Link>
-                </li>
-            </ul>
             </div>
        
             <main>
