@@ -3,6 +3,7 @@ import './register.css'
 import Head2 from '../../components/headers/header'
 import '../../components/headers/header.css'
 import InputField from '../../components/textfield/textfield'
+import Password from '../../components/password/password'
 import Button from '../../components/buttons/button'
 import DiaLogo from '../../components/logo/logo'
 import ClientLogo from '../../assets/ccmdkc-logo.png'
@@ -27,7 +28,7 @@ export default function Register (){
                     <InputField placeholder=" Address" className="user-input"/>
                     <InputField placeholder=" Contact No." className="user-input"/>
                     <InputField placeholder=" Email" className="user-input"/>
-                    <InputField placeholder=" Password" className="user-input"/>
+                    <Password placeholder=" Password" className="user-input"/>
                 <div className="terms"> 
                     <Link to='/t&c'><p>Terms of Use and Privacy Policy</p></Link>
                 </div>

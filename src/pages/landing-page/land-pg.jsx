@@ -3,6 +3,7 @@ import './land-pg.css'
 import Head2 from '../../components/headers/header'
 import '../../components/headers/header.css'
 import InputField from '../../components/textfield/textfield'
+import Password from '../../components/password/password'
 import Button from '../../components/buttons/button'
 import DiaLogo from '../../components/logo/logo'
 import ClientLogo from '../../assets/ccmdkc-logo.png'
@@ -28,7 +29,7 @@ export default function Landing (){
                 <div id='home-logo'><DiaLogo src={ClientLogo}/></div>
                 <Head2 text="Sign in"></Head2>
                 <InputField placeholder=" Username" className="user-input"/>
-                <InputField placeholder=" Password" className="user-input"/>
+                <Password placeholder=" Password" className="user-input"/>
             <div className="check-password">
                 <label className="checkbox"><input type="checkbox" />&nbsp;Remember&nbsp;me</label>
                 <Link to='/forgotpassword'><p>&nbsp;Forgot Password?</p></Link>
