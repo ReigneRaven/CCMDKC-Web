@@ -18,7 +18,8 @@ form{
     margin: 0 auto;
 }
 
-.form-input {
+.login-input {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;

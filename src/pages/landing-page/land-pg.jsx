@@ -42,7 +42,7 @@ export default function Landing() {
               </div>
 
                 <Head2 text="Sign in"></Head2>
-              <div className="form-input">
+              <div className="login-input">
                 <InputField placeholder=" Username" className="user-input" />
                 <input type={showPassword ? 'text' : 'password'} placeholder=" Password" className="user-input" value={password} onChange={handlePasswordChange}/>
               </div>
