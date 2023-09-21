@@ -11,7 +11,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 export default function Landing() {
   const navigate = useNavigate();
-  
+
   const handleClick = () => {
     navigate('/patient');
   };
@@ -27,6 +27,15 @@ export default function Landing() {
     setPassword(e.target.value);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevent the default form submission behavior
+    // Here, you can perform actions with the form data if needed
+    console.log('Form submitted with username:', e.target.username.value);
+    console.log('Form submitted with password:', e.target.password.value);
+    // Redirect or perform other actions as necessary
+    handleClick();
+  };
+
   return (
     <>
       <main>
@@ -36,27 +45,34 @@ export default function Landing() {
           </div>
 
           <div id="home-form">
-            <form>
+            <form onSubmit={handleSubmit}> {/* Add onSubmit handler */}
               <div id="home-logo">
                 <DiaLogo src={ClientLogo} />
               </div>
 
-                <Head2 text="Sign in"></Head2>
+              <Head2 text="Sign in"></Head2>
               <div className="login-input">
-                <InputField placeholder=" Username" className="user-input" />
-                <input type={showPassword ? 'text' : 'password'} placeholder=" Password" className="user-input" value={password} onChange={handlePasswordChange}/>
+                <InputField name="username" placeholder=" Username" className="user-input" required />
+                <input type={showPassword ? 'text' : 'password'} name="password" placeholder=" Password"className="user-input" value={password} onChange={handlePasswordChange} required/>
               </div>
-              
+
               <div className="password-options">
                 <div className="options">
                   <label className="show-password-label">
-                  <input type="checkbox" id="showpass" checked={showPassword} onChange={togglePasswordVisibility}/>{' '}&nbsp;Show&nbsp;Password</label>
+                    <input
+                      type="checkbox"
+                      id="showpass"
+                      checked={showPassword}
+                      onChange={togglePasswordVisibility}
+                    />{' '}
+                    &nbsp;Show&nbsp;Password
+                  </label>
                   <Link to="/forgotpassword">
                     <p>Forgot Password?</p>
                   </Link>
                 </div>
               </div>
-                <Button label="Login" onClick={(e) => handleClick()} />
+              <Button label="Login" type="submit" /> {/* Add type="submit" to trigger form submission */}
             </form>
             <div id="home-reg">
               <p>Don't have an account?&nbsp;</p>
