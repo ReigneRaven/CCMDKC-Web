@@ -59,13 +59,7 @@ export default function Landing() {
               <div className="password-options">
                 <div className="options">
                   <label className="show-password-label">
-                    <input
-                      type="checkbox"
-                      id="showpass"
-                      checked={showPassword}
-                      onChange={togglePasswordVisibility}
-                    />{' '}
-                    &nbsp;Show&nbsp;Password
+                    <input type="checkbox" id="showpass" checked={showPassword} onChange={togglePasswordVisibility}/>{' '}&nbsp;Show&nbsp;Password
                   </label>
                   <Link to="/forgotpassword">
                     <p>Forgot Password?</p>
