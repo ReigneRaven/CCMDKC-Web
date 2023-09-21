@@ -11,6 +11,10 @@ import { Link, useNavigate } from 'react-router-dom';
 
 export default function Landing() {
   const navigate = useNavigate();
+  
+  const handleClick = () => {
+    navigate('/patient');
+  };
 
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState('');
@@ -21,10 +25,6 @@ export default function Landing() {
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
-  };
-
-  const handleClick = () => {
-    navigate('/patient');
   };
 
   return (

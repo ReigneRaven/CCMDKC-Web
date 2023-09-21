@@ -1,61 +1,69 @@
-.modalBackground {
+.background {
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background to dim the rest of the page */
     position: fixed;
+    top: 0;
+    left: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    top: 0;
-    left: 0;
-}
-
-.modalContainer {
-    width: 400px;
-    height: 300px;
+    z-index: 999; /* Make sure it's on top of other elements */
+  }
+  
+  .container {
+    width: 500px;
+    height: 600px;
     border-radius: 12px;
     background-color: #e6eef1;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     display: flex;
     flex-direction: column;
     padding: 25px;
-}
-
-.titleCloseBtn {
+    text-align: center;
+  }
+  
+  .container .title {
+    display: inline-block;
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .titleCloseBtn {
     display: flex;
     justify-content: flex-end;
-}
-
-.titleCloseBtn button {
+  }
+  
+  .titleCloseBtn button {
     margin-top: 10px;
     background-color: #3398cc;
     width: 40px;
+    height: 40px;
     border: none;
     font-size: 16px;
     cursor: pointer;
-}
-
-.modalContainer .title {
-    text-align: center;
-    margin-top: 10px;
-}
-
-.modalContainer body {
+    color: white;
+    border-radius: 50%; /* Make it circular */
+  }
+  
+  .container .body {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.7rem;
+    font-size: 1.2rem;
     text-align: center;
-}
-
-.modalContainer .footer {
+  }
+  
+  .container .footer {
+    flex: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.modalContainer .footer button {
+    margin-top: 20px;
+  }
+  
+  .container .footer button {
     width: 150px;
     height: 45px;
     margin: 10px;
@@ -65,4 +73,5 @@
     border-radius: 8px;
     font-size: 20px;
     cursor: pointer;
-}
+  }
+  
