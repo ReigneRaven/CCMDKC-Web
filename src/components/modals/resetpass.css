@@ -10,7 +10,7 @@
 
 .modalContainer {
     width: 400px;
-    height: 250px;
+    height: 300px;
     border-radius: 12px;
     background-color: #e6eef1;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -31,6 +31,7 @@
 }
 
 .titleCloseBtn button {
+    margin-top: 10px;
     background-color: #3398cc;
     width: 40px;
     border: none;

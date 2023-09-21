@@ -18,6 +18,15 @@ form{
     margin: 0 auto;
 }
 
+.form-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem; /* Adjust as needed for spacing between text fields */
+    margin: 0 auto;
+    margin-bottom: -30px;
+  }
+
 .homepage{
     display: flex;
     flex-direction: row;
@@ -70,6 +79,8 @@ input{
 }
 
 button{
+    margin-top: 30px;
+    margin-bottom: 10px;
     height: 2.5rem;
     width: 5rem;
     font-size: medium;
@@ -83,6 +94,56 @@ button{
 button:hover {
     filter: drop-shadow(0 0 0.2em #3398cc);
 }
+
+.input-label {
+    margin-bottom: 0.5rem; /* Adjust as needed for spacing between labels and text fields */
+  }
+  
+  .user-input {
+    height: 2.5rem;
+    font-size: medium;
+    border-radius: 10px;
+    border: 1px solid;
+    margin: 0; /* Remove the default margin to avoid extra spacing */
+  }
+
+  .password-options {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+  .options {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .show-password-label {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 0;
+    margin-right: 2.5rem;
+  }
+  
+  /* Add margin-right to the checkbox for spacing */
+  .show-password-label input[type="checkbox"] {
+    margin-right: 1.5rem; /* Adjust the margin as needed */
+  }
+  
+  /* Add margin-left to the "Forgot Password?" link for spacing */
+  .options p {
+    margin-left: 0.5rem; /* Adjust the margin as needed */
+  }
+  
+#showpass{
+    height: 20%;
+    margin: 0;
+    }
 
 #home-logo img {
     height: 100px;
