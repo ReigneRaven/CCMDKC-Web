@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from 'react';
 import './register.css'
 import Head2 from '../../components/headers/header'
 import '../../components/headers/header.css'
@@ -10,6 +10,17 @@ import ClientLogo from '../../assets/ccmdkc-logo.png'
 import {Link} from 'react-router-dom'
 
 export default function Register (){
+
+    const [showPassword, setShowPassword] = useState(false);
+    const [password, setPassword] = useState('');
+  
+    const togglePasswordVisibility = () => {
+      setShowPassword(!showPassword);
+    };
+  
+    const handlePasswordChange = (e) => {
+      setPassword(e.target.value);
+    };
     
     return (
         <>
@@ -28,9 +39,11 @@ export default function Register (){
                     <InputField placeholder=" Address" className="user-input"/>
                     <InputField placeholder=" Contact No." className="user-input"/>
                     <InputField placeholder=" Email" className="user-input"/>
-                    <Password placeholder=" Password" className="user-input"/>
+                    <input type={showPassword ? 'text' : 'password'} placeholder=" Password" className="user-input" value={password} onChange={handlePasswordChange}/>
                 <div className="terms"> 
-                    <Link to='/t&c'><p>Terms of Use and Privacy Policy</p></Link>
+                <label className="show-password-label">
+                  <input type="checkbox" id="showpass" checked={showPassword} onChange={togglePasswordVisibility}/>{' '}&nbsp;Show&nbsp;Password</label>
+                  <Link to='/t&c'><p>Terms of Use and Privacy Policy</p></Link>
                 </div>
                     <Button label="Sign Up"/>
                 </form>
