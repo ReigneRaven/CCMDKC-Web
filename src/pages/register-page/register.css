@@ -85,4 +85,34 @@ input{
 
 .terms {
     margin-top: -10px;
-}
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  
+  .options {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .show-password-label {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 0;
+    margin-right: 3.5rem;
+  }
+  
+  /* Add margin-right to the checkbox for spacing */
+  .show-password-label input[type="checkbox"] {
+    margin-right: 3.5rem; /* Adjust the margin as needed */
+  }
+  
+  /* Add margin-left to the "Forgot Password?" link for spacing */
+  .options p {
+    margin-left: 1.5rem; /* Adjust the margin as needed */
+  }
