@@ -1,77 +1,79 @@
 .background {
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background to dim the rest of the page */
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 999; /* Make sure it's on top of other elements */
-  }
-  
-  .container {
-    width: 500px;
-    height: 600px;
-    border-radius: 12px;
-    background-color: #e6eef1;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    display: flex;
-    flex-direction: column;
-    padding: 25px;
-    text-align: center;
-  }
-  
-  .container .title {
-    display: inline-block;
-    text-align: center;
-    margin-top: 10px;
-  }
-  
-  .titleCloseBtn {
-    display: flex;
-    justify-content: flex-end;
-  }
-  
-  .titleCloseBtn button {
-    margin-top: 10px;
-    background-color: #3398cc;
-    width: 40px;
-    height: 40px;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
-    color: white;
-    border-radius: 50%; /* Make it circular */
-  }
-  
-  .container .body {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2rem;
-    text-align: center;
-  }
-  
-  .container .footer {
-    flex: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-  }
-  
-  .container .footer button {
-    width: 150px;
-    height: 45px;
-    margin: 10px;
-    border: none;
-    background-color: #3398cc;
-    color: white;
-    border-radius: 8px;
-    font-size: 20px;
-    cursor: pointer;
-  }
-  
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.container {
+  width: 500px;
+  height: 600px; /* Set a fixed height for the container */
+  border-radius: 12px;
+  background-color: #e6eef1;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+  text-align: center;
+}
+
+.container .title {
+  display: inline-block;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: -5px;
+}
+
+.titleCloseBtn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.titleCloseBtn button {
+  margin-top: 10px;
+  background-color: #3398cc;
+  width: 40px;
+  height: 40px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: white;
+  border-radius: 50%;
+}
+
+.container .body {
+  flex: 1;
+  overflow-y: auto; /* Add a vertical scrollbar to the content */
+  font-size: 1.2rem;
+  text-align: left;
+}
+
+.scrollable-content {
+  padding: 10px;
+}
+
+.container .footer {
+  flex: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.container .footer button {
+  width: 150px;
+  height: 45px;
+  margin: 10px;
+  border: none;
+  background-color: #3398cc;
+  color: white;
+  border-radius: 8px;
+  font-size: 20px;
+  cursor: pointer;
+}

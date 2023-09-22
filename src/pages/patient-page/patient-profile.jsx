@@ -7,6 +7,7 @@ import Head2 from '../../components/headers/header'
 import {LuLayoutDashboard} from 'react-icons/lu'
 import {MdMedicalServices, MdOutlineAnnouncement} from 'react-icons/md'
 import Dashboard from "../../components/dashboard/dashboard"
+import MedicalHistory from "../../components/tables/medhistory"
 
 
 export default function PtnProfile (){
@@ -44,7 +45,8 @@ export default function PtnProfile (){
        
             <main>
                 <div id="main-upper-container">
-                    <h1>Good day!</h1>
+                    <h1>Dashboard</h1>
+                    <MedicalHistory/>
                 </div>
                 <Dashboard/>
             </main>
