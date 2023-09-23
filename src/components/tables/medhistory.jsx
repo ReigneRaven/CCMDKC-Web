@@ -55,6 +55,48 @@ export default function MedicalHistory() {
                             <td>-</td>
                             <td>Dialysis Treatment</td>
                         </tr>
+                        <tr>
+                            <td>08-26-23</td>
+                            <td>Fatigue, Frequent Urination, and Back-ache</td>
+                            <td>Mild Kidney Failure</td>
+                            <td>-</td>
+                            <td>Dialysis Treatment</td>
+                        </tr>
+                        <tr>
+                            <td>08-26-23</td>
+                            <td>Fatigue, Frequent Urination, and Back-ache</td>
+                            <td>Mild Kidney Failure</td>
+                            <td>-</td>
+                            <td>Dialysis Treatment</td>
+                        </tr>
+                        <tr>
+                            <td>08-26-23</td>
+                            <td>Fatigue, Frequent Urination, and Back-ache</td>
+                            <td>Mild Kidney Failure</td>
+                            <td>-</td>
+                            <td>Dialysis Treatment</td>
+                        </tr>
+                        <tr>
+                            <td>08-26-23</td>
+                            <td>Fatigue, Frequent Urination, and Back-ache</td>
+                            <td>Mild Kidney Failure</td>
+                            <td>-</td>
+                            <td>Dialysis Treatment</td>
+                        </tr>
+                        <tr>
+                            <td>08-26-23</td>
+                            <td>Fatigue, Frequent Urination, and Back-ache</td>
+                            <td>Mild Kidney Failure</td>
+                            <td>-</td>
+                            <td>Dialysis Treatment</td>
+                        </tr>
+                        <tr>
+                            <td>08-26-23</td>
+                            <td>Fatigue, Frequent Urination, and Back-ache</td>
+                            <td>Mild Kidney Failure</td>
+                            <td>-</td>
+                            <td>Dialysis Treatment</td>
+                        </tr>
                     </tbody>
                 </table>
                 </div>  
