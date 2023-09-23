@@ -7,7 +7,7 @@ import Head2 from '../../components/headers/header'
 import {LuLayoutDashboard} from 'react-icons/lu'
 import {MdMedicalServices, MdOutlineAnnouncement} from 'react-icons/md'
 import Dashboard from "../../components/dashboard/dashboard"
-import MedicalHistory from "../../components/tables/medhistory"
+import Sidebar from "../../components/sidebar/sidebar"
 
 
 export default function PtnProfile (){
@@ -20,10 +20,9 @@ export default function PtnProfile (){
              <div className="logo-sidebar">
                 <div id="logo-box-sidebar"><DiaLogo src={ClientLogo}/><Head2 text="CCMDKC"/></div>
             </div>
-            <p>JSDJFNJSDNFJSDNFSJDFNJSDNFS</p>
+            <Sidebar/>
             </div>
             </header>
-          
             <div className="content-container">
             <div className="sidenav">
             <ul>
@@ -46,14 +45,9 @@ export default function PtnProfile (){
             <main>
                 <div id="main-upper-container">
                     <h1>Dashboard</h1>
-                    <MedicalHistory/>
                 </div>
                 <Dashboard/>
             </main>
-
-            <div id="profile-container">
-                <h1>good good</h1>
-            </div>
         </div>
 
     </div>
