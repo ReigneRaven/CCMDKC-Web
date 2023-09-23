@@ -5,7 +5,7 @@ import './sidebar.css'
 const Sidebar = () => {
     return (
         <>
-   
+        <div>ALL GOODS</div>
         </>
     )
 };
