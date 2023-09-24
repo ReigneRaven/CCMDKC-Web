@@ -84,16 +84,10 @@ button:hover {
 }
 
 
-.form {
+.form2 {
     display: flex;
     flex-direction: row;
     align-items: baseline;
 	gap: 0.5rem;
-}
-
-.form1 {
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
-	gap: 0.5rem;
+    width: 100%;
 }
