@@ -23,7 +23,7 @@ function Sidebar() {
                         {/* Use Link component */}
                         <PatientMenu img={User} text="My Profile" />
                         <PatientMenu img={Password} text="Change Password" />
-                        <PatientMenu img={Logout} text="Logout" />
+                        <Link to="/"><PatientMenu img={Logout} text="Logout"/></Link>
                     </ul>
                 </div>
             </div>
