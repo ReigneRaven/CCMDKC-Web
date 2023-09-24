@@ -16,6 +16,7 @@
     border-radius: 20px;
     padding: 10px 20px;
     width: 200px;
+    box-shadow: 5px 5px 8px #888888;
 }
 
 .dropdown-menu::before {
