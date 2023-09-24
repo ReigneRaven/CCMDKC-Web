@@ -21,8 +21,8 @@ function Sidebar() {
                     <h3>Park Chanyeol<br/><span>Patient</span></h3>
                     <ul>
                         {/* Use Link component */}
-                        <PatientMenu img={User} text="My Profile" />
-                        <PatientMenu img={Password} text="Change Password" />
+                        <Link to="/"><PatientMenu img={User} text="My Profile" /></Link>
+                        <Link to="/"><PatientMenu img={Password} text="Change Password" /></Link>
                         <Link to="/"><PatientMenu img={Logout} text="Logout"/></Link>
                     </ul>
                 </div>
