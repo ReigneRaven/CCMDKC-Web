@@ -45,7 +45,7 @@ export default function Landing() {
           </div>
 
           <div id="home-form">
-            <form onSubmit={handleSubmit}> {/* Add onSubmit handler */}
+            <form onSubmit={handleSubmit}>
               <div id="home-logo">
                 <DiaLogo src={ClientLogo} />
               </div>
@@ -66,7 +66,7 @@ export default function Landing() {
                   </Link>
                 </div>
               </div>
-              <Button label="Login" type="submit" /> {/* Add type="submit" to trigger form submission */}
+              <Button label="Login" type="submit" />
             </form>
             <div id="home-reg">
               <p>Don't have an account?&nbsp;</p>

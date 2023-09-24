@@ -10,5 +10,5 @@ Currently, two official plugins are available:
 
 # Project Description
 
-The system is a user-friendly medical application that offers a range of features to improve healthcare interactions. With its seamless interface and integrated features, it aims to enhance the healthcare experience by enabling efficient communication, easy access to medical information, and convenient appointment booking. Hi
+The system is a user-friendly medical application that offers a range of features to improve healthcare interactions. With its seamless interface and integrated features, it aims to enhance the healthcare experience by enabling efficient communication, easy access to medical information, and convenient appointment booking.
 

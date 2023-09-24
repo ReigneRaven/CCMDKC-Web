@@ -13,7 +13,7 @@
 
 .container {
   width: 500px;
-  height: 600px; /* Set a fixed height for the container */
+  height: 600px;
   border-radius: 12px;
   background-color: #e6eef1;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;

@@ -61,8 +61,6 @@ input{
     border: 1px solid;
 }
 
-
-
 #register-reg{
     display: flex;
     flex-direction: row;
@@ -80,7 +78,27 @@ input{
     display: flex;
     flex-direction: row;
     align-items: baseline;
-	gap: 0.5rem;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.form1 .react-datepicker-wrapper {
+    width: 100%;
+}
+
+.form1 label {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.form1 select {
+    width: 100%;
+    height: 2.5rem;
+    font-size: medium;
+    border-radius: 10px;
+    border: 1px solid;
 }
 
 .terms {
@@ -89,30 +107,28 @@ input{
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
-  }
+}
 
   
-  .options {
+.options {
     display: flex;
     flex-direction: row;
     align-items: center;
-  }
+}
   
-  .show-password-label {
+.show-password-label {
     display: flex;
     align-items: center;
     flex-direction: row;
     justify-content: center;
     margin-bottom: 0;
     margin-right: 3.5rem;
-  }
+}
   
-  /* Add margin-right to the checkbox for spacing */
-  .show-password-label input[type="checkbox"] {
-    margin-right: 3.5rem; /* Adjust the margin as needed */
-  }
+.show-password-label input[type="checkbox"] {
+    margin-right: 3.5rem;
+}
   
-  /* Add margin-left to the "Forgot Password?" link for spacing */
-  .options p {
-    margin-left: 1.5rem; /* Adjust the margin as needed */
-  }
+.options p {
+    margin-left: 1.5rem;
+}
