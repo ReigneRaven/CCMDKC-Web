@@ -8,7 +8,8 @@ import {LuLayoutDashboard} from 'react-icons/lu'
 import {MdMedicalServices, MdOutlineAnnouncement} from 'react-icons/md'
 import Dashboard from "../../components/dashboard/dashboard"
 import Sidebar from "../../components/sidebar/sidebar"
-import CurrentDiagnosis from "../../components/tables/currentdiagnosis"
+import CurrentDiagnosis from "../../components/dashboard/currentdiagnosis"
+import UpcomingAppointments from "../../components/events/upcomingdate"
 
 
 export default function PtnProfile (){
@@ -46,12 +47,8 @@ export default function PtnProfile (){
                 <div id="main-upper-container">
                     <h1 className="dashboard-title">Dashboard</h1>
                 <div className="content-row">
-                <div>
-                    
-                </div>
-                <div>
+                    <UpcomingAppointments/>
                     <CurrentDiagnosis/>
-                </div>
                 </div>
             </div>
             <Dashboard />

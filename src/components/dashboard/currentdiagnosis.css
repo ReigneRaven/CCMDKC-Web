@@ -5,8 +5,8 @@
   font-size: 16px;
   padding: 40px;
   border-radius: 20px;
-  width: 40%;
-  height: 20vh;
+  width: 30%;
+  height: 30vh;
   margin: 2%;
   gap: 2rem;
   margin-top: -10px;
@@ -20,30 +20,38 @@
   background-color: var(--bs-light);
 }
   
-#dashboard-h1 {
+#diagnosis-h1 {
   margin-top: -10px;
   text-align: left;
   font-weight: bold;
+  font-size: 24px;
 }
-  
-.scrollable-container {
-  max-height: calc(100% - 50px);
-  overflow-y: auto;
+
+.diagnosis{
+  font-size: 18px;
+  margin-left: 50px;
+  text-align: left;
 }
-  
-table {
-  background-color: white;
-  border-collapse: collapse;
-  width: 100%;
-}
-  
-thead {
+
+.current-treatment {
+  margin-top: -30px;
+  width: auto;
+  display: flex;
+  flex-direction: column;
   background-color: var(--bs-light);
 }
   
-th, td {
-  border: 1px solid;
-  padding: 8px;
+#treatment-h1 {
+  margin-top: -10px;
+  text-align: left;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.treatment{
+  font-size: 18px;
+  margin-left: 50px;
   text-align: left;
 }
+  
   
