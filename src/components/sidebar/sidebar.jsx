@@ -22,7 +22,6 @@ function Sidebar() {
                     <ul>
                         {/* Use Link component */}
                         <Link to="/"><PatientMenu img={User} text="My Profile" /></Link>
-                        <Link to="/"><PatientMenu img={Password} text="Change Password" /></Link>
                         <Link to="/"><PatientMenu img={Logout} text="Logout"/></Link>
                     </ul>
                 </div>
