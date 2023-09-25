@@ -5,7 +5,6 @@ import { Route, Routes } from 'react-router-dom'
 import Register from './pages/register-page/register'
 import ForgotPassword from './pages/forgotpass-page/forgotpass'
 import Patient from './pages/patient-page/patient-profile'
-import Announcements from './pages/announce-page/announcement'
 
 
 
@@ -19,8 +18,6 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route path='/forgotpassword' element={<ForgotPassword />} />
           <Route path='/patient' element={<Patient/>}/>
-          <Route path='/announcements' element={<Announcements/>}/>
-      
         </Routes>
     </>
   )
