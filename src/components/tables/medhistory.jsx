@@ -6,7 +6,7 @@ export default function MedicalHistory() {
     return(
         <>
         <div className="container-table">
-         <h1 id="dashboard-h1">Patient Record</h1>
+         <h1 id="history-h1">Medical History</h1>
             <div className="medical-history">
                 <div className="scrollable-container">
                 <table className="scrollable">
@@ -20,20 +20,6 @@ export default function MedicalHistory() {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>08-26-23</td>
-                            <td>Fatigue, Frequent Urination, and Back-ache</td>
-                            <td>Mild Kidney Failure</td>
-                            <td>-</td>
-                            <td>Dialysis Treatment</td>
-                        </tr>
-                        <tr>
-                            <td>08-26-23</td>
-                            <td>Fatigue, Frequent Urination, and Back-ache</td>
-                            <td>Mild Kidney Failure</td>
-                            <td>-</td>
-                            <td>Dialysis Treatment</td>
-                        </tr>
                         <tr>
                             <td>08-26-23</td>
                             <td>Fatigue, Frequent Urination, and Back-ache</td>
