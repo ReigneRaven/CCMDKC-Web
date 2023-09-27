@@ -10,6 +10,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import Terms from '../../components/modals/terms';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { RiEyeFill } from 'react-icons/ri'; // Import eye icons from react-icons
+import { AiFillEyeInvisible } from 'react-icons/ai';
 
 export default function Register() {
   const navigate = useNavigate();
@@ -57,9 +59,9 @@ export default function Register() {
           <div id='register-form'>
             <form onSubmit={handleSubmit}>
               <Head2 text="Register"></Head2>
-              <InputField placeholder=" Name" className="user-input" />
-                <div className="form1">
-                  <DatePicker placeholderText="Birthdate" className="user-input" selected={birthdate} onChange={handleBirthdateChange}/>
+              <InputField placeholder=" Full Name" className="user-input" />
+              <div className="form1">
+                <DatePicker placeholderText="Birthdate" className="user-input" selected={birthdate} onChange={handleBirthdateChange} />
                 <label className="user-input-label">
                   <select className="user-input" defaultValue="">
                     <option value="" disabled hidden>Sex</option>
@@ -67,15 +69,22 @@ export default function Register() {
                     <option value="female">Female</option>
                   </select>
                 </label>
-                </div>
+              </div>
               <InputField placeholder=" Address" className="user-input" />
               <InputField placeholder=" Contact No." className="user-input" />
-              <InputField placeholder=" Email" className="user-input" />
-              <input type={showPassword ? 'text' : 'password'} placeholder=" Password" className="user-input" value={password} onChange={handlePasswordChange} />
+              <div className="password-wrapper" id="register">
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  placeholder=" Password"
+                  className="user-input"
+                  value={password}
+                  onChange={handlePasswordChange}
+                />
+                <div className="toggle-eye" onClick={togglePasswordVisibility}>
+                  {showPassword ? <RiEyeFill /> : <AiFillEyeInvisible />}
+                </div>
+              </div>
               <div className="terms">
-                <label className="show-password-label">
-                  <input type="checkbox" id="showpass" checked={showPassword} onChange={togglePasswordVisibility} />{' '}&nbsp;Show&nbsp;Password
-                </label>
                 <Link onClick={handleTermsLinkClick}><p>Terms of Use and Privacy Policy</p></Link>
                 {openModal && <Terms closeModal={handleCloseModal} />}
               </div>

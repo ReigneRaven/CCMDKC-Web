@@ -55,6 +55,7 @@ form{
 
 input{
     width: 100%;
+    margin-left: 5px;
     height: 2.5rem;
     font-size: medium;
     border-radius: 10px;
@@ -102,33 +103,44 @@ input{
 }
 
 .terms {
-    margin-top: -10px;
+    margin-top: -30px;
+    margin-left: 12rem;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
 }
 
+.password-input {
+    width: 305px; /* Set your desired fixed width here */
+  }
+
+
+  #register.password-wrapper {
+    width: 100%;
+    position: relative;
+    padding: 0.5rem; /* Adjust the padding as needed */
+  }
   
-.options {
+  #register.password-wrapper input[type="password"] {
+    width: calc(100% - 40px); /* Adjust the width minus the padding for the icon */
+    padding-right: 40px; /* Adjust the padding as needed to fit the icon */
+  }
+  .toggle-eye {
+    position: absolute;
+    right: 10px; /* Adjust the position as needed */
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
     display: flex;
-    flex-direction: row;
     align-items: center;
-}
-  
-.show-password-label {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
     justify-content: center;
-    margin-bottom: 0;
-    margin-right: 3.5rem;
-}
+    background: none;
+    border: none;
+    outline: none;
+  }
   
-.show-password-label input[type="checkbox"] {
-    margin-right: 3.5rem;
-}
+  /* Add styling for the eye icon itself */
+  .toggle-eye svg {
+    width: 20px; /* Adjust the size as needed */
+    height: 20px; /* Adjust the size as needed */
+    fill: #333; /* Change the color to match your design */
+  }
   
-.options p {
-    margin-left: 1.5rem;
-}

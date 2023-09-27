@@ -27,12 +27,11 @@ export default function ForgotPassword() {
                             <Head2 text="Forgot Password"></Head2>
                             <h3>Please enter the email address you'd like your password reset information sent to.</h3>
                             <div className="form2">
-                                <InputField placeholder=" Email Address" className="user-input" required/>
+                                <input placeholder=" Email Address" className="user-input" required/>
                             </div>
                             <Button label="Send" type="submit" /> 
                         </form>
-                        {openModal && <ResetModal closeModal={setOpenModal}/>}
-                        <Link to='/'><p>Back to Login</p></Link>
+                        {openModal && <ResetModal closeModal={setOpenModal} />}
                     </div>
                 </div>
             </main>
