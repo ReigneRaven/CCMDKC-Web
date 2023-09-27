@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Link } from 'react-router-dom'; // Import Rout
 import './sidebar.css';
 import Profile from '../../assets/profile.png';
 import User from '../../assets/user.svg';
+import Password from '../../assets/changepassword.svg';
 import Logout from '../../assets/logout.svg';
 
 function Sidebar() {
@@ -21,6 +22,7 @@ function Sidebar() {
                     <ul>
                         {/* Use Link component */}
                         <Link to="/"><PatientMenu img={User} text="My Profile" /></Link>
+                        <Link to="/"><PatientMenu img={Password} text="Change Password" /></Link>
                         <Link to="/"><PatientMenu img={Logout} text="Logout"/></Link>
                     </ul>
                 </div>
