@@ -1,7 +1,14 @@
 import React from 'react';
 import './terms.css';
+import { useNavigate } from 'react-router';
 
 function Terms({ closeModal }) {
+  const navigate = useNavigate(); // Create a navigate function
+
+  const handleOkayClick = () => {
+    closeModal(false);
+    navigate('/'); // Navigate to the login page
+  };
   return (
     <div className="background">
       <div className="container">
@@ -42,7 +49,7 @@ function Terms({ closeModal }) {
           </div>
         </div>
         <div className="footer">
-          <button onClick={() => closeModal(false)}> Decline </button>
+          <button onClick={handleOkayClick}> Decline </button>
           <button onClick={() => closeModal(false)}> Accept </button>
         </div>
       </div>
