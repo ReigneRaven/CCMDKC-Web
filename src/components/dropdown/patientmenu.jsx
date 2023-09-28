@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Link } from 'react-router-dom'; // Import Rout
 import './patientmenu.css';
 import Profile from '../../assets/profile.png';
 import User from '../../assets/user.svg';
-import History from '../../assets/medhistory.svg';
 import Password from '../../assets/changepassword.svg';
 import Logout from '../../assets/logout.svg';
 
@@ -23,7 +22,6 @@ function PatientMenu() {
                     <ul>
                         {/* Use Link component */}
                         <Link to="/"><Menu img={User} text="My Profile" /></Link>
-                        <Link to="/"><Menu img={History} text="Medical History" /></Link>
                         <Link to="/"><Menu img={Password} text="Change Password" /></Link>
                         <Link to="/"><Menu img={Logout} text="Logout"/></Link>
                     </ul>
