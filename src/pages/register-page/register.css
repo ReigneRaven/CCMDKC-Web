@@ -116,7 +116,6 @@ input{
   #register.password-wrapper {
     width: 100%;
     position: relative;
-    padding: 0.5rem; /* Adjust the padding as needed */
   }
   
   #register.password-wrapper input[type="password"] {
@@ -143,4 +142,3 @@ input{
     height: 20px; /* Adjust the size as needed */
     fill: #333; /* Change the color to match your design */
   }
-  
