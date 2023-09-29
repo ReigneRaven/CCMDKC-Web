@@ -88,25 +88,13 @@ export default function Register() {
               <InputField placeholder=" Address" className="user-input" />
               <InputField placeholder=" Contact No." className="user-input" />
               <div className="password-wrapper" id="register">
-                <input
-                  type={showPassword ? 'text' : 'password'}
-                  placeholder="Password"
-                  className="user-input"
-                  value={password}
-                  onChange={handlePasswordChange}
-                />
+                <input type={showPassword ? 'text' : 'password'} placeholder="Password" className="user-input" value={password} onChange={handlePasswordChange}/>
                 <div className="toggle-eye" onClick={() => togglePasswordVisibility('password')}>
                   {showPassword ? <RiEyeFill /> : <AiFillEyeInvisible />}
                 </div>
               </div>
               <div className="password-wrapper" id="register">
-                <input
-                  type={showConfirmPassword ? 'text' : 'password'}
-                  placeholder="Confirm Password"
-                  className="user-input"
-                  value={confirmPassword}
-                  onChange={handleConfirmPasswordChange}
-                />
+                <input type={showConfirmPassword ? 'text' : 'password'} placeholder="Confirm Password" className="user-input" value={confirmPassword} onChange={handleConfirmPasswordChange}/>
                 <div className="toggle-eye" onClick={() => togglePasswordVisibility('confirmPassword')}>
                   {showConfirmPassword ? <RiEyeFill /> : <AiFillEyeInvisible />}
                 </div>

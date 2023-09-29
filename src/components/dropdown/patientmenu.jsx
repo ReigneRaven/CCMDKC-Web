@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Link } from 'react-router-dom'; // Import Router and Link from react-router-dom
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 import './patientmenu.css';
 import Profile from '../../assets/profile.png';
 import User from '../../assets/user.svg';
@@ -20,7 +20,6 @@ function PatientMenu() {
                 <div className={`dropdown-menu ${open ? 'active' : 'inactive'}`}>
                     <h3>Park Chanyeol<br/><span>Patient</span></h3>
                     <ul>
-                        {/* Use Link component */}
                         <Link to="/"><Menu img={User} text="My Profile" /></Link>
                         <Link to="/changepassword"><Menu img={Password} text="Change Password" /></Link>
                         <Link to="/"><Menu img={Logout} text="Logout"/></Link>

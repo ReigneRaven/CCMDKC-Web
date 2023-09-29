@@ -109,22 +109,23 @@ input{
 }
 
 .password-input {
-    width: 305px; /* Set your desired fixed width here */
-  }
+    width: 305px;
+}
 
 
-  #register.password-wrapper {
+#register.password-wrapper {
     width: 100%;
     position: relative;
-  }
+}
   
-  #register.password-wrapper input[type="password"] {
-    width: calc(100% - 40px); /* Adjust the width minus the padding for the icon */
-    padding-right: 40px; /* Adjust the padding as needed to fit the icon */
-  }
-  .toggle-eye {
+#register.password-wrapper input[type="password"] {
+    width: calc(100% - 40px); 
+    padding-right: 40px; 
+}
+
+.toggle-eye {
     position: absolute;
-    right: 10px; /* Adjust the position as needed */
+    right: 10px; 
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
@@ -134,11 +135,10 @@ input{
     background: none;
     border: none;
     outline: none;
-  }
+}
   
-  /* Add styling for the eye icon itself */
-  .toggle-eye svg {
-    width: 20px; /* Adjust the size as needed */
-    height: 20px; /* Adjust the size as needed */
-    fill: #333; /* Change the color to match your design */
-  }
+.toggle-eye svg {
+    width: 20px; 
+    height: 20px; 
+    fill: #333; 
+}

@@ -8,7 +8,7 @@ import DiaLogo from '../../components/logo/logo';
 import ClientLogo from '../../assets/ccmdkc-logo.png';
 import ClientBuilding from '../../assets/ccmdkc-bldg.png';
 import { Link, useNavigate } from 'react-router-dom';
-import { RiEyeFill } from 'react-icons/ri'; // Import eye icons from react-icons
+import { RiEyeFill } from 'react-icons/ri';
 import { AiFillEyeInvisible } from 'react-icons/ai';
 
 export default function Landing() {
@@ -57,14 +57,7 @@ export default function Landing() {
                 <InputField name="username" placeholder=" Username" className="user-input" />
                 <div className="password-input">
                   <div className="input-container">
-                    <input
-                      type={showPassword ? 'text' : 'password'}
-                      name="password"
-                      placeholder=" Password"
-                      className="user-input password-field" // Add a specific class for the password input
-                      value={password}
-                      onChange={handlePasswordChange}
-                    />
+                    <input type={showPassword ? 'text' : 'password'} name="password" placeholder=" Password" className="user-input password-field" value={password} onChange={handlePasswordChange}/>
                     <div className="toggle-eye" onClick={togglePasswordVisibility}>
                       {showPassword ? <RiEyeFill /> : <AiFillEyeInvisible />}
                     </div>

@@ -3,11 +3,11 @@ import './terms.css';
 import { useNavigate } from 'react-router';
 
 function Terms({ closeModal }) {
-  const navigate = useNavigate(); // Create a navigate function
+  const navigate = useNavigate();
 
   const handleOkayClick = () => {
     closeModal(false);
-    navigate('/'); // Navigate to the login page
+    navigate('/');
   };
   return (
     <div className="background">
