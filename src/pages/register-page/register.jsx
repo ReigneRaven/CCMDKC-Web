@@ -11,7 +11,10 @@ import Terms from '../../components/modals/terms';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
+
 export default function Register() {
+
+
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -22,6 +25,10 @@ export default function Register() {
   const [password, setPassword] = useState('');
   const [openModal, setOpenModal] = useState(false);
   const [birthdate, setBirthdate] = useState(new Date()); // Initialize birthdate with a default date
+  
+
+ 
+  
 
   const handleBirthdateChange = (date) => {
     setBirthdate(date);
@@ -45,7 +52,8 @@ export default function Register() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setOpenModal(true);
+      setOpenModal(true);
+      setName(name);
   };
 
   return (
@@ -57,16 +65,27 @@ export default function Register() {
           <div id='register-form'>
             <form onSubmit={handleSubmit}>
               <Head2 text="Register"></Head2>
-              <InputField placeholder=" Name" className="user-input" />
+
+              <InputField placeholder=" Name" 
+              className="user-input"
+              value={name}
+              autoComplete ="off"
+              onChange={(e) => setName(e.target.value)}/>
+
                 <div className="form1">
-                  <DatePicker placeholderText="Birthdate" className="user-input" selected={birthdate} onChange={handleBirthdateChange}/>
+                  <DatePicker placeholderText="Birthdate" 
+                  className="user-input"
+                  selected={birthdate} 
+                  onChange={handleBirthdateChange}/>
+
                 <label className="user-input-label">
-                  <select className="user-input" defaultValue="">
+                  <select className="user-input" defaultValue="" set>
                     <option value="" disabled hidden>Sex</option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                   </select>
                 </label>
+
                 </div>
               <InputField placeholder=" Address" className="user-input" />
               <InputField placeholder=" Contact No." className="user-input" />

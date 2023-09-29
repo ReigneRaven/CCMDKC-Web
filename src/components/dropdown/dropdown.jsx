@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Link } from 'react-router-dom'; // Import Router and Link from react-router-dom
-import './sidebar.css';
+import './dropdown.css';
 import Profile from '../../assets/profile.png';
 import User from '../../assets/user.svg';
 import Logout from '../../assets/logout.svg';
 
-function Sidebar() {
-
+function Dropdown({name}) {
+    
     const [open, setOpen] = useState(false);
     
     return (
@@ -16,11 +16,11 @@ function Sidebar() {
                     <img src={Profile} alt="Profile"></img>
                 </div>
 
-                <div className={`dropdown-menu ${open ? 'active' : 'inactive'}`}>
-                    <h3>Park Chanyeol<br/><span>Patient</span></h3>
+                <div className={`dropdown-menu ${open ? 'active' : 'inactive'}`} >
+                    <h3>{name}<br/><span>Patient</span></h3>
                     <ul>
                         {/* Use Link component */}
-                        <Link to="/"><PatientMenu img={User} text="My Profile" /></Link>
+                        <Link to="/admin"><PatientMenu img={User} text="My Profile" /></Link>
                         <Link to="/"><PatientMenu img={Logout} text="Logout"/></Link>
                     </ul>
                 </div>
@@ -39,4 +39,4 @@ function PatientMenu(props) {
     );
 }
 
-export default Sidebar;
+export default Dropdown;

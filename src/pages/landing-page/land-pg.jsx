@@ -13,6 +13,7 @@ export default function Landing() {
   const navigate = useNavigate();
 
   const handleClick = () => {
+    save = 
     navigate('/patient');
   };
 
@@ -27,14 +28,14 @@ export default function Landing() {
     setPassword(e.target.value);
   };
 
+ 
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
     // Here, you can perform actions with the form data if needed
     console.log('Form submitted with username:', e.target.username.value);
     console.log('Form submitted with password:', e.target.password.value);
     // Redirect or perform other actions as necessary
-    handleClick();
-  };
+  }
 
   return (
     <>
