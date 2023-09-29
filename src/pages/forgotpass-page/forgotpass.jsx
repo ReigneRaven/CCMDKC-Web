@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Head2 from '../../components/headers/header';
 import '../../components/headers/header.css';
-import InputField from '../../components/textfield/textfield';
+import './forgotpass.css'
 import ResetModal from '../../components/modals/resetpass';
 import Button from '../../components/buttons/button';
 import DiaLogo from '../../components/logo/logo';
@@ -20,13 +20,13 @@ export default function ForgotPassword() {
         <>
             <main>
                 <div className='forgotpage'>
-                    <div id='register-logo'><DiaLogo src={ClientLogo} /></div>
+                    <div id='forgotpass-logo'><DiaLogo src={ClientLogo} /></div>
 
-                    <div id='register-form'>
+                    <div id='forgotpass-form'>
                         <form onSubmit={handleSubmit}>
                             <Head2 text="Forgot Password"></Head2>
                             <h3>Please enter the email address you'd like your password reset information sent to.</h3>
-                            <div className="form2">
+                            <div className="forgotpass-input">
                                 <input placeholder=" Email Address" className="user-input" required/>
                             </div>
                             <Button label="Send" type="submit" /> 

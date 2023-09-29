@@ -25,7 +25,7 @@ form{
     align-items: center;
 }
 
-#register-form{
+#changepass-form{
     background-color: whitesmoke;
     height: 100vh;
     width: 50vw;
@@ -40,7 +40,7 @@ form{
     align-items: center;
 }
 
-#register-logo{
+#changepass-logo{
     height: 100vh;
     width: 50vw;
     margin: 0 auto;
@@ -81,14 +81,6 @@ button:hover {
 
 #custom-button {
     width: 50%;
-}
-
-.form2 {
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
-	gap: 0.5rem;
-    width: 40%;
 }
 
 .change-password {
@@ -144,4 +136,13 @@ button:hover {
     fill: #333;
     vertical-align: middle;
 }
-  
+
+/* Remove hover effect when the eye icon is clicked */
+.change-toggle-eye:hover {
+    filter: none;
+}
+
+/* Disable hover effect for the :active state */
+.change-toggle-eye:active {
+    filter: none;
+}

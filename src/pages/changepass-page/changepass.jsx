@@ -34,11 +34,11 @@ export default function ChangePassword() {
       <>
         <main>
           <div className='changepasspage'>
-            <div id='register-logo'>
+            <div id='changepass-logo'>
               <DiaLogo src={ClientLogo} />
             </div>
   
-            <div id='register-form'>
+            <div id='changepass-form'>
               <Head2 text='Create New Password'></Head2>
               <div className='new-password'>
                 <h3>Enter a new password below to change your password</h3>
