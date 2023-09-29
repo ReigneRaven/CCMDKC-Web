@@ -49,7 +49,7 @@
 
 .container .body {
   flex: 1;
-  overflow-y: auto; /* Add a vertical scrollbar to the content */
+  overflow-y: auto;
   font-size: 1.2rem;
   text-align: left;
 }

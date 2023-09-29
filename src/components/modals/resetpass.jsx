@@ -1,13 +1,13 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 import './resetpass.css';
 
 function ResetModal({ closeModal }) {
-  const navigate = useNavigate(); // Create a navigate function
+  const navigate = useNavigate();
 
   const handleOkayClick = () => {
     closeModal(false);
-    navigate('/'); // Navigate to the login page
+    navigate('/');
   };
 
   return (
@@ -23,7 +23,7 @@ function ResetModal({ closeModal }) {
           <p>Thank you! An email has been sent for you to reset your password</p>
         </div>
         <div className="footer">
-          <button onClick={handleOkayClick}> Okay </button> {/* Use the handleOkayClick function */}
+          <button onClick={handleOkayClick}> Okay </button>
         </div>
       </div>
     </div>

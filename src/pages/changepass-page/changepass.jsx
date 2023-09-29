@@ -44,42 +44,16 @@ export default function ChangePassword() {
                 <h3>Enter a new password below to change your password</h3>
   
                 <div className='password-container'>
-                  <input
-                    type={showNewPassword ? 'text' : 'password'}
-                    placeholder='New Password'
-                    value={newPassword}
-                    onChange={handleNewPasswordChange}
-                    className='changepassword-field'
-                  />
-                  <button
-                    className='change-toggle-eye'
-                    onClick={toggleNewPasswordVisibility}
-                  >
-                    {showNewPassword ? (
-                      <AiFillEyeInvisible />
-                    ) : (
-                      <RiEyeFill />
-                    )}
+                  <input type={showNewPassword ? 'text' : 'password'} placeholder='New Password' value={newPassword} onChange={handleNewPasswordChange} className='changepassword-field'/>
+                  <button className='change-toggle-eye' onClick={toggleNewPasswordVisibility}>
+                    {showNewPassword ? (<RiEyeFill />) : (<AiFillEyeInvisible />)}
                   </button>
                 </div>
   
                 <div className='password-container'>
-                  <input
-                    type={showConfirmPassword ? 'text' : 'password'}
-                    placeholder='Confirm Password'
-                    value={confirmPassword}
-                    onChange={handleConfirmPasswordChange}
-                    className='changepassword-field'
-                  />
-                  <button
-                    className='change-toggle-eye'
-                    onClick={toggleConfirmPasswordVisibility}
-                  >
-                    {showConfirmPassword ? (
-                      <AiFillEyeInvisible />
-                    ) : (
-                      <RiEyeFill />
-                    )}
+                  <input type={showConfirmPassword ? 'text' : 'password'} placeholder='Confirm Password' value={confirmPassword} onChange={handleConfirmPasswordChange} className='changepassword-field'/>
+                  <button className='change-toggle-eye' onClick={toggleConfirmPasswordVisibility}>
+                    {showConfirmPassword ? (<RiEyeFill />) : (<AiFillEyeInvisible />)}
                   </button>
                 </div>
   

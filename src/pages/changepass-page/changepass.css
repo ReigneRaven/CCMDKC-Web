@@ -83,7 +83,6 @@ button:hover {
     width: 50%;
 }
 
-
 .form2 {
     display: flex;
     flex-direction: row;
@@ -100,16 +99,9 @@ button:hover {
     gap: 1.5rem;
     margin: 0 auto;
     margin-bottom: -30px;
-    position: relative; /* Add this line to make the container relative */
+    position: relative;
 }
 
-/* Add these CSS styles to your existing stylesheet or create a new one */
-
-/* Styles for the ChangePassword component */
-
-/* ... (previous CSS rules) ... */
-
-/* Additional styles for the password input fields */
 .new-password {
     width: 100%;
     display: flex;
@@ -118,40 +110,38 @@ button:hover {
     gap: 1.5rem;
     margin: 0 auto;
     margin-bottom: -30px;
-    position: relative; /* Add this line to make the container relative */
-  }
+    position: relative;
+}
   
-  .new-password .password-container {
+.new-password .password-container {
     position: relative;
     width: 100%;
-  }
+}
   
-  /* Apply the provided CSS for the password input fields */
-  .changepassword-field {
+.changepassword-field {
     width: 30%;
     height: 2.5rem;
     font-size: medium;
     border-radius: 10px;
     border: 1px solid;
-    position: relative; /* Add this line to make the container relative */
-  }
+    position: relative;
+}
   
-  /* Adjust the toggle-eye styles for alignment */
-  .change-toggle-eye {
+.change-toggle-eye {
     position: absolute;
-    right: 315px; /* Adjust the position as needed */
+    right: 315px;
     top: -18%;
     transform: translateY(-50%);
     cursor: pointer;
     background: none;
     border: none;
     outline: none;
-  }
+}
   
-  .change-toggle-eye svg {
+.change-toggle-eye svg {
     width: 20px;
     height: 20px;
-    fill: #333; /* Adjust the fill color as needed */
-    vertical-align: middle; /* Align the icon vertically with the input field */
-  }
+    fill: #333;
+    vertical-align: middle;
+}
   

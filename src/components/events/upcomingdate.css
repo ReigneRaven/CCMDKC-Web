@@ -3,10 +3,10 @@
     display: flex !important;
     flex-direction: column;
     font-size: 16px;
-    padding: 20px; /* Reduced padding */
+    padding: 20px;
     border-radius: 20px;
     width: 70%;
-    height: auto; /* Remove fixed height */
+    height: auto;
     margin: 2%;
     gap: 2rem;
     margin-top: -10px;
@@ -26,16 +26,14 @@
     font-size: 24px;
 }
  
-/* Style for the calendar-event container */
 .calendar-event-container {
     display: flex;
     align-items: flex-start;
 }
 
-/* Style for the calendar-container */
 .calendar-container {
-    width: 550px; /* Set a smaller fixed width for the calendar */
-    height: 265px; /* Set a smaller fixed height for the calendar */
+    width: 550px;
+    height: 265px;
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -43,28 +41,26 @@
     margin-right: 10px;
     box-sizing: content-box;
     padding: 5px;
-    overflow: auto; /* Add overflow property for scrollbars */
+    overflow: auto;
 }
 
-/* Style for calendar navigation buttons */
 .react-calendar__navigation {
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: none;
-    margin-bottom: 10px; /* Add margin to separate from calendar */
+    margin-bottom: 10px;
 }
-/* Style for individual calendar navigation buttons */
+
 .react-calendar__navigation__arrow {
-    font-size: 16px; /* Adjusted font size for navigation buttons */
-    padding: 1px 2px; /* Adjusted padding for the buttons */
+    font-size: 16px; 
+    padding: 1px 2px;
     cursor: pointer;
 }
 
-/* Style for calendar date and month */
 .react-calendar__month-view__days__day {
-    font-size: 12px; /* Adjusted font size for date and month */
-    padding: 1px 2px; /* Adjusted padding around the date and month */
+    font-size: 12px; 
+    padding: 1px 2px; 
 }
 
 .react-calendar__tile{
@@ -80,14 +76,12 @@
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     font-size: 20px;
-    width: 200px; /* Set a smaller width for the event note */
+    width: 200px;
 }
 
-
-/* Style for the font size of the upcoming event */
 .calendar-event-container .event-note h2 {
-    font-size: 24px; /* Set a smaller font size for the upcoming event */
-    font-weight: bold; /* Set font-weight to match the header */
-    margin: 0; /* Remove any default margin */
+    font-size: 24px; 
+    font-weight: bold; 
+    margin: 0; 
 }
 

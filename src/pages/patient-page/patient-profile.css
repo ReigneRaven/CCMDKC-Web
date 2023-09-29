@@ -87,5 +87,5 @@ main{
     display: flex;
     flex-grow: 1;
     margin-left: 10px;
-    margin-right: 10px; /* Add right margin to create space between components */
+    margin-right: 10px;
 }
