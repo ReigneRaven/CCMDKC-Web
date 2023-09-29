@@ -6,6 +6,7 @@ import Register from './pages/register-page/register'
 import ForgotPassword from './pages/forgotpass-page/forgotpass'
 import Patient from './pages/patient-page/patient-profile'
 import Announcements from './pages/announce-page/announce'
+import ChangePassword from './pages/changepass-page/changepass'
 
 
 
@@ -20,6 +21,7 @@ function App() {
           <Route path='/forgotpassword' element={<ForgotPassword />} />
           <Route path='/patient' element={<Patient/>}/>
           <Route path='/announcements' element={<Announcements/>}/>
+          <Route path='/changepassword' element={<ChangePassword/>}/>
         </Routes>
     </>
   )
