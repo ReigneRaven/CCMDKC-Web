@@ -6,7 +6,6 @@ import ClientLogo from '../../assets/ccmdkc-logo.png'
 import Head2 from '../../components/headers/header'
 import {LuLayoutDashboard} from 'react-icons/lu'
 import {MdMedicalServices, MdOutlineAnnouncement} from 'react-icons/md'
-import Dashboard from "../../components/dashboard/dashboard"
 import PatientMenu from "../../components/dropdown/patientmenu"
 import CurrentDiagnosis from "../../components/dashboard/currentdiagnosis"
 import UpcomingAppointments from "../../components/events/upcomingdate"
@@ -52,7 +51,6 @@ export default function PtnProfile (){
                     <CurrentDiagnosis/>
                 </div>
             </div>
-            <Dashboard />
             </main>
         </div>
     </div>
