@@ -22,7 +22,7 @@ function PatientMenu() {
                     <ul>
                         {/* Use Link component */}
                         <Link to="/"><Menu img={User} text="My Profile" /></Link>
-                        <Link to="/"><Menu img={Password} text="Change Password" /></Link>
+                        <Link to="/changepassword"><Menu img={Password} text="Change Password" /></Link>
                         <Link to="/"><Menu img={Logout} text="Logout"/></Link>
                     </ul>
                 </div>
