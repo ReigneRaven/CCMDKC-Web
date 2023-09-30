@@ -7,6 +7,7 @@ import ForgotPassword from './pages/forgotpass-page/forgotpass'
 import Patient from './pages/patient-page/patient-profile'
 import Announcements from './pages/announce-page/announce'
 import Employee from './pages/employee-page/employee'
+import ChangePassword from './pages/changepass-page/changepass'
 
 
 
@@ -22,8 +23,8 @@ function App() {
 
           {/* PATIENT SIDE */}
           <Route path='/patient' element={<Patient/>}/>
-          
           <Route path='/patient/announcements' element={<Announcements/>}/>
+          <Route path='/patient/changepassowrd' element={<ChangePassword/>}/>
 
           {/* ADMIN SIDE */}
           <Route path='/admin' element={<Employee/>}/>

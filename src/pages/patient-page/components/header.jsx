@@ -6,6 +6,7 @@ import Head2 from "../../../components/headers/header";
 import Profile from '../../../assets/profile.png'
 import { Link } from "react-router-dom";
 import User from '../../../assets/user.svg'
+import Password from '../../../assets/changepassword.svg'
 import Logout from '../../../assets/logout.svg'
 
 
@@ -42,7 +43,7 @@ export default function PtnHeader() {
                             <div className="drop-links-ptn">
                             <ul>
                             <Link to='/'><PatientMenu img={User}/>My Profile</Link>
-                            <Link to='/'><PatientMenu/>Change Password</Link>
+                            <Link to='/patient/changepassowrd'><PatientMenu img={Password}/>Change Password</Link>
                             <Link to='/'><PatientMenu img={Logout}/>Logout</Link>
                             </ul>
                             </div>

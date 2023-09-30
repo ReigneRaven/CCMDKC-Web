@@ -8,12 +8,13 @@ import DiaLogo from '../../components/logo/logo';
 import ClientLogo from '../../assets/ccmdkc-logo.png';
 import ClientBuilding from '../../assets/ccmdkc-bldg.png';
 import { Link, useNavigate } from 'react-router-dom';
+import { RiEyeFill } from 'react-icons/ri';
+import { AiFillEyeInvisible } from 'react-icons/ai';
 
 export default function Landing() {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    save = 
     navigate('/patient');
   };
 
@@ -28,14 +29,14 @@ export default function Landing() {
     setPassword(e.target.value);
   };
 
- 
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
     // Here, you can perform actions with the form data if needed
     console.log('Form submitted with username:', e.target.username.value);
     console.log('Form submitted with password:', e.target.password.value);
     // Redirect or perform other actions as necessary
-  }
+    handleClick();
+  };
 
   return (
     <>
@@ -53,21 +54,25 @@ export default function Landing() {
 
               <Head2 text="Sign in"></Head2>
               <div className="login-input">
-                <InputField name="username" placeholder=" Username" className="user-input" required />
-                <input type={showPassword ? 'text' : 'password'} name="password" placeholder=" Password"className="user-input" value={password} onChange={handlePasswordChange} required/>
+                <InputField name="username" placeholder=" Username" className="user-input" />
+                <div className="password-input">
+                  <div className="input-container">
+                    <input type={showPassword ? 'text' : 'password'} name="password" placeholder=" Password" className="user-input password-field" value={password} onChange={handlePasswordChange}/>
+                    <div className="toggle-eye" onClick={togglePasswordVisibility}>
+                      {showPassword ? <RiEyeFill /> : <AiFillEyeInvisible />}
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <div className="password-options">
                 <div className="options">
-                  <label className="show-password-label">
-                    <input type="checkbox" id="showpass" checked={showPassword} onChange={togglePasswordVisibility}/>{' '}&nbsp;Show&nbsp;Password
-                  </label>
                   <Link to="/forgotpassword">
                     <p>Forgot Password?</p>
                   </Link>
                 </div>
               </div>
-              <Button label="Login" type="submit" />
+              <Button label="Login" type="submit" onClick={(e) => handleClick()} />
             </form>
             <div id="home-reg">
               <p>Don't have an account?&nbsp;</p>
