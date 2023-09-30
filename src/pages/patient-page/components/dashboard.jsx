@@ -1,18 +1,18 @@
 import React from "react";
 import '../patient-profile.css'
-// import Calendar from "../../../components/calendar/calendar";
-// import Upcoming from './upcoming.jsx'
+import Upcoming from "../../employee-page/components/upcoming";
+import Calendar from "../../../components/calendar/calendar";
 
 export default function PtnDashboard() {
     
     return(
         <>
-             <div className="dash">
+             <div className="dash-patient">
                 <p>Dashboard</p>
-                {/* <div className="dash-row">
-                {/* <Upcoming/>
-                <Calendar/> */}
-                {/* </div> */}
+                <div className="dashpatient-row">
+                <Upcoming/>
+                <Calendar/>
+                </div>
              </div>
         </>
     )

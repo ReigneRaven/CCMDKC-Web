@@ -7,9 +7,9 @@ export default function Dashboard() {
     
     return(
         <>
-             <div className="dash">
+             <div className="dash-employee">
                 <p>Dashboard</p>
-                <div className="dash-row">
+                <div className="dashemployee-row">
                 <Upcoming/>
                 <Calendar/>
                 </div>

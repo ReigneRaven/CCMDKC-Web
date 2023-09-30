@@ -4,7 +4,7 @@ import '../announce-page/announce.css'
 import ImgView from '../../components/imgview/imgview'
 import ClientAnnounce from '../../assets/announce - Copy.jpg'
 import Sidebar from '../patient-page/components/sidebar'
-import Header from '../employee-page/components/header'
+import Header from '../patient-page/components/header'
 
 
 

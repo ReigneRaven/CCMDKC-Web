@@ -39,7 +39,6 @@ export default function Header() {
                             <div className="drop-links">
                             <ul>
                             <Link to='/'><Menu img={User}/>My Profile</Link>
-                            <Link to='/'><Menu/>Change Password</Link>
                             <Link to='/'><Menu img={Logout}/>Logout</Link>
                             </ul>
                             </div>
