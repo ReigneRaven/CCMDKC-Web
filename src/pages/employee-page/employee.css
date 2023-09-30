@@ -1,0 +1,279 @@
+
+/* HEADER CSS--------------------------------- */
+header{
+    width: 99vw;
+    height: auto;
+    
+}
+.profile-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profile-menu{
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    align-items: center;
+}
+
+
+#name-menu{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#menu-img{
+    height: 5vh;
+    width: 5vh;
+    margin: 5px;
+    padding: 10px;
+}
+
+#drop-label{
+    display: flex;
+    flex-direction: column;
+}
+#drop-label p{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    margin: 5px;
+}
+
+.drop-links ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.drop-links a{
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    transition: margin 0.3s ease-in-out;
+}
+
+.drop-links a:hover{
+    margin: 15px;
+}
+
+#logo-box-sidebar h2{
+    font-size: 15px;
+}
+
+#logo-box-sidebar img{
+    height: 5vh;
+    width: 5vh;
+    margin: 5px;
+    padding: 10px;
+}
+
+
+#logo-box-sidebar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: black;
+   
+}
+
+.menu-trigger img {
+   
+    top: 5px;
+    right: 20px;
+    height: 55px;
+    width: 55px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 75px;
+    right: 20px;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 10px 20px;
+    width: 200px;
+    box-shadow: 5px 5px 8px #888888;
+}
+
+.dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    right: 15px; 
+    transform: rotate(45deg); 
+    height: 20px;
+    width: 20px;
+    background-color: #fff;
+}
+
+.dropdown-menu.active{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: var(--speed) ease;
+}
+
+.dropdown-menu.inactive{
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: var(--speed) ease;
+}
+
+
+h3 {
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    padding: 20px 0;
+    font-weight: 500;
+    color: var(--primary-text-color);
+    line-height: 1.2rem;
+}
+
+h3 span {
+    font-size: 14px;
+    color: var(--secondary-text-color);
+    font-weight: 400;
+}
+
+.dropdown-menu ul li {
+    list-style: none;
+    padding: 10px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dropdown-menu ul li:hover {
+    color: #114061;
+    cursor: pointer;
+}
+
+.dropdown-menu ul li:hover a{
+    color: #114061;
+    cursor: pointer;
+}
+
+.dropdown-menu ul li:hover img{
+    opacity: 1;
+    cursor: pointer;
+}
+
+.dropdownItem {
+    display: flex;
+    margin: 10px auto;
+}
+
+.dropdownItem img {
+    max-width: 20px;
+    margin-right: 10px;
+    opacity: 0.5;
+    transition: var(--speed);
+}
+
+/* SIDENAV CSS--------------------------------- */
+
+.sidenav{
+    height: 90vh;
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    margin-right: 6px;
+}
+.sidenav ul{
+    margin: 10px;
+    padding: 10px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.sidenav a{
+    text-decoration: none;
+    color: black;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    font-size: 15px;
+}
+#announce-link{
+    font-size: 13px;
+}
+
+main{
+    display: flex;
+    margin: 0;
+}
+.content{
+    display: flex;
+    flex-direction: row;
+}
+.link-div{
+    display: flex;
+    align-items: center;
+}
+/* DASHBOARD--------------------------------- */
+.dash{
+    background-color: white;
+    width: 89vw;
+    border-radius: 20px;
+   
+}
+
+.dash p{
+    color: lightslategrey;
+    font-size: 20px;
+    display: flex;
+    margin-left: 50px;
+}
+
+.dash-row{
+    display: flex !important;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding:50px;
+}
+
+/* UPCOMING =====-----------------=============------= */
+
+.upcoming-wrapper{
+    background:rgb(243, 243, 243);
+    width: 70%;
+    height: 450px;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.upcoming-wrapper p{
+    color: black;
+    font-weight: 500;
+    padding: 20px;
+    margin: 0;
+}
+
+/* ````````````````````````````````````````TABLE`````````````````````````````````````````````````````````` */
+
+thead{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap:3rem;
+    padding: 20px;
+    color: #778899;
+}
+
+.table-appointment{
+    display: flex;
+    justify-content: space-between;
+}
