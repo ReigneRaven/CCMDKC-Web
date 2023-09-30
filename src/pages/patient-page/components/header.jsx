@@ -42,7 +42,7 @@ export default function PtnHeader() {
 
                             <div className="drop-links-ptn">
                             <ul>
-                            <Link to='/'><PatientMenu img={User}/>My Profile</Link>
+                            <Link to='/patient/myprofile'><PatientMenu img={User}/>My Profile</Link>
                             <Link to='/patient/changepassowrd'><PatientMenu img={Password}/>Change Password</Link>
                             <Link to='/'><PatientMenu img={Logout}/>Logout</Link>
                             </ul>
