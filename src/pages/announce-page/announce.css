@@ -1,16 +1,24 @@
 .announcement-container{
     background-color: white;
-    height: 80vh;
-    width: 100vw;
+   
+    width: 89vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 50px;
-    
+
     border-radius: 20px;
 }
 #announce-img{
     height: 60vh;
     width: auto;
+ }
+
+ .announce-content{
+    display: flex;
+    flex-direction: row;
+ }
+ .announce-page{
+    display: flex;
+    flex-direction: column;
  }
