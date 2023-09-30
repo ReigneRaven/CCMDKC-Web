@@ -105,6 +105,7 @@ header{
     padding: 10px 20px;
     width: 200px;
     box-shadow: 5px 5px 8px #888888;
+    z-index: 2;
 }
 
 .dropdown-menu::before {
@@ -223,21 +224,22 @@ main{
     align-items: center;
 }
 /* DASHBOARD--------------------------------- */
-.dash{
+.dash-employee{
     background-color: white;
     width: 89vw;
+    height: 89vh;
     border-radius: 20px;
    
 }
 
-.dash p{
+.dash-employee p{
     color: lightslategrey;
     font-size: 20px;
     display: flex;
     margin-left: 50px;
 }
 
-.dash-row{
+.dashemployee-row{
     display: flex !important;
     flex-direction: row;
     justify-content: space-between;
@@ -248,6 +250,7 @@ main{
 /* UPCOMING =====-----------------=============------= */
 
 .upcoming-wrapper{
+    margin-top: -50px;
     background:rgb(243, 243, 243);
     width: 70%;
     height: 450px;

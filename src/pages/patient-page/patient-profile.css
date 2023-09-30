@@ -97,6 +97,7 @@
     padding: 10px 20px;
     width: 200px;
     box-shadow: 5px 5px 8px #888888;
+    z-index: 2;
 }
 
 .dropdown-menu-ptn::before {
@@ -172,6 +173,30 @@ h3 span {
     margin-right: 10px;
     opacity: 0.5;
     transition: var(--speed);
+}
+
+
+.dash-patient{
+    background-color: white;
+    width: 89vw;
+    height: 89vh;
+    border-radius: 20px;
+   
+}
+
+.dash-patient p{
+    color: lightslategrey;
+    font-size: 20px;
+    display: flex;
+    margin-left: 50px;
+}
+
+.dashpatient-row{
+    display: flex !important;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding:50px;
 }
 
 
