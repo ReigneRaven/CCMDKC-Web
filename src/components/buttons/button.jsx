@@ -5,13 +5,14 @@ const Button = (props) => {
   const label = props.label
   const onClick = props.onClick
   const color = props.color
+  const type = props.type
   
     const buttonStyle = {
       backgroundColor: color,
     };
   
     return (
-      <button className="custom-button" style={buttonStyle} onClick={onClick}>
+      <button className="custom-button" style={buttonStyle} onClick={onClick} type={type}>
         {label}
       </button>
     );

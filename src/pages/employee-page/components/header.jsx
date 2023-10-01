@@ -32,8 +32,7 @@ export default function Header() {
 
                         <div className={`dropdown-menu ${open ? 'active' : 'inactive'}`}
                         id="drop-label">
-                        <p>name</p>
-                        <p>Admin</p>
+                        <p>Hello, Admin!</p>
 
                             <div className="drop-links">
                             <ul>

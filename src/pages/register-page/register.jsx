@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './register.css'
 import Head2 from '../../components/headers/header'
 import '../../components/headers/header.css'
@@ -12,13 +12,18 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { RiEyeFill } from 'react-icons/ri';
 import { AiFillEyeInvisible } from 'react-icons/ai';
+import axios from 'axios'
 
 export default function Register() {
-  const navigate = useNavigate();
 
-  const handleClick = () => {
-    navigate('/patient');
-  };
+  const fetchUser = async() =>{
+    const data = await axios.post('/api/user/');
+    
+    console.log(data)
+  }
+  useEffect(() => {
+    fetchUser();
+  }, []);
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -103,7 +108,7 @@ export default function Register() {
                 <Link onClick={handleTermsLinkClick}><p>Terms of Use and Privacy Policy</p></Link>
                 {openModal && <Terms closeModal={handleCloseModal} />}
               </div>
-              <Button label="Sign Up" onClick={(e) => handleClick()} />
+              <Button label="Sign Up" type="submit" />
             </form>
           </div>
         </div>
