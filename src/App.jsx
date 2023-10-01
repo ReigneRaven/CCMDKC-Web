@@ -4,6 +4,8 @@ import Landing from './pages/landing-page/land-pg'
 import { Route, Routes } from 'react-router-dom'
 import Register from './pages/register-page/register'
 import Patient from './pages/patient-page/patient-profile'
+import Services from './pages/services-page/services'
+import Booking from './pages/services-page/booking-page/booking'
 import Announcements from './pages/announce-page/announce'
 import Employee from './pages/employee-page/employee'
 import MyProfile from './pages/myprofile-page/myprofile'
@@ -21,6 +23,8 @@ function App() {
 
           {/* PATIENT SIDE */}
           <Route path='/patient' element={<Patient/>}/>
+          <Route path='services' element={<Services/>} />
+          <Route path='booking' element={<Booking/>} />
           <Route path='/patient/announcements' element={<Announcements/>}/>
           <Route path='/patient/changepassowrd' element={<ChangePassword/>}/>
           <Route path='/patient/myprofile' element={<MyProfile/>}/>
