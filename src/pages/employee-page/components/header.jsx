@@ -6,7 +6,6 @@ import Head2 from "../../../components/headers/header";
 import Kidney from '../../../assets/Nephrology_icon.png';
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import User from '../../../assets/user.svg';
 import Logout from '../../../assets/logout.svg';
 
 export default function Header() {
@@ -38,7 +37,6 @@ export default function Header() {
 
                             <div className="drop-links">
                             <ul>
-                            <Link to='/'><Menu img={User}/>My Profile</Link>
                             <Link to='/'><Menu img={Logout}/>Logout</Link>
                             </ul>
                             </div>
