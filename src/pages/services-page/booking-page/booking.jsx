@@ -50,7 +50,7 @@ export default function Booking() {
                                     onChange={handleTimeslotChange}
                                 />
                             </div>
-                            <Button label="Send" type="submit" />
+                            <Button label="Confirm" type="submit" />
                         </form>
                     </div>
                 </div>
