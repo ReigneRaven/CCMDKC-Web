@@ -1,3 +1,4 @@
+/* css for patient profile */
 .patient-profile {
     margin-top: 60px;
     margin-left: 20px;
@@ -8,35 +9,85 @@
 }
 
 .patient-profile img {
-    margin-top: 50px;
+    margin-top: 250px;
     width: 150px;
     height: 150px;
 }
 
-.patient-info {
-    margin-top: 60px;
-    margin-left: 20px;
-    background-color: white;
-    width: 77vw;
-    height: 89vh;
-    border-radius: 20px;
-}
-
 .ptn-name {
     margin-top: 20px;
-    font-size: 18px; /* Set the desired font size */
-    font-weight: bold; /* Set the desired font weight */
-    /* Add any other styles you want for the ptn-name class */
-  }
+    font-size: 18px; 
+    font-weight: bold; 
+}
   
-  .ptn-number {
-    font-size: 16px; /* Set the desired font size */
-    /* Add any other styles you want for the ptn-number class */
-  }
+.ptn-number {
+  font-size: 16px; 
+}
   
-  .ptn-email {
-    font-size: 16px; /* Set the desired font size */
-    color: #007bff; /* Set the desired text color */
-    /* Add any other styles you want for the ptn-email class */
-  }
+  .ptn-address {
+    font-size: 16px;
+    color: #007bff;
+}
 
+/* css for patient info */
+
+.patient-info {
+  margin-top: 60px;
+  margin-left: 20px;
+  background-color: white;
+  height: 85vh;
+  border-radius: 20px;
+  display: flex !important;
+  flex-direction: column;
+  font-size: 16px;
+  padding: 20px;
+  border-radius: 20px;
+  width: 75%;
+  gap: 1rem;
+}
+
+
+#details-h1 {
+  margin-top: 0;
+  text-align: left;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.patient-details-section {
+  margin-left: 70px;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bs-light);
+}
+
+.scrollable-container {
+  max-height: 310px;
+  overflow-y: auto;
+}
+
+.patient-details-table {
+  background-color: white;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.patient-details-table th,
+.patient-details-table td {
+  border: 1px solid;
+  padding: 8px;
+  text-align: left;
+}
+
+/* Additional styles specific to the table cells */
+.patient-details-table th {
+  background-color: var(--bs-light);
+  width: auto; /* Set the width to auto to match the content */
+}
+
+/* Additional styles for the patient details */
+.patient-details-table tr td:first-child {
+  font-weight: bold;
+  width: 100px;
+}
