@@ -79,6 +79,11 @@
 }
 
 @media (max-width: 768px) {
+  .background {
+    width: 100%;
+    height: 100%;
+  }
+  
   .container {
     width: 70%;
     height: 70%;
@@ -87,22 +92,22 @@
   .container .title {
     margin-top: 10px;
     margin-bottom: -5px;
-    font-size: 12px;
+    font-size: 18px;
   }
 
   .container .body {
-    font-size: 12px;
+    font-size: 18px;
   }
 
   .container .footer button {
     width: 100px;
-    height: 25px;
+    height: 35px;
     margin: 10px;
     border: none;
     background-color: #3398cc;
     color: white;
     border-radius: 8px;
-    font-size: 12px;
+    font-size: 16px;
   }
 
 }

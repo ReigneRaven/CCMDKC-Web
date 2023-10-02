@@ -142,3 +142,51 @@ input{
     height: 20px; 
     fill: #333; 
 }
+
+@media (max-width: 768px) {
+    #register-form {
+        margin-right: -70%;
+        height: 170%;
+        width: 180%;
+    }
+
+    #register-pic {
+        width: 100%;
+    }
+
+    #root {
+        width: 100%;
+    }
+
+    main {
+        width: 100%;
+    }
+
+    select.user-input option {
+        font-size: 12px;
+    }
+
+}
+
+/* Media query for Galaxy Fold */
+@media screen and (max-width: 280px) {
+    #register-form {
+        height: 170%;
+        width: 192%;
+    }
+}
+
+/* Media query for iPad Air */
+@media screen and (width: 820px) and (height: 1180px) {
+    #register-form {
+        height: 100%;
+        width: 55%;
+    }
+}
+/* Media query for nest hub */
+@media screen and (width: 1024px) and (height: 600px) {
+    #register-form {
+        height: 120%;
+    }
+}
+
