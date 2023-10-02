@@ -85,11 +85,15 @@ button:hover {
 
 @media (max-width: 768px) {
     #forgotpass-form {
-        width: 153%;
+        width: 100%;
     }
 
     #forgotpass-pic {
         width: 100%;
+    }
+
+    #home-logo {
+        margin-left: 5%;
     }
 
     #root {
@@ -101,22 +105,22 @@ button:hover {
     }
 
     h2 {
-        margin-left: 60%;
+        margin-left: 5%;
         font-size: 40px;
     }
 
     h3 {
-        margin-left: 60%;
+        margin-left: 5%;
         font-size: 15px;
     }
 
     .forgotpass-input {
-        margin-left: 60%;
+        margin-left: 10%;
         width: 80%;
     }
 
     button {
-        margin-left: 58%;
+        margin-left: 5%;
     }
 
     /* Media query for Galaxy Fold */
