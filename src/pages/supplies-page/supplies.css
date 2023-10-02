@@ -1,0 +1,16 @@
+.supplies-container{
+    background-color: white;
+    width: 89vw;
+    border-radius: 20px;
+}
+.create-stocks{
+    display: flex;
+    background-color: rgb(243,243,243);
+    width: fit-content;
+    padding: 20px;
+    border-radius: 20px;
+    gap: 0;
+}
+.input-supplies{
+    width: 20vw;
+}

@@ -1,14 +1,23 @@
 import React from 'react';
 import './terms.css';
 import { useNavigate } from 'react-router';
+import axios from 'axios'
+import { useEffect } from 'react';
 
 function Terms({ closeModal }) {
+  
   const navigate = useNavigate();
 
-  const handleOkayClick = () => {
+  const handleCancelClick = () => {
     closeModal(false);
     navigate('/');
   };
+
+  const handleOkayClick = () => {
+    closeModal(false);
+    navigate('/patient');
+  };
+
   return (
     <div className="background">
       <div className="container">
@@ -49,8 +58,8 @@ function Terms({ closeModal }) {
           </div>
         </div>
         <div className="footer">
-          <button onClick={handleOkayClick}> Decline </button>
-          <button onClick={() => closeModal(false)}> Accept </button>
+          <button onClick={handleCancelClick}> Decline </button>
+          <button onClick={handleOkayClick}> Accept </button>
         </div>
       </div>
     </div>
