@@ -77,3 +77,32 @@
   font-size: 20px;
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  .container {
+    width: 70%;
+    height: 70%;
+  }
+
+  .container .title {
+    margin-top: 10px;
+    margin-bottom: -5px;
+    font-size: 12px;
+  }
+
+  .container .body {
+    font-size: 12px;
+  }
+
+  .container .footer button {
+    width: 100px;
+    height: 25px;
+    margin: 10px;
+    border: none;
+    background-color: #3398cc;
+    color: white;
+    border-radius: 8px;
+    font-size: 12px;
+  }
+
+}
