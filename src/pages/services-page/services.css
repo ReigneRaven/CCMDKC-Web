@@ -93,3 +93,44 @@ button:hover {
 .services-info {
     margin-top: 5px;
 }
+
+@media (max-width: 768px) {
+    #services-form {
+        margin-right: -70px;
+        height: 125%;
+        width: 125%;
+    }
+
+    #services-icon img {
+        margin-left: 30px;
+        height: 200px;
+        width: 200px;
+    }
+}
+
+/* Media query for Galaxy Fold */
+@media screen and (max-width: 280px) {
+    #services-form {
+        margin-right: -70%;
+        height: 170%;
+        width: 200%;
+    }
+
+    #services-icon img {
+        margin-left: 70px;
+    }
+}
+
+/* Media query for iPad mini */
+@media screen and (width: 820px) and (height: 1180px) {
+    #services-form {
+        margin-right: -1%;
+        height: 100%;
+        width: 50%;
+    }
+
+    #services-icon img {
+        height: 200px;
+        width: 200px;
+    }
+}
