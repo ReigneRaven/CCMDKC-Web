@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {LuLayoutDashboard} from 'react-icons/lu'
-import {MdMedicalServices, MdOutlineAnnouncement} from 'react-icons/md'
+import {MdSpaceDashboard, MdMedicalServices, MdAnnouncement} from 'react-icons/md'
 
 
 export default function Sidebar(){
@@ -9,11 +8,11 @@ export default function Sidebar(){
         <>
                 <div className="sidenav">
                     <ul>
-                    <Link to="/admin" className="link-div"><LuLayoutDashboard/>&nbsp;Dashboard</Link>
+                    <Link to="/admin" className="link-div"><MdSpaceDashboard/>&nbsp;Dashboard</Link>
 
                     <Link to="/admin/supplies" className="link-div"><MdMedicalServices/>&nbsp;Supplies</Link>
     
-                    <Link to="/admin/announcements" className="link-div" id="announce-link"><MdOutlineAnnouncement/>&nbsp;Announcements</Link>
+                    <Link to="/admin/announcements" className="link-div" id="announce-link"><MdAnnouncement/>&nbsp;Announcements</Link>
                         
                     </ul>
                 </div>
