@@ -25,7 +25,7 @@ export default function ForgotPassword() {
                     <div id='forgotpass-form'>
                         <form onSubmit={handleSubmit}>
                             <Head2 text="Forgot Password"></Head2>
-                            <h3>Please enter the email address you'd like your password reset information sent to.</h3>
+                            <h3>Please enter the email address you'd <br/> like your password reset information sent to.</h3>
                             <div className="forgotpass-input">
                                 <input placeholder=" Email Address" className="user-input" required/>
                             </div>
