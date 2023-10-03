@@ -30,7 +30,12 @@ export default function Register() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [openModal, setOpenModal] = useState(false);
-  const [birthdate, setBirthdate] = useState(new Date());
+  const [birthday, setBirthdate] = useState(new Date());
+  const [sex, setSex] = useState()
+  const [address, setAddress] = useState()
+  const [contact_no, setContactNo] = useState()
+  const [email, setEmail] = useState()
+  let [name, setName] = useState()
 
   const handleBirthdateChange = (date) => {
     setBirthdate(date);
@@ -61,7 +66,23 @@ export default function Register() {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
+
+    axios.post('http://localhost:5000/api/user',
+      name = 'aaa',
+      birthday,
+      sex,
+      address,
+      contact_no,
+      email,
+      password
+    )
+    .then(userResult => {
+      console.log('User: ', userResult)
+    })
+    .catch(err => {
+      console.log('Login error: ', err)
+    })
 
     if (password !== confirmPassword) {
       alert("Password and Confirm Password do not match.");
@@ -79,19 +100,20 @@ export default function Register() {
           <div id='register-form'>
             <form onSubmit={handleSubmit}>
               <Head2 text="Register"></Head2>
-              <InputField placeholder=" Full Name" className="user-input" />
+              <InputField placeholder=" Full Name"  className="user-input" />
               <div className="form1">
-                <DatePicker placeholderText="Birthdate" className="user-input" selected={birthdate} onChange={handleBirthdateChange} />
+                <DatePicker placeholderText="Birthdate" className="user-input" onChange={handleBirthdateChange} />
                 <label className="user-input-label">
-                  <select className="user-input" defaultValue="">
+                  <select className="user-input" value={sex} defaultValue="">
                     <option value="" disabled hidden>Sex</option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                   </select>
                 </label>
               </div>
-              <InputField placeholder=" Address" className="user-input" />
-              <InputField placeholder=" Contact No." className="user-input" />
+              <InputField placeholder=" Address"  className="user-input" />
+              <InputField placeholder=" Contact No."  className="user-input" />
+              <InputField placeholder=" Email"  className="user-input" />
               <div className="password-wrapper" id="register">
                 <input type={showPassword ? 'text' : 'password'} placeholder="Password" className="user-input" value={password} onChange={handlePasswordChange}/>
                 <div className="toggle-eye" onClick={() => togglePasswordVisibility('password')}>

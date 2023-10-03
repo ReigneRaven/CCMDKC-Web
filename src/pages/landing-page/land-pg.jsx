@@ -10,6 +10,7 @@ import ClientBuilding from '../../assets/ccmdkc-bldg.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { RiEyeFill } from 'react-icons/ri';
 import { AiFillEyeInvisible } from 'react-icons/ai';
+import axios from 'axios'
 
 export default function Landing() {
   const navigate = useNavigate();
@@ -20,6 +21,7 @@ export default function Landing() {
 
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -32,6 +34,13 @@ export default function Landing() {
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
     // Here, you can perform actions with the form data if needed
+    axios.post('http://localhost:5000/api/user/login', {email, password})
+    .then(userResult => {
+      console.log('User: ', userResult)
+    })
+    .catch(err => {
+      console.log('Login error: ', err)
+    })
     console.log('Form submitted with username:', e.target.username.value);
     console.log('Form submitted with password:', e.target.password.value);
     // Redirect or perform other actions as necessary
@@ -54,7 +63,7 @@ export default function Landing() {
 
               <Head2 text="Sign in"></Head2>
               <div className="login-input">
-                <InputField name="username" placeholder=" Username" className="user-input" />
+                <InputField name="username" value={email} onChange={(e) => setEmail(e.target.value)} placeholder=" Username" className="user-input" />
                 <div className="password-input">
                   <div className="input-container">
                     <input type={showPassword ? 'text' : 'password'} name="password" placeholder=" Password" className="user-input password-field" value={password} onChange={handlePasswordChange}/>
@@ -72,7 +81,7 @@ export default function Landing() {
                   </Link>
                 </div>
               </div>
-              <Button label="Login" type="submit" onClick={(e) => handleClick()} />
+              <Button label="Login" type="submit" />
             </form>
             <div id="home-reg">
               <p>Don't have an account?&nbsp;</p>
