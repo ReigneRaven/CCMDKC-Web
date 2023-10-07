@@ -1,7 +1,7 @@
 
 import './App.css'
 import Landing from './pages/landing-page/land-pg'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useParams } from 'react-router-dom'
 import Register from './pages/register-page/register'
 import Patient from './pages/patient-page/patient-profile'
 import Services from './pages/services-page/services'
@@ -13,9 +13,9 @@ import MyProfile from './pages/myprofile-page/myprofile'
 import ChangePassword from './pages/changepass-page/changepass'
 import ForgotPassword from './pages/forgotpass-page/forgotpass'
 import Supplies from './pages/supplies-page/supplies'
-import { SuppliesContextProvider } from './Context/SuppliesContext'
 
 function App() {
+
 
   return (
     <>
@@ -25,22 +25,16 @@ function App() {
           <Route path='/forgotpassword' element={<ForgotPassword />} />
 
           {/* PATIENT SIDE */}
-          <Route path='/patient' element={<Patient/>}/>
-          <Route path='services' element={<Services/>} />
-          <Route path='booking' element={<Booking/>} />
-          <Route path='/patient/announcements' element={<AnnouncementsPtn/>}/>
-          <Route path='/patient/changepassowrd' element={<ChangePassword/>}/>
-          <Route path='/patient/myprofile' element={<MyProfile/>}/>
+          <Route path='/patient/:id' element={<Patient/>}/>
+          <Route path='/services/:id' element={<Services/>} />
+          <Route path='/booking/:id' element={<Booking/>} />
+          <Route path='/announcements/:id' element={<AnnouncementsPtn/>}/>
+          <Route path='/patient/changepassword/:id' element={<ChangePassword/>}/>
+          <Route path='/patient/myprofile/:id' exact element={<MyProfile />} />
 
           {/* ADMIN SIDE */}
           <Route path='/admin' element={<Employee/>}/>
-          
-          <Route path='/admin/supplies' 
-          element={
-          <SuppliesContextProvider>
-            <Supplies/>  
-          </SuppliesContextProvider>}/>
-        
+          <Route path='/admin/supplies' element={<Supplies/>}/>
           <Route path='/admin/announcements' element={<AnnouncementsAmn/>}/>
         </Routes>
     </>

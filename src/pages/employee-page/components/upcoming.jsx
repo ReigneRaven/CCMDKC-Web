@@ -1,33 +1,8 @@
-import React, { useEffect, useState} from "react";
+import React from "react";
 import '../employee.css'
-import { useAppointmentContext } from "../../../Hooks/useAppointmentContext";
+
 
 export default function Upcoming() {
-
-    // const {appointment, dispatch} = useAppointmentContext();
-
-    // const dateCreated = (updatedAt) => {
-    //     return new Date(updatedAt).toLocaleDateString("en-US", {
-    //       year: "numeric",
-    //       month: "long",
-    //       day: "numeric",
-    //     });
-    //   }
-
-    // useEffect(()=>{
-    //     const fetchAppointment = async() => {
-    //         const res = await fetch('/api/appointments/')
-    //         const json = await res.json();
-
-    //         if (res.ok){
-    //             dispatch({type: "SET_APPOINTMENT", payload:json})
-    //         }
-    //     }
-
-    //     fetchAppointment();
-
-    // }, [])
-
     
     return(
         <>
@@ -36,11 +11,11 @@ export default function Upcoming() {
                 
                 <div className="table-appointment">
                     <table className="table">
-                        <thead>
+                       
                             <th>Name</th>
                             <th>Ticket No.</th>
                             <th>Time</th>
-                        </thead>
+                      
                         <tbody>
                             {/* {
                                 appointment.map((appointment)=>(

@@ -7,16 +7,17 @@ import PtnDashboard from "./components/dashboard"
 
 
 export default function UserProfile (){
-
+    const userId = localStorage.getItem("userId");
+    const userName = localStorage.getItem("userName")
 
     return(
 
         <>
         <div className="profile">
-           <PtnHeader/>
+           <PtnHeader userName={userName}/>
            <div className="content">
-           <PtnSidebar/>
-            <PtnDashboard/>
+           <PtnSidebar userId={userId}/>
+            <PtnDashboard userId={userId}/>
            </div>
         </div>
         </>

@@ -7,21 +7,43 @@ import DiaLogo from '../../../components/logo/logo';
 import ClientLogo from '../../../assets/ccmdkc-logo.png';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import axios from 'axios'; // Local import for axios
+import { useNavigate } from 'react-router-dom';
 
 export default function Booking() {
-    const [birthdate, setBirthdate] = useState(new Date());
-    const [timeslot, setTimeslot] = useState('');
-
-    const handleBirthdateChange = (date) => {
-        setBirthdate(date);
+    const [appointmentDate, setAppointmentDate] = useState(new Date());
+    const [appointmentTime, setAppointmentTime] = useState('');
+    const [name, setName] = useState('');
+ 
+    const handleAppointmentDateChange = (appointmentDate) => {
+        setAppointmentDate(appointmentDate);
     };
 
-    const handleTimeslotChange = (e) => {
-        setTimeslot(e.target.value);
+    const handleNameChange = (e) => {
+        setName(e.target.value);
     };
+
+    const handleAppointmentTimeChange = (e) => {
+        setAppointmentTime(e.target.value);
+    };
+
+    const userId = localStorage.getItem('userId');
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        axios.post('http://localhost:5000/api/appointments', {
+            name,
+            appointmentDate,
+            appointmentTime,
+            userId: userId
+        })
+        .then(result => {
+         console.log(result)
+         navigate(`/patient/${userId}`)
+        })
+        .catch(err => console.log(err))
+       
     };
 
     return (
@@ -35,19 +57,26 @@ export default function Booking() {
                             <Head2 text="Book an Appointment"></Head2>
                             <h3>Please enter the details below</h3>
                             <div className="booking-input">
-                                <input placeholder="Name" className="custom-input" required />
+                                <input 
+                                    placeholder="Name" 
+                                    className="custom-input" 
+                                    value={name}
+                                    onChange={handleNameChange}
+                                    required
+                                />
                                 <DatePicker
-                                    placeholderText="Birthdate"
+                                    placeholderText="Appointment Date"
                                     className="custom-input custom-datepicker"
-                                    selected={birthdate}
-                                    onChange={handleBirthdateChange}
+                                    selected={appointmentDate}
+                                    value={appointmentDate}
+                                    onChange={handleAppointmentDateChange}
                                 />
                                 <input
                                     type="time"
                                     placeholder="Timeslot"
                                     className="custom-input"
-                                    value={timeslot}
-                                    onChange={handleTimeslotChange}
+                                    value={appointmentTime}
+                                    onChange={handleAppointmentTimeChange}
                                 />
                             </div>
                             <Button label="Confirm" type="submit" />
@@ -58,3 +87,4 @@ export default function Booking() {
         </>
     );
 }
+

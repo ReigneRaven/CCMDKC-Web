@@ -13,6 +13,7 @@
     "axios": "^1.5.1",
     "bootstrap": "^5.3.1",
     "bootstrap-icons": "^1.10.5",
+    "cors": "^2.8.5",
     "react": "^18.2.0",
     "react-calendar": "^4.6.0",
     "react-data-table-component": "^7.5.4",

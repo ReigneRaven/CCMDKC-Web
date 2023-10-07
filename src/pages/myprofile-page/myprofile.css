@@ -1,12 +1,9 @@
-/* css for patient profile */
-.patient-profile {
-    margin-top: 60px;
-    margin-left: 20px;
-    background-color: white;
-    width: 20vw;
-    height: 89vh;
-    border-radius: 20px;
+.profile-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
+
 
 .patient-profile img {
     margin-top: 250px;
@@ -32,17 +29,14 @@
 /* css for patient info */
 
 .patient-info {
-  margin-top: 60px;
-  margin-left: 20px;
   background-color: white;
   height: 85vh;
-  border-radius: 20px;
   display: flex !important;
   flex-direction: column;
   font-size: 16px;
   padding: 20px;
   border-radius: 20px;
-  width: 75%;
+  width: 86vw;
   gap: 1rem;
 }
 
@@ -84,10 +78,17 @@
 .patient-details-table th {
   background-color: var(--bs-light);
   width: auto; /* Set the width to auto to match the content */
+  color: black; /* Add this line to make the header text black */
+  border-color: black; /* Add this line to make the header border color black */
 }
 
 /* Additional styles for the patient details */
 .patient-details-table tr td:first-child {
   font-weight: bold;
   width: 100px;
+}
+
+.table-cell {
+  height: 20px; /* Adjust the height as per your requirements */
+  /* You can also set other styles like padding, text-align, etc. */
 }

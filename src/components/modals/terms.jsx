@@ -15,7 +15,7 @@ function Terms({ closeModal }) {
 
   const handleOkayClick = () => {
     closeModal(false);
-    navigate('/patient');
+    navigate('');
   };
 
   return (

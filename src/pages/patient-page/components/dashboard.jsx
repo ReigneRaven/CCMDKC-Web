@@ -1,16 +1,18 @@
 import React from "react";
 import '../patient-profile.css'
-import Upcoming from "../../employee-page/components/upcoming";
 import Calendar from "../../../components/calendar/calendar";
+import UpcomingPtn from "./upcoming-ptn";
 
-export default function PtnDashboard() {
+export default function PtnDashboard({ id }) {
+
+    
     
     return(
         <>
              <div className="dash-patient">
                 <p>Dashboard</p>
                 <div className="dashpatient-row">
-                <Upcoming/>
+                 <UpcomingPtn/> 
                 <Calendar/>
                 </div>
              </div>
