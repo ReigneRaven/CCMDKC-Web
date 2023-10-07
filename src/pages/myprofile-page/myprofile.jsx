@@ -1,48 +1,66 @@
-import React from 'react';
-import './myprofile.css';
-import Profile from '../../assets/profile.png';
+import React, { useEffect, useState } from "react";
+import "./myprofile.css";
+import Profile from "../../assets/profile.png";
+import PtnHeader from "../patient-page/components/header";
+import PtnSidebar from "../patient-page/components/sidebar";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 export default function MyProfile() {
+  const [user, setUser] = useState({
+    name: "",
+    contactNum: "",
+    address: "",
+    birthday: "",
+    email: ""
+  });
+  
+  const { id } = useParams();
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/api/user/" + id)
+      .then((result) => {
+        setUser(result.data); 
+      })
+      .catch((err) => console.log(err));
+  }, [id]);
+
   return (
     <>
-      <div className="patient-profile">
-        <img src={Profile} />
-        <div className="patient-details">
-          <p className="ptn-name">Name</p>
-          <p className="ptn-number">number</p>
-          <p className="ptn-address">address</p>
-        </div>
-      </div>
+      <div>
+        <PtnHeader name={user.name}/>
+        <div className="profile-container">
+          <PtnSidebar id={id}/>
 
-      <div className="patient-info">
-        <h1 id="details-h1">Patient Details</h1>
-        <div className="patient-details-section">
-          <div className="scrollable-container">
-            <table className="patient-details-table">
-              <tbody>
-                <tr>
-                  <td>Name</td>
-                  <td>-</td>
-                </tr>
-                <tr>
-                  <td>Weight</td>
-                  <td>-</td>
-                </tr>
-                <tr>
-                  <td>Height</td>
-                  <td>-</td>
-                </tr>
-                <tr>
-                  <td>Birthdate</td>
-                  <td>-</td>
-                </tr>
-                <tr>
-                  <td>Sex</td>
-                  <td>-</td>
-                </tr>
-                {/* Add more attributes and values here */}
-              </tbody>
-            </table>
+          <div className="patient-info">
+            <h1 id="details-h1">Patient Details</h1>
+            <div className="patient-details-section">
+              <div className="scrollable-container">
+                {user && (
+                  <table className="patient-details-table">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Contact Number</th>
+                        <th>Address</th>
+                        <th>Birthday</th>
+                        <th>Email</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="table-cell">{user.name}</td>
+                        <td className="table-cell">{user.contactNum}</td>
+                        <td className="table-cell">{user.address}</td>
+                        <td className="table-cell">{user.birthday}</td>
+                        <td className="table-cell">{user.email}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </div>

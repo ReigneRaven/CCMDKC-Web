@@ -255,7 +255,7 @@ main{
 
 .upcoming-wrapper p{
     color: black;
-    font-weight: 500;
+    font-weight: 600;
     padding: 20px;
     margin: 0;
 }
@@ -267,9 +267,32 @@ thead{
     flex-direction: row;
     justify-content: space-between;
     gap:3rem;
-    padding: 20px;
+    padding: 10px;
     color: #778899;
 }
+
+.table-ptn {
+    border-collapse: collapse;
+    width: 90%; /* Adjusted the width */
+    background-color: #f2f2f2;
+    border-radius: 20px; /* Add border-radius for the entire table */
+    overflow: hidden; /* Add overflow: hidden to contain the rounded corners */
+    display: table; /* Set the display property back to 'table' */
+    margin: 20px;
+}
+  
+  .table-ptn th,
+  .table-ptn td {
+    padding: 10px; /* Set the same padding for both th and td */
+  }
+  
+  .table-ptn tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .table-ptn tr:hover {
+    background-color: #ddd;
+  }
 
 .table-appointment{
     display: flex;

@@ -1,71 +1,59 @@
-import React, { useState} from 'react';
-import '../supplies.css'
+import React, { useState } from 'react';
+import axios from 'axios';
+import '../supplies.css';
 import Button from './buttons';
-import { useNavigate } from "react-router-dom";
-import { useSuppliesContext } from '../../../Hooks/useSuppliesContext';
-import Input from './input';
-// import axios from 'axios'
 
-export default function SuppliesForm (){
-  
-  const { dispatch } = useSuppliesContext();
-  const navigate = useNavigate();
+export default function SuppliesForm() {
+  const [itemName, setNewItem] = useState('');
+  const [itemDescription, setDescription] = useState('');
+  const [stocksAvailable, setStocks] = useState('');
+  const [Supplies, setSuppliesList] = useState([
+    {Supplies:''},
+  ])
 
-  const [newItem, setNewItem] = useState('');
-  const [description, setDescription] = useState('');
-  const [stocks, setStocks] = useState('');
+  const handleSuppliesAdd = () => {
+    setSuppliesList([...Supplies, {Supplies:''}])
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log(newItem, description, stocks);
-
-    const supplies = { 
-      newItem: newItem,
-      description: description,
-      stocks: stocks};
-
-    try {
-    const response = await fetch('/api/inventory', {
-      method: 'POST',
-      body: JSON.stringify(supplies),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-      
-    if (response.ok) {
-      const json = await response.json();
-      setNewItem("");
-      setDescription("");
-      setStocks("");
-      dispatch({ type: "CREATE_STOCKS", payload: json });
-      navigate("/admin/supplies");
-    } else {
-      console.error('Failed to create supply item:', response.json);
-    }
-  } catch (error) {
-    console.error('Error creating supply item:', error);
   }
-};
+  const onSubmit = (e) => {
+    e.preventDefault(); // Prevent the default form submission behavior
+      
+      axios.post('http://localhost:5000/api/inventory',{
+        itemName,
+        itemDescription,
+        stocksAvailable
+      })
+      .then(result => console.log(result))
+      .catch(err => console.log(err))
+    
+  };
 
-  
- return (
+  return (
     <>
-     
-      <form onSubmit={handleSubmit} className="create-stocks">
-        <Input 
-        setNewItem={setNewItem} 
-        setDescription={setDescription}  
-        setStocks={setStocks}
-        newItem={newItem}
-        description={description}
-        stocks={stocks}
-        className="input-supplies"/>
-
-        <Button type={'add'} text={"Add"}></Button>
+      <form className="create-stocks" onSubmit={onSubmit}>
+        <input
+          type="text"
+          value={itemName}
+          onChange={(e) => setNewItem(e.target.value)}
+          placeholder="New Item"
+          className="input-supplies"
+        />
+        <input
+          type="text"
+          value={itemDescription}
+          onChange={(e) => setDescription(e.target.value)}
+          placeholder="Item Description"
+          className="input-supplies"
+        />
+        <input
+          type="text"
+          value={stocksAvailable}
+          onChange={(e) => setStocks(e.target.value)}
+          placeholder="Stocks Available"
+          className="input-supplies"
+        />
+        <Button text={'Add'} type="submit" onClick={handleSuppliesAdd}></Button>
       </form>
-   
     </>
   );
-};
-
+}

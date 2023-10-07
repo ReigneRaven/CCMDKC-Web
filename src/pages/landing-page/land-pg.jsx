@@ -7,21 +7,16 @@ import Button from '../../components/buttons/button';
 import DiaLogo from '../../components/logo/logo';
 import ClientLogo from '../../assets/ccmdkc-logo.png';
 import ClientBuilding from '../../assets/ccmdkc-bldg.png';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { RiEyeFill } from 'react-icons/ri';
 import { AiFillEyeInvisible } from 'react-icons/ai';
-import axios from 'axios'
+import axios from 'axios';
 
 export default function Landing() {
-  const navigate = useNavigate();
-
-  const handleClick = () => {
-    navigate('/patient');
-  };
-
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
+ 
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -32,20 +27,52 @@ export default function Landing() {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent the default form submission behavior
-    // Here, you can perform actions with the form data if needed
-    axios.post('http://localhost:5000/api/user/login', {email, password})
-    .then(userResult => {
-      console.log('User: ', userResult)
-    })
-    .catch(err => {
-      console.log('Login error: ', err)
-    })
-    console.log('Form submitted with username:', e.target.username.value);
-    console.log('Form submitted with password:', e.target.password.value);
-    // Redirect or perform other actions as necessary
-    handleClick();
-  };
+    e.preventDefault();
+
+    // User login request
+  axios
+  .post('http://localhost:5000/api/user/login', { email, password })
+  .then((userResponse) => {
+    console.log('User Response: ', userResponse);
+    const { token, userId, isUser, name } = userResponse.data;
+
+    // Store user token in localStorage
+    if (userId) {
+      localStorage.setItem('userToken', token);
+      localStorage.setItem('userId', userId); // Store user ID in localStorage
+      localStorage.setItem('isUser', isUser); // Store user role in localStorage
+      localStorage.setItem('userName', name);
+      
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+      // Redirect to user page with the user ID parameter
+      window.location.href = `/patient/${userId}`;
+  } else {
+      console.error('User ID not found in the response');
+  }
+})
+.catch((userError) => {
+  console.error('User Login Error: ', userError);
+});
+
+// Admin login request
+axios
+  .post('http://localhost:5000/api/admin/login', { email, password })
+  .then((adminResponse) => {
+    console.log('Admin Response: ', adminResponse);
+    const { token } = adminResponse.data;
+
+    // Store admin token in localStorage
+    localStorage.setItem('adminToken', token);
+
+    // Redirect to admin page
+    window.location.href = '/admin';
+  })
+  .catch((adminError) => {
+    console.error('Admin Login Error: ', adminError);
+  });
+};
+
 
   return (
     <>
@@ -63,10 +90,22 @@ export default function Landing() {
 
               <Head2 text="Sign in"></Head2>
               <div className="login-input">
-                <InputField name="username" value={email} onChange={(e) => setEmail(e.target.value)} placeholder=" Username" className="user-input" />
+                <InputField
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder=" Email"
+                  className="user-input"
+                />
                 <div className="password-input">
                   <div className="input-container">
-                    <input type={showPassword ? 'text' : 'password'} name="password" placeholder=" Password" className="user-input password-field" value={password} onChange={handlePasswordChange}/>
+                    <input
+                      type={showPassword ? 'text' : 'password'}
+                      name="password"
+                      placeholder=" Password"
+                      className="user-input password-field"
+                      value={password}
+                      onChange={handlePasswordChange}
+                    />
                     <div className="toggle-eye" onClick={togglePasswordVisibility}>
                       {showPassword ? <RiEyeFill /> : <AiFillEyeInvisible />}
                     </div>
@@ -81,7 +120,7 @@ export default function Landing() {
                   </Link>
                 </div>
               </div>
-              <Button label="Login" type="submit" />
+              <Button label="Login" type="submit" onClick={(e) => handleSubmit(e)} />
             </form>
             <div id="home-reg">
               <p>Don't have an account?&nbsp;</p>

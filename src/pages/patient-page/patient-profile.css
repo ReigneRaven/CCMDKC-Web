@@ -78,6 +78,9 @@
    
 }
 
+#history-link{
+    font-size: 14px;
+}
 .menu-trigger-ptn img {
    
     top: 5px;
@@ -90,8 +93,8 @@
 
 .dropdown-menu-ptn {
     position: absolute;
-    top: 75px;
-    right: 20px;
+    top: 78px;
+    right: 33px;
     background-color: #fff;
     border-radius: 20px;
     padding: 10px 20px;
@@ -199,8 +202,7 @@ h3 span {
     padding:50px;
 }
 
-
-
-
-
+.userBox{
+    background-color: white;
+}
 
