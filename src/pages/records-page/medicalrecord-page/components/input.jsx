@@ -1,9 +1,9 @@
-import '../patientrecord.css'
+import '../medicalrecord.css'
 
 export default function Input({type, value, placeholder, onChange }) {
 
   return (
-    <div className="patientrecord-input">
+    <div className="medicalrecord-input">
       <div className="margin"></div>
       <input
         type={type}

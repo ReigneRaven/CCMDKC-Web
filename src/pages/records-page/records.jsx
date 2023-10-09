@@ -17,7 +17,7 @@ export default function Records() {
   
     const handleMedicalHistoryClick = () => {
       // Navigate to the medical history page when the button is clicked
-      navigate('/medhistory');
+      navigate('/admin/medicalrecord');
     };
   
     return (
