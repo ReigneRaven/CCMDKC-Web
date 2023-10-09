@@ -13,6 +13,8 @@ import MyProfile from './pages/myprofile-page/myprofile'
 import ChangePassword from './pages/changepass-page/changepass'
 import ForgotPassword from './pages/forgotpass-page/forgotpass'
 import Supplies from './pages/supplies-page/supplies'
+import Records from './pages/records-page/records'
+import PatientRecord from './pages/records-page/patientrecord-page/patientrecord'
 
 function App() {
 
@@ -35,6 +37,8 @@ function App() {
           {/* ADMIN SIDE */}
           <Route path='/admin' element={<Employee/>}/>
           <Route path='/admin/supplies' element={<Supplies/>}/>
+          <Route path='/admin/records' element={<Records/>}/>
+          <Route path='/admin/patientrecord' element={<PatientRecord/>}/>
           <Route path='/admin/announcements' element={<AnnouncementsAmn/>}/>
         </Routes>
     </>

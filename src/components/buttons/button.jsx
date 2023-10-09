@@ -6,13 +6,14 @@ const Button = (props) => {
   const onClick = props.onClick
   const color = props.color
   const type = props.type
+  const id = props.id
   
     const buttonStyle = {
       backgroundColor: color,
     };
   
     return (
-      <button className="custom-button" style={buttonStyle} onClick={onClick} type={type}>
+      <button className="custom-button" style={buttonStyle} onClick={onClick} type={type} id={id}>
         {label}
       </button>
     );
