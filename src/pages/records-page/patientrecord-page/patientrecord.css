@@ -1,0 +1,25 @@
+.patientrecord-container {
+    background-color: white;
+    width: 89vw;
+    border-radius: 20px;
+  }
+
+.create-patientrecord {
+    margin-top: -10px;
+    margin-bottom: 10px;
+    display: flex;
+    background-color: rgb(243, 243, 243);
+    width: fit-content;
+    padding: 20px;
+    border-radius: 20px;
+    gap: 1.5rem;
+}
+
+.input-patientrecord {
+    width: 20vw;
+}
+
+.note-btn.submit {
+    margin-top: -10px;
+}
+  
