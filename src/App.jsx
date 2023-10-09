@@ -15,6 +15,7 @@ import ForgotPassword from './pages/forgotpass-page/forgotpass'
 import Supplies from './pages/supplies-page/supplies'
 import Records from './pages/records-page/records'
 import PatientRecord from './pages/records-page/patientrecord-page/patientrecord'
+import MedicalRecord from './pages/records-page/medicalrecord-page/medicalrecord'
 
 function App() {
 
@@ -39,6 +40,7 @@ function App() {
           <Route path='/admin/supplies' element={<Supplies/>}/>
           <Route path='/admin/records' element={<Records/>}/>
           <Route path='/admin/patientrecord' element={<PatientRecord/>}/>
+          <Route path='/admin/medicalrecord' element={<MedicalRecord/>}/>
           <Route path='/admin/announcements' element={<AnnouncementsAmn/>}/>
         </Routes>
     </>
