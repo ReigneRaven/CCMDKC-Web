@@ -18,7 +18,7 @@ export default function AnnouncementsAmn(){
         <div className="announce-content-amn">
         <Sidebar/>
         <div className='announcement-container-amn'>
-            <Head2 text="Announcements"/>
+            <Head2 text="Bulletin"/>
             <ImgView src={ClientAnnounce} id="announce-img-amn"/>
             
         </div>
