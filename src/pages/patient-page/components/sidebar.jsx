@@ -31,19 +31,19 @@ export default function PtnSidebar() {
       <div className="sidenav">
         <ul>
           <Link to={`/patient/${userId}`} className="link-div">
-            <MdSpaceDashboard />&nbsp;Dashboard
+            <MdSpaceDashboard className="sidebar-icon" />&nbsp;Dashboard
           </Link>
 
-          <Link to={`/services/${userId}`} className="link-div">
-            <MdMedicalServices />&nbsp;Services
+          <Link to={`/appointment/${userId}`} className="link-div">
+            <MdMedicalServices className="sidebar-icon" />&nbsp;Appointments
           </Link>
 
           <Link to="/" className="link-div" id="history-link">
-            <BsFillFileMedicalFill />&nbsp;Medical History
+            <BsFillFileMedicalFill className="sidebar-icon"/>&nbsp;Health History
           </Link>
 
           <Link to={`/announcements/${userId}`} className="link-div" id="announce-link">
-            <MdAnnouncement />&nbsp;Announcements
+            <MdAnnouncement className="sidebar-icon"/>&nbsp;Bulletin
           </Link>
         </ul>
       </div>

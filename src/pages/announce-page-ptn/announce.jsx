@@ -18,7 +18,7 @@ export default function AnnouncementsPtn(){
         <div className="announce-content-ptn">
         <Sidebar/>
         <div className='announcement-container-ptn'>
-            <Head2 text="Announcements"/>
+            <Head2 text="Bulletin"/>
             <ImgView src={ClientAnnounce} id="announce-img-ptn"/>
             
         </div>

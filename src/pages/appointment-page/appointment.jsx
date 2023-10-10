@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Head2 from '../../components/headers/header';
 import '../../components/headers/header.css';
-import './services.css';
+import './appointment.css';
 import Button from '../../components/buttons/button';
 import DiaLogo from '../../components/logo/logo';
 import ClientLogo from '../../assets/ccmdkc-logo.png';
 import ServicesIcon from '../../assets/services.jpg';
 import { useNavigate, useParams } from 'react-router-dom';
 
-export default function Services() {
+export default function Appointment() {
   const navigate = useNavigate();
   const { id } = useParams();
   const [user, setUser] = useState(null);
