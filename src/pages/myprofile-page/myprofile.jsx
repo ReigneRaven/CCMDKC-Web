@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./myprofile.css";
-import Profile from "../../assets/profile.png";
 import PtnHeader from "../patient-page/components/header";
 import PtnSidebar from "../patient-page/components/sidebar";
 import axios from "axios";
@@ -25,6 +24,12 @@ export default function MyProfile() {
       })
       .catch((err) => console.log(err));
   }, [id]);
+
+  const formatBirthday = (birthday) => {
+    const formattedDate = new Date(birthday);
+    const options = {year: 'numeric', month: 'long', day: 'numeric'};
+    return formattedDate.toLocaleDateString(undefined, options);
+  }
 
   return (
     <>
@@ -53,7 +58,7 @@ export default function MyProfile() {
                         <td className="table-cell">{user.name}</td>
                         <td className="table-cell">{user.contactNum}</td>
                         <td className="table-cell">{user.address}</td>
-                        <td className="table-cell">{user.birthday}</td>
+                        <td className="table-cell">{formatBirthday(user.birthday)}</td>
                         <td className="table-cell">{user.email}</td>
                       </tr>
                     </tbody>

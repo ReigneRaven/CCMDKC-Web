@@ -1,7 +1,7 @@
 import React from "react";
 import '../employee.css'
 import Calendar from "../../../components/calendar/calendar";
-import Upcoming from './upcoming.jsx'
+import Request from "./request.jsx";
 
 export default function Dashboard() {
     
@@ -10,7 +10,7 @@ export default function Dashboard() {
              <div className="dash-employee">
                 <p>Dashboard</p>
                 <div className="dashemployee-row">
-                <Upcoming/>
+                <Request/>
                 <Calendar/>
                 </div>
              </div>

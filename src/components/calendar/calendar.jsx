@@ -64,7 +64,7 @@ export default function Calendar() {
         <>
             <div className="wrapper">
                 <header className="cal-head">
-                    <p className="current-date">
+                    <p className="current-date" id="mm-yy-calendar">
                         Date
                     </p>
                     <div className="icons">

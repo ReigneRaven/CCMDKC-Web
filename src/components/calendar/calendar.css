@@ -5,7 +5,7 @@
 .wrapper{
     margin-top: -50px;
     background:rgb(243, 243, 243);
-    width: 20%;
+    width: 22%;
     border-radius: 10px;
     padding: 20px;
     height: 450px;
@@ -69,6 +69,7 @@
     width: 95%;
     align-items: center;
     justify-content: space-between;
+    color: black;
 }
 header .current-date{
     font-size: 1rem;
@@ -104,3 +105,9 @@ header .icons span:last-child{
     margin-right: -10px;
 }
 
+#mm-yy-calendar{
+    color: black;
+    font-size: 20px;
+    margin: 0;
+    padding: 15px;
+}
