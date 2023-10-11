@@ -17,7 +17,7 @@ export default function SuppliesView() {
 
   return (
     <div className="supplies-table-content">
-      <div className="table-container"> {/* Added a container div */}
+      <div className="supplies-table-container"> {/* Added a container div */}
         <table className="table">
           <thead id="header-supplies">
             <tr>

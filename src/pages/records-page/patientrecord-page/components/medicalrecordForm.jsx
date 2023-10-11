@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import '../medicalrecord';
-import Button from './button';
+import Button from '../../patientrecord-page/components/button';
 
 export default function MedicalRecordForm() {
   const [allergies, setAllergies] = useState('');
