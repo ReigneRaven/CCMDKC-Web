@@ -12,7 +12,7 @@ export default function Sidebar(){
 
                     <Link to="/admin/supplies" className="link-div"><MdMedicalServices className="sidebar-icon"/>&nbsp;Supplies</Link>
 
-                    <Link to="/admin/records" className="link-div"><FaNotesMedical className="sidebar-icon" />&nbsp;Records</Link>
+                    <Link to="/admin/patientrecord" className="link-div"><FaNotesMedical className="sidebar-icon" />&nbsp;Records</Link>
     
                     <Link to="/admin/announcements" className="link-div" id="announce-link"><MdAnnouncement className="sidebar-icon" />&nbsp;Bulletin</Link>
                         

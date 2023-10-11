@@ -6,7 +6,8 @@
   }
   
   .create-stocks {
-    margin-top: -10px;
+    margin-top: 10px;
+    margin-left: 100px;
     margin-bottom: 10px;
     display: flex;
     background-color: rgb(243, 243, 243);
@@ -19,6 +20,16 @@
   .input-supplies {
     width: 20vw;
   }
+
+.supplies-row {
+    display: flex; /* Use flexbox for row alignment */
+}
+
+.supplies-form, .supplies-view {
+    flex: 1; /* Distribute available space evenly between the two components */
+    padding: 10px; /* Add spacing if necessary */
+}
+
   
   .table {
     margin-top: 10px;
@@ -57,13 +68,13 @@
   }
   
   .supplies-table-content {
-    display: flex;
-    justify-content: center;
+    margin-right: 700px;
   }
   
   /* Add a fixed height and enable overflow for the table container */
-  .table-container {
-    width: 60%;
+  .supplies-table-container {
+    margin-top: -5px;
+    width: 250%;
     max-height: 400px; /* Adjust the height as needed */
     overflow-y: auto;
   }

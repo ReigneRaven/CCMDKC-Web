@@ -17,7 +17,7 @@ export default function PatientRecordView() {
 
   return (
     <div className="patientrecord-table-content">
-      <div className="table-container"> {/* Added a container div */}
+      <div className="record-table-container">
         <table className="table">
           <thead id="header-patientrecord">
             <tr>
@@ -26,6 +26,7 @@ export default function PatientRecordView() {
               <th>Height</th>
               <th>Age</th>
               <th>Sex</th>
+              <th>More Details</th> {/* Added a new column for the "View Details" button */}
             </tr>
           </thead>
           <tbody>
@@ -36,6 +37,9 @@ export default function PatientRecordView() {
                 <td>{record.height}</td>
                 <td>{record.age}</td>
                 <td>{record.sex}</td>
+                <td>
+                  <button>Details</button> {/* "View Details" button */}
+                </td>
               </tr>
             ))}
           </tbody>
