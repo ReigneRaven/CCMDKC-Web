@@ -1,29 +1,29 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-export default function MedicalRecordView() {
+export default function MedicalRecordModal({ patientId, onClose }) {
   const [data, setData] = useState([]);
-  
-  {/*useEffect(() => {
+
+  useEffect(() => {
     axios
-      .get("http://localhost:5000/api/user/:id/medical-history")
+      .put(`http://localhost:5000/api/user/${patientId}/medical-history`)
       .then((response) => {
         setData(response.data);
       })
       .catch((error) => {
         console.error("Error fetching medical record data:", error);
       });
-  }, []);*/}  {/*Mali pa routing nito */}
+  }, [patientId]);
 
   return (
     <div className="medicalrecord-table-content">
-      <div className="table-container"> {/* Added a container div */}
+      <div className="medical-table-container">
         <table className="table">
           <thead id="header-medicalrecord">
             <tr>
               <th>Allergies</th>
               <th>Diagnosis</th>
-              <th>Blood-Pressure</th>
+              <th>Blood Pressure</th>
               <th>Temperature</th>
               <th>Surgeries</th>
             </tr>
@@ -40,6 +40,7 @@ export default function MedicalRecordView() {
             ))}
           </tbody>
         </table>
+        <button onClick={onClose}>Close</button>
       </div>
     </div>
   );
