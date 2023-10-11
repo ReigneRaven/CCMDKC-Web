@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import MedicalRecordModal from "./medicalrecordModal";
 
 export default function PatientRecordView() {
   const [data, setData] = useState([]);
-  
+  const [showMedicalHistory, setShowMedicalHistory] = useState(false);
+  const [selectedPatientId, setSelectedPatientId] = useState(null);
+
   useEffect(() => {
     axios
       .get("http://localhost:5000/api/records")
@@ -14,6 +17,11 @@ export default function PatientRecordView() {
         console.error("Error fetching patient record data:", error);
       });
   }, []);
+
+  const handleViewDetails = (patientId) => {
+    setSelectedPatientId(patientId);
+    setShowMedicalHistory(true);
+  };
 
   return (
     <div className="patientrecord-table-content">
@@ -26,7 +34,7 @@ export default function PatientRecordView() {
               <th>Height</th>
               <th>Age</th>
               <th>Sex</th>
-              <th>More Details</th> {/* Added a new column for the "View Details" button */}
+              <th>More Details</th>
             </tr>
           </thead>
           <tbody>
@@ -38,13 +46,28 @@ export default function PatientRecordView() {
                 <td>{record.age}</td>
                 <td>{record.sex}</td>
                 <td>
-                  <button>Details</button> {/* "View Details" button */}
+                  <button
+                    className="view-details"
+                    onClick={() => handleViewDetails(record._id)}
+                  >
+                    Details
+                  </button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+      {showMedicalHistory && (
+        <div className="overlay">
+          <div className="medicalrecord-modal-container">
+            <MedicalRecordModal
+              patientId={selectedPatientId}
+              onClose={() => setShowMedicalHistory(false)}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
