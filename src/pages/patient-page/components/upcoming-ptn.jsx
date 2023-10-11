@@ -1,50 +1,88 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import socketIOClient from 'socket.io-client';
+
+const socket = socketIOClient('http://localhost:5000');
 
 export default function UpcomingPtn() {
   const [appointments, setAppointments] = useState([]);
+  const [loggedInUser, setLoggedInUser] = useState([]);
 
   useEffect(() => {
     const userId = localStorage.getItem('userId'); // Retrieve user ID from localStorage
 
-    if (userId) {
-      axios.get(`http://localhost:5000/api/appointments/user/${userId}`)
+    axios.get(`http://localhost:5000/api/user/${userId}`)
+    .then(response => {
+      setLoggedInUser(response.data);
+    })
+    .catch(error => {
+      console.error('Error fetching user:', error);
+    });
 
-        .then((response) => {
-          setAppointments(response.data);
-        })
-        .catch((error) => {
-          console.error('Error fetching appointments:', error);
-        });
-    }
-  }, []); 
+    axios.get(`http://localhost:5000/api/appointments/user/${userId}`)
+    .then((response) => {
+      const formattedAppointments = response.data.map(appointment => {
+        const formattedDate = new Date(appointment.appointmentDate).toLocaleDateString('en-US');
+        return {
+          ...appointment,
+          appointmentDate: formattedDate
+        };
+      });
+      setAppointments(formattedAppointments);
+    })
+    .catch((error) => {
+      console.error('Error fetching appointments:', error);
+    });
 
-  return (
-    <>
-      <div className="upcoming-wrapper">
-        <p>Upcoming Appointments</p>
+    socket.on('appointmentStatusChanged', (data) => {
+      // Update the appointments in state based on the event data
+      setAppointments((prevAppointments) =>
+        prevAppointments.map((appointment) =>
+          appointment._id === data.appointmentId
+            ? { ...appointment, status: data.status }
+            : appointment
+        )
+      );
+    });
 
-        <div className="table-appointment">
-          <table className="table-ptn">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Date</th>
-                <th>Time</th>
+    // Clean up socket connection when the component unmounts
+    return () => {
+      socket.disconnect();
+    };
+}, []); 
+
+
+const filteredAppointments = appointments.filter(appointment => 
+  appointment.name === loggedInUser?.name);
+
+return (
+  <>
+    <div className="upcoming-wrapper">
+      <p>Upcoming Appointments</p>
+
+      <div className="table-appointment">
+        <table className="table-ptn">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredAppointments.map((appointment) => (
+              <tr key={appointment._id}>
+                <td>{appointment.name}</td>
+                <td>{appointment.appointmentDate}</td>
+                <td>{appointment.appointmentTime}</td>
+                <td>{appointment.status}</td>
               </tr>
-            </thead>
-            <tbody>
-              {appointments.map((appointment) => (
-                <tr key={appointment._id}>
-                  <td>{appointment.name}</td>
-                  <td>{appointment.appointmentDate}</td>
-                  <td>{appointment.appointmentTime}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
       </div>
-    </>
-  );
+    </div>
+  </>
+);
 }

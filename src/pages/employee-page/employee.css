@@ -61,10 +61,6 @@ header{
     align-items: center;
 }
 
-.sidebar-icon {
-    font-size: 20px;
-}
-
 #logo-box-sidebar h2{
     font-size: 15px;
 }
@@ -206,9 +202,6 @@ h3 span {
     display: flex;
     font-size: 15px;
 }
-#announce-link{
-    font-size: 13px;
-}
 
 main{
     display: flex;
@@ -246,7 +239,7 @@ main{
     padding:50px;
 }
 
-/* UPCOMING =====-----------------=============------= */
+/* REQUEST =====-----------------=============------= */
 
 .upcoming-wrapper{
     margin-top: -50px;
@@ -255,7 +248,22 @@ main{
     height: 450px;
     padding: 20px;
     border-radius: 20px;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #aaa;
+    border-radius: 10px;
+  }
+  
 
 .upcoming-wrapper p{
     color: black;
@@ -264,6 +272,37 @@ main{
     margin: 0;
 }
 
+.buttons-req{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.disabled-button {
+    background-color: #dcdcdc; 
+    color: #a9a9a9; 
+    cursor: not-allowed; 
+}
+
+.appointment-table tbody .accepted-row {
+    background-color: #baebba; 
+}
+
+.appointment-table tbody .denied-row {
+    background-color: #fcbebe; 
+}
+
+
+.request-table-appointment{
+    border-collapse: collapse;
+}
+
+.appointment-table {
+    width: 100%;
+}
 /* ````````````````````````````````````````TABLE`````````````````````````````````````````````````````````` */
 
 thead{

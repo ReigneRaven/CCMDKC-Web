@@ -7,8 +7,10 @@ import DiaLogo from '../../../components/logo/logo';
 import ClientLogo from '../../../assets/ccmdkc-logo.png';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import axios from 'axios'; // Local import for axios
+import axios from 'axios'; 
 import { useNavigate } from 'react-router-dom';
+
+
 
 export default function Booking() {
     const [appointmentDate, setAppointmentDate] = useState(new Date());
@@ -30,13 +32,14 @@ export default function Booking() {
     const userId = localStorage.getItem('userId');
     const navigate = useNavigate();
 
+
     const handleSubmit = (e) => {
         e.preventDefault();
         axios.post('http://localhost:5000/api/appointments', {
             name,
-            appointmentDate,
+            appointmentDate: appointmentDate.toISOString(),
             appointmentTime,
-            userId: userId
+            userId: userId,
         })
         .then(result => {
          console.log(result)
