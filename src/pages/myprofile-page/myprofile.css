@@ -26,7 +26,27 @@
     color: #007bff;
 }
 
-/* css for patient info */
+
+/* css for patient info textview */
+.profile-view {
+  margin-left: 440px;
+  display: flex;
+  background-color: rgb(243, 243, 243);
+  width: 30vw;
+  height: 40vh;
+  padding: 20px;
+  border-radius: 20px;
+  gap: 1.5rem;
+}
+
+.myprofile-details p {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  margin-bottom: 50px; 
+}
+
+/* css for patient info table */
 
 .patient-info {
   background-color: white;
@@ -43,7 +63,7 @@
 
 #details-h1 {
   margin-top: 0;
-  text-align: left;
+  text-align: center;
   font-weight: bold;
   font-size: 24px;
 }

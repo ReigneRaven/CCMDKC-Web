@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 export default function MedicalRecordModal({ patientId, onClose }) {
   const [data, setData] = useState([]);
+  const {id} = useParams();
 
   useEffect(() => {
     axios
-      .put(`http://localhost:5000/api/user/${patientId}/medical-history`)
+      .get('http://localhost:5000/api/records/' + id + '/medical-history')
       .then((response) => {
         setData(response.data);
       })

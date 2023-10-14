@@ -1,35 +1,38 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Button from '../../patientrecord-page/components/button';
+import { useParams } from 'react-router-dom';
 
-export default function MedicalRecordForm() {
+export default function MedicalRecordForm({patientId}) {
   const [allergies, setAllergies] = useState('');
   const [diagnosis, setDiagnosis] = useState('');
   const [bloodPressure, setBloodPressure] = useState('');
   const [temperature, setTemperature] = useState('');
   const [surgeries, setSurgeries] = useState('');
   const [MedicalRecord, setMedicalRecord] = useState([
-    {MedicalRecord:''},
-  ])
+    { MedicalRecord: '' },
+  ]);
 
   const handleMedicalRecordAdd = () => {
-    setMedicalRecord([...MedicalRecord, {MedicalRecord:''}])
+    setMedicalRecord([...MedicalRecord, { MedicalRecord: '' }]);
+  };
 
-  }
+  const {id} = useParams();
+
   const onSubmit = (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
-      
-      axios.put('http://localhost:5000/api/user/:id/medical-history',{
+
+    axios
+      .post('http://localhost:5000/api/user/' + id + '/medical-history', {
         allergies,
         diagnosis,
         bloodPressure,
         temperature,
-        surgeries
+        surgeries,
       })
-      .then(result => console.log(result))
-      .catch(err => console.log(err))
-    
-  };
+      .then((result) => console.log(result))
+      .catch((err) => console.log(err));
+  };   [patientId];
 
   return (
     <>

@@ -52,7 +52,8 @@
     margin-top: 5px;
     width: 60%;
     max-height: 400px; /* Adjust the height as needed */
-    overflow-y: auto;
+    overflow: scroll;
+    overflow-x: hidden;
   }
 
 .view-details {
