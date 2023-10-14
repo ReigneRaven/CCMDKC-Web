@@ -27,7 +27,7 @@ export default function MyProfile() {
 
   const formatBirthday = (birthday) => {
     const formattedDate = new Date(birthday);
-    const options = {year: 'numeric', month: 'long', day: 'numeric'};
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
     return formattedDate.toLocaleDateString(undefined, options);
   }
 
@@ -41,28 +41,15 @@ export default function MyProfile() {
           <div className="patient-info">
             <h1 id="details-h1">Patient Details</h1>
             <div className="patient-details-section">
-              <div className="scrollable-container">
+              <div className="profile-view">
                 {user && (
-                  <table className="patient-details-table">
-                    <thead>
-                      <tr>
-                        <th>Name</th>
-                        <th>Contact Number</th>
-                        <th>Address</th>
-                        <th>Birthday</th>
-                        <th>Email</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td className="table-cell">{user.name}</td>
-                        <td className="table-cell">{user.contactNum}</td>
-                        <td className="table-cell">{user.address}</td>
-                        <td className="table-cell">{formatBirthday(user.birthday)}</td>
-                        <td className="table-cell">{user.email}</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <div className="myprofile-details">
+                  <p><strong>Name:&nbsp;</strong> {user.name}</p>
+                  <p><strong>Contact Number:&nbsp;</strong> {user.contactNum}</p>
+                  <p><strong>Address:&nbsp;</strong> {user.address}</p>
+                  <p><strong>Birthday:&nbsp;</strong> {formatBirthday(user.birthday)}</p>
+                  <p><strong>Email:&nbsp;</strong> {user.email}</p>
+                </div>
                 )}
               </div>
             </div>

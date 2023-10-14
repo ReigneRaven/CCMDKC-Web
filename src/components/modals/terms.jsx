@@ -13,11 +13,6 @@ function Terms({ closeModal }) {
     navigate('/');
   };
 
-  const handleOkayClick = () => {
-    closeModal(false);
-    navigate('');
-  };
-
   return (
     <div className="background">
       <div className="container">
@@ -59,7 +54,7 @@ function Terms({ closeModal }) {
         </div>
         <div className="footer">
           <button onClick={handleCancelClick}> Decline </button>
-          <button onClick={handleOkayClick}> Accept </button>
+          <button onClick={() => closeModal(false)}> Accept </button>
         </div>
       </div>
     </div>
