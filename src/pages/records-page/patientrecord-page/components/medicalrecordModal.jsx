@@ -8,9 +8,10 @@ export default function MedicalRecordModal({ patientId, onClose }) {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/api/records/' + id + '/medical-history')
+  .get('http://localhost:5000/api/records/medical-history/' + patientId)
       .then((response) => {
-        setData(response.data);
+        console.log(response.data)
+        //setData(response.data);
       })
       .catch((error) => {
         console.error("Error fetching medical record data:", error);

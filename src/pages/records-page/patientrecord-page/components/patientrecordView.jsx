@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import MedicalRecordModal from "./medicalrecordModal";
 
+
 export default function PatientRecordView() {
   const [data, setData] = useState([]);
   const [showMedicalHistory, setShowMedicalHistory] = useState(false);
   const [selectedPatientId, setSelectedPatientId] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     axios
@@ -23,12 +25,23 @@ export default function PatientRecordView() {
     setShowMedicalHistory(true);
   };
 
+  const filteredData = data.filter((record) => 
+  record.patientName.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className="patientrecord-table-content">
       <div className="record-table-container">
         <table className="table">
           <thead id="header-patientrecord">
+           <input 
+            id="searchbar-record"
+            type="text"
+            placeholder="Search Patient Name"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}/>
             <tr>
+              <th>Patient ID</th>
               <th>Patient Name</th>
               <th>Weight</th>
               <th>Height</th>
@@ -38,8 +51,9 @@ export default function PatientRecordView() {
             </tr>
           </thead>
           <tbody>
-            {data.map((record) => (
+            {filteredData.map((record) => (
               <tr key={record._id}>
+                <td>{record._id.toString()}</td> {/* Convert ObjectId to string */}
                 <td>{record.patientName}</td>
                 <td>{record.weight}</td>
                 <td>{record.height}</td>

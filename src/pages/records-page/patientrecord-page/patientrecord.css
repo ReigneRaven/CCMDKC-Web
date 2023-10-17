@@ -98,14 +98,13 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
-    width: 40%; /* Adjust the width as needed */
+    width: 40%; 
     border-radius: 20px;
     z-index: 1000;
     padding: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
   
-  /* Dark overlay behind the modal */
   .overlay {
     position: fixed;
     top: 0;
@@ -116,4 +115,7 @@
     z-index: 999;
   }
   
+  #searchbar-record{
+    margin-top: 20px;
+  }
   

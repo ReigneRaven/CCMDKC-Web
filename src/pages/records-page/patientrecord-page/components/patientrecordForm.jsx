@@ -15,7 +15,6 @@ export default function PatientRecordForm() {
 
   const handlePatientRecordAdd = () => {
     setPatientRecord([...PatientRecord, {PatientRecord:''}])
-
   }
   const onSubmit = (e) => {
     e.preventDefault(); // Prevent the default form submission behavior

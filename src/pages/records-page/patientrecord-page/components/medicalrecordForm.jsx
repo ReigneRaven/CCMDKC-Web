@@ -3,27 +3,28 @@ import axios from 'axios';
 import Button from '../../patientrecord-page/components/button';
 import { useParams } from 'react-router-dom';
 
-export default function MedicalRecordForm({patientId}) {
+export default function MedicalRecordForm() {
   const [allergies, setAllergies] = useState('');
   const [diagnosis, setDiagnosis] = useState('');
   const [bloodPressure, setBloodPressure] = useState('');
   const [temperature, setTemperature] = useState('');
   const [surgeries, setSurgeries] = useState('');
+  const [patientObjectId, setPatientObjectId] = useState(''); 
   const [MedicalRecord, setMedicalRecord] = useState([
-    { MedicalRecord: '' },
-  ]);
+    {MedicalRecord:''},
+  ])
 
   const handleMedicalRecordAdd = () => {
-    setMedicalRecord([...MedicalRecord, { MedicalRecord: '' }]);
+    setMedicalRecord([...MedicalRecord, {MedicalRecord:''}])
   };
 
-  const {id} = useParams();
+  const { id } = useParams();
 
   const onSubmit = (e) => {
-    e.preventDefault(); // Prevent the default form submission behavior
+    e.preventDefault(); 
 
     axios
-      .post('http://localhost:5000/api/user/' + id + '/medical-history', {
+      .post(`http://localhost:5000/api/records/${patientObjectId}/medical-history`, {
         allergies,
         diagnosis,
         bloodPressure,
@@ -32,11 +33,18 @@ export default function MedicalRecordForm({patientId}) {
       })
       .then((result) => console.log(result))
       .catch((err) => console.log(err));
-  };   [patientId];
+  };
 
   return (
     <>
       <form className="create-medicalrecord" onSubmit={onSubmit}>
+        <input
+          type="text"
+          value={patientObjectId}
+          onChange={(e) => setPatientObjectId(e.target.value)}
+          placeholder="Patient ObjectId"
+          className="input-medicalrecord"
+        />
         <input
           type="text"
           value={allergies}
