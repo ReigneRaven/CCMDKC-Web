@@ -4,19 +4,21 @@ import { useParams } from "react-router-dom";
 
 export default function MedicalRecordModal({ patientId, onClose }) {
   const [data, setData] = useState([]);
-  const {id} = useParams();
+  const id = patientId
+
+  console.log('id', id)
 
   useEffect(() => {
     axios
-  .get('http://localhost:5000/api/records/medical-history/' + patientId)
+  .get('http://localhost:5000/api/records/get-medical-history/' + id)
       .then((response) => {
         console.log(response.data)
-        //setData(response.data);
+        setData(response.data);
       })
       .catch((error) => {
         console.error("Error fetching medical record data:", error);
       });
-  }, [patientId]);
+  }, []);
 
   return (
     <div className="medicalrecord-table-content">

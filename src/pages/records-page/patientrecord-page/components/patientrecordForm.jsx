@@ -17,7 +17,7 @@ export default function PatientRecordForm() {
     setPatientRecord([...PatientRecord, {PatientRecord:''}])
   }
   const onSubmit = (e) => {
-    e.preventDefault(); // Prevent the default form submission behavior
+    e.preventDefault();
       
       axios.post('http://localhost:5000/api/records',{
         patientName,
