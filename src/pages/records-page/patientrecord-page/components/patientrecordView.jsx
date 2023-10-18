@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import MedicalRecordModal from "./medicalrecordModal";
+import { useParams } from "react-router-dom";
 
 
 export default function PatientRecordView() {
@@ -8,6 +9,8 @@ export default function PatientRecordView() {
   const [showMedicalHistory, setShowMedicalHistory] = useState(false);
   const [selectedPatientId, setSelectedPatientId] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
+
+  const {medicalId} = useParams();
 
   useEffect(() => {
     axios
@@ -20,9 +23,21 @@ export default function PatientRecordView() {
       });
   }, []);
 
-  const handleViewDetails = (patientId) => {
-    setSelectedPatientId(patientId);
+  const handleViewDetails = (medicalId) => {
+    setSelectedPatientId(medicalId);
     setShowMedicalHistory(true);
+
+    console.log(selectedPatientId)
+
+    axios.get(`http://localhost:5000/api/records/get-medical-history/${medicalId}`)
+    .then((response) => {
+      console.log(response.data);
+      //setData(response.data);
+    }).catch((error) => {
+      console.error("Error fetching medical record", error);
+    },[]);
+
+
   };
 
   const filteredData = data.filter((record) => 

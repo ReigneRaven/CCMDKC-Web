@@ -16,6 +16,7 @@ export default function Booking() {
     const [appointmentDate, setAppointmentDate] = useState(new Date());
     const [appointmentTime, setAppointmentTime] = useState('');
     const [name, setName] = useState('');
+    const [appointments, setAppointments] = useState('')
  
     const handleAppointmentDateChange = (appointmentDate) => {
         setAppointmentDate(appointmentDate);
@@ -42,12 +43,26 @@ export default function Booking() {
             userId: userId,
         })
         .then(result => {
-         console.log(result)
-         navigate(`/patient/${userId}`)
+            console.log(result);
+            axios.get(`http://localhost:5000/api/appointments/user/${userId}`)
+                .then((response) => {
+                    const formattedAppointments = response.data.map(appointment => {
+                        const formattedDate = new Date(appointment.appointmentDate).toLocaleDateString('en-US');
+                        return {
+                            ...appointment,
+                            appointmentDate: formattedDate
+                        };
+                    });
+                    setAppointments(formattedAppointments);
+                    navigate(`/patient/${userId}`);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
         })
-        .catch(err => console.log(err))
-       
+        .catch(err => console.log(err));
     };
+    
 
     return (
         <>

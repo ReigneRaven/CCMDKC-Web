@@ -38,7 +38,7 @@
 }
 
 .patientrecord-table-content {
-    height: 40%;
+    height: 100%;
     width: 155%;
 }
 
@@ -51,13 +51,17 @@
 .record-table-container {
     margin-top: 5px;
     width: 60%;
-    max-height: 400px; /* Adjust the height as needed */
+    max-height: 800px; /* Adjust the height as needed */
     overflow: scroll;
     overflow-x: hidden;
   }
 
 .view-details {
     margin-top: 1px;
+}
+
+#searchbar-record {
+    margin-left: 10px;
 }
 
 /*medicalform*/
