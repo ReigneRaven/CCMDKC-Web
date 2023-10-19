@@ -36,7 +36,7 @@ export default function SuppliesView() {
             </tr>
           </thead>
           <tbody>
-            {data.map((item) => (
+            {filteredSupplies.map((item) => (
               <tr key={item._id}>
                 <td>{item.itemName}</td>
                 <td>{item.itemDescription}</td>

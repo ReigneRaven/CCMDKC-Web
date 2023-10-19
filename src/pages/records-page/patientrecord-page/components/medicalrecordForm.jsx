@@ -51,14 +51,14 @@ export default function MedicalRecordForm() {
             value={bloodPressure}
             onChange={(e) => setBloodPressure(e.target.value)}
             placeholder="Blood-Pressure"
-            className="input-medicalrecord custom-input"
+            className="input-medicalrecord custom-medical"
           />
           <input
             type="text"
             value={temperature}
             onChange={(e) => setTemperature(e.target.value)}
             placeholder="Temperature"
-            className="input-medicalrecord custom-input"
+            className="input-medicalrecord custom-medical"
           />
         </div>
         <input

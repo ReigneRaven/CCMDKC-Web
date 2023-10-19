@@ -11,7 +11,7 @@
     margin-bottom: 20px;
     display: flex;
     background-color: rgb(243, 243, 243);
-    width: fit-content;
+    width: 21vw;
     height: 36vh;
     padding: 20px;
     border-radius: 20px;
@@ -64,6 +64,21 @@
     margin-left: 10px;
 }
 
+
+.input-patientrecord {
+  width: 20vw; /* Adjust the width as needed */
+  height: 2.5rem; /* Adjust the height as needed */
+  border-radius: 10px;
+}
+
+.custom-gender{
+  height: 2.8rem;
+  font-size: 16px;
+  border: 1px solid black;
+}
+/* You can further customize the styles as needed */
+
+
 /*medicalform*/
 
 .medicalrecord-container {
@@ -95,10 +110,10 @@
 
 /* MedicalRecordForm.css */
 .medicalinput-row {
-    margin-left: 7px;
-    margin-bottom: -20px;
+    margin-left: -8px;
     display: flex;
     gap: 0.2rem;
+    width: 21vw;
   }
 
 /* MedicalRecordForm.css */
@@ -107,11 +122,15 @@
     justify-content: space-between;
   }
   
-.custom-input {
-    width: 165px; /* Adjust the width as needed */
-    height: 14px; /* Adjust the height as needed */
+.input-medicalrecord {
+    width: 21vw; /* Adjust the width as needed */
+    height: 10vh; /* Adjust the height as needed */
 }
-  
+
+.custom-medical {
+  height: 30px;
+  width: 20vw;
+}
   /* Add any other CSS styles you need for your form */
   
   
