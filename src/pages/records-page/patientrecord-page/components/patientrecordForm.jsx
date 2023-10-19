@@ -8,27 +8,29 @@ export default function PatientRecordForm() {
   const [weight, setWeight] = useState('');
   const [height, setHeight] = useState('');
   const [age, setAge] = useState('');
-  const [sex, setSex] = useState('');
+  const [sex, setSex] = useState(''); // Default value for the dropdown
+
   const [PatientRecord, setPatientRecord] = useState([
-    {PatientRecord:''},
-  ])
+    { PatientRecord: '' },
+  ]);
 
   const handlePatientRecordAdd = () => {
-    setPatientRecord([...PatientRecord, {PatientRecord:''}])
-  }
+    setPatientRecord([...PatientRecord, { PatientRecord: '' }]);
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
-      
-      axios.post('http://localhost:5000/api/records',{
+
+    axios
+      .post('http://localhost:5000/api/records', {
         patientName,
         weight,
         height,
         age,
-        sex
+        sex,
       })
-      .then(result => console.log(result))
-      .catch(err => console.log(err))
-    
+      .then((result) => console.log(result))
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -62,13 +64,16 @@ export default function PatientRecordForm() {
           placeholder="Age"
           className="input-patientrecord"
         />
-        <input
-          type="text"
+        <select
+          placeholder="Sex"
           value={sex}
           onChange={(e) => setSex(e.target.value)}
-          placeholder="Sex"
-          className="input-patientrecord"
-        />
+          className="input-patientrecord custom-gender" // Use the same class as other input fields
+        >
+          <option value="">Sex</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
         <Button text={'Add'} type="submit" onClick={handlePatientRecordAdd}></Button>
       </form>
     </>

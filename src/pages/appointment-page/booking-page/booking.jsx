@@ -77,14 +77,14 @@ export default function Booking() {
                             <div className="booking-input">
                                 <input 
                                     placeholder="Name" 
-                                    className="custom-input" 
+                                    className="custom-booking" 
                                     value={name}
                                     onChange={handleNameChange}
                                     required
                                 />
                                 <DatePicker
                                     placeholderText="Appointment Date"
-                                    className="custom-input custom-datepicker"
+                                    className="custom-booking custom-datepicker"
                                     selected={appointmentDate}
                                     value={appointmentDate}
                                     onChange={handleAppointmentDateChange}
@@ -92,7 +92,7 @@ export default function Booking() {
                                 <input
                                     type="time"
                                     placeholder="Timeslot"
-                                    className="custom-input"
+                                    className="custom-booking"
                                     value={appointmentTime}
                                     onChange={handleAppointmentTimeChange}
                                 />
