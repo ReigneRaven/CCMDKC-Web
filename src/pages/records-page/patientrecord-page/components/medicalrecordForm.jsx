@@ -45,6 +45,22 @@ export default function MedicalRecordForm() {
           placeholder="Patient ObjectId"
           className="input-medicalrecord"
         />
+        <div className="medicalinput-row">
+          <input
+            type="text"
+            value={bloodPressure}
+            onChange={(e) => setBloodPressure(e.target.value)}
+            placeholder="Blood-Pressure"
+            className="input-medicalrecord custom-input"
+          />
+          <input
+            type="text"
+            value={temperature}
+            onChange={(e) => setTemperature(e.target.value)}
+            placeholder="Temperature"
+            className="input-medicalrecord custom-input"
+          />
+        </div>
         <input
           type="text"
           value={allergies}
@@ -57,20 +73,6 @@ export default function MedicalRecordForm() {
           value={diagnosis}
           onChange={(e) => setDiagnosis(e.target.value)}
           placeholder="Diagnosis"
-          className="input-medicalrecord"
-        />
-        <input
-          type="text"
-          value={bloodPressure}
-          onChange={(e) => setBloodPressure(e.target.value)}
-          placeholder="Blood-Pressure"
-          className="input-medicalrecord"
-        />
-        <input
-          type="text"
-          value={temperature}
-          onChange={(e) => setTemperature(e.target.value)}
-          placeholder="Temperature"
           className="input-medicalrecord"
         />
         <input

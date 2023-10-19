@@ -47,14 +47,14 @@ export default function PatientRecordView() {
   return (
     <div className="patientrecord-table-content">
       <div className="record-table-container">
-        <table className="table">
-          <thead id="header-patientrecord">
-           <input 
+      <input 
             id="searchbar-record"
             type="text"
             placeholder="Search Patient Name"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}/>
+        <table className="table">
+          <thead id="header-patientrecord">
             <tr>
               <th>Patient ID</th>
               <th>Patient Name</th>

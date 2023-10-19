@@ -11,12 +11,13 @@ export default function Request() {
     const [appointments, setAppointments] = useState([]);
     
     useEffect(() => {
-        // Fetch appointments and set up Socket.io event listeners
+        
         const fetchAppointments = async () => {
             try {
                 const response = await axios.get('http://localhost:5000/api/appointments');
                 const formattedAppointments = response.data.map(appointment => {
                     const formattedDate = new Date(appointment.appointmentDate).toLocaleDateString('en-US');
+                    
                     return {
                         ...appointment,
                         appointmentDate: formattedDate,
@@ -24,17 +25,17 @@ export default function Request() {
                     };
                 });
                 setAppointments(formattedAppointments);
-            } catch (error) {
+
+                localStorage.setItem('formattedAppointments', JSON.stringify(formattedAppointments));
+                } catch (error) {
                 console.error('Error fetching data: ', error);
-            }
-        };
+             }
+        };fetchAppointments();
 
-        fetchAppointments();
-
-        // Listen for appointmentStatusChanged event from the server
         socket.on('appointmentStatusChanged', (data) => {
-            // Update the appointments in state based on the event data
+
             setAppointments((prevAppointments) =>
+
                 prevAppointments.map((appointment) =>
                     appointment._id === data.appointmentId
                         ? { ...appointment, status: data.status }
@@ -44,7 +45,6 @@ export default function Request() {
         });
 
         return () => {
-            // Clean up the socket connection when the component unmounts
             socket.disconnect();
         };
     }, []);
@@ -54,9 +54,14 @@ export default function Request() {
             { status: 'Accepted' })
             
             .then(response => {
-                console.log('Appointment accepted successfully', response);
-                socket.emit('appointmentStatusChanged', { appointmentId, status: 'Accepted' });
-               
+                const updatedAppoinment = response.data;
+                updatedAppoinment.processed = true;
+
+                setAppointments(prevAppointments => 
+                    prevAppointments.map(appointment =>
+                   appointment._id === updatedAppoinment._id ? updatedAppoinment : appointment 
+                   ))
+                   socket.emit('appointmentStatusChanged', {appointmentId, status: 'Accepted'});               
             })
             .catch(error => {
                 console.error('Error accepting appointment', error);
@@ -66,9 +71,14 @@ export default function Request() {
     const handleDenyAppointment = (appointmentId) => {
         axios.put(`http://localhost:5000/api/appointments/${appointmentId}/status`,
             { status: 'Denied' })
+
             .then(response => {
-                console.log('Appointment denied successfully', response);
-                // Emit a Socket.io event to notify the client about the status change
+                const deniedAppointment = response.data;
+                deniedAppointment.processed = true;
+
+                setAppointments(prevAppointments => prevAppointments.map(appointment => 
+                appointment._id === deniedAppointment._id ? deniedAppointment : appointment
+                ))
                 socket.emit('appointmentStatusChanged', { appointmentId, status: 'Denied' });
             })
             .catch(error => {
@@ -130,5 +140,5 @@ export default function Request() {
             </div>
         </>
     );
-                                }
+}
     

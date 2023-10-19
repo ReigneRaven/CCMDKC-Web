@@ -8,23 +8,18 @@ export default function PtnSidebar() {
   const [userId, setUserId] = useState(null);
 
   useEffect(() => {
-    // Retrieve userId from local storage
     const storedUserId = localStorage.getItem("userId");
-
-    // Update the state with the retrieved userId
     setUserId(storedUserId);
 
-    // Fetch user data based on the provided userId
     if (storedUserId) {
       axios
         .get(`http://localhost:5000/api/user/${storedUserId}`)
         .then((response) => {
-          // Handle the response data if needed
           console.log(response.data);
         })
         .catch((error) => console.error(error));
     }
-  }, []); // Empty dependency array ensures the effect runs only once when the component mounts
+  }, []);
 
   return (
     <>
@@ -38,7 +33,7 @@ export default function PtnSidebar() {
             <MdMedicalServices className="sidebar-icon" />&nbsp;Appointments
           </Link>
 
-          <Link to="/" className="link-div" id="history-link">
+          <Link to={`/healthrecord/${userId}`} className="link-div" id="history-link">
             <BsFillFileMedicalFill className="sidebar-icon"/>&nbsp;Health History
           </Link>
 
