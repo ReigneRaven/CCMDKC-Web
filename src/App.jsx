@@ -14,6 +14,7 @@ import ChangePassword from './pages/changepass-page/changepass'
 import ForgotPassword from './pages/forgotpass-page/forgotpass'
 import Supplies from './pages/supplies-page/supplies'
 import PatientRecord from './pages/records-page/patientrecord-page/patientrecord'
+import MedicalRecord from './pages/medicalhistory-page/healthhistory'
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
           <Route path='/patient/:id' element={<Patient/>}/>
           <Route path='/appointment/:id' element={<Appointment/>} />
           <Route path='/booking/:id' element={<Booking/>} />
+          <Route path='/healthrecord/:id' element={<MedicalRecord/>} />
           <Route path='/announcements/:id' element={<AnnouncementsPtn/>}/>
           <Route path='/patient/changepassword/:id' element={<ChangePassword/>}/>
           <Route path='/patient/myprofile/:id' exact element={<MyProfile />} />

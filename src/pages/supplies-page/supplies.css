@@ -80,4 +80,7 @@
     overflow-x: hidden;
   }
   
-  
+  #searchbar-supplies{
+    width: 95%;
+    background-color: #f3f3f3;
+  }

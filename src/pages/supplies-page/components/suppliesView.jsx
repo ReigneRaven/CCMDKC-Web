@@ -3,7 +3,7 @@ import axios from "axios";
 
 export default function SuppliesView() {
   const [data, setData] = useState([]);
-  
+  const [searchQuery, setSearchQuery] = useState("");
   useEffect(() => {
     axios
       .get("http://localhost:5000/api/inventory")
@@ -15,9 +15,18 @@ export default function SuppliesView() {
       });
   }, []);
 
+  const filteredSupplies = data.filter((item) => 
+  item.itemName.toLowerCase().includes(searchQuery.toLowerCase())
+  );
   return (
     <div className="supplies-table-content">
-      <div className="supplies-table-container"> {/* Added a container div */}
+      <div className="supplies-table-container">
+      <input 
+            id="searchbar-supplies"
+            type="text"
+            placeholder="Search item by name"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}/>
         <table className="table">
           <thead id="header-supplies">
             <tr>

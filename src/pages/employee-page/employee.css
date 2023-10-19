@@ -61,6 +61,10 @@ header{
     align-items: center;
 }
 
+.drop-links a:hover{
+    margin: 5px;
+}
+
 #logo-box-sidebar h2{
     font-size: 15px;
 }

@@ -10,7 +10,7 @@ export default function UpcomingPtn() {
 
   useEffect(() => {
     const userId = localStorage.getItem('userId'); // Retrieve user ID from localStorage
-
+    
     axios.get(`http://localhost:5000/api/user/${userId}`)
     .then(response => {
       setLoggedInUser(response.data);
@@ -35,7 +35,6 @@ export default function UpcomingPtn() {
     });
 
     socket.on('appointmentStatusChanged', (data) => {
-      // Update the appointments in state based on the event data
       setAppointments((prevAppointments) =>
         prevAppointments.map((appointment) =>
           appointment._id === data.appointmentId
@@ -45,7 +44,6 @@ export default function UpcomingPtn() {
       );
     });
 
-    // Clean up socket connection when the component unmounts
     return () => {
       socket.disconnect();
     };
@@ -53,7 +51,7 @@ export default function UpcomingPtn() {
 
 
 const filteredAppointments = appointments.filter(appointment => 
-  appointment.name === loggedInUser?.name);
+  appointment.name === loggedInUser?.name)
 
 return (
   <>

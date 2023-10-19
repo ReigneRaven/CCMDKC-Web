@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import '../medicalrecord-page/medicalrecord.css'
-import Header from "../../employee-page/components/header";
-import Sidebar from "../../employee-page/components/sidebar";
-import MedicalRecordForm from "../patientrecord-page/components/medicalrecordForm";
-import MedicalRecordView from "./components/medicalrecordView";
+import '../medicalhistory-page/healthhistory.css'
+import Header from "../patient-page/components/header";
+import Sidebar from "../patient-page/components/sidebar";
+import HistoryModalPtn from "./components/history-tablemodal";
+import HistoryTablePtn from "./components/history-tableview";
 
 export default function MedicalRecord(){
 
@@ -15,8 +15,8 @@ export default function MedicalRecord(){
             <Sidebar/>
             <div className="medicalrecord-container">
             <h2>Medical History</h2>
-            <MedicalRecordForm/>
-            <MedicalRecordView/>
+            <HistoryTablePtn/>
+
             </div>
             </div>
             </div>
