@@ -98,7 +98,7 @@ button:hover {
 
 .input-label {
     margin-bottom: 0.5rem;
-  }
+}
   
 .user-input {
     height: 2.5rem;
@@ -227,8 +227,8 @@ label.checkbox {
     
     .user-input {
         margin-right: 10%;
-        width: 80%; /* You can adjust the width as needed */
-        margin-bottom: 10px; /* Add margin as needed */
+        width: 80%; 
+        margin-bottom: 10px; 
     }
 
     .password-field {
@@ -238,7 +238,7 @@ label.checkbox {
     #home-form {
         width: 155%;
         height: 139%;
-        margin: -10% -35%; /* Center the element horizontally */
+        margin: -10% -35%;
     }
     
     #home-logo img {
@@ -254,7 +254,7 @@ label.checkbox {
     }
     
     .toggle-eye {
-        margin: -1% 14%; /* Center the element horizontally */
+        margin: -1% 14%; 
     }
 }
 

@@ -4,28 +4,26 @@
   justify-content: space-between;
 }
 
-
 .patient-profile img {
-    margin-top: 250px;
-    width: 150px;
-    height: 150px;
+  margin-top: 250px;
+  width: 150px;
+  height: 150px;
 }
 
 .ptn-name {
-    margin-top: 20px;
-    font-size: 18px; 
-    font-weight: bold; 
+  margin-top: 20px;
+  font-size: 18px; 
+  font-weight: bold; 
 }
   
 .ptn-number {
   font-size: 16px; 
 }
   
-  .ptn-address {
-    font-size: 16px;
-    color: #007bff;
+.ptn-address {
+  font-size: 16px;
+  color: #007bff;
 }
-
 
 /* css for patient info textview */
 .profile-view {
@@ -47,7 +45,6 @@
 }
 
 /* css for patient info edit */
-
 #edit-btn {
   display: flex;
   align-items: center;
@@ -71,8 +68,8 @@
   margin-left: 500px;
   margin-top: 10px;
 }
-/* css for patient info table */
 
+/* css for patient info table */
 .patient-info {
   background-color: white;
   height: 85vh;
@@ -84,7 +81,6 @@
   width: 86vw;
   gap: 1rem;
 }
-
 
 #details-h1 {
   margin-top: 0;
@@ -108,7 +104,7 @@
 
 .myprofile-details input {
   display: block;
-  margin-bottom: 2rem; /* Add some margin between input fields */
+  margin-bottom: 2rem;
   width: 97%;
 }
 
@@ -125,21 +121,18 @@
   text-align: left;
 }
 
-/* Additional styles specific to the table cells */
 .patient-details-table th {
   background-color: var(--bs-light);
-  width: auto; /* Set the width to auto to match the content */
-  color: black; /* Add this line to make the header text black */
-  border-color: black; /* Add this line to make the header border color black */
+  width: auto;
+  color: black;
+  border-color: black
 }
 
-/* Additional styles for the patient details */
 .patient-details-table tr td:first-child {
   font-weight: bold;
   width: 100px;
 }
 
 .table-cell {
-  height: 20px; /* Adjust the height as per your requirements */
-  /* You can also set other styles like padding, text-align, etc. */
+  height: 20px;
 }

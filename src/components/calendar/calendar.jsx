@@ -9,7 +9,7 @@ export default function Calendar() {
             let date = new Date();
             let currYear = date.getFullYear();
             let currMonth = date.getMonth();
-            let lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate(); // Initialize lastDateofMonth here
+            let lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate();
             
             const currentDate = document.querySelector(".current-date");
             const daysTag = document.querySelector(".days");

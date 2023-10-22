@@ -1,24 +1,24 @@
 .announcement-container-ptn{
-    background-color: white;
-    width: 89vw;
-    height: 89vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    border-radius: 20px;
+   background-color: white;
+   width: 89vw;
+   height: 89vh;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   border-radius: 20px;
 }
 #announce-img-ptn{
-    height: 60vh;
-    width: auto;
- }
+   height: 60vh;
+   width: auto;
+}
 
- .announce-content-ptn{
-    display: flex;
-    flex-direction: row;
- }
- .announce-page-ptn{
-    display: flex;
-    flex-direction: column;
- }
+.announce-content-ptn{
+   display: flex;
+   flex-direction: row;
+}
+
+.announce-page-ptn{
+   display: flex;
+   flex-direction: column;
+}

@@ -1,8 +1,8 @@
 .ptnheader{
     width: 99vw;
-    height: auto;
-    
+    height: auto;    
 }
+
 .profile-header-ptn{
     display: flex;
     flex-direction: row;
@@ -28,6 +28,7 @@
     display: flex;
     flex-direction: column;
 }
+
 #drop-label-ptn p{
     display: flex;
     flex-direction: column;
@@ -73,7 +74,6 @@
     padding: 10px;
 }
 
-
 #logo-box-sidebar-ptn{
     display: flex;
     flex-direction: row;
@@ -85,8 +85,8 @@
 #history-link{
     font-size: 14px;
 }
+
 .menu-trigger-ptn img {
-   
     top: 5px;
     right: 20px;
     height: 55px;
@@ -131,7 +131,6 @@
     transform: translateY(-20px);
     transition: var(--speed) ease;
 }
-
 
 h3 {
     width: 100%;
@@ -189,7 +188,6 @@ h3 span {
     width: 89vw;
     height: 89vh;
     border-radius: 20px;
-   
 }
 
 .dash-patient p{

@@ -24,7 +24,7 @@ export default function SuppliesView() {
       <input 
             id="searchbar-supplies"
             type="text"
-            placeholder="Search item by name"
+            placeholder=" Search item by name"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}/>
         <table className="table">

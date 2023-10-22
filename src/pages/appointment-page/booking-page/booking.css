@@ -76,11 +76,11 @@ button:hover {
 }
 
 .input-container {
-    margin-bottom: 10px; /* Adjust the margin to control spacing */
+    margin-bottom: 10px;
 }
 
 .custom-booking {
-    width: 100%; /* You can adjust the width here, for example, 300px */
+    width: 100%;
     padding: 10px;
     font-size: 16px;
     height: 1.5rem;
@@ -98,5 +98,5 @@ button:hover {
 }
 
 .custom-datepicker {
-    width: 270px; /* Adjust the width as needed */
+    width: 270px; 
 }

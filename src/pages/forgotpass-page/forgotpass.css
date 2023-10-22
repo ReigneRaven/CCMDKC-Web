@@ -124,7 +124,7 @@ button:hover {
     }
 }
 
-    /* Media query for Galaxy Fold */
+/* Media query for Galaxy Fold */
 @media screen and (max-width: 280px) {
     .forgotpass-input {
         margin-left: 22%;
@@ -133,8 +133,8 @@ button:hover {
 
     .user-input {
         margin-right: 10%;
-        width: 80%; /* You can adjust the width as needed */
-        margin-bottom: 10px; /* Add margin as needed */
+        width: 80%; 
+        margin-bottom: 10px; 
     }
     .password-field {
         width: 80%;
@@ -142,7 +142,7 @@ button:hover {
     #forgotpass-form {
         width: 155%;
         height: 139%;
-        margin: -10% -35%; /* Center the element horizontally */
+        margin: -10% -35%;
     }
 
     h2 {
@@ -157,6 +157,5 @@ button:hover {
     button {
         margin-left: 14%;
     }
-
 }
 

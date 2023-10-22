@@ -137,12 +137,10 @@ button:hover {
     vertical-align: middle;
 }
 
-/* Remove hover effect when the eye icon is clicked */
 .change-toggle-eye:hover {
     filter: none;
 }
 
-/* Disable hover effect for the :active state */
 .change-toggle-eye:active {
     filter: none;
 }

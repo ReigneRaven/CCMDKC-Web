@@ -22,7 +22,7 @@ export default function ForgotPassword() {
         axios.post('http://localhost:5000/api/user/forgotpassword', {email})
         .then((userResponse)=> {
             console.log('User Response: ', userResponse);
-            navigate('/forgotpassword')
+            
         })
         .catch((userError) => {
             console.error('Error in sending email: ', userError);

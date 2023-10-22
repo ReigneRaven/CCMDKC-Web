@@ -54,8 +54,8 @@ form{
 }
 
 #services-icon img {
-    height: 400px; /* Set your desired height */
-    width: 400px; /* Set your desired width */
+    height: 400px;
+    width: 400px; 
     margin: 0 auto;
     padding: 0;
     top: 0;
