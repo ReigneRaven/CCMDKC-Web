@@ -35,21 +35,21 @@ export default function SuppliesForm() {
           type="text"
           value={itemName}
           onChange={(e) => setNewItem(e.target.value)}
-          placeholder="New Item"
+          placeholder=" New Item"
           className="input-supplies"
         />
         <input
           type="text"
           value={itemDescription}
           onChange={(e) => setDescription(e.target.value)}
-          placeholder="Item Description"
+          placeholder=" Item Description"
           className="input-supplies"
         />
         <input
           type="text"
           value={stocksAvailable}
           onChange={(e) => setStocks(e.target.value)}
-          placeholder="Stocks Available"
+          placeholder=" Stocks Available"
           className="input-supplies"
         />
         <Button text={'Add'} type="submit" onClick={handleSuppliesAdd}></Button>

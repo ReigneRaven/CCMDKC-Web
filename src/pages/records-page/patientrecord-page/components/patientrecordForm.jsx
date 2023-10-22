@@ -8,7 +8,7 @@ export default function PatientRecordForm() {
   const [weight, setWeight] = useState('');
   const [height, setHeight] = useState('');
   const [age, setAge] = useState('');
-  const [sex, setSex] = useState(''); // Default value for the dropdown
+  const [sex, setSex] = useState('');
 
   const [PatientRecord, setPatientRecord] = useState([
     { PatientRecord: '' },
@@ -40,37 +40,37 @@ export default function PatientRecordForm() {
           type="text"
           value={patientName}
           onChange={(e) => setPatientName(e.target.value)}
-          placeholder="Patient Name"
+          placeholder=" Patient Name"
           className="input-patientrecord"
         />
         <input
           type="text"
           value={weight}
           onChange={(e) => setWeight(e.target.value)}
-          placeholder="Weight"
+          placeholder=" Weight"
           className="input-patientrecord"
         />
         <input
           type="text"
           value={height}
           onChange={(e) => setHeight(e.target.value)}
-          placeholder="Height"
+          placeholder=" Height"
           className="input-patientrecord"
         />
         <input
           type="text"
           value={age}
           onChange={(e) => setAge(e.target.value)}
-          placeholder="Age"
+          placeholder=" Age"
           className="input-patientrecord"
         />
         <select
-          placeholder="Sex"
+          placeholder=" Sex"
           value={sex}
           onChange={(e) => setSex(e.target.value)}
-          className="input-patientrecord custom-gender" // Use the same class as other input fields
+          className="input-patientrecord custom-gender"
         >
-          <option value="">Sex</option>
+          <option value=" ">Sex</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
         </select>

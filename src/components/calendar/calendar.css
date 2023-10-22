@@ -19,10 +19,12 @@
     text-align: center;
     padding: 0;
 }
+
 .calendar ul li{
     width: calc(100%/7);
     position: relative;
 }
+
 .calendar .days li::before{
    position: absolute;
    content: "";
@@ -39,6 +41,7 @@
 .days li.active{
     color: white;
 }
+
 .days li.active::before{
     background-color: #64c3e0ce;
 }
@@ -46,6 +49,7 @@
 .calendar li:hover::before{
     background: #dddcdc;
 }
+
 .calendar .days{
     margin-bottom: 20px;
 }
@@ -64,6 +68,7 @@
     font-weight: 500;
     font-size: .9rem;
 }
+
 .wrapper header{
     display:flex;
     width: 95%;
@@ -71,6 +76,7 @@
     justify-content: space-between;
     color: black;
 }
+
 header .current-date{
     font-size: 1rem;
     font-weight: 500;
@@ -101,6 +107,7 @@ header .icons span{
 header .icons span:hover{
     background: #fdfdfd;
 }
+
 header .icons span:last-child{
     margin-right: -10px;
 }

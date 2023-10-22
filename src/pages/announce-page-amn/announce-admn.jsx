@@ -20,7 +20,6 @@ export default function AnnouncementsAmn(){
         <div className='announcement-container-amn'>
             <Head2 text="Bulletin"/>
             <ImgView src={ClientAnnounce} id="announce-img-amn"/>
-            
         </div>
         </div>
         </div>

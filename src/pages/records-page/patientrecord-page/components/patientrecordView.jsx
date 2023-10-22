@@ -50,7 +50,7 @@ export default function PatientRecordView() {
       <input 
             id="searchbar-record"
             type="text"
-            placeholder="Search Patient by Name"
+            placeholder=" Search Patient by Name"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}/>
         <table className="table">

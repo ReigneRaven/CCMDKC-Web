@@ -115,7 +115,7 @@ export default function Register() {
               <Head2 text="Register" />
               <InputField
                 id="fullName"
-                placeholder="Full Name"
+                placeholder=" Full Name"
                 className="user-input"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -124,7 +124,7 @@ export default function Register() {
               <div className="form1">
                 <DatePicker
                 id="date"
-                  placeholderText="Birthday"
+                  placeholderText=" Birthday"
                   className="user-input"
                   selected={birthday}
                   onChange={handleBirthdayChange}
@@ -147,7 +147,7 @@ export default function Register() {
               </div>
               <InputField
                 id="address"
-                placeholder="Address"
+                placeholder=" Address"
                 className="user-input"
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
@@ -155,7 +155,7 @@ export default function Register() {
               />
               <InputField
                 id="num"
-                placeholder="Contact No."
+                placeholder=" Contact No."
                 className="user-input"
                 value={contactNum}
                 onChange={(e) => setContactNum(e.target.value)}
@@ -163,7 +163,7 @@ export default function Register() {
               />
               <InputField
                 id="email"
-                placeholder="Email"
+                placeholder=" Email"
                 className="user-input"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -174,7 +174,7 @@ export default function Register() {
                 <input
                   id="pass"
                   type={showPassword ? 'text' : 'password'}
-                  placeholder="Password"
+                  placeholder=" Password"
                   className="user-input"
                   value={password}
                   onChange={handlePasswordChange}
@@ -192,7 +192,7 @@ export default function Register() {
                 <input
                  id="confirmpass"
                   type={showConfirmPassword ? 'text' : 'password'}
-                  placeholder="Confirm Password"
+                  placeholder=" Confirm Password"
                   className="user-input"
                   value={confirmpassword}
                   onChange={handleConfirmPasswordChange}

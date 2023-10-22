@@ -1,86 +1,84 @@
-/* Add this CSS to your existing styles */
 .supplies-container {
-    background-color: white;
-    width: 89vw;
-    border-radius: 20px;
-  }
+  background-color: white;
+  width: 89vw;
+  border-radius: 20px;
+}
   
-  .create-stocks {
-    margin-top: -10px;
-    margin-left: 100px;
-    margin-bottom: 10px;
-    display: flex;
-    background-color: rgb(243, 243, 243);
-    width: fit-content;
-    padding: 20px;
-    border-radius: 20px;
-    gap: 1.5rem;
-  }
+.create-stocks {
+  margin-top: -10px;
+  margin-left: 100px;
+  margin-bottom: 10px;
+  display: flex;
+  background-color: rgb(243, 243, 243);
+  width: fit-content;
+  padding: 20px;
+  border-radius: 20px;
+  gap: 1.5rem;
+}
   
-  .input-supplies {
-    width: 20vw;
-  }
+.input-supplies {
+  width: 20vw;
+}
 
 .supplies-row {
-    display: flex; /* Use flexbox for row alignment */
+  display: flex;
 }
 
 .supplies-form, .supplies-view {
-    flex: 1; /* Distribute available space evenly between the two components */
-    padding: 10px; /* Add spacing if necessary */
+  flex: 1;
+  padding: 10px;
 }
 
   
-  .table {
-    margin-top: 10px;
-    border-collapse: collapse;
-    margin: 20px; /* Center the table horizontally */
-    background-color: #f2f2f2;
-    border-radius: 20px; /* Add border-radius for the entire table */
-    overflow: hidden; /* Add overflow: hidden to contain the rounded corners */
-    width: calc(100% - 2em); /* Adjust the width to account for scrollbar */
-  }
+.table {
+  margin-top: 10px;
+  border-collapse: collapse;
+  margin: 20px; 
+  background-color: #f2f2f2;
+  border-radius: 20px; 
+  overflow: hidden; 
+  width: calc(100% - 2em); 
+}
   
-  #header-supplies {
-    text-align: center; /* Center the header text */
-  }
+#header-supplies {
+  text-align: center; 
+}
   
-  .table th,
-  .table td {
-    padding: 10px; /* Set the same padding for both th and td */
-  }
+.table th,
+.table td {
+  padding: 10px;
+}
   
-  .table tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
+.table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
   
-  .table tr:hover {
-    background-color: #ddd;
-  }
+.table tr:hover {
+  background-color: #ddd;
+}
   
-  tbody {
-    display: table-row-group; /* Reset display property */
-    margin: 5px;
-  }
+tbody {
+  display: table-row-group;
+  margin: 5px;
+}
   
-  thead {
-    display: table-row-group;
-  }
+thead {
+  display: table-row-group;
+}
   
-  .supplies-table-content {
-    margin-right: 700px;
-  }
+.supplies-table-content {
+  margin-right: 700px;
+}
+
+.supplies-table-container {
+  margin-top: -5px;
+  width: 250%;
+  max-height: 400px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
   
-  /* Add a fixed height and enable overflow for the table container */
-  .supplies-table-container {
-    margin-top: -5px;
-    width: 250%;
-    max-height: 400px; /* Adjust the height as needed */
-    overflow: scroll;
-    overflow-x: hidden;
-  }
-  
-  #searchbar-supplies{
-    width: 95%;
-    background-color: #f3f3f3;
-  }
+#searchbar-supplies{
+  width: 95%;
+  background-color: #f3f3f3;
+}

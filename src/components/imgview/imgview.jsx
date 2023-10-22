@@ -6,10 +6,9 @@ const ImgView = (props) => {
     const alt = props.alt
     const id = props.id
 
-return(
-   
+    return(
         <img src={src} alt={alt} id={id}/>
-)
+    )
 }
 
 export default ImgView

@@ -9,8 +9,6 @@ const InputField = (props) => {
      id='login-input'
      value = {value}
      onChange={onChange}/>
- 
-   
 };
   
   export default InputField;

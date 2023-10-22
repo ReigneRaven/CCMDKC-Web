@@ -1,96 +1,95 @@
 .modalBackground {
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 0;
-    left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
 }
 
 .modalContainer {
-    width: 400px;
-    height: 300px;
-    border-radius: 12px;
-    background-color: #e6eef1;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    display: flex;
-    flex-direction: column;
-    padding: 25px;
+  width: 400px;
+  height: 300px;
+  border-radius: 12px;
+  background-color: #e6eef1;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
 }
 
 .titleCloseBtn {
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .titleCloseBtn button {
-    margin-top: 10px;
-    background-color: #3398cc;
-    width: 40px;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
+  margin-top: 10px;
+  background-color: #3398cc;
+  width: 40px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 .modalContainer .title {
-    text-align: center;
-    margin-top: 10px;
+  text-align: center;
+  margin-top: 10px;
 }
 
 .modalContainer body {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.7rem;
-    text-align: center;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.7rem;
+  text-align: center;
 }
 
 .modalContainer .footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .modalContainer .footer button {
-    width: 150px;
-    height: 45px;
+  width: 150px;
+  height: 45px;
+  margin: 10px;
+  border: none;
+  background-color: #3398cc;
+  color: white;
+  border-radius: 8px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .modalContainer {
+    width: 70%;
+  }
+  
+  .modalContainer .title {
+    margin-top: 10px;
+    margin-bottom: -5px;
+    font-size: 12px;
+  }
+  
+  .modalContainer .body {
+    font-size: 12px;
+  }
+  
+  .modalContainer .footer button {
+    width: 100px;
+    height: 25px;
     margin: 10px;
     border: none;
     background-color: #3398cc;
     color: white;
     border-radius: 8px;
-    font-size: 20px;
-    cursor: pointer;
-}
-
-@media (max-width: 768px) {
-    .modalContainer {
-      width: 70%;
-    }
-  
-    .modalContainer .title {
-      margin-top: 10px;
-      margin-bottom: -5px;
-      font-size: 12px;
-    }
-  
-    .modalContainer .body {
-      font-size: 12px;
-    }
-  
-    .modalContainer .footer button {
-      width: 100px;
-      height: 25px;
-      margin: 10px;
-      border: none;
-      background-color: #3398cc;
-      color: white;
-      border-radius: 8px;
-      font-size: 12px;
-    }
-  
+    font-size: 12px;
   }
+}
