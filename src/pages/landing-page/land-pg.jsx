@@ -96,7 +96,7 @@ axios
                   placeholder=" Email"
                   className="user-input"
                 />
-                <div className="password-input">
+                <div className="password-login">
                   <div className="input-container">
                     <input
                       type={showPassword ? 'text' : 'password'}
@@ -106,7 +106,7 @@ axios
                       value={password}
                       onChange={handlePasswordChange}
                     />
-                    <div className="toggle-eye" onClick={togglePasswordVisibility}>
+                    <div className="toggle-eye-login" onClick={togglePasswordVisibility}>
                       {showPassword ? <RiEyeFill /> : <AiFillEyeInvisible />}
                     </div>
                   </div>

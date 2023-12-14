@@ -22,7 +22,8 @@
     "react-icons": "^4.11.0",
     "react-router-dom": "^6.15.0",
     "react-time-picker": "^6.5.1",
-    "react-timezone-select": "^2.1.2"
+    "react-timezone-select": "^2.1.2",
+    "socket.io-client": "^4.7.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
