@@ -36,12 +36,10 @@ export default function Register() {
   const [city, setCity] = useState('');
   const [prov, setProv] = useState('');
 
-  // houseNum,street,brgy,city,prov,
+  
   const [email, setEmail] = useState('');
   const [UserName, setUserName] = useState('');
 
-
-  const navigate = useNavigate();
 
   const handleBirthdayChange = (date) => {
     setBirthday(date);

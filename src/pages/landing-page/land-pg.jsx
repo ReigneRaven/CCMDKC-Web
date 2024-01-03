@@ -7,7 +7,7 @@ import Button from '../../components/buttons/button';
 import DiaLogo from '../../components/logo/logo';
 import ClientLogo from '../../assets/ccmdkc-logo.png';
 import ClientBuilding from '../../assets/ccmdkc-bldg.png';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { RiEyeFill } from 'react-icons/ri';
 import { AiFillEyeInvisible } from 'react-icons/ai';
 import axios from 'axios';
@@ -15,7 +15,7 @@ import axios from 'axios';
 export default function Landing() {
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
+  const [UserName, setUserName] = useState('');
  
 
   const togglePasswordVisibility = () => {
@@ -31,33 +31,25 @@ export default function Landing() {
 
     // User login request
   axios
-  .post('http://localhost:5000/api/user/login', { email, password })
+  .post('http://localhost:5000/api/user/login', { UserName, password })
   .then((userResponse) => {
     console.log('User Response: ', userResponse);
-    const { token, userId, isUser, name } = userResponse.data;
+    const { token , userId} = userResponse.data;
 
-    // Store user token in localStorage
-    if (userId) {
-      localStorage.setItem('userToken', token);
-      localStorage.setItem('userId', userId); // Store user ID in localStorage
-      localStorage.setItem('isUser', isUser); // Store user role in localStorage
-      localStorage.setItem('userName', name);
-      
-      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      localStorage.setItem('userToken', token)
+      localStorage.setItem('userId', userId)
 
       // Redirect to user page with the user ID parameter
       window.location.href = `/patient/${userId}`;
-  } else {
-      console.error('User ID not found in the response');
-  }
-})
+  })
+
 .catch((userError) => {
   console.error('User Login Error: ', userError);
-});
+})
 
 // Admin login request
 axios
-  .post('http://localhost:5000/api/admin/login', { email, password })
+  .post('http://localhost:5000/api/admin/login', { UserName, password })
   .then((adminResponse) => {
     console.log('Admin Response: ', adminResponse);
     const { token } = adminResponse.data;
@@ -71,8 +63,7 @@ axios
   .catch((adminError) => {
     console.error('Admin Login Error: ', adminError);
   });
-};
-
+  }
 
   return (
     <>
@@ -91,9 +82,9 @@ axios
               <Head2 text="Sign in"></Head2>
               <div className="login-input">
                 <InputField
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder=" Email"
+                  value={UserName}
+                  onChange={(e) => setUserName(e.target.value)}
+                  placeholder=" Username"
                   className="user-input"
                 />
                 <div className="password-login">
@@ -130,5 +121,4 @@ axios
         </div>
       </main>
     </>
-  );
-}
+  )}
