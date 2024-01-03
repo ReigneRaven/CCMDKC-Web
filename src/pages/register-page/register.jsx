@@ -22,12 +22,24 @@ export default function Register() {
 
   const [openModal, setOpenModal] = useState(false);
 
+  const [LastName, setLastName] = useState('');
+  const [FirstName, setFirstName] = useState('');
+  const [MiddleName, setMiddleName] = useState('');
+
   const [birthday, setBirthday] = useState(new Date());
   const [sex, setSex] = useState('');
-  const [address, setAddress] = useState('');
   const [contactNum, setContactNum] = useState('');
+
+  const [houseNum, sethouseNum] = useState('');
+  const [street, setStreet] = useState('');
+  const [brgy, setBrgy] = useState('');
+  const [city, setCity] = useState('');
+  const [prov, setProv] = useState('');
+
+  // houseNum,street,brgy,city,prov,
   const [email, setEmail] = useState('');
-  const [name, setName] = useState('');
+  const [UserName, setUserName] = useState('');
+
 
   const navigate = useNavigate();
 
@@ -67,10 +79,13 @@ export default function Register() {
     } else {
       axios
         .post('http://localhost:5000/api/user', {
-          name,
+          FirstName,
+          MiddleName,
+          LastName,
           birthday,
+          houseNum,street,brgy,city,prov,
           sex,
-          address,
+          UserName,
           contactNum,
           email,
           password,
@@ -121,8 +136,8 @@ export default function Register() {
                     id="firstName"
                     placeholder=" First Name"
                     className="name-input"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    value={FirstName}
+                    onChange={(e) => setFirstName(e.target.value)}
                     required
                   />
                 </div>
@@ -134,8 +149,8 @@ export default function Register() {
                     id="MiddleName"
                     placeholder=" Middle Name"
                     className="name-input"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    value={MiddleName}
+                    onChange={(e) => setMiddleName(e.target.value)}
                     required
                   />
                 </div>
@@ -147,8 +162,8 @@ export default function Register() {
                     id="lastName"
                     placeholder=" Last Name"
                     className="name-input"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    value={LastName}
+                    onChange={(e) => setLastName(e.target.value)}
                     required
                   />
                 </div>
@@ -193,6 +208,7 @@ export default function Register() {
                   />
                 </div>
               </div>
+{/*---------------------- ADDRESS INPUT FIELDS ----------------------*/}
               <div className="address-container">
                 <div className="form-group">
                   <label htmlFor="house" className="user-input-label house-input-label">
@@ -202,8 +218,8 @@ export default function Register() {
                     id="house"
                     placeholder=" House no."
                     className="user-input house-input"
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)}
+                    value={houseNum}
+                    onChange={(e) => sethouseNum(e.target.value)}
                     required
                   />
                 </div>
@@ -215,8 +231,8 @@ export default function Register() {
                     id="street"
                     placeholder=" Street"
                     className="user-input"
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)}
+                    value={street}
+                    onChange={(e) => setStreet(e.target.value)}
                     required
                   />
                 </div>
@@ -228,34 +244,34 @@ export default function Register() {
                     id="barangay"
                     placeholder=" Barangay"
                     className="user-input"
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)}
+                    value={brgy}
+                    onChange={(e) => setBrgy(e.target.value)}
                     required
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="municipality" className="user-input-label">
-                    Municipality<span className="asterisk">*</span>
+                  <label htmlFor="municipality-city" className="user-input-label">
+                   City/Municipality<span className="asterisk">*</span>
                   </label>
                   <InputField
-                    id="municipality"
-                    placeholder=" Municipality"
+                    id="municipality-city"
+                    placeholder=" City/Municipality"
                     className="user-input"
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)}
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
                     required
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="province-city" className="user-input-label">
-                    Province/City<span className="asterisk">*</span>
+                  <label htmlFor="province" className="user-input-label">
+                    Province<span className="asterisk">*</span>
                   </label>
                   <InputField
-                    id="province-city"
-                    placeholder=" Province/City"
+                    id="province"
+                    placeholder=" Province"
                     className="user-input"
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)}
+                    value={prov}
+                    onChange={(e) => setProv(e.target.value)}
                     required
                   />
                 </div>
@@ -283,8 +299,8 @@ export default function Register() {
                     id="username"
                     placeholder=" Username"
                     className="user-input"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    value={UserName}
+                    onChange={(e) => setUserName(e.target.value)}
                     required
                   />
                 </div>
