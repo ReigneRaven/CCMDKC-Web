@@ -150,12 +150,12 @@ input {
 
 #pass {
   width: 424px;
-  margin-left: -2px;
+  margin-left: 8px;
 }
 
 #confirmpass {
   width: 424px;
-  margin-left: 3px;
+  margin-left: 5px;
 }
 
 .asterisk {
@@ -218,7 +218,7 @@ input {
 .toggle-eye {
   position: absolute;
   right: 490px;
-  top: 706px;
+  top: 700px;
   transform: translateY(-50%);
   cursor: pointer;
   display: flex;
