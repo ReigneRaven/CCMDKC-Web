@@ -309,7 +309,7 @@ export default function Register() {
                   <label htmlFor="pass" className="password-label">
                     Password<span className="asterisk">*</span>
                   </label>
-                  <InputField
+                  <input
                     id="pass"
                     type={showPassword ? 'text' : 'password'}
                     placeholder=" Password"
@@ -326,7 +326,7 @@ export default function Register() {
                   <label htmlFor="confirmpass" className="password-label">
                     Confirm Password<span className="asterisk">*</span>
                   </label>
-                  <InputField
+                  <input
                     id="confirmpass"
                     type={showConfirmPassword ? 'text' : 'password'}
                     placeholder=" Confirm Password"
