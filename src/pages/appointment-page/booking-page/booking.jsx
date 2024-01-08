@@ -5,65 +5,18 @@ import './booking.css';
 import Button from '../../../components/buttons/button';
 import DiaLogo from '../../../components/logo/logo';
 import ClientLogo from '../../../assets/ccmdkc-logo.png';
-import DatePicker from 'react-datepicker';
+import { useLocation } from 'react-router-dom';
 import 'react-datepicker/dist/react-datepicker.css';
 import axios from 'axios'; 
-import { useNavigate } from 'react-router-dom';
+
 
 
 
 export default function Booking() {
-    const [appointmentDate, setAppointmentDate] = useState(new Date());
-    const [appointmentTime, setAppointmentTime] = useState('');
-    const [name, setName] = useState('');
-    const [appointments, setAppointments] = useState('')
- 
-    const handleAppointmentDateChange = (appointmentDate) => {
-        setAppointmentDate(appointmentDate);
-    };
-
-    const handleNameChange = (e) => {
-        setName(e.target.value);
-    };
-
-    const handleAppointmentTimeChange = (e) => {
-        setAppointmentTime(e.target.value);
-    };
-
-    const userId = localStorage.getItem('userId');
-    const navigate = useNavigate();
-
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        axios.post('http://localhost:5000/api/appointments', {
-            name,
-            appointmentDate: appointmentDate.toISOString(),
-            appointmentTime,
-            userId: userId,
-        })
-        .then(result => {
-            console.log(result);
-            axios.get(`http://localhost:5000/api/appointments/user/${userId}`)
-                .then((response) => {
-                    const formattedAppointments = response.data.map(appointment => {
-                        const formattedDate = new Date(appointment.appointmentDate).toLocaleDateString('en-US');
-                        return {
-                            ...appointment,
-                            appointmentDate: formattedDate
-                        };
-                    });
-                    setAppointments(formattedAppointments);
-                    navigate(`/patient/${userId}`);
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
-        })
-        .catch(err => console.log(err));
-    };
+    const location = useLocation();
+    const { state } = location;
     
-
+    const { service, UserName, appointmentDate, appointmentTime } = state;
     return (
         <>
             <main>
@@ -71,34 +24,14 @@ export default function Booking() {
                     <div id='booking-logo'><DiaLogo src={ClientLogo} /></div>
 
                     <div id='booking-form'>
-                        <form onSubmit={handleSubmit}>
-                            <Head2 text="Book an Appointment"></Head2>
-                            <h3>Please enter the details below</h3>
-                            <div className="booking-input">
-                                <input 
-                                    placeholder="Name" 
-                                    className="custom-booking" 
-                                    value={name}
-                                    onChange={handleNameChange}
-                                    required
-                                />
-                                <DatePicker
-                                    placeholderText="Appointment Date"
-                                    className="custom-booking custom-datepicker"
-                                    selected={appointmentDate}
-                                    value={appointmentDate}
-                                    onChange={handleAppointmentDateChange}
-                                />
-                                <input
-                                    type="time"
-                                    placeholder="Timeslot"
-                                    className="custom-booking"
-                                    value={appointmentTime}
-                                    onChange={handleAppointmentTimeChange}
-                                />
-                            </div>
-                            <Button label="Confirm" type="submit" />
-                        </form>
+                      <Head2 text="Appointment Confirmation"></Head2>
+
+                      <p>Service: {service}</p>
+                      <p>User Name: {UserName}</p>
+                      <p>Appointment Date: {appointmentDate}</p>
+                      <p>Appointment Time: {appointmentTime}</p>
+                    
+                    
                     </div>
                 </div>
             </main>

@@ -29,7 +29,7 @@ function App() {
           {/* PATIENT SIDE */}
           <Route path='/patient/:id' element={<Patient/>}/>
           <Route path='/appointment/:id' element={<Appointment/>} />
-          <Route path='/booking/:id' element={<Booking/>} />
+          <Route path='/confirmation/:id' element={<Booking/>} />
           <Route path='/healthrecord/:id' element={<MedicalRecord/>} />
           <Route path='/announcements/:id' element={<AnnouncementsPtn/>}/>
           <Route path='/patient/changepassword/:id' element={<ChangePassword/>}/>

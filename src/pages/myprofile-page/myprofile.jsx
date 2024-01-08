@@ -80,9 +80,9 @@ export default function MyProfile() {
   return (
     <>
       <div>
-        <PtnHeader name={user.name} />
+        <PtnHeader/>
         <div className="profile-container">
-          <PtnSidebar id={id} />
+          <PtnSidebar/>
 
           <div className="patient-info">
             <h1 id="details-h1">Patient Details</h1>
