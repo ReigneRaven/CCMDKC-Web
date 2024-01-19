@@ -1,7 +1,9 @@
 .supplies-container {
   background-color: white;
-  width: 89vw;
-  border-radius: 20px;
+   width: 85vw;
+   height: 89vh;
+   border-radius: 20px;
+   margin-left: 20px;
 }
   
 .create-stocks {

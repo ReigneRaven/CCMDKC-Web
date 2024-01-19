@@ -1,8 +1,15 @@
-.medicalrecord-table-content {
+/* .medicalrecord-table-content {
     display: flex;
     justify-content: center;
 }
 
 #header-medicalrecord {
     text-align: center;
+} */
+
+.medicalrecord-container{
+    width: 85vw;
+    height: 89vh;
+    border-radius: 20px;
+    margin-left: 20px;
 }
