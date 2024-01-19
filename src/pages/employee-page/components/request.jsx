@@ -16,7 +16,7 @@ export default function Request() {
             try {
                 const response = await axios.get('http://localhost:5000/api/appointments');
                 const formattedAppointments = response.data.map(appointment => {
-                    const formattedDate = new Date(appointment.appointmentDate).toLocaleDateString('en-US');
+                    const formattedDate = new Date(appointment.appointmentDate).toISOString().split('T')[0];
                     
                     return {
                         ...appointment,
@@ -27,15 +27,14 @@ export default function Request() {
                 setAppointments(formattedAppointments);
 
                 localStorage.setItem('formattedAppointments', JSON.stringify(formattedAppointments));
-                } catch (error) {
+            } catch (error) {
                 console.error('Error fetching data: ', error);
-             }
-        };fetchAppointments();
+            }
+        };
+        fetchAppointments();
 
         socket.on('appointmentStatusChanged', (data) => {
-
             setAppointments((prevAppointments) =>
-
                 prevAppointments.map((appointment) =>
                     appointment._id === data.appointmentId
                         ? { ...appointment, status: data.status }
@@ -52,16 +51,15 @@ export default function Request() {
     const handleAcceptAppointment = (appointmentId) => {
         axios.put(`http://localhost:5000/api/appointments/${appointmentId}/status`,
             { status: 'Accepted' })
-            
             .then(response => {
-                const updatedAppoinment = response.data;
-                updatedAppoinment.processed = true;
+                const updatedAppointment = response.data;
+                updatedAppointment.processed = true;
 
                 setAppointments(prevAppointments => 
                     prevAppointments.map(appointment =>
-                   appointment._id === updatedAppoinment._id ? updatedAppoinment : appointment 
-                   ))
-                   socket.emit('appointmentStatusChanged', {appointmentId, status: 'Accepted'});               
+                        appointment._id === updatedAppointment._id ? updatedAppointment : appointment 
+                    ));
+                socket.emit('appointmentStatusChanged', {appointmentId, status: 'Accepted'});               
             })
             .catch(error => {
                 console.error('Error accepting appointment', error);
@@ -71,22 +69,20 @@ export default function Request() {
     const handleDenyAppointment = (appointmentId) => {
         axios.put(`http://localhost:5000/api/appointments/${appointmentId}/status`,
             { status: 'Denied' })
-
             .then(response => {
                 const deniedAppointment = response.data;
                 deniedAppointment.processed = true;
 
-                setAppointments(prevAppointments => prevAppointments.map(appointment => 
-                appointment._id === deniedAppointment._id ? deniedAppointment : appointment
-                ))
+                setAppointments(prevAppointments => 
+                    prevAppointments.map(appointment => 
+                        appointment._id === deniedAppointment._id ? deniedAppointment : appointment
+                    ));
                 socket.emit('appointmentStatusChanged', { appointmentId, status: 'Denied' });
             })
             .catch(error => {
                 console.error('Error denying appointment', error);
             });
     };
-
-
 
     return (
         <>
@@ -97,7 +93,9 @@ export default function Request() {
                     <table className="appointment-table">
                         <thead>
                             <tr>
-                                <th>Name</th>
+                                {/* <th>Name</th> */}
+                                <th>Username</th>
+                                <th>Service</th>
                                 <th>Date</th>
                                 <th>Time</th>
                                 <th>Status</th>
@@ -108,10 +106,12 @@ export default function Request() {
                                 <tr
                                     key={appointment._id}
                                     className={
-                                        appointment.status === 'Accepted'? 'accepted-row': appointment.status === 'Denied'? 'denied-row': ''}>
+                                        appointment.status === 'Accepted'? 'accepted-row': appointment.status === 'Denied'? 'denied-row': ''
+                                    }>
                                     
-                                    <td>{appointment.name}</td>
-                                    <td>{appointment.appointmentDate}</td>
+                                    <td>{appointment.UserName}</td>
+                                    <td>{appointment.service}</td>
+                                    <td>{new Date(appointment.appointmentDate).toLocaleDateString('en-US')}</td>
                                     <td>{appointment.appointmentTime}</td>
                                     <td>{appointment.status}</td>
                                     <td>
@@ -141,4 +141,3 @@ export default function Request() {
         </>
     );
 }
-    

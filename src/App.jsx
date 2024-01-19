@@ -15,6 +15,7 @@ import ForgotPassword from './pages/forgotpass-page/forgotpass'
 import Supplies from './pages/supplies-page/supplies'
 import PatientRecord from './pages/records-page/patientrecord-page/patientrecord'
 import MedicalRecord from './pages/medicalhistory-page/healthhistory'
+import PharmacyPtn from './pages/pharmacy-page-ptn/pharmacyptn'
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
           <Route path='/confirmation/:id' element={<Booking/>} />
           <Route path='/healthrecord/:id' element={<MedicalRecord/>} />
           <Route path='/announcements/:id' element={<AnnouncementsPtn/>}/>
+          <Route path='/pharmacy/:id' element={<PharmacyPtn/>}/>
           <Route path='/patient/changepassword/:id' element={<ChangePassword/>}/>
           <Route path='/patient/myprofile/:id' exact element={<MyProfile />} />
 

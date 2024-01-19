@@ -4,57 +4,50 @@ import socketIOClient from 'socket.io-client';
 
 const socket = socketIOClient('http://localhost:5000');
 
-export default function UpcomingPtn() {
+const UpcomingPtn = () => {
   const [appointments, setAppointments] = useState([]);
-  const [loggedInUser, setLoggedInUser] = useState([]);
+  const [loggedInUser, setLoggedInUser] = useState(null);
 
   useEffect(() => {
-    const userId = localStorage.getItem('userId'); // Retrieve user ID from localStorage
-    
+    const userId = localStorage.getItem('userId');
+
     axios.get(`http://localhost:5000/api/user/${userId}`)
-    .then(response => {
-      setLoggedInUser(response.data);
-    })
-    .catch(error => {
-      console.error('Error fetching user:', error);
-    });
+      .then(response => setLoggedInUser(response.data))
+      .catch(error => console.error('Error fetching user:', error));
 
     axios.get(`http://localhost:5000/api/appointments/user/${userId}`)
-    .then((response) => {
-      const formattedAppointments = response.data.map(appointment => {
-        const formattedDate = new Date(appointment.appointmentDate).toLocaleDateString('en-US');
-        return {
+      .then(response => {
+        const formattedAppointments = response.data.map(appointment => ({
           ...appointment,
-          appointmentDate: formattedDate
-        };
-      });
-      setAppointments(formattedAppointments);
-    })
-    .catch((error) => {
-      console.error('Error fetching appointments:', error);
-    });
+          appointmentDate: new Date(appointment.appointmentDate).toLocaleDateString('en-US'),
+        }));
+        setAppointments(formattedAppointments);
+      })
+      .catch(error => console.error('Error fetching appointments:', error));
 
-    socket.on('appointmentStatusChanged', (data) => {
-      setAppointments((prevAppointments) =>
-        prevAppointments.map((appointment) =>
+    const handleAppointmentStatusChange = (data) => {
+      setAppointments(prevAppointments =>
+        prevAppointments.map(appointment =>
           appointment._id === data.appointmentId
             ? { ...appointment, status: data.status }
             : appointment
         )
       );
-    });
+    };
+
+    socket.on('appointmentStatusChanged', handleAppointmentStatusChange);
 
     return () => {
+      socket.off('appointmentStatusChanged', handleAppointmentStatusChange);
       socket.disconnect();
     };
-}, []); 
+  }, []); 
 
+  const filteredAppointments = appointments.filter(appointment =>
+    appointment.name === loggedInUser?.name
+  );
 
-const filteredAppointments = appointments.filter(appointment => 
-  appointment.name === loggedInUser?.name)
-
-return (
-  <>
+  return (
     <div className="upcoming-wrapper">
       <p>Upcoming Appointments</p>
 
@@ -62,16 +55,23 @@ return (
         <table className="table-ptn">
           <thead>
             <tr>
-              <th>Name</th>
+              <th>Username</th>
+              <th>Service</th>
               <th>Date</th>
               <th>Time</th>
               <th>Status</th>
             </tr>
           </thead>
           <tbody>
-            {filteredAppointments.map((appointment) => (
-              <tr key={appointment._id}>
-                <td>{appointment.name}</td>
+            {filteredAppointments.map(appointment => (
+              
+              <tr
+                key={appointment._id}
+                className={appointment.status === 'Accepted' ? 'accepted'
+                 : appointment.status === 'Denied' ? 'denied' : ''}
+              >
+                <td>{appointment.UserName}</td>
+                <td>{appointment.service}</td>
                 <td>{appointment.appointmentDate}</td>
                 <td>{appointment.appointmentTime}</td>
                 <td>{appointment.status}</td>
@@ -81,6 +81,7 @@ return (
         </table>
       </div>
     </div>
-  </>
-);
-}
+  );
+};
+
+export default UpcomingPtn;

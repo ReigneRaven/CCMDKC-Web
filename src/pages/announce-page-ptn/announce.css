@@ -1,12 +1,9 @@
 .announcement-container-ptn{
    background-color: white;
-   width: 89vw;
+   width: 85vw;
    height: 89vh;
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
    border-radius: 20px;
+   margin-left: 20px;
 }
 #announce-img-ptn{
    height: 60vh;

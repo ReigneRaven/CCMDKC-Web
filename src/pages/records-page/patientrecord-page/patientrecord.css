@@ -1,8 +1,9 @@
 .patientrecord-container {
   background-color: white;
-  width: 89vw;
+  width: 85vw;
   height: 89vh;
   border-radius: 20px;
+  margin-left: 20px;
 }
 
 .create-patientrecord {

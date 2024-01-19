@@ -185,9 +185,10 @@ h3 span {
 
 .dash-patient{
     background-color: white;
-    width: 89vw;
+    width: 85vw;
     height: 89vh;
     border-radius: 20px;
+    margin-left: 20px;
 }
 
 .dash-patient p{
@@ -209,3 +210,40 @@ h3 span {
     background-color: white;
 }
 
+/* Additional styles for hiding the sidebar initially */
+.sidenav.hidden {
+    visibility: hidden;
+    position: absolute;
+  }
+  
+  /* Ensure sidebar-icon is visible even when the sidebar is hidden */
+  .sidenav.hidden .sidebar-icon {
+    visibility: visible;
+    margin-top: 50px;
+  }
+
+  /* Add these styles for the hamburger button */
+  .hamburger-button {
+    display: flex;
+    justify-content: center;
+    margin: 10px 5px 0px 20px; /* Four values: top, right, bottom, left */
+    font-size: 20px;
+    padding: 5px;
+  }
+
+  .sidenav ul {
+    margin-top: 50px;
+  }
+  
+ .table-appointment tbody .accepted {
+    background-color: #baebba; 
+  }
+  
+.table-appointment tbody .denied {
+    background-color: #fcbebe;
+  }
+  .table-appointment{
+    display: flex;
+    justify-content: center;
+    
+  }

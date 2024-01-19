@@ -1,12 +1,18 @@
 .announcement-container-amn{
-   background-color: white;
+   /* background-color: white;
    width: 89vw;
    height: 89vh;
    display: flex;
    flex-direction: column;
    justify-content: center;
    align-items: center;
+   border-radius: 20px; */
+
+   background-color: white;
+   width: 85vw;
+   height: 89vh;
    border-radius: 20px;
+   margin-left: 20px;
 }
 
 #announce-img-amn{
