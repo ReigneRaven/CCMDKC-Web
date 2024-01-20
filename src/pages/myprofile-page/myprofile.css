@@ -62,7 +62,7 @@
 /* css for patient info table */
 .patient-info {
   background-color: white;
-  height: 85vh;
+  height: 84vh;
   display: flex !important;
   flex-direction: column;
   justify-content: center;
@@ -70,7 +70,9 @@
   font-size: 16px;
   padding: 20px;
   border-radius: 20px;
-  width: 86vw;
+  width: 84vw;
+  margin-top: -10px;
+  margin-right: 100px;
   gap: 1rem;
 }
 
@@ -82,7 +84,7 @@
 }
 
 .patient-details-section {
-  margin-left: 70px;
+  margin-left: -10px;
   display: flex;
   flex-direction: column;
   background-color: var(--bs-light);
