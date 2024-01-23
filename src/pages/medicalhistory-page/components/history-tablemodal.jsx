@@ -23,7 +23,7 @@ export default function HistoryModalPtn({ patientId, onClose }) {
   return (
     <div className="medicalrecord-table-content">
       <div className="medical-table-container">
-        <table className="table">
+        <table className="modal-table">
           <thead id="header-medicalrecord">
             <tr>
               <th>Allergies</th>

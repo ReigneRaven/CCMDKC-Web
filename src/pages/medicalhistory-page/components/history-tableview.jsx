@@ -7,14 +7,38 @@ export default function HistoryTablePtn() {
   const [data, setData] = useState([]);
   const [showMedicalHistory, setShowMedicalHistory] = useState(false);
   const [selectedPatientId, setSelectedPatientId] = useState(null);
-  const [searchQuery, setSearchQuery] = useState("");
+  // const [searchQuery, setSearchQuery] = useState("");
   const { medicalId } = useParams();
+  const [userId, setUserId] = useState(null);
+  const [UserName, setUserName] = useState("")
+
+
+  const filteredName = data.filter((record) => {
+    return record.patientName === UserName;
+  });
+
+  console.log('filteredName', filteredName)
+  useEffect(() => {
+    const storedUserId = localStorage.getItem("userId");
+    setUserId(storedUserId);
+
+    if (storedUserId) {
+      axios
+        .get(`http://localhost:5000/api/user/${storedUserId}`)
+        .then((response) => {
+          console.log('User Details', response.data);
+          setUserName(response.data.UserName)
+        })
+        .catch((error) => console.error(error));
+    }
+  }, []);
 
   useEffect(() => {
     axios
       .get("http://localhost:5000/api/records")
       .then((response) => {
         setData(response.data);
+        console.log('Fetched Medical Records:', response.data);
       })
       .catch((error) => {
         console.error("Error fetching patient record data:", error);
@@ -37,15 +61,15 @@ export default function HistoryTablePtn() {
       });
   };
 
-  const filteredData = data.filter((record) =>
-    record.patientName.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+//   const fullName = `${response.data.FirstName} ${response.data.MiddleName} ${response.data.LastName}`;
+// setUserName(fullName);
+
 
   return (
     <>
       <div className="table-history-content">
         <div className="table-history-container">
-          <table className="table">
+          <table className="table-ptn">
             <thead id="header-patientrecord">
               {/* <input
                 id="searchbar-record"
@@ -55,7 +79,6 @@ export default function HistoryTablePtn() {
                 onChange={(e) => setSearchQuery(e.target.value)}
               /> */}
               <tr>
-                <th>Record ID</th>
                 <th>Patient Name</th>
                 <th>Weight</th>
                 <th>Height</th>
@@ -64,10 +87,9 @@ export default function HistoryTablePtn() {
                 <th>More Details</th>
               </tr>
             </thead>
-            <tbody>
-              {filteredData.map((record) => (
+            <tbody id="tbodyptn">
+              {filteredName.map((record) => (
                 <tr key={record._id}>
-                  <td>{record._id.toString()}</td>
                   <td>{record.patientName}</td>
                   <td>{record.weight}</td>
                   <td>{record.height}</td>

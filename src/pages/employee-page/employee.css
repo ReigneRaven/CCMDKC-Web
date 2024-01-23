@@ -286,6 +286,7 @@ main{
 }
 
 .buttons-req{
+    margin-top: -20px;
     display: flex;
     flex-direction: row;
     gap: 10px;
@@ -308,14 +309,25 @@ main{
     background-color: #fcbebe; 
 }
 
-/* .request-table-appointment{
-    border-collapse: collapse;
-    
-} */
+.request-table-appointment table,
+.request-table-appointment tbody,
+.request-table-appointment tr,
+.request-table-appointment td,
+.request-table-appointment th {
+    border: 0 !important;
+    border-collapse: collapse !important;
+    border-spacing: 0 !important;
+}
+
+.request-table-appointment {
+    width: 90%;
+    margin-left: 60px;
+}
 
 .appointment-table {
     width: 100%;
 }
+
 
 /* ````````````````````````````````````````TABLE`````````````````````````````````````````````````````````` */
 

@@ -235,11 +235,11 @@ h3 span {
     margin-top: 50px;
   }
   
- .table-appointment tbody .accepted {
+ .table-appointment tbody  .accepted {
     background-color: #baebba; 
   }
   
-.table-appointment tbody .denied {
+.table-appointment tbody  .denied {
     background-color: #fcbebe;
   }
   .table-appointment{
@@ -247,3 +247,4 @@ h3 span {
     justify-content: center;
     
   }
+ 

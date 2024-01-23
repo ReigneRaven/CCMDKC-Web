@@ -58,7 +58,7 @@ export default function MedicalRecordForm() {
             value={temperature}
             onChange={(e) => setTemperature(e.target.value)}
             placeholder=" Temperature"
-            className="input-medicalrecord custom-medical"
+            className="input-medicalrecord custom-medical-temp"
           />
         </div>
         <input
@@ -82,7 +82,7 @@ export default function MedicalRecordForm() {
           placeholder=" Surgeries"
           className="input-medicalrecord"
         />
-        <Button text={'Add'} type="submit" onClick={handleMedicalRecordAdd}></Button>
+        <Button text={'Add'} type="submit" id="medform-btn" onClick={handleMedicalRecordAdd}></Button>
       </form>
     </>
   );

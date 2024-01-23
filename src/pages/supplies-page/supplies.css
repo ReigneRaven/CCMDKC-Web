@@ -1,3 +1,7 @@
+*{
+  font-family: 'Poppins', sans-serif;
+}
+
 .supplies-container {
   background-color: white;
    width: 86vw;
@@ -7,7 +11,8 @@
 }
   
 .create-stocks {
-  margin-top: -10px;
+  height: 100%;
+  margin-top: 98px;
   margin-left: 100px;
   margin-bottom: 10px;
   display: flex;
@@ -17,9 +22,14 @@
   border-radius: 20px;
   gap: 1.5rem;
 }
-  
+
+#img-upload{
+  border: none;
+  border-radius: 0;
+}
 .input-supplies {
   width: 20vw;
+  border-radius: 10px;
 }
 
 .supplies-row {
@@ -45,15 +55,16 @@
 #header-supplies {
   text-align: center; 
 }
+
+#inventory-header {
+  font-size: 25px;
+}
   
 .table th,
 .table td {
   padding: 10px;
 }
   
-.table tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
   
 .table tr:hover {
   background-color: #ddd;
@@ -72,15 +83,39 @@ thead {
   margin-right: 700px;
 }
 
+.table th:nth-child(1),
+.table td:nth-child(1),
+.table th:nth-child(2),
+.table td:nth-child(2) {
+  padding: 2px;
+}
+
+.table th:nth-child(3),
+.table td:nth-child(3), /* Availability column */
+.table th:nth-child(4),
+.table td:nth-child(4), /* Price column */
+.table th:nth-child(5),
+.table td:nth-child(5) { /* Image column */
+  text-align: center; /* Center the content */
+  padding: 40px; /* Adjust padding as needed */
+}
+
 .supplies-table-container {
-  margin-top: -5px;
-  width: 250%;
-  max-height: 400px;
+  margin-top: 42px;
+  margin-left: 20px;
+  /* width: 250%; */
+  width: 125%;
+  max-height: 600px;
   overflow: scroll;
   overflow-x: hidden;
 }
+
   
 #searchbar-supplies{
-  width: 95%;
+  display: flex;
+  align-items: center;
+  margin-bottom: -10px;
+  width: 600px;
   background-color: #f3f3f3;
+  z-index: 1;
 }

@@ -1,7 +1,7 @@
 .profile-container {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  /* align-items: center; */
+  /* justify-content: space-between; */
 }
 
 .patient-profile img {
@@ -61,8 +61,8 @@
 
 /* css for patient info table */
 .patient-info {
-  background-color: white;
-  height: 84vh;
+  /* background-color: white;
+  height: 89vh;
   display: flex !important;
   flex-direction: column;
   justify-content: center;
@@ -70,10 +70,20 @@
   font-size: 16px;
   padding: 20px;
   border-radius: 20px;
-  width: 84vw;
+  width: 85vw;
   margin-top: -10px;
   margin-right: 100px;
+  gap: 1rem; */
   gap: 1rem;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 85vw;
+  height: 89vh;
+  border-radius: 20px;
+  margin-left: 20px;
 }
 
 #details-h1 {

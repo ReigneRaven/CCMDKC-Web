@@ -45,15 +45,17 @@ export default function PatientRecordView() {
   );
 
   return (
+    <div className="searchbar-record-adm">
+        <input 
+          id="searchbar-record"
+          type="text"
+          placeholder=" Search Patient by Name"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
     <div className="patientrecord-table-content">
       <div className="record-table-container">
-      <input 
-            id="searchbar-record"
-            type="text"
-            placeholder=" Search Patient by Name"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}/>
-        <table className="table">
+        <table className="table-adm">
           <thead id="header-patientrecord">
             <tr>
               <th>Record ID</th>
@@ -97,6 +99,7 @@ export default function PatientRecordView() {
           </div>
         </div>
       )}
+    </div>
     </div>
   );
 }
