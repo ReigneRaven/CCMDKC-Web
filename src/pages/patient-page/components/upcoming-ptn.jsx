@@ -44,7 +44,7 @@ const UpcomingPtn = () => {
   }, []); 
 
   const filteredAppointments = appointments.filter(appointment =>
-    appointment.name === loggedInUser?.name
+    appointment.UserName === loggedInUser?.UserName
   );
 
   return (
