@@ -4,21 +4,56 @@ import { useParams } from "react-router-dom";
 
 export default function MedicalRecordModal({ patientId, onClose }) {
   const [data, setData] = useState([]);
-  const id = patientId
+  const [isEditing, setIsEditing] = useState(false);
+  const [editingRecord, setEditingRecord] = useState(null);
 
-  console.log('id', id)
+  const id = patientId;
 
   useEffect(() => {
     axios
-  .get('http://localhost:5000/api/records/get-medical-history/' + id)
+      .get("http://localhost:5000/api/records/get-medical-history/" + id)
       .then((response) => {
-        console.log(response.data)
         setData(response.data);
       })
       .catch((error) => {
         console.error("Error fetching medical record data:", error);
       });
-  }, []);
+  }, [id]);
+
+  const handleEditClick = (record) => {
+    setIsEditing(true);
+    setEditingRecord(record);
+  };
+
+  const handleSaveClick = () => {
+    const { _id, ...updatedData } = editingRecord;
+    axios
+      .put(`http://localhost:5000/api/records/medical-history/${_id}`, updatedData)
+      .then((result) => {
+        setData((prevData) => {
+          const updatedData = prevData.map((record) =>
+            record._id === _id ? { ...record, ...editingRecord } : record
+          );
+          return updatedData;
+        });
+        setIsEditing(false);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  const handleCancelClick = () => {
+    setIsEditing(false);
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setEditingRecord((prevEditingRecord) => ({
+      ...prevEditingRecord,
+      [name]: value,
+    }));
+  };
 
   return (
     <div className="medicalrecord-table-content">
@@ -31,16 +66,88 @@ export default function MedicalRecordModal({ patientId, onClose }) {
               <th>Blood Pressure</th>
               <th>Temperature</th>
               <th>Surgeries</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
             {data.map((history) => (
               <tr key={history._id}>
-                <td>{history.allergies}</td>
-                <td>{history.diagnosis}</td>
-                <td>{history.bloodPressure}</td>
-                <td>{history.temperature}</td>
-                <td>{history.surgeries}</td>
+                <td>
+                  {isEditing ? (
+                    <input
+                      type="text"
+                      name="allergies"
+                      value={editingRecord.allergies}
+                      onChange={handleInputChange}
+                    />
+                  ) : (
+                    history.allergies
+                  )}
+                </td>
+                <td>
+                  {isEditing ? (
+                    <input
+                      type="text"
+                      name="diagnosis"
+                      value={editingRecord.diagnosis}
+                      onChange={handleInputChange}
+                    />
+                  ) : (
+                    history.diagnosis
+                  )}
+                </td>
+                <td>
+                  {isEditing ? (
+                    <input
+                      type="text"
+                      name="bloodPressure"
+                      value={editingRecord.bloodPressure}
+                      onChange={handleInputChange}
+                    />
+                  ) : (
+                    history.bloodPressure
+                  )}
+                </td>
+                <td>
+                  {isEditing ? (
+                    <input
+                      type="text"
+                      name="temperature"
+                      value={editingRecord.temperature}
+                      onChange={handleInputChange}
+                    />
+                  ) : (
+                    history.temperature
+                  )}
+                </td>
+                <td>
+                  {isEditing ? (
+                    <input
+                      type="text"
+                      name="surgeries"
+                      value={editingRecord.surgeries}
+                      onChange={handleInputChange}
+                    />
+                  ) : (
+                    history.surgeries
+                  )}
+                </td>
+                <td>
+                  {isEditing ? (
+                    <>
+                      <button className="savebtn" onClick={handleSaveClick}>
+                        Save
+                      </button>
+                      <button className="cancelbtn" onClick={handleCancelClick}>
+                        Cancel
+                      </button>
+                    </>
+                  ) : (
+                    <button onClick={() => handleEditClick(history)}>
+                      Edit
+                    </button>
+                  )}
+                </td>
               </tr>
             ))}
           </tbody>
