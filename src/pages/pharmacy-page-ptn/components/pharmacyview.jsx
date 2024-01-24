@@ -3,14 +3,17 @@ import axios from "axios";
 import Head2 from "../../../components/headers/header";
 import { FaShoppingCart } from "react-icons/fa";
 import PharmacyCard from "./pharmacycard";
+import PharmModal from "../components/pharmacymodal"; // Make sure to import the correct file path
 
 export default function PharmacyView() {
   const [data, setData] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/inventory")  // Updated endpoint to fetch inventory data
+      .get("http://localhost:5000/api/inventory")
       .then((response) => {
         setData(response.data);
       })
@@ -22,6 +25,16 @@ export default function PharmacyView() {
   const filteredItems = data.filter((item) =>
     item.itemName.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  const openModal = (item) => {
+    setSelectedItem(item);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setSelectedItem(null);
+    setIsModalOpen(false);
+  };
 
   return (
     <div className="pharmacy-table-content">
@@ -38,9 +51,10 @@ export default function PharmacyView() {
       </div>
       <div className="card-container">
         {filteredItems.map((item) => (
-          <PharmacyCard key={item._id} item={item} /> 
+          <PharmacyCard key={item._id} item={item} onClick={() => openModal(item)} />
         ))}
       </div>
+      {isModalOpen && <PharmModal item={selectedItem} onClose={closeModal} />}
     </div>
   );
 }

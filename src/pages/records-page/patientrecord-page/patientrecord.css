@@ -66,6 +66,15 @@
   border-radius: 10px;
 }
 
+.savebtn {
+  margin-top: 10px;
+  margin-bottom: -20px;
+}
+
+.editButton {
+  margin-top: 3px;
+}
+
 .custom-gender{
   height: 2.8rem;
   font-size: 16px;

@@ -4,13 +4,13 @@
     align-items: center;
     height: 100vh;
   }
-  
+
   main {
     display: flex;
     flex-direction: row;
     height: 100%;
   }
-  
+
   #pharmacy-header {
     display: flex;
     align-items: center;
@@ -63,7 +63,7 @@
 .card-container {
   margin-top: -60px;
   display: grid;
-  /* flex-wrap: wrap; /* Allow cards to wrap to the next line 
+  /* flex-wrap: wrap; /* Allow cards to wrap to the next line
   justify-content: center; Center cards horizontally */
   overflow-y: auto;
   overflow-x: hidden;
@@ -75,7 +75,7 @@
 }
 
 .card {
- 
+
   width: 200px;
   margin: 50px;
   margin-bottom: -10px;
@@ -129,8 +129,8 @@
 
 .modalPharm {
   background: whitesmoke;
-  height: 50%; /* Adjust the height based on your design */
-  width: 50%;
+  height: 40%; /* Adjust the height based on your design */
+  width: 40%;
   color: black;
   position: fixed;
   top: 50%;
@@ -139,6 +139,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 20px;
 }
 
 .modalPharmImg{
@@ -148,15 +149,130 @@
   justify-content: center;
   align-items: center;
   background: white;
-  
+  border-radius: 20px;
 }
 .pharmDetailsMed{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; 
+  justify-content: flex-start;
+  margin: 10px  50px;
   width: 50%;
-  height: 100%;
-  padding: 50px;
-  margin: 50px 0px 25px 18px;
+  /* padding: 50px; */
+  margin-right: 180px;
 }
-#qty-modal{
+
+#modal-form-pharm{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 50%;
+}
+
+
+
+#close-btn-pharm{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-top: 40%;
+  cursor: pointer;
+  /* background-color: #3398CC; */
+}
+
+/* input{
+  display: flex;
+  gap: 2rem;
+  align-items: baseline;
+  background-color: white;
+  width: fit-content;
+  height:50px;
+  margin:0;
+  padding: 10px;
+} */
+
+#qty-modal-p{
   display: flex;
   align-items: center;
+  margin: 0 ;
+  font-size: large;
+}
+.qty-counter{
+  margin-left: 18px;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+#quantity-input{
+  width: 80px;
+  height: 50px;
+  border: none;
+  text-align: center;
+}
+
+#quantity-input::-webkit-inner-spin-button,
+#quantity-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#quantity-input {
+  -webkit-moz-appearance: textfield;
+}
+
+#decrement-btn{
+  width: 40px;
+  margin: 0;
+}
+#increment-btn{
+  width: 40px;
+  margin: 0;
+}
+
+.qty-group{
+ display: flex;
+ flex-direction: column;
+ gap: 1rem;
+}
+
+#buy-now-btn {
+  /* margin-left: 140px; */
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+#mode-cod {
+  margin-left: 25px;
+}
+
+#mode-modal-p{
+  display: flex;
+  align-items: center;
+  margin: 0 ;
+  font-size: large;
+}
+#radio-label{
+  font-size: medium;
+}
+.mode-group{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+#total-price-modal{
+  color: green;
+  font-size: larger;
+}
+#total-p{
+  font-size: large;
+  display: flex;
+  margin: 0;
+}
+#mode-cod{
+  height: 40px;
+  width: 30px;
 }
