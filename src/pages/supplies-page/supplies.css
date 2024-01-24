@@ -87,7 +87,7 @@ thead {
 .table td:nth-child(1),
 .table th:nth-child(2),
 .table td:nth-child(2) {
-  padding: 2px;
+  padding: 10px;
 }
 
 .table th:nth-child(3),
@@ -97,14 +97,14 @@ thead {
 .table th:nth-child(5),
 .table td:nth-child(5) { /* Image column */
   text-align: center; /* Center the content */
-  padding: 40px; /* Adjust padding as needed */
+  padding: 20px; /* Adjust padding as needed */
 }
 
 .supplies-table-container {
   margin-top: 42px;
   margin-left: 20px;
   /* width: 250%; */
-  width: 125%;
+  width: 110%;
   max-height: 600px;
   overflow: scroll;
   overflow-x: hidden;
@@ -118,4 +118,18 @@ thead {
   width: 600px;
   background-color: #f3f3f3;
   z-index: 1;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 5px; /* Adjust the gap as needed */
+}
+
+#supplies-edit-btn {
+  margin-top: 10px;
+}
+
+#supplies-delete-btn {
+  background-color: #FF0000;
+  margin-top: 10px;
 }
