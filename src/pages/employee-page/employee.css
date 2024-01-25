@@ -368,3 +368,120 @@ thead{
     justify-content: space-between;
 } */
 
+/* ````````````````````````````````````````ORDER TRACKER`````````````````````````````````````````````````````````` */
+
+.status-wrapper {
+    margin-top: -10px;
+    margin-left: 50px;
+    background:rgb(243, 243, 243);
+    width: 65.6%;
+    height: 180px;
+    padding: 20px;
+    border-radius: 20px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#order-status {
+    color: black;
+    font-weight: 600;
+    padding: 20px;
+    margin: 0;
+    margin-top: -10px;
+}
+
+.table-status-stat {
+    border-collapse: collapse;
+    width: 90%;
+    background-color: #f2f2f2;
+    /* border-radius: 20px; */
+    overflow: hidden;
+    display: table;
+    margin: 20px;
+    margin-top: -10px;
+    margin-left: -20px;
+}
+  
+.table-status-stat th,
+.table-status-stat td {
+    padding: 10px;
+}
+
+/* ````````````````````````````````````````CLOCK`````````````````````````````````````````````````````````` */
+
+.clock-wrapper-adm {
+    margin-top: -220px;
+    margin-left: 1220px;
+    background: rgb(243, 243, 243);
+    width: 21%;
+    height: 180px;
+    padding: 20px;
+    border-radius: 20px;
+    position: relative;
+  }
+  
+  .round-clock-adm {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    border:4px solid #333;
+    border-radius: 50%;
+  }
+  
+  .hand {
+    position: absolute;
+    transform-origin: 50% 100%;
+    background: #333;
+    left: 50%;
+    bottom: 50%;
+  }
+  
+  .hour-hand-adm {
+    width: 5px;
+    height: 30px;
+    transform: translateX(-50%);
+  }
+  
+  .minute-hand-adm {
+    width: 3px;
+    height: 40px;
+    transform: translateX(-50%);
+  }
+  
+  .second-hand {
+    width: 2px;
+    height: 45px;
+    background: red;
+    transform: translateX(-50%);
+  }
+  
+  .clock-center-adm {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #333;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  #clock-p-adm {
+    color: black;
+    font-weight: 600;
+    padding: 20px;
+    margin: 0;
+    margin-top: -10px;
+  }
+
+  #time-p-adm {
+    padding: 20px;
+    margin: 0;
+    margin-top: 80px;
+    margin-left: 120px;
+    font-weight: bold;
+    font-size: 18px;
+  }

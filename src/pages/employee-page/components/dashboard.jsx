@@ -2,6 +2,8 @@ import React from "react";
 import '../employee.css'
 import Calendar from "../../../components/calendar/calendar";
 import Request from "./request.jsx";
+import PurchaseStatusAdm from "./purchase-stat-adm.jsx";
+import ClockAdm from "./clock-adm.jsx";
 
 export default function Dashboard() {
     
@@ -13,6 +15,8 @@ export default function Dashboard() {
                 <Request/>
                 <Calendar/>
                 </div>
+                <PurchaseStatusAdm/>
+                <ClockAdm/>
              </div>
         </>
     )

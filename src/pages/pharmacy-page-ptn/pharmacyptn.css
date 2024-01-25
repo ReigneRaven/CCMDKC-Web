@@ -1,278 +1,285 @@
 #root {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100vh;
-  }
-
-  main {
-    display: flex;
-    flex-direction: row;
-    height: 100%;
-  }
-
-  #pharmacy-header {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start; /* Align to the left */
-    width: 100%;
-    /* margin: -20px 2px 30px 50px; */
-    margin-top: -20px;
-    margin-left: 50px;
-    margin-right: -30px;
-    font-size: 35px;
-  }
-
-  .pharmacy-container-ptn{
-    background-color: white;
-    width: 85vw;
-    height: 89vh;
-    border-radius: 20px;
-    margin-left: 20px;
- }
-
- .pharmacy-content-ptn{
-    display: flex;
-    flex-direction: row;
- }
-
- .pharmacy-page-ptn{
-    display: flex;
-    flex-direction: column;
- }
-
- .pharmacy-table-container {
   display: flex;
-  align-items: center; /* Align items vertically in the center */
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+#pharmacy-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Align to the left */
+  width: 100%;
+  /* margin: -20px 2px 30px 50px; */
+  margin-top: -20px;
+  margin-left: 50px;
+  margin-right: -30px;
+  font-size: 35px;
+}
+
+.pharmacy-container-ptn{
+  background-color: white;
+  width: 85vw;
+  height: 89vh;
+  border-radius: 20px;
+  margin-left: 20px;
+}
+
+.pharmacy-content-ptn{
+  display: flex;
+  flex-direction: row;
+}
+
+.pharmacy-page-ptn{
+  display: flex;
+  flex-direction: column;
+}
+
+.pharmacy-table-container {
+display: flex;
+align-items: center; /* Align items vertically in the center */
+justify-content: space-between;
 }
 
 #searchbar-pharmacy {
-  width: 500%; /* Set a fixed width for the search bar */
-  margin-right: 20px; /* Add some margin to separate the items */
-  margin-top: -50px;
-  background-color: #f3f3f3;
+width: 500%; /* Set a fixed width for the search bar */
+margin-right: 20px; /* Add some margin to separate the items */
+margin-top: -50px;
+background-color: #f3f3f3;
 }
 
 .cart-icon {
-  font-size: 200px; /* Adjust the font size as needed */
-  margin-right: 50px; /* Add some margin to separate the icon from other elements */
-  margin-top: -50px;
+font-size: 200px; /* Adjust the font size as needed */
+margin-right: 50px; /* Add some margin to separate the icon from other elements */
+margin-top: -50px;
 }
 
 .card-container {
-  margin-top: -60px;
-  display: grid;
-  /* flex-wrap: wrap; /* Allow cards to wrap to the next line
-  justify-content: center; Center cards horizontally */
-  overflow-y: auto;
-  overflow-x: hidden;
-  grid-template-columns: repeat(3, 1fr); /* Two columns per row */
-  /* gap: 20px; */
-  height: 70vh ;
-  place-items: center;
-  scroll-behavior: smooth;
+margin-top: -60px;
+display: grid;
+/* flex-wrap: wrap; /* Allow cards to wrap to the next line
+justify-content: center; Center cards horizontally */
+overflow-y: auto;
+overflow-x: hidden;
+grid-template-columns: repeat(3, 1fr); /* Two columns per row */
+/* gap: 20px; */
+height: 70vh ;
+place-items: center;
+scroll-behavior: smooth;
 }
 
 .card {
 
-  width: 200px;
-  margin: 50px;
-  margin-bottom: -10px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+width: 200px;
+margin: 50px;
+margin-bottom: -10px;
+border: 1px solid #ddd;
+border-radius: 10px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .card img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
+width: 100%;
+height: 150px;
+object-fit: cover;
 }
 
 .card-body {
-  padding: 10px;
+padding: 10px;
 }
 
 .card-title {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0rem 0 1.5rem 0;
-  display: flex;
+font-size: 16px;
+font-weight: bold;
+margin: 0rem 0 1.5rem 0;
+display: flex;
 }
 
 .card-text {
-  margin-top: -25px;
-  font-size: 14px;
-  display: flex;
+margin-top: -25px;
+font-size: 14px;
+display: flex;
 }
 
 .card-availability {
-  font-size: 14px;
-  display: flex;
+font-size: 14px;
+display: flex;
 }
 
 .card-price {
-  font-size: 16px;
-  color: green;
+font-size: 16px;
+color: green;
 }
 
 #add-cart{
-  margin: 0 auto;
-  font-size: 14px;
-  width: 80%;
+margin: 0 auto;
+font-size: 14px;
+width: 80%;
 }
 
 #searchbar-pharmacy{
-  border-radius: 20px;
+border-radius: 20px;
 }
 
 .modalPharm {
-  background: whitesmoke;
-  height: 40%; /* Adjust the height based on your design */
-  width: 40%;
-  color: black;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 20px;
+background: whitesmoke;
+height: 45%; /* Adjust the height based on your design */
+width: 40%;
+color: black;
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+display: flex;
+justify-content: center;
+align-items: center;
+border-radius: 20px;
 }
 
 .modalPharmImg{
-  width: 50%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: white;
-  border-radius: 20px;
+width: 50%;
+height: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+background: white;
+border-radius: 20px 0px 0px 20px;   /*top , top right, bottom right, btm L*/
 }
 .pharmDetailsMed{
-  display: flex;
-  flex-direction: column;
-  gap: 1rem; 
-  justify-content: flex-start;
-  margin: 10px  50px;
-  width: 50%;
-  /* padding: 50px; */
-  margin-right: 180px;
+display: flex;
+flex-direction: column;
+gap: 1rem; 
+justify-content: flex-start;
+margin: -5px  50px;
+width: 50%;
+/* padding: 50px; */
+margin-right: 180px;
 }
 
 #modal-form-pharm{
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  width: 50%;
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+
 }
 
 
 
 #close-btn-pharm{
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  margin-top: 40%;
-  cursor: pointer;
-  /* background-color: #3398CC; */
+width: 50px;
+height: 50px;
+border-radius: 50%;
+margin-top: 40%;
+cursor: pointer;
+/* background-color: #3398CC; */
 }
 
-/* input{
-  display: flex;
-  gap: 2rem;
-  align-items: baseline;
-  background-color: white;
-  width: fit-content;
-  height:50px;
-  margin:0;
-  padding: 10px;
-} */
+
 
 #qty-modal-p{
-  display: flex;
-  align-items: center;
-  margin: 0 ;
-  font-size: large;
+display: flex;
+align-items: center;
+margin: 0 ;
+font-weight: 500;
 }
 .qty-counter{
-  margin-left: 18px;
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
+display: flex;
+flex-direction: row;
+align-items: baseline;
 }
 #quantity-input{
-  width: 80px;
-  height: 50px;
-  border: none;
-  text-align: center;
+margin: 0 auto;
+width: 80px;
+height: 50px;
+border: none;
+text-align: center;
 }
 
 #quantity-input::-webkit-inner-spin-button,
 #quantity-input::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+-webkit-appearance: none;
+margin: 0;
 }
 
 #quantity-input {
-  -webkit-moz-appearance: textfield;
+-webkit-moz-appearance: textfield;
 }
 
 #decrement-btn{
-  width: 40px;
-  margin: 0;
+width: 40px;
+margin: 0;
 }
 #increment-btn{
-  width: 40px;
-  margin: 0;
+width: 40px;
+margin: 0;
 }
 
 .qty-group{
- display: flex;
- flex-direction: column;
- gap: 1rem;
+display: flex;
+flex-direction: column;
+gap: 1rem;
 }
 
 #buy-now-btn {
-  /* margin-left: 140px; */
-  width: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* margin-left: 140px; */
+width: 200px;
+display: flex;
+align-items: center;
+justify-content: center;
+margin: 0;
+margin-top: -10px;
+}
+
+.input-username {
   margin: 0;
+  height: 30px;
+  font-size: 15px;
 }
 
 #mode-cod {
-  margin-left: 25px;
+margin-left: 25px;
 }
 
 #mode-modal-p{
-  display: flex;
-  align-items: center;
-  margin: 0 ;
-  font-size: large;
+display: flex;
+align-items: center;
+margin: 0 ;
+font-weight: 500;
 }
 #radio-label{
-  font-size: medium;
+font-size: medium;
 }
 .mode-group{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 1rem;
+display: flex;
+flex-direction: row;
+align-items: center;
+gap: 1rem;
 }
 #total-price-modal{
-  color: green;
-  font-size: larger;
+color: green;
+
 }
 #total-p{
-  font-size: large;
-  display: flex;
-  margin: 0;
+display: flex;
+margin: 0;
+font-weight: 500;
 }
 #mode-cod{
-  height: 40px;
-  width: 30px;
+height: 40px;
+width: 30px;
+}
+
+#product-name-p{
+display: flex;
+justify-content: center;
+font-weight:600;
+font-size: 15px;
+margin-bottom: 0;
+/* margin: 0; */
 }

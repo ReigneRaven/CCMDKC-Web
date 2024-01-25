@@ -61,9 +61,9 @@ export default function Appointment() {
         appointmentTime,
         userId: userId,
       });
-
+  
       console.log(response);
-
+  
       const appointmentsResponse = await axios.get(`http://localhost:5000/api/appointments/user/${userId}`);
       const formattedAppointments = appointmentsResponse.data.map((appointment) => {
         const formattedDate = new Date(appointment.appointmentDate).toLocaleDateString('en-US');
@@ -72,12 +72,17 @@ export default function Appointment() {
           appointmentDate: formattedDate,
         };
       });
-
+  
       setAppointments(formattedAppointments);
       navigate(`/patient/${userId}`);
     } catch (error) {
       console.error('Error creating appointment:', error);
-      alert('The chosen date and time already exist. Please choose another schedule.');
+  
+      if (error.response && error.response.status === 400) {
+        alert(error.response.data.message); //message from backend: Timeslot already booked for the selected service
+      } else {
+        alert('An error occurred while creating the appointment. Please try again.'); // Generic error message
+      }
     }
   };
 

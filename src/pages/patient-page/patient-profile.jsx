@@ -17,7 +17,7 @@ export default function UserProfile (){
            <PtnHeader userName={userName}/>
            <div className="content">
            <PtnSidebar userId={userId}/>
-            <PtnDashboard userId={userId}/>
+            <PtnDashboard userId={userId} userName={userName}/>
            </div>
         </div>
         </>
