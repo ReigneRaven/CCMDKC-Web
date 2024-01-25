@@ -1,10 +1,12 @@
 import React, { useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios'
 
 const PharmModal = ({ item, onClose }) => {
   const [quantity, setQuantity] = useState(1);
   const [modeCOD, setModeCOD] = useState(false);
   const [totalPrice, setTotalPrice] = useState(item.itemPrice);
+  const [UserName, setUserName] = useState('')
 
     const navigate = useNavigate();
     const userId = localStorage.getItem('userId');
@@ -34,11 +36,36 @@ const PharmModal = ({ item, onClose }) => {
     setModeCOD(!modeCOD);
   };
 
-  const handleSubmit = () => {
-    navigate(`/patient/${userId}`)
+  const handleSubmit = async () => {
+    try {
+      const response = await axios.post("http://localhost:5000/api/purchase/", {
+        UserName,
+        quantity,
+        modeCOD,
+        itemId: item.itemId,  
+        itemName: item.itemName,  
+        totalPrice
+      });
+  
+      // Log the response or handle it as needed
+      console.log(response.data);
+      
+       // Update the stocksAvailable value
+    const updatedStock = item.stocksAvailable - quantity;
+    await axios.put(`http://localhost:5000/api/inventory/${item._id}`, {
+      stocksAvailable: updatedStock,
+    });
 
-    onClose();
-  };
+      // Navigate to the patient page with both userId and UserName
+      navigate(`/patient/${userId}`, { state: { userId, UserName } });
+  
+      // Close the modal
+      onClose();
+    } catch (error) {
+      console.error("Error recording purchase:", error);
+      // Handle the error appropriately (e.g., show an error message to the user)
+    }
+  }
 
   return (
     <>
@@ -54,9 +81,17 @@ const PharmModal = ({ item, onClose }) => {
 
         <form id="modal-form-pharm" >
           <div className="pharmDetailsMed">
+          <p id="product-name-p">{item.itemName}</p>
             <div className="qty-group">
+            <input
+                type="text"
+                value={UserName}
+                onChange={(e) => setUserName(e.target.value)}
+                placeholder=" Username"
+                className="input-username"
+              />
               <label htmlFor="quantity-input" id="qty-modal-p">
-                <strong>Quantity</strong>
+                Quantity
               </label>
               <div className="qty-counter">
                 <button
@@ -84,7 +119,7 @@ const PharmModal = ({ item, onClose }) => {
             </div>
             <div className="mode-section">
               <p id="mode-modal-p">
-                <strong>Mode of Payment</strong>
+                Mode of Payment
               </p>
               <div className="mode-group">
                 <input
@@ -99,10 +134,10 @@ const PharmModal = ({ item, onClose }) => {
               </div>
             </div>
             <p id="total-p">
-              <strong>
+              
                 Total:&nbsp;&nbsp;&nbsp;
                 <span id="total-price-modal">₱{totalPrice}</span>
-              </strong>
+             
             </p>
           </div>
           <button type="button" id="buy-now-btn" onClick={handleSubmit}>

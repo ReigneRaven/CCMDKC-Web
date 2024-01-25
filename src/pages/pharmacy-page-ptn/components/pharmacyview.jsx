@@ -10,6 +10,24 @@ export default function PharmacyView() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedItem, setSelectedItem] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [userId, setUserId] = useState(null);
+  const [UserName, setUserName] = useState("")
+  
+  useEffect(() => {
+    const storedUserId = localStorage.getItem("userId");
+    setUserId(storedUserId);
+
+    if (storedUserId) {
+      axios
+        .get(`http://localhost:5000/api/user/${storedUserId}`)
+        .then((response) => {
+          console.log('User Details', response.data);
+          setUserName(response.data.UserName)
+        })
+        .catch((error) => console.error(error));
+    }
+  }, []);
+
 
   useEffect(() => {
     axios
@@ -28,7 +46,7 @@ export default function PharmacyView() {
 
   const openModal = (item) => {
     setSelectedItem(item);
-    setIsModalOpen(true);
+    setIsModalOpen(true)
   };
 
   const closeModal = () => {

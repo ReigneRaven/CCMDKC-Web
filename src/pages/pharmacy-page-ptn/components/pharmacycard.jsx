@@ -5,6 +5,7 @@ const PharmacyCard = ({ item }) => {
   const [showModal, setShowModal] = useState(false);
 
   const handleViewMed = () => {
+    console.log("Opening modal with ID:", item._id);
     setShowModal(true);
   };
 
