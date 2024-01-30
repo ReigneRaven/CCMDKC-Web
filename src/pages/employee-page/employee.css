@@ -253,15 +253,42 @@ main{
 
 /* REQUEST =====-----------------=============------= */
 
-.upcoming-wrapper{
+.upcoming-wrapper {
     margin-top: -50px;
-    background:rgb(243, 243, 243);
+    background: rgb(243, 243, 243);
     width: 70%;
     height: 450px;
     padding: 20px;
     border-radius: 20px;
     overflow-y: scroll;
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.sort-dropdown-appointment-adm {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.sort-dropdown-order-adm {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-left: 60px;
+}
+
+.sort-dropdown label {
+    margin: 0;
+}
+
+.sort-dropdown select {
+    width: 100px;
 }
 
 ::-webkit-scrollbar {
