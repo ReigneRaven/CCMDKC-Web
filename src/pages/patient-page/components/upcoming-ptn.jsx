@@ -7,6 +7,7 @@ const socket = socketIOClient('http://localhost:5000');
 const UpcomingPtn = () => {
   const [appointments, setAppointments] = useState([]);
   const [loggedInUser, setLoggedInUser] = useState(null);
+  const [sortBy, setSortBy] = useState('latest'); // "latest" or "oldest"
 
   useEffect(() => {
     const userId = localStorage.getItem('userId');
@@ -41,15 +42,33 @@ const UpcomingPtn = () => {
       socket.off('appointmentStatusChanged', handleAppointmentStatusChange);
       socket.disconnect();
     };
-  }, []); 
+  }, []);
 
-  const filteredAppointments = appointments.filter(appointment =>
+  const handleSortChange = (e) => {
+    setSortBy(e.target.value);
+  };
+
+  const sortedAppointments = [...appointments].sort((a, b) => {
+    const dateA = new Date(a.appointmentDate);
+    const dateB = new Date(b.appointmentDate);
+    return sortBy === 'latest' ? dateB - dateA : dateA - dateB;
+  });
+
+  const filteredAppointments = sortedAppointments.filter(appointment =>
     appointment.UserName === loggedInUser?.UserName
   );
 
   return (
     <div className="upcoming-wrapper">
       <p>Upcoming Appointments</p>
+
+      <div className="sort-dropdown-upcoming">
+        <label htmlFor="sort">Sort By:</label>
+        <select id="sort" value={sortBy} onChange={handleSortChange}>
+          <option value="latest">Latest</option>
+          <option value="oldest">Oldest</option>
+        </select>
+      </div>
 
       <div className="table-appointment">
         <table className="table-ptn">
@@ -64,11 +83,10 @@ const UpcomingPtn = () => {
           </thead>
           <tbody>
             {filteredAppointments.map(appointment => (
-              
               <tr
                 key={appointment._id}
-                className={appointment.status === 'Accepted' ? 'accepted'
-                 : appointment.status === 'Denied' ? 'denied' : ''}
+                className={appointment.status === 'Accepted' ? 'accepted' :
+                  appointment.status === 'Denied' ? 'denied' : ''}
               >
                 <td>{appointment.UserName}</td>
                 <td>{appointment.service}</td>
