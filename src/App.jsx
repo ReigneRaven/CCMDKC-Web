@@ -16,6 +16,7 @@ import Supplies from './pages/supplies-page/supplies'
 import PatientRecord from './pages/records-page/patientrecord-page/patientrecord'
 import MedicalRecord from './pages/medicalhistory-page/healthhistory'
 import PharmacyPtn from './pages/pharmacy-page-ptn/pharmacyptn'
+import Reports from './pages/reports-page/reports'
 
 function App() {
 
@@ -41,6 +42,7 @@ function App() {
           <Route path='/admin' element={<Employee/>}/>
           <Route path='/admin/supplies' element={<Supplies/>}/>
           <Route path='/admin/patientrecord' element={<PatientRecord/>}/>
+          <Route path='/admin/reports' element={<Reports/>}/>
           <Route path='/admin/announcements' element={<AnnouncementsAmn/>}/>
         </Routes>
     </>
