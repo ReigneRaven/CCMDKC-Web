@@ -8,6 +8,7 @@ const PurchaseStatus = () => {
   const [purchases, setPurchases] = useState([]);
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [processedPurchases, setProcessedPurchases] = useState([]);
+  const [sortBy, setSortBy] = useState("latest"); // "latest" or "oldest"
 
   useEffect(() => {
     const userId = localStorage.getItem('userId');
@@ -73,7 +74,18 @@ const PurchaseStatus = () => {
         });
   };
 
-  const filteredPurchases = purchases.filter(purchase =>
+  const handleSortChange = (e) => {
+    setSortBy(e.target.value);
+  };
+
+  const sortedPurchases = purchases.slice().sort((a, b) => {
+    const dateA = new Date(a.createdAt);
+    const dateB = new Date(b.createdAt);
+
+    return sortBy === "latest" ? dateB - dateA : dateA - dateB;
+  });
+
+  const filteredPurchases = sortedPurchases.filter(purchase =>
     purchase.UserName === loggedInUser?.UserName
   );
 
@@ -82,6 +94,13 @@ const PurchaseStatus = () => {
       <div className="purchase-container">
         <div className="purchase-wrapper">
           <p id="order-stat">Order Tracker</p>
+          <div className="sort-dropdown-purchase">
+            <label htmlFor="sort">Sort By:</label>
+            <select id="sort" value={sortBy} onChange={handleSortChange}>
+              <option value="latest">Latest</option>
+              <option value="oldest">Oldest</option>
+            </select>
+          </div>
           <table className="table-order-stat">
             <thead>
               <tr className="head-stat">
