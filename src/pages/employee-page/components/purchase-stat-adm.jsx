@@ -6,16 +6,20 @@ const socket = socketIOClient('http://localhost:5000');
 
 export default function PurchaseStatus() {
   const [data, setData] = useState([]);
+  const [sortBy, setSortBy] = useState("latest"); // "latest" or "oldest"
 
   useEffect(() => {
     // Fetch initial data
-    axios.get("http://localhost:5000/api/purchase/all")
-      .then((response) => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/api/purchase/all");
         setData(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching inventory data:", error);
-      });
+      } catch (error) {
+        console.error("Error fetching purchase data:", error);
+      }
+    };
+
+    fetchData();
 
     // Set up Socket.IO to listen for real-time updates
     socket.on('PurchaseStatusChanged', (updatedPurchase) => {
@@ -33,11 +37,30 @@ export default function PurchaseStatus() {
     };
   }, []);
 
+  const handleSortChange = (e) => {
+    setSortBy(e.target.value);
+  };
+
+  const sortedData = [...data].sort((a, b) => {
+    const dateA = new Date(a.createdAt); // Replace 'createdAt' with the actual field in your data representing the purchase date
+    const dateB = new Date(b.createdAt); // Replace 'createdAt' with the actual field in your data representing the purchase date
+    return sortBy === "latest" ? dateB - dateA : dateA - dateB;
+  });
+
   return (
     <>
       <div className="purchase-container">
         <div className="purchase-wrapper">
           <p id="order-stat">Order Tracker</p>
+
+          <div className="sort-dropdown-order-adm">
+            <label htmlFor="sort">Sort By:</label>
+            <select id="sort" value={sortBy} onChange={handleSortChange}>
+              <option value="latest">Latest</option>
+              <option value="oldest">Oldest</option>
+            </select>
+          </div>
+
           <table className="table-order-stat">
             <thead>
               <tr>
@@ -50,7 +73,7 @@ export default function PurchaseStatus() {
               </tr>
             </thead>
             <tbody>
-              {data.map((status) => (
+              {sortedData.map((status) => (
                 <tr key={status._id}>
                   <td>{status.UserName}</td>
                   <td>{status.itemName}</td>

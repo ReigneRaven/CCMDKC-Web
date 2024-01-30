@@ -65,7 +65,7 @@ export default function PharmacyView() {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
-        <FaShoppingCart className="cart-icon" />
+        {/* <FaShoppingCart className="cart-icon" /> */}
       </div>
       <div className="card-container">
         {filteredItems.map((item) => (
