@@ -1,3 +1,7 @@
+*{
+   font-family: 'Poppins', sans-serif;
+}
+
 .announcement-container-amn{
    /* background-color: white;
    width: 89vw;
@@ -7,7 +11,6 @@
    justify-content: center;
    align-items: center;
    border-radius: 20px; */
-
    background-color: white;
    width: 86vw;
    height: 89vh;
@@ -18,7 +21,7 @@
 #announce-img-amn{
    height: 60vh;
    width: auto;
- }
+}
 
 .announce-content-amn{
    display: flex;

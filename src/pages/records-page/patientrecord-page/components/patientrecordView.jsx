@@ -108,6 +108,7 @@ export default function PatientRecordView() {
                       <input
                         type="text"
                         name="patientName"
+                        className="record-change"
                         value={editingRecord.patientName}
                         onChange={(e) => handleEditChange(e, record)}
                       />
@@ -120,6 +121,7 @@ export default function PatientRecordView() {
                       <input
                         type="text"
                         name="weight"
+                        className="record-change"
                         value={editingRecord.weight}
                         onChange={(e) => handleEditChange(e, record)}
                       />
@@ -132,6 +134,7 @@ export default function PatientRecordView() {
                       <input
                         type="text"
                         name="height"
+                        className="record-change"
                         value={editingRecord.height}
                         onChange={(e) => handleEditChange(e, record)}
                       />
@@ -144,6 +147,7 @@ export default function PatientRecordView() {
                       <input
                         type="text"
                         name="age"
+                        className="record-change"
                         value={editingRecord.age}
                         onChange={(e) => handleEditChange(e, record)}
                       />
@@ -156,6 +160,7 @@ export default function PatientRecordView() {
                       <input
                         type="text"
                         name="sex"
+                        className="record-change"
                         value={editingRecord.sex}
                         onChange={(e) => handleEditChange(e, record)}
                       />
@@ -176,7 +181,7 @@ export default function PatientRecordView() {
                       <>
                         <div className="actionButtons">
                           <button
-                            className="savebtn"
+                            className="savebtn-record"
                             onClick={handleSaveClick}
                           >
                             Save
@@ -184,7 +189,7 @@ export default function PatientRecordView() {
                         </div>
                         <div className="actionButtons">
                           <button
-                            className="cancelbtn"
+                            className="cancelbtn-record"
                             onClick={handleCancelClick}
                           >
                             Cancel

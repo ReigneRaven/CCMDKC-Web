@@ -13,7 +13,6 @@ export default function Supplies() {
                 <div className="content">
                     <Sidebar />
                     <div className="supplies-container">
-                        <h2>Supplies</h2>
                         <div className="supplies-row">
                             <SuppliesForm className="supplies-form" />
                             <SuppliesView className="supplies-view" />

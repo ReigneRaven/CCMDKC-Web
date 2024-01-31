@@ -86,6 +86,7 @@ axios
                   onChange={(e) => setUserName(e.target.value)}
                   placeholder=" Username"
                   className="user-input"
+                  id="login-inputfield"
                 />
                 <div className="password-login">
                   <div className="input-container">
@@ -96,6 +97,7 @@ axios
                       className="user-input password-field"
                       value={password}
                       onChange={handlePasswordChange}
+                      id="password-inputfield"
                     />
                     <div className="toggle-eye-login" onClick={togglePasswordVisibility}>
                       {showPassword ? <RiEyeFill /> : <AiFillEyeInvisible />}

@@ -1,3 +1,7 @@
+*{
+  font-family: 'Poppins', sans-serif;
+}
+
 .profile-container {
   display: flex;
   /* align-items: center; */
@@ -39,7 +43,6 @@
   /*  margin-left: 440px;
    width: 30vw;
   height: 45vh; */
-
 }
 
 .myprofile-details p {
@@ -57,7 +60,6 @@
   margin-left: 500px;
   margin-top: -20px;
 }
-
 
 /* css for patient info table */
 .patient-info {
@@ -160,17 +162,63 @@
   justify-content: center;
   align-items: baseline;
 }
+
+#edit-first{
+  border-radius: 20px;
+}
+
+#edit-mid{
+  border-radius: 20px;
+}
+
+#edit-last{
+  border-radius: 20px;
+}
+
 #edit-num{
+  border-radius: 20px;
   width: 50%;
 }
+
 #edit-birth{
+  border-radius: 20px;
   width: 50%;
 }
+
+#edit-house{
+  border-radius: 20px;
+}
+
+#edit-street{
+  border-radius: 20px;
+}
+
+#edit-brgy{
+  border-radius: 20px;
+}
+
+#edit-city{
+  border-radius: 20px;
+}
+
+#edit-prov{
+  border-radius: 20px;
+}
+
+#edit-email{
+  border-radius: 20px;
+}
+
+#edit-userName{
+  border-radius: 20px;
+}
+
 .edit-numbirth-input{
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
+
 .edit-address-input{
   display: flex;
   flex-direction: row;
@@ -187,20 +235,16 @@
  justify-content: flex-end;
 }
 
-
-/* 
-#cancel-btn {
+#cancel-btn-myprofile {
   display: flex;
   align-items: center;
   justify-content: center;
-  
-  
+  margin-top: 10px;
 }
 
-#save-btn {
+#save-btn-myprofile {
   display: flex;
   align-items: center;
   justify-content: center;
-  
   margin-top: 10px;
-} */
+} 

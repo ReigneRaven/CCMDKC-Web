@@ -144,7 +144,7 @@ export default function Register() {
                     Middle Name<span className="asterisk">*</span>
                   </label>
                   <InputField
-                    id="MiddleName"
+                    id="middleName"
                     placeholder=" Middle Name"
                     className="name-input"
                     value={MiddleName}

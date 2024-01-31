@@ -1,3 +1,7 @@
+*{
+    font-family: 'Poppins', sans-serif;
+ }
+
 .ptnheader{
     width: 99vw;
     height: auto;    
@@ -214,40 +218,41 @@ h3 span {
 .sidenav.hidden {
     visibility: hidden;
     position: absolute;
-  }
+}
   
-  /* Ensure sidebar-icon is visible even when the sidebar is hidden */
-  .sidenav.hidden .sidebar-icon {
+/* Ensure sidebar-icon is visible even when the sidebar is hidden */
+.sidenav.hidden .sidebar-icon {
     visibility: visible;
     margin-top: 50px;
-  }
+}
 
-  /* Add these styles for the hamburger button */
-  .hamburger-button {
+/* Add these styles for the hamburger button */
+.hamburger-button {
     display: flex;
     justify-content: center;
     margin: 10px 5px 0px 20px; /* Four values: top, right, bottom, left */
     font-size: 20px;
     padding: 5px;
-  }
+}
 
-  .sidenav ul {
+.sidenav ul {
     margin-top: 50px;
-  }
+}
   
- .table-appointment tbody  .accepted {
+.table-appointment tbody  .accepted {
     background-color: #baebba; 
-  }
+}
   
 .table-appointment tbody  .denied {
     background-color: #fcbebe;
-  }
-  .table-appointment{
+}
+
+.table-appointment{
     display: flex;
     justify-content: center;
-  }
+}
 
-  .purchase-wrapper {
+.purchase-wrapper {
     margin-top: -10px;
     margin-left: 50px;
     background: rgb(243, 243, 243);
@@ -318,9 +323,9 @@ h3 span {
     padding: 20px;
     border-radius: 20px;
     position: relative;
-  }
+}
   
-  .round-clock-ptn {
+.round-clock-ptn {
     position: absolute;
     top: 55%;
     left: 50%;
@@ -329,36 +334,36 @@ h3 span {
     height: 100px;
     border:4px solid #333;
     border-radius: 50%;
-  }
+}
   
-  .hand {
+.hand {
     position: absolute;
     transform-origin: 50% 100%;
     background: #333;
     left: 50%;
     bottom: 50%;
-  }
+}
   
-  .hour-hand-ptn {
+.hour-hand-ptn {
     width: 5px;
     height: 30px;
     transform: translateX(-50%);
-  }
+}
   
-  .minute-hand-ptn {
+.minute-hand-ptn {
     width: 3px;
     height: 40px;
     transform: translateX(-50%);
-  }
+}
   
-  .second-hand {
+.second-hand {
     width: 2px;
     height: 45px;
     background: red;
     transform: translateX(-50%);
-  }
+}
   
-  .clock-center-ptn {
+.clock-center-ptn {
     position: absolute;
     width: 10px;
     height: 10px;
@@ -367,24 +372,24 @@ h3 span {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-  }
+}
   
-  #clock-p-ptn {
+#clock-p-ptn {
     color: black;
     font-weight: 600;
     padding: 20px;
     margin: 0;
     margin-top: -10px;
-  }
+}
 
-  #time-p-ptn {
+#time-p-ptn {
     padding: 20px;
     margin: 0;
     margin-top: 80px;
     margin-left: 115px;
     font-weight: bold;
     font-size: 18px;
-  }
+}
 
 .sort-dropdown-upcoming {
     display: flex;

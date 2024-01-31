@@ -1,3 +1,7 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
 #root{
     display: flex;
     align-items: center;
@@ -53,6 +57,10 @@ form{
     align-items: center;
 }
 
+#forgotpass-inputfield{
+    border-radius: 20px;
+}
+
 h3 {
     font-family: 'Poppins', sans-serif;
 }
@@ -65,6 +73,7 @@ button{
     background-color: #3398cc;
     border-style: none;
     border-radius: 15px;
+    margin-top: -10px;
 }
 
 button:hover {

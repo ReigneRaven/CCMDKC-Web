@@ -1,3 +1,7 @@
+*{
+   font-family: 'Poppins', sans-serif;
+}
+
 .announcement-container-ptn{
    background-color: white;
    width: 85vw;
@@ -5,6 +9,7 @@
    border-radius: 20px;
    margin-left: 20px;
 }
+
 #announce-img-ptn{
    height: 60vh;
    width: auto;

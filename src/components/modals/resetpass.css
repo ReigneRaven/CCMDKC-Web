@@ -1,3 +1,7 @@
+*{
+  font-family: 'Poppins', sans-serif;
+}
+
 .modalBackground {
   width: 100vw;
   height: 100vh;
