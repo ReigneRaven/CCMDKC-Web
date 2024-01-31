@@ -1,9 +1,12 @@
 
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
 /* HEADER CSS--------------------------------- */
 header{
     width: 99vw;
     height: auto;
-    
 }
 
 .profile-header{
@@ -83,7 +86,6 @@ header{
     flex-direction: row;
     align-items: center;
     color: black;
-   
 }
 
 .menu-trigger img {
@@ -183,13 +185,11 @@ h3 span {
 }
 
 /* SIDENAV CSS--------------------------------- */
-
 .sidenav{
     height: 90vh;
     /* width: 10%; */
     display: flex;
     flex-direction: column;
-
 }
 
 .sidenav ul{
@@ -213,6 +213,7 @@ main{
     display: flex;
     margin: 0;
 }
+
 .content{
     display: flex;
     flex-direction: row;
@@ -252,7 +253,6 @@ main{
 }
 
 /* REQUEST =====-----------------=============------= */
-
 .upcoming-wrapper {
     margin-top: -50px;
     background: rgb(243, 243, 243);
@@ -313,13 +313,12 @@ main{
 }
 
 .buttons-req{
-    margin-top: -20px;
+    margin-top: 20px;
     display: flex;
     flex-direction: row;
     gap: 10px;
     align-items: center;
     justify-content: center;
-    
 }
 
 .disabled-button {
@@ -355,9 +354,7 @@ main{
     width: 100%;
 }
 
-
 /* ````````````````````````````````````````TABLE`````````````````````````````````````````````````````````` */
-
 thead{
     display: flex;
     flex-direction: row;
@@ -396,7 +393,6 @@ thead{
 } */
 
 /* ````````````````````````````````````````ORDER TRACKER`````````````````````````````````````````````````````````` */
-
 .status-wrapper {
     margin-top: -10px;
     margin-left: 50px;
@@ -435,7 +431,6 @@ thead{
 }
 
 /* ````````````````````````````````````````CLOCK`````````````````````````````````````````````````````````` */
-
 .clock-wrapper-adm {
     margin-top: -220px;
     margin-left: 1220px;
@@ -445,9 +440,9 @@ thead{
     padding: 20px;
     border-radius: 20px;
     position: relative;
-  }
+}
   
-  .round-clock-adm {
+.round-clock-adm {
     position: absolute;
     top: 55%;
     left: 50%;
@@ -456,36 +451,36 @@ thead{
     height: 100px;
     border:4px solid #333;
     border-radius: 50%;
-  }
+}
   
-  .hand {
+.hand {
     position: absolute;
     transform-origin: 50% 100%;
     background: #333;
     left: 50%;
     bottom: 50%;
-  }
+}
   
-  .hour-hand-adm {
+.hour-hand-adm {
     width: 5px;
     height: 30px;
     transform: translateX(-50%);
-  }
+}
   
-  .minute-hand-adm {
+.minute-hand-adm {
     width: 3px;
     height: 40px;
     transform: translateX(-50%);
-  }
+}
   
-  .second-hand {
+.second-hand {
     width: 2px;
     height: 45px;
     background: red;
     transform: translateX(-50%);
-  }
+}
   
-  .clock-center-adm {
+.clock-center-adm {
     position: absolute;
     width: 10px;
     height: 10px;
@@ -494,21 +489,21 @@ thead{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-  }
+}
   
-  #clock-p-adm {
+#clock-p-adm {
     color: black;
     font-weight: 600;
     padding: 20px;
     margin: 0;
     margin-top: -10px;
-  }
+}
 
-  #time-p-adm {
+#time-p-adm {
     padding: 20px;
     margin: 0;
     margin-top: 80px;
     margin-left: 120px;
     font-weight: bold;
     font-size: 18px;
-  }
+}

@@ -1,3 +1,7 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
 .reports-container {
     background-color: white;
     width: 86vw;
@@ -5,3 +9,8 @@
     border-radius: 20px;
     margin-left: 20px;
 }
+
+#reports-header {
+    display: flex;
+    justify-content: center;
+  }

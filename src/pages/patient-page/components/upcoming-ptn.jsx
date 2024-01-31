@@ -49,9 +49,9 @@ const UpcomingPtn = () => {
   };
 
   const sortedAppointments = [...appointments].sort((a, b) => {
-    const dateA = new Date(a.appointmentDate);
-    const dateB = new Date(b.appointmentDate);
-    return sortBy === 'latest' ? dateB - dateA : dateA - dateB;
+    const dateA = new Date(a.createdAt);
+    const dateB = new Date(b.createdAt);
+    return sortBy === 'latest' ? dateB.getTime() - dateA.getTime() : dateA.getTime() - dateB.getTime();
   });
 
   const filteredAppointments = sortedAppointments.filter(appointment =>

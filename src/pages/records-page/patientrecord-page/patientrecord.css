@@ -1,3 +1,7 @@
+*{
+  font-family: 'Poppins', sans-serif;
+}
+
 .patientrecord-container {
   background-color: white;
   width: 86vw;
@@ -63,12 +67,17 @@
 .input-patientrecord {
   width: 20vw;
   height: 2.5rem;
-  border-radius: 10px;
+  border-radius: 20px;
 }
 
-.savebtn {
+.savebtn-modal {
   margin-top: 10px;
-  margin-bottom: -20px;
+  margin-bottom: 20px;
+}
+
+.savebtn-record {
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 .editButton {
@@ -158,6 +167,8 @@ thead {
 
 .input-medicalrecord {
   width: 20vw;
+  height: 20vh;
+  border-radius: 20px;
 }
 
 .medical-table-container {
@@ -166,6 +177,18 @@ thead {
 
 #medform-btn {
   height: 100px;
+}
+
+.record-change {
+  border-radius: 20px;
+}
+
+.modal-change {
+  border-radius: 20px;
+}
+
+.editbtn-modal {
+  margin-top: 10px;
 }
 
 /* MedicalRecordForm.css */
@@ -225,6 +248,7 @@ thead {
   margin-right: 88px;
   width: 88%;
   background-color: #f3f3f3; 
+  border-radius: 20px;
 }
   
   

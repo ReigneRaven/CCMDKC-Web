@@ -166,7 +166,7 @@ export default function MyProfile() {
                     {/* ADDRESS INPUT FIELDS */}
                     <div className="edit-address-input">
                     <input
-                    id="edit-house"
+                      id="edit-house"
                       type="text"
                       name="houseNum"
                       value= {user.houseNum} 
@@ -174,7 +174,7 @@ export default function MyProfile() {
                       onChange={handleChange}
                     />
                     <input
-                    id="edit-street"
+                      id="edit-street"
                       type="text"
                       name="street"
                       value= {user.street} 
@@ -182,7 +182,7 @@ export default function MyProfile() {
                       onChange={handleChange}
                     />
                     <input
-                    id="edit-brgy"
+                      id="edit-brgy"
                       type="text"
                       name="brgy"
                       value= {user.brgy} 
@@ -190,7 +190,7 @@ export default function MyProfile() {
                       onChange={handleChange}
                     />
                     <input
-                    id="edit-city"
+                      id="edit-city"
                       type="text"
                       name="city"
                       value= {user.city} 
@@ -198,7 +198,7 @@ export default function MyProfile() {
                       onChange={handleChange}
                     />
                     <input
-                    id="edit-prov"
+                      id="edit-prov"
                       type="text"
                       name="prov"
                       value= {user.prov} 
@@ -210,7 +210,7 @@ export default function MyProfile() {
 
                     <div className="edit-handler-input">
                     <input
-                    id="edit-email"
+                      id="edit-email"
                       type="text"
                       name="email"
                       value={user.email}
@@ -218,7 +218,7 @@ export default function MyProfile() {
                       onChange={handleChange}
                     />
                     <input
-                    id="edit-userName"
+                      id="edit-userName"
                       type="text"
                       name="userName"
                       value={user.UserName}
@@ -227,8 +227,8 @@ export default function MyProfile() {
                     />
                     </div>
                   <div className="edit-savecancel">
-                    <button id="cancel-btn" onClick={handleCancelClick}>Cancel</button>
-                    <button id="save-btn" onClick={handleSaveClick}>Save</button>
+                    <button id="cancel-btn-myprofile" onClick={handleCancelClick}>Cancel</button>
+                    <button id="save-btn-myprofile" onClick={handleSaveClick}>Save</button>
                   </div>
                 </div>
                 )}

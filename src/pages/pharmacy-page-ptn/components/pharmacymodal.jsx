@@ -89,6 +89,7 @@ const PharmModal = ({ item, onClose }) => {
                 onChange={(e) => setUserName(e.target.value)}
                 placeholder=" Username"
                 className="input-username"
+                id="username-pharmacy"
               />
               <label htmlFor="quantity-input" id="qty-modal-p">
                 Quantity

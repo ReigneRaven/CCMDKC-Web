@@ -1,3 +1,7 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
 #root{
     display: flex;
     align-items: center;
@@ -124,6 +128,16 @@ button:hover {
     display: flex;
     flex-direction: row;
     align-items: baseline;
+}
+
+#login-inputfield {
+    border-radius: 20px;
+    margin-bottom: -10px;
+}
+
+#password-inputfield {
+    border-radius: 20px;
+    margin-bottom: -10px;
 }
 
 a{

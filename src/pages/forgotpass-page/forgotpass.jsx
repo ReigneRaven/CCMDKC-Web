@@ -49,7 +49,9 @@ export default function ForgotPassword() {
                                 value= {email}
                                 placeholder=" Email Address" 
                                 className="user-input" required
-                                onChange={handleEmailChange}/>
+                                onChange={handleEmailChange}
+                                id="forgotpass-inputfield"
+                                />
                             </div>
                             <Button label="Send" type="submit" /> 
                         </form>

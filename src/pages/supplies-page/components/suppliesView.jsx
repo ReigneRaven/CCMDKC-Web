@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Head2 from "../../../components/headers/header";
 
 export default function SuppliesView() {
   const [data, setData] = useState([]);
@@ -75,13 +76,16 @@ export default function SuppliesView() {
 
   return (
     <div className="searchbar-supplies">
-      <input
-        id="searchbar-supplies"
-        type="text"
-        placeholder=" Search item by name"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-      />
+      <div className="searchbar-header">
+        <Head2 text="Supplies" id="supplies-header" />
+      </div>
+        <input
+          id="searchbar-supplies"
+          type="text"
+          placeholder=" Search item by name"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
       <div className="supplies-table-content">
         <div className="supplies-table-container">
           <table className="table">
@@ -103,6 +107,7 @@ export default function SuppliesView() {
                       <input
                         type="text"
                         name="itemName"
+                        className="supplies-change"
                         value={editedItem.itemName}
                         onChange={(e) => handleEditChange(e, item)}
                       />
@@ -115,6 +120,7 @@ export default function SuppliesView() {
                       <input
                         type="text"
                         name="itemDescription"
+                        className="supplies-change supplies-change-input"
                         value={editedItem.itemDescription}
                         onChange={(e) => handleEditChange(e, item)}
                       />
@@ -127,6 +133,7 @@ export default function SuppliesView() {
                       <input
                         type="text"
                         name="stocksAvailable"
+                        className="supplies-change"
                         value={editedItem.stocksAvailable}
                         onChange={(e) => handleEditChange(e, item)}
                       />
@@ -139,6 +146,7 @@ export default function SuppliesView() {
                       <input
                         type="text"
                         name="itemPrice"
+                        className="supplies-change"
                         value={editedItem.itemPrice}
                         onChange={(e) => handleEditChange(e, item)}
                       />
@@ -151,6 +159,7 @@ export default function SuppliesView() {
                       <input
                         type="text"
                         name="itemImg"
+                        className="supplies-change"
                         value={editedItem.itemImg}
                         onChange={(e) => handleEditChange(e, item)}
                       />

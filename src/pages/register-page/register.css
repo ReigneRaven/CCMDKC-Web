@@ -1,3 +1,7 @@
+*{
+  font-family: 'Poppins', sans-serif;
+}
+
 #root {
   display: flex;
   align-items: center;
@@ -94,6 +98,7 @@ input {
   margin-right: -5px;
   width: 102%;
   height: 45px;
+  border-radius: 20px;
 }
 
 .form {
@@ -141,6 +146,7 @@ input {
   margin-right: -12px;
   height: 40px;
   width: 99%;
+  border-radius: 20px;
 }
 
 #sex {
@@ -151,11 +157,13 @@ input {
 #pass {
   width: 424px;
   margin-left: 8px;
+  border-radius: 20px;
 }
 
 #confirmpass {
   width: 424px;
   margin-left: 5px;
+  border-radius: 20px;
 }
 
 .asterisk {
@@ -218,7 +226,7 @@ input {
 .toggle-eye {
   position: absolute;
   right: 490px;
-  top: 700px;
+  top: 720px;
   transform: translateY(-50%);
   cursor: pointer;
   display: flex;
@@ -254,6 +262,50 @@ input {
   width: 20px;
   height: 20px;
   fill: #333;
+}
+
+#firstName {
+  border-radius: 20px;
+}
+
+#middleName {
+  border-radius: 20px;
+}
+
+#lastName {
+  border-radius: 20px;
+}
+
+#num {
+  border-radius: 20px;
+}
+
+#house {
+  border-radius: 20px;
+}
+
+#street {
+  border-radius: 20px;
+}
+
+#barangay {
+  border-radius: 20px;
+}
+
+#municipality-city {
+  border-radius: 20px;
+}
+
+#province {
+  border-radius: 20px;
+}
+
+#email {
+  border-radius: 20px;
+}
+
+#username {
+  border-radius: 20px;
 }
 
 @media (max-width: 768px) {

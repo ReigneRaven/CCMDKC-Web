@@ -77,6 +77,7 @@ export default function MedicalRecordModal({ patientId, onClose }) {
                     <input
                       type="text"
                       name="allergies"
+                      className="modal-change"
                       value={editingRecord.allergies}
                       onChange={handleInputChange}
                     />
@@ -89,6 +90,7 @@ export default function MedicalRecordModal({ patientId, onClose }) {
                     <input
                       type="text"
                       name="diagnosis"
+                      className="modal-change"
                       value={editingRecord.diagnosis}
                       onChange={handleInputChange}
                     />
@@ -101,6 +103,7 @@ export default function MedicalRecordModal({ patientId, onClose }) {
                     <input
                       type="text"
                       name="bloodPressure"
+                      className="modal-change"
                       value={editingRecord.bloodPressure}
                       onChange={handleInputChange}
                     />
@@ -113,6 +116,7 @@ export default function MedicalRecordModal({ patientId, onClose }) {
                     <input
                       type="text"
                       name="temperature"
+                      className="modal-change"
                       value={editingRecord.temperature}
                       onChange={handleInputChange}
                     />
@@ -125,6 +129,7 @@ export default function MedicalRecordModal({ patientId, onClose }) {
                     <input
                       type="text"
                       name="surgeries"
+                      className="modal-change"
                       value={editingRecord.surgeries}
                       onChange={handleInputChange}
                     />
@@ -135,15 +140,15 @@ export default function MedicalRecordModal({ patientId, onClose }) {
                 <td>
                   {isEditing ? (
                     <>
-                      <button className="savebtn" onClick={handleSaveClick}>
+                      <button className="savebtn-modal" onClick={handleSaveClick}>
                         Save
                       </button>
-                      <button className="cancelbtn" onClick={handleCancelClick}>
+                      <button className="cancelbtn-modal" onClick={handleCancelClick}>
                         Cancel
                       </button>
                     </>
                   ) : (
-                    <button onClick={() => handleEditClick(history)}>
+                    <button className="editbtn-modal" onClick={() => handleEditClick(history)}>
                       Edit
                     </button>
                   )}
