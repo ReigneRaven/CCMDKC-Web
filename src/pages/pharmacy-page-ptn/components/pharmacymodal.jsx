@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios'
 
 const PharmModal = ({ item, onClose }) => {
-  const [quantity, setQuantity] = useState(1);
+
+  const [quantity, setQuantity] = useState(20);
   const [modeCOD, setModeCOD] = useState(false);
   const [totalPrice, setTotalPrice] = useState(item.itemPrice);
   const [UserName, setUserName] = useState('')
@@ -16,17 +17,18 @@ const PharmModal = ({ item, onClose }) => {
     setTotalPrice(quantity * item.itemPrice);
   }, [quantity, item.itemPrice]);
 
-  const handleQuantityChange = (e) => {
-    const newQuantity = parseInt(e.target.value, 10) || 1;
-    setQuantity(newQuantity);
-  };
+   const handleQuantityChange = (e) => {
+   const newQuantity = parseInt(e.target.value, 10) || 1;
+     newQuantity = Math.max(newQuantity, 20);
+     setQuantity(newQuantity);
+   };
 
   const decrementQuantity = () => {
-    if (quantity > 1) {
+    if (quantity > 20) {
       setQuantity(quantity - 1);
     }
   };
-
+  
   const incrementQuantity = () => {
     setQuantity(quantity + 1);
   };
@@ -36,36 +38,47 @@ const PharmModal = ({ item, onClose }) => {
     setModeCOD(!modeCOD);
   };
 
+  const calculateTotalPrice = () => {
+    const rawTotalPrice = quantity * item.itemPrice;
+    const formattedTotalPrice = rawTotalPrice.toFixed(2); // Round to two decimal places
+    return formattedTotalPrice;
+  };
+  
+  // ...
+  
+  useEffect(() => {
+    setTotalPrice(calculateTotalPrice());
+  }, [quantity, item.itemPrice]);
+
   const handleSubmit = async () => {
     try {
       const response = await axios.post("http://localhost:5000/api/purchase/", {
         UserName,
         quantity,
         modeCOD,
-        itemId: item.itemId,  
-        itemName: item.itemName,  
-        totalPrice
+        itemId: item.itemId,
+        itemName: item.itemName,
+        totalPrice: calculateTotalPrice(),
       });
   
-      // Log the response or handle it as needed
-      console.log(response.data);
-      
-       // Update the stocksAvailable value
-    const updatedStock = item.stocksAvailable - quantity;
-    await axios.put(`http://localhost:5000/api/inventory/${item._id}`, {
-      stocksAvailable: updatedStock,
-    });
-
-      // Navigate to the patient page with both userId and UserName
+      console.log("Purchase recorded successfully:", response.data);
+  
+      const updatedStock = item.stocksAvailable - quantity;
+      await axios.put(`http://localhost:5000/api/inventory/${item._id}`, {
+        stocksAvailable: updatedStock,
+      });
+  
+      console.log("Inventory updated successfully");
+  
       navigate(`/patient/${userId}`, { state: { userId, UserName } });
   
-      // Close the modal
       onClose();
     } catch (error) {
-      console.error("Error recording purchase:", error);
+      console.error("Error recording purchase:", error.response?.data || error.message);
       // Handle the error appropriately (e.g., show an error message to the user)
     }
-  }
+  };
+  
 
   return (
     <>
@@ -89,10 +102,10 @@ const PharmModal = ({ item, onClose }) => {
                 onChange={(e) => setUserName(e.target.value)}
                 placeholder=" Username"
                 className="input-username"
-                id="username-pharmacy"
+                id="username"
               />
               <label htmlFor="quantity-input" id="qty-modal-p">
-                Quantity
+                Quantity <span id="label-min">&nbsp;(min 20 capsules)</span>
               </label>
               <div className="qty-counter">
                 <button
@@ -102,12 +115,13 @@ const PharmModal = ({ item, onClose }) => {
                 >
                   -
                 </button>
+                {/* input/view for quantity */}
                 <input
                   type="number"
                   id="quantity-input"
                   value={quantity}
                   onChange={handleQuantityChange}
-                  min="1"
+                  min="20"
                 />
                 <button
                   type="button"
@@ -134,12 +148,10 @@ const PharmModal = ({ item, onClose }) => {
                 </label>
               </div>
             </div>
-            <p id="total-p">
-              
-                Total:&nbsp;&nbsp;&nbsp;
-                <span id="total-price-modal">₱{totalPrice}</span>
-             
-            </p>
+           <p id="total-p">
+            Total:&nbsp;&nbsp;&nbsp;
+                <span id="total-price-modal">₱{calculateTotalPrice()}</span>
+          </p>
           </div>
           <button type="button" id="buy-now-btn" onClick={handleSubmit}>
             Buy Now

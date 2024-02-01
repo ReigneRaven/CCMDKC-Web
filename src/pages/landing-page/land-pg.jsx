@@ -52,16 +52,18 @@ axios
   .post('http://localhost:5000/api/admin/login', { UserName, password })
   .then((adminResponse) => {
     console.log('Admin Response: ', adminResponse);
-    const { token } = adminResponse.data;
+    const { token, adminId } = adminResponse.data;
 
     // Store admin token in localStorage
     localStorage.setItem('adminToken', token);
+    localStorage.setItem('adminId', adminId);
 
     // Redirect to admin page
-    window.location.href = '/admin';
+    window.location.href = `/admin/${adminId}`;
   })
   .catch((adminError) => {
     console.error('Admin Login Error: ', adminError);
+    // console.log('Admin Response: ', adminResponse);
   });
   }
 
