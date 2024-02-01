@@ -4,13 +4,31 @@ import DiaLogo from "../../../components/logo/logo";
 import ClientLogo from '../../../assets/ccmdkc-logo.png'
 import Head2 from "../../../components/headers/header";
 import Kidney from '../../../assets/Nephrology_icon.png';
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import Logout from '../../../assets/logout.svg';
+import axios from "axios";
 
 export default function Header() {
-    
+    // const {id} = useParams()
     const [open, setOpen] = useState(false)
+    const [adminName, setAdminName] = useState('');
+
+    useEffect(() => {
+        // Fetch the admin data here
+        const adminId = localStorage.getItem("adminId");
+
+        if (adminId) {
+            axios
+                .get(`http://localhost:5000/api/admin/${adminId}`)
+                .then((response) => {
+                    // Assuming your Admin model has a 'name' property
+                    const adminData = response.data;
+                    setAdminName(adminData.name);
+                })
+                .catch((error) => console.error(error));
+        }
+    }, []);
 
     return(
         <>
@@ -32,7 +50,7 @@ export default function Header() {
 
                         <div className={`dropdown-menu ${open ? 'active' : 'inactive'}`}
                         id="drop-label">
-                        <p>Hello, Admin!</p>
+                        <p>Hello, {adminName}!</p>
 
                             <div className="drop-links">
                             <ul>

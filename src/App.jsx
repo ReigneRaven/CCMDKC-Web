@@ -39,11 +39,13 @@ function App() {
           <Route path='/patient/myprofile/:id' exact element={<MyProfile />} />
 
           {/* ADMIN SIDE */}
-          <Route path='/admin' element={<Employee/>}/>
-          <Route path='/admin/supplies' element={<Supplies/>}/>
-          <Route path='/admin/patientrecord' element={<PatientRecord/>}/>
-          <Route path='/admin/reports' element={<Reports/>}/>
-          <Route path='/admin/announcements' element={<AnnouncementsAmn/>}/>
+          <Route path='/admin/:id' element={<Employee/>}/>
+          <Route path='/admin/supplies/:id' element={<Supplies/>}/>
+          <Route path='/admin/patientrecord/:id' element={<PatientRecord/>}/>
+          <Route path='/admin/reports/:id' element={<Reports/>}/>
+          <Route path='/admin/announcements/:id' element={<AnnouncementsAmn/>}/>
+
+
         </Routes>
     </>
   )

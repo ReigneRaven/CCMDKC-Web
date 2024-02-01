@@ -31,7 +31,7 @@ export default function SuppliesView() {
     axios
       .put(`http://localhost:5000/api/inventory/${editedItem._id}`, editedItem)
       .then((result) => {
-        // Handle success
+        alert('Do you want to save your changes?')
         setEditedItem(null);
 
         // Update the local state with the modified data
@@ -57,7 +57,7 @@ export default function SuppliesView() {
     axios
       .delete(`http://localhost:5000/api/inventory/${itemId}`)
       .then((result) => {
-        // Handle success
+        alert('Do you want to delete this item?')
         setData((prevData) => prevData.filter((item) => item._id !== itemId));
       })
       .catch((err) => {

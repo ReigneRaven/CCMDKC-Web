@@ -286,9 +286,14 @@ main {
 
 #product-name-p{
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   font-weight:600;
   font-size: 15px;
   margin-bottom: 0;
   /* margin: 0; */
+}
+
+#label-min{
+  font-size: small;
+  color: blue;
 }

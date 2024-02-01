@@ -507,3 +507,7 @@ thead{
     font-weight: bold;
     font-size: 18px;
 }
+
+#total-admin{
+    color: green;
+}

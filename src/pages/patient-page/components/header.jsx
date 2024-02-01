@@ -38,7 +38,7 @@ export default function PtnHeader() {
 
                         <div className={`dropdown-menu-ptn ${open ? 'active' : 'inactive'}`}
                         id="drop-label-ptn">
-                        <p>{name}</p>
+                        {/* <p>{userName}</p> */}
                         <p>Patient</p>
 
                             <div className="drop-links-ptn">

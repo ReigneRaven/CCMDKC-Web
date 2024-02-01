@@ -197,7 +197,7 @@ label.checkbox {
 .toggle-eye-login {
     position: absolute;
     right: 5px;
-    top: 50%;
+    top: 65%;
     transform: translateY(-50%);
     cursor: pointer;
     display: flex;

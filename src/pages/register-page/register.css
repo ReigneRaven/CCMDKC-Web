@@ -226,7 +226,7 @@ input {
 .toggle-eye {
   position: absolute;
   right: 490px;
-  top: 720px;
+  top: 721px;
   transform: translateY(-50%);
   cursor: pointer;
   display: flex;
@@ -245,8 +245,8 @@ input {
 
 .toggle-eye-confirm {
   position: absolute;
-  right: -2px;
-  top: 70%;
+  right: 3px;
+  top: 71%;
   transform: translateY(-50%);
   cursor: pointer;
   display: flex;
