@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 export default function MyProfile() {
   const [user, setUser] = useState({
     _id: "",
-    UserName:"",
+    UserName: "",
     FirstName: "",
     MiddleName: "",
     LastName: "",
@@ -44,6 +44,14 @@ export default function MyProfile() {
 
   const handleEditClick = () => {
     setIsEditing(true);
+
+    // Format the birthday to "YY-MM-DD" if it's not already in that format
+    const formattedBirthday = user.birthday ? user.birthday.slice(0, 10) : "";
+  
+    setUser({
+      ...user,
+      birthday: formattedBirthday,
+    });
   }
 
   const handleSaveClick = () => {
@@ -71,9 +79,22 @@ export default function MyProfile() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    let updatedValue = value;
+
+    // If changing the birthday field, ensure it's in the "YY-MM-DD" format
+    if (name === 'birthday') {
+      // You can add your custom validation logic here
+      // For simplicity, let's assume a basic check for "YY-MM-DD" format
+      if (!/^\d{2}-\d{2}-\d{2}$/.test(value)) {
+        // If the format is incorrect, you can handle it accordingly
+        console.log('Invalid date format');
+        updatedValue = ''; // or any default value you prefer
+      }
+    }
+
     setUser({
       ...user,
-      [name]: value
+      [name]: updatedValue,
     });
   }
 
@@ -91,13 +112,13 @@ export default function MyProfile() {
               <div className="profile-view">
                 {user && !isEditing && (
                   <div className="myprofile-details">
-                    <p><strong>Name:&nbsp;&nbsp;&nbsp;</strong> 
-                    {user.FirstName}&nbsp;
-                    {user.MiddleName}&nbsp;
-                    {user.LastName}&nbsp;
+                    <p><strong>Name:&nbsp;&nbsp;&nbsp;</strong>
+                      {user.FirstName}&nbsp;
+                      {user.MiddleName}&nbsp;
+                      {user.LastName}&nbsp;
                     </p>
                     <p><strong>Contact Number:&nbsp;&nbsp;&nbsp;</strong> {user.contactNum}</p>
-                    <p><strong>Address:&nbsp;&nbsp;&nbsp;</strong> 
+                    <p><strong>Address:&nbsp;&nbsp;&nbsp;</strong>
                       {user.houseNum} &nbsp;
                       {user.street}  &nbsp;
                       {user.brgy} &nbsp;
@@ -109,128 +130,128 @@ export default function MyProfile() {
                     <button id="edit-btn" onClick={handleEditClick}>Edit</button>
                   </div>
                 )}
-                
+
                 {/*----------------------------------- EDIT PROCESS ---------------------------------------- */}
-                
+
                 {user && isEditing && (
                   <div className="edit-myprofile-details">
-                    
+
                     <div className="edit-name-input">
-                    <input
-                    id="edit-first"
-                    type="text"
-                    name="FirstName"
-                    value={user.FirstName}
-                    placeholder="First Name"
-                    onChange={handleChange}
-                    />
+                      <input
+                        id="edit-first"
+                        type="text"
+                        name="FirstName"
+                        value={user.FirstName}
+                        placeholder="First Name"
+                        onChange={handleChange}
+                      />
 
-                    <input
-                    id="edit-mid"
-                    type="text"
-                    name="MiddleName"
-                    value={user.MiddleName}
-                    placeholder="Middle Name"
-                    onChange={handleChange}
-                    />
+                      <input
+                        id="edit-mid"
+                        type="text"
+                        name="MiddleName"
+                        value={user.MiddleName}
+                        placeholder="Middle Name"
+                        onChange={handleChange}
+                      />
 
-                    <input
-                    id="edit-last"
-                    type="text"
-                    name="LastName"
-                    value={user.LastName}
-                    placeholder="Last Name"
-                    onChange={handleChange}
-                    />
+                      <input
+                        id="edit-last"
+                        type="text"
+                        name="LastName"
+                        value={user.LastName}
+                        placeholder="Last Name"
+                        onChange={handleChange}
+                      />
                     </div>
 
-                  <div className="edit-numbirth-input">
-                    <input
-                    id="edit-num"
-                      type="text"
-                      name="contactNum"
-                      value={user.contactNum}
-                      placeholder="Contact No."
-                      onChange={handleChange}
-                    />
-                    <input
-                    id="edit-birth"
-                      type="text"
-                      name="birthday"
-                      value={user.birthday}
-                      placeholder="YY-MM-DD"
-                      onChange={handleChange}
-                    />
+                    <div className="edit-numbirth-input">
+                      <input
+                        id="edit-num"
+                        type="text"
+                        name="contactNum"
+                        value={user.contactNum}
+                        placeholder="Contact No."
+                        onChange={handleChange}
+                      />
+                      <input
+                        id="edit-birth"
+                        type="text"
+                        name="birthday"
+                        value={user.birthday}
+                        placeholder="YY-MM-DD"
+                        onChange={handleChange}
+                      />
                     </div>
 
                     {/* ADDRESS INPUT FIELDS */}
                     <div className="edit-address-input">
-                    <input
-                      id="edit-house"
-                      type="text"
-                      name="houseNum"
-                      value= {user.houseNum} 
-                      placeholder="House No."
-                      onChange={handleChange}
-                    />
-                    <input
-                      id="edit-street"
-                      type="text"
-                      name="street"
-                      value= {user.street} 
-                      placeholder="Street"
-                      onChange={handleChange}
-                    />
-                    <input
-                      id="edit-brgy"
-                      type="text"
-                      name="brgy"
-                      value= {user.brgy} 
-                      placeholder="Barangay"
-                      onChange={handleChange}
-                    />
-                    <input
-                      id="edit-city"
-                      type="text"
-                      name="city"
-                      value= {user.city} 
-                      placeholder="City/Municipality"
-                      onChange={handleChange}
-                    />
-                    <input
-                      id="edit-prov"
-                      type="text"
-                      name="prov"
-                      value= {user.prov} 
-                      placeholder="Province"
-                      onChange={handleChange}
-                    />
+                      <input
+                        id="edit-house"
+                        type="text"
+                        name="houseNum"
+                        value={user.houseNum}
+                        placeholder="House No."
+                        onChange={handleChange}
+                      />
+                      <input
+                        id="edit-street"
+                        type="text"
+                        name="street"
+                        value={user.street}
+                        placeholder="Street"
+                        onChange={handleChange}
+                      />
+                      <input
+                        id="edit-brgy"
+                        type="text"
+                        name="brgy"
+                        value={user.brgy}
+                        placeholder="Barangay"
+                        onChange={handleChange}
+                      />
+                      <input
+                        id="edit-city"
+                        type="text"
+                        name="city"
+                        value={user.city}
+                        placeholder="City/Municipality"
+                        onChange={handleChange}
+                      />
+                      <input
+                        id="edit-prov"
+                        type="text"
+                        name="prov"
+                        value={user.prov}
+                        placeholder="Province"
+                        onChange={handleChange}
+                      />
                     </div>
-                     {/* END OF ADDRESS INPUT FIELDS */}
+                    {/* END OF ADDRESS INPUT FIELDS */}
 
                     <div className="edit-handler-input">
-                    <input
-                      id="edit-email"
-                      type="text"
-                      name="email"
-                      value={user.email}
-                      placeholder="Email"
-                      onChange={handleChange}
-                    />
-                    <input
-                      id="edit-userName"
-                      type="text"
-                      name="userName"
-                      value={user.UserName}
-                      placeholder="Username"
-                      onChange={handleChange}
-                    />
+                      <input
+                        id="edit-email"
+                        type="text"
+                        name="email"
+                        value={user.email}
+                        placeholder="Email"
+                        onChange={handleChange}
+                      />
+                      <input
+                        id="edit-userName"
+                        type="text"
+                        name="userName"
+                        value={user.UserName}
+                        placeholder="Username"
+                        onChange={handleChange}
+                      />
                     </div>
-                  <div className="edit-savecancel">
-                    <button id="cancel-btn-myprofile" onClick={handleCancelClick}>Cancel</button>
-                    <button id="save-btn-myprofile" onClick={handleSaveClick}>Save</button>
+                    <div className="edit-savecancel">
+                      <button id="cancel-btn-myprofile" onClick={handleCancelClick}>Cancel</button>
+                      <button id="save-btn-myprofile" onClick={handleSaveClick}>Save</button>
+                    </div>
                   </div>
-                </div>
                 )}
               </div>
             </div>

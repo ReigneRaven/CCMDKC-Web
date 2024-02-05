@@ -120,6 +120,18 @@ input {
   width: 101%;
 }
 
+.react-datepicker-popper {
+  margin-top: -5px;
+}
+
+.react-datepicker__navigation.react-datepicker__navigation--previous {
+  margin-top: 5px;
+}
+
+.react-datepicker__navigation.react-datepicker__navigation--next {
+  margin-top: 5px;
+}
+
 .form1 label {
   display: flex;
   flex-direction: column;
