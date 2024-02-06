@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import socketIOClient from 'socket.io-client';
+import PurchaseModal from "./purchasemodal";
 
 const socket = socketIOClient('http://localhost:5000');
 
 export default function PurchaseStatus() {
   const [data, setData] = useState([]);
-  const [sortBy, setSortBy] = useState("latest"); // "latest" or "oldest"
+  const [sortBy, setSortBy] = useState("latest");
+  const [selectedPurchase, setSelectedPurchase] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    // Fetch initial data
     const fetchData = async () => {
       try {
         const response = await axios.get("http://localhost:5000/api/purchase/all");
@@ -21,9 +23,7 @@ export default function PurchaseStatus() {
 
     fetchData();
 
-    // Set up Socket.IO to listen for real-time updates
     socket.on('PurchaseStatusChanged', (updatedPurchase) => {
-      // Update the state with the changed purchase
       setData((prevData) =>
         prevData.map((purchase) =>
           purchase._id === updatedPurchase._id ? updatedPurchase : purchase
@@ -31,19 +31,23 @@ export default function PurchaseStatus() {
       );
     });
 
-    // Cleanup on unmount
     return () => {
       socket.disconnect();
     };
   }, []);
+
+  const handleDetailsClick = (purchase) => {
+    setSelectedPurchase(purchase);
+    setIsModalOpen(true);
+  };
 
   const handleSortChange = (e) => {
     setSortBy(e.target.value);
   };
 
   const sortedData = [...data].sort((a, b) => {
-    const dateA = new Date(a.createdAt); // Replace 'createdAt' with the actual field in your data representing the purchase date
-    const dateB = new Date(b.createdAt); // Replace 'createdAt' with the actual field in your data representing the purchase date
+    const dateA = new Date(a.createdAt);
+    const dateB = new Date(b.createdAt);
     return sortBy === "latest" ? dateB - dateA : dateA - dateB;
   });
 
@@ -70,6 +74,7 @@ export default function PurchaseStatus() {
                 <th>Mode of Payment</th>
                 <th>Total Price</th>
                 <th>Order Status</th>
+                <th>Details</th>
               </tr>
             </thead>
             <tbody>
@@ -81,13 +86,33 @@ export default function PurchaseStatus() {
                   <td>{status.modeCOD ? 'Cash on Delivery' : 'Other Payment Method'}</td>
                   <td id="total-admin">₱{status.totalPrice}</td>
                   <td>{status.status}</td>
-                  <td><button>Details</button></td>
+                  <td>
+                    <button
+                      id="purchase-details-btn"
+                      onClick={() => handleDetailsClick(status)}
+                    >
+                      Details
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
       </div>
+      {isModalOpen && (
+        <div className="overlay">
+          <div className="purchase-modal-container">
+            <PurchaseModal
+              onClose={() => {
+                setIsModalOpen(false);
+                setSelectedPurchase(null);
+              }}
+              purchase={selectedPurchase}
+            />
+          </div>
+        </div>
+      )}
     </>
   );
 }
