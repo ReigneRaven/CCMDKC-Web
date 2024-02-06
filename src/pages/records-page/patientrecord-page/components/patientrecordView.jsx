@@ -9,6 +9,7 @@ export default function PatientRecordView() {
   const [selectedPatientId, setSelectedPatientId] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [editingRecord, setEditingRecord] = useState(null);
+  const [sortBy, setSortBy] = useState("latest"); // Added state for sorting
 
   const { medicalId } = useParams();
 
@@ -67,13 +68,23 @@ export default function PatientRecordView() {
     setEditingRecord(null);
   };
 
-  const handleEditChange = (e) => {
+  const handleEditChange = (e, record) => {
     const { name, value } = e.target;
     setEditingRecord((prevEditingRecord) => ({
       ...prevEditingRecord,
       [name]: value,
     }));
   };
+
+  const handleSortChange = (e) => {
+    setSortBy(e.target.value);
+  };
+
+  const sortedData = [...filteredData].sort((a, b) => {
+    const dateA = new Date(a.createdAt);
+    const dateB = new Date(b.createdAt);
+    return sortBy === "latest" ? dateB - dateA : dateA - dateB;
+  });
 
   return (
     <div className="searchbar-record-adm">
@@ -84,6 +95,13 @@ export default function PatientRecordView() {
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
+      <div className="sort-dropdown-order-modal-adm">
+        <label htmlFor="sort">Sort By:</label>
+        <select id="sort" value={sortBy} onChange={handleSortChange}>
+          <option value="latest">Latest</option>
+          <option value="oldest">Oldest</option>
+        </select>
+      </div>
       <div className="patientrecord-table-content">
         <div className="record-table-container">
           <table className="table-adm">
@@ -100,7 +118,7 @@ export default function PatientRecordView() {
               </tr>
             </thead>
             <tbody>
-              {filteredData.map((record) => (
+              {sortedData.map((record) => (
                 <tr key={record._id}>
                   <td>{record._id.toString()}</td>
                   <td>

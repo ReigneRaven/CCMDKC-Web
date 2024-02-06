@@ -250,5 +250,15 @@ thead {
   background-color: #f3f3f3; 
   border-radius: 20px;
 }
+
+.sort-dropdown-order-modal-adm {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: right;
+  margin-top: 20px;
+  margin-bottom: -45px;
+  margin-right: 105px;
+}
   
   
