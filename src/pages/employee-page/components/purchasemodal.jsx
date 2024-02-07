@@ -1,6 +1,25 @@
 import React, { useEffect, useState } from "react";
+import axios from 'axios'
 
-export default function PurchaseModal({ onClose }) {
+export default function PurchaseModal({ onClose, purchase }) {
+
+  const [userDetails, setUserDetails] = useState(null);
+  const userId = localStorage.getItem('userId')
+  useEffect(() => {
+    const fetchUserDetails = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5000/api/user/${userId}`);
+        setUserDetails(response.data);
+      } catch (error) {
+        console.error('Error fetching user details:', error);
+      }
+    };
+
+    if (purchase) {
+      fetchUserDetails();
+    }
+  }, [purchase]);
+
 
   return (
     <div className="purchasemodal-table-content">
@@ -15,17 +34,17 @@ export default function PurchaseModal({ onClose }) {
             </tr>
           </thead>
           <tbody>
-          {/* {filteredName.map((purchase) => (
-                <tr key={purchase._id}>
-                  <td>{purchase.name}</td>
-                  <td>{purchase.address}</td>
-                  <td>{purchase.phoneNumber}</td>
-                  <td>{purchase.email}</td>
-                </tr>
-              ))} */}
+            {userDetails && (
+              <tr>
+              <td>{userDetails.FirstName} {userDetails.LastName}</td>
+              <td>{userDetails.houseNum} {userDetails.street} {userDetails.brgy} {userDetails.city} {userDetails.prov}</td>
+              <td>{userDetails.contactNum}</td>
+              <td>{userDetails.email}</td>
+            </tr>
+            )}
           </tbody>
         </table>
-        <button onClick={onClose}>Close</button>
+        <button onClick={onClose} id="close-purchase-modal">Close</button>
       </div>
     </div>
   );

@@ -54,10 +54,11 @@ export default function Appointment() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const formattedDate = appointmentDate.toLocaleDateString('en-US');
       const response = await axios.post('http://localhost:5000/api/appointments', {
         service: selectedService,
         UserName,
-        appointmentDate: appointmentDate.toISOString(),
+        appointmentDate: formattedDate,
         appointmentTime,
         userId: userId,
       });

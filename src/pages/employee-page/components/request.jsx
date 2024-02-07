@@ -14,7 +14,8 @@ export default function Request() {
             try {
                 const response = await axios.get('http://localhost:5000/api/appointments');
                 const formattedAppointments = response.data.map(appointment => {
-                    const formattedDate = new Date(appointment.appointmentDate).toISOString().split('T')[0];
+                    const formattedDate = new Date(appointment.appointmentDate).toLocaleDateString('en-US')
+                    // const formattedDate = new Date(appointment.appointmentDate).toISOString().split('T')[0];
 
                     return {
                         ...appointment,
@@ -93,6 +94,18 @@ export default function Request() {
             });
     };
 
+    function formatTime(timeString) {
+        const [hours, minutes] = timeString.split(':');
+        const formattedTime = new Date();
+        formattedTime.setHours(hours);
+        formattedTime.setMinutes(minutes);
+        return formattedTime.toLocaleTimeString('en-US', {
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: true,
+        });
+    }
+
     return (
         <>
             <div className="upcoming-wrapper">
@@ -127,7 +140,9 @@ export default function Request() {
                                     <td>{appointment.UserName}</td>
                                     <td>{appointment.service}</td>
                                     <td>{new Date(appointment.appointmentDate).toLocaleDateString('en-US')}</td>
-                                    <td>{appointment.appointmentTime}</td>
+                                    <td>
+                                        {formatTime(appointment.appointmentTime)}
+                                    </td>
                                     <td>{appointment.status}</td>
                                     <td>
                                         <div className="buttons-req">

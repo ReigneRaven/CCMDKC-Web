@@ -18,10 +18,16 @@ const UpcomingPtn = () => {
 
     axios.get(`http://localhost:5000/api/appointments/user/${userId}`)
       .then(response => {
-        const formattedAppointments = response.data.map(appointment => ({
-          ...appointment,
-          appointmentDate: new Date(appointment.appointmentDate).toLocaleDateString('en-US'),
-        }));
+        const formattedAppointments = response.data.map(appointment => {
+          const formattedDate = new Date(appointment.appointmentDate).toLocaleDateString('en-US');
+          const formattedTime = formatTime(appointment.appointmentTime);
+
+          return {
+            ...appointment,
+            appointmentDate: formattedDate,
+            appointmentTime: formattedTime,
+          };
+        });
         setAppointments(formattedAppointments);
       })
       .catch(error => console.error('Error fetching appointments:', error));
@@ -57,6 +63,18 @@ const UpcomingPtn = () => {
   const filteredAppointments = sortedAppointments.filter(appointment =>
     appointment.UserName === loggedInUser?.UserName
   );
+
+  function formatTime(timeString) {
+    const [hours, minutes] = timeString.split(':');
+    const formattedTime = new Date();
+    formattedTime.setHours(hours);
+    formattedTime.setMinutes(minutes);
+    return formattedTime.toLocaleTimeString('en-US', {
+      hour: 'numeric',
+      minute: 'numeric',
+      hour12: true,
+    });
+  }
 
   return (
     <div className="upcoming-wrapper">

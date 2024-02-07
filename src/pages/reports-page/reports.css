@@ -10,7 +10,9 @@
     margin-left: 20px;
 }
 
-#reports-header {
+#reports-title {
+    color: lightslategrey;
+    font-size: 20px;
     display: flex;
-    justify-content: center;
+    margin-left: 50px;
   }
