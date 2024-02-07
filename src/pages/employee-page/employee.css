@@ -522,7 +522,7 @@ thead{
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
-    width: 40%; 
+    width: 60%; 
     border-radius: 20px;
     z-index: 1000;
     padding: 20px;
@@ -536,6 +536,7 @@ thead{
 
 .purchasemodal-table-container {
     width: 100%;
+
 }
 
 .purchasemodal-table {
@@ -550,7 +551,7 @@ thead{
   
   .purchasemodal-table th,
   .purchasemodal-table td {
-    padding: 10px;
+    padding: 20px;
   }
     
   .purchasemodal-table tr:nth-child(even) {
@@ -570,3 +571,9 @@ thead{
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 999;
   }
+
+  #close-purchase-modal{
+    margin-top: 10px;
+  }
+
+ 
