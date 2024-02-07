@@ -107,6 +107,7 @@ export default function Appointment() {
                       Choose a Service<span className="aster-serv">*</span>
                     </label>
                     <select name="services" id="services-select" onChange={handleServiceChange}>
+                      <option value="" disabled selected>Service</option>
                       <option value="Nephrology Consultation">Nephrology Consultation</option>
                       <option value="OB-GYN Consultation">OB-GYN Consultation</option>
                       <option value="Laboratory">Laboratory</option>

@@ -70,7 +70,7 @@ export default function PatientRecordForm() {
           onChange={(e) => setSex(e.target.value)}
           className="input-patientrecord custom-gender"
         >
-          <option value=" ">Sex</option>
+          <option value="" disabled>Sex</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
         </select>
