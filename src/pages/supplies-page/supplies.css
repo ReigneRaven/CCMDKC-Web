@@ -13,7 +13,7 @@
 .create-stocks {
   height: 100%;
   margin-top: 210px;
-  margin-left: 100px;
+  margin-left: 50px;
   margin-bottom: 10px;
   display: flex;
   background-color: rgb(243, 243, 243);
@@ -50,10 +50,11 @@
   border-radius: 20px; 
   overflow: hidden; 
   width: calc(100% - 2em); 
+  table-layout: fixed;
 }
 
 #inventory-header {
-  font-size: 30px;
+  font-size: 25px;
 }
   
 .table th,
@@ -83,7 +84,7 @@ thead {
 .table td:nth-child(1),
 .table th:nth-child(2),
 .table td:nth-child(2) {
-  padding: 0px;
+  padding: 5px;
 }
 
 .table th:nth-child(3),
@@ -93,15 +94,15 @@ thead {
 .table th:nth-child(5),
 .table td:nth-child(5) { /* Image column */
   text-align: center; /* Center the content */
-  padding: 20px; /* Adjust padding as needed */
+  padding: 10px; /* Adjust padding as needed */
 }
 
 .supplies-table-container {
   margin-top: 30px;
-  margin-left: 20px;
+  margin-left: 5px;
   /* width: 250%; */
-  width: 115%;
-  max-height: 590px;
+  width: 240%;
+  max-height: 630px;
   overflow: scroll;
   overflow-x: hidden;
 }
@@ -111,7 +112,7 @@ thead {
 }
 
 .supplies-change.supplies-change-input {
-  width: 130px;
+  width: 120px;
 }
 
 #supplies-header {
@@ -131,9 +132,9 @@ thead {
 #searchbar-supplies{
   display:flex;
   margin-top: -10px;
-  margin-left: 40px;
+  margin-left: 25px;
   border-radius: 20px;
-  width: 950px;
+  width: 1060px;
   background-color: #f3f3f3;
   z-index: 1;
 }
@@ -145,9 +146,43 @@ thead {
 
 #supplies-edit-btn {
   margin-top: 10px;
+  padding: 8px 20px;
+}
+
+#supplies-save-btn {
+  margin-top: 10px;
+  padding: 8px 12px;
+}
+
+#supplies-cancel-btn {
+  margin-top: 10px;
 }
 
 #supplies-delete-btn {
   background-color: #FF0000;
   margin-top: 10px;
+}
+
+.lowStock{
+  background-color: rgb(255, 151, 151);
+  font-weight: 600;
+}
+
+
+#expire-date{
+  border-radius: 20px;
+  width: 250px; 
+}
+
+.expiration-container{
+ display: flex;
+ flex-direction: row;
+ justify-content: baseline;
+ align-items: baseline;
+ gap: 0.3rem;
+ padding: 3px;
+}
+
+#label-expire{
+  font-weight: 500;
 }

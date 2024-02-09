@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Head2 from "../../../components/headers/header";
+import { toast } from 'react-toastify'; // Add this import
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function SuppliesView() {
   const [data, setData] = useState([]);
@@ -12,6 +14,11 @@ export default function SuppliesView() {
       .get("http://localhost:5000/api/inventory")
       .then((response) => {
         setData(response.data);
+        response.data.forEach(item => {
+          if (parseInt(item.stocksAvailable) <= 60) {
+            toast.error(`Stocks for ${item.itemName} are low. Only ${item.stocksAvailable} pieces left. Restock now!`);
+          }
+        });
       })
       .catch((error) => {
         console.error("Error fetching inventory data:", error);
@@ -31,7 +38,7 @@ export default function SuppliesView() {
     axios
       .put(`http://localhost:5000/api/inventory/${editedItem._id}`, editedItem)
       .then((result) => {
-        alert('Do you want to save your changes?')
+        alert("Do you want to save your changes?");
         setEditedItem(null);
 
         // Update the local state with the modified data
@@ -57,7 +64,7 @@ export default function SuppliesView() {
     axios
       .delete(`http://localhost:5000/api/inventory/${itemId}`)
       .then((result) => {
-        alert('Do you want to delete this item?')
+        alert("Do you want to delete this item?");
         setData((prevData) => prevData.filter((item) => item._id !== itemId));
       })
       .catch((err) => {
@@ -74,18 +81,26 @@ export default function SuppliesView() {
     });
   };
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const formattedDate = `${
+      date.getMonth() + 1
+    }/${date.getDate()}/${date.getFullYear()}`;
+    return formattedDate;
+  };
+
   return (
     <div className="searchbar-supplies">
       <div className="searchbar-header">
         <Head2 text="Supplies" id="supplies-header" />
       </div>
-        <input
-          id="searchbar-supplies"
-          type="text"
-          placeholder=" Search item by name"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
+      <input
+        id="searchbar-supplies"
+        type="text"
+        placeholder=" Search item by name"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+      />
       <div className="supplies-table-content">
         <div className="supplies-table-container">
           <table className="table">
@@ -95,19 +110,20 @@ export default function SuppliesView() {
                 <th>Description</th>
                 <th>Availability</th>
                 <th>Price</th>
+                <th>Expiration Date</th>
                 <th>Image</th>
                 <th>Modify</th>
               </tr>
             </thead>
             <tbody>
               {filteredSupplies.map((item) => (
-                <tr key={item._id}>
+                <tr key={item._id} className={parseInt(item.stocksAvailable) <= 60 ? 'lowStock' : ''}>
                   <td>
                     {editedItem && editedItem._id === item._id ? (
                       <input
                         type="text"
                         name="itemName"
-                        className="supplies-change"
+                        className="supplies-change supplies-change-input"
                         value={editedItem.itemName}
                         onChange={(e) => handleEditChange(e, item)}
                       />
@@ -133,7 +149,7 @@ export default function SuppliesView() {
                       <input
                         type="text"
                         name="stocksAvailable"
-                        className="supplies-change"
+                        className="supplies-change supplies-change-input"
                         value={editedItem.stocksAvailable}
                         onChange={(e) => handleEditChange(e, item)}
                       />
@@ -146,12 +162,25 @@ export default function SuppliesView() {
                       <input
                         type="text"
                         name="itemPrice"
-                        className="supplies-change"
+                        className="supplies-change supplies-change-input"
                         value={editedItem.itemPrice}
                         onChange={(e) => handleEditChange(e, item)}
                       />
                     ) : (
-                      item.itemPrice
+                      `₱${item.itemPrice}`
+                    )}
+                  </td>
+                  <td>
+                    {editedItem && editedItem._id === item._id ? (
+                      <input
+                        type="text"
+                        name="expireDate"
+                        className="supplies-change supplies-change-input"
+                        value={formatDate(editedItem.expireDate)}
+                        onChange={(e) => handleEditChange(e, item)}
+                      />
+                    ) : (
+                      formatDate(item.expireDate)
                     )}
                   </td>
                   <td>
@@ -159,7 +188,7 @@ export default function SuppliesView() {
                       <input
                         type="text"
                         name="itemImg"
-                        className="supplies-change"
+                        className="supplies-change supplies-change-input"
                         value={editedItem.itemImg}
                         onChange={(e) => handleEditChange(e, item)}
                       />
@@ -174,13 +203,25 @@ export default function SuppliesView() {
                   <td>
                     {editedItem && editedItem._id === item._id ? (
                       <div className="actionButtons">
-                        <button className="editButton" onClick={handleSaveClick}>Save</button>
-                        <button className="editButton" onClick={handleCancelClick}>Cancel</button>
+                        <button className="editButton" onClick={handleSaveClick} id="supplies-save-btn">
+                          Save
+                        </button>
+                        <button className="editButton" onClick={handleCancelClick} id="supplies-cancel-btn">
+                          Cancel
+                        </button>
                       </div>
                     ) : (
                       <div className="actionButtons">
-                        <button onClick={() => handleEditClick(item)} id="supplies-edit-btn">Edit</button>
-                        <button className="deleteButton" onClick={() => handleDeleteClick(item._id)} id="supplies-delete-btn">Delete</button>
+                        <button onClick={() => handleEditClick(item)} id="supplies-edit-btn">
+                          Edit
+                        </button>
+                        <button
+                          className="deleteButton"
+                          onClick={() => handleDeleteClick(item._id)}
+                          id="supplies-delete-btn"
+                        >
+                          Delete
+                        </button>
                       </div>
                     )}
                   </td>

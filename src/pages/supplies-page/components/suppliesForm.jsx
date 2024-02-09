@@ -3,6 +3,7 @@ import axios from 'axios';
 import '../supplies.css';
 import Button from './buttons';
 import Head2 from '../../../components/headers/header';
+import DatePicker from 'react-datepicker';
 
 export default function SuppliesForm() {
   const [itemName, setNewItem] = useState('');
@@ -10,52 +11,42 @@ export default function SuppliesForm() {
   const [stocksAvailable, setStocks] = useState('');
   const [itemPrice, setPrice] = useState('');
   const [itemImg, setImage] = useState(null);
-
-  const [Supplies, setSuppliesList] = useState([
-    {Supplies:''},
-  ])
-
-  const handleSuppliesAdd = () => {
-    setSuppliesList([...Supplies, {Supplies:''}])
-
-  }
+  const [expireDate, setExpireDate] = useState(new Date());
+  const [Supplies, setSuppliesList] = useState([]);
 
   const handleImageChange = (e) => {
     // Update the state with the selected image file
     setImage(e.target.files[0]);
   };
 
-  // const onSubmit = (e) => {
-  //   e.preventDefault(); // Prevent the default form submission behavior
-      
-  //     axios.post('http://localhost:5000/api/inventory',{
-  //       itemName,
-  //       itemDescription,
-  //       stocksAvailable,
-  //       itemPrice,
-  //       itemImg
-  //     })
-  //     .then(result => console.log(result))
-  //     .catch(err => console.log(err))
-    
+  const handleExpireDateChange = (expireDate) => {
+    setExpireDate(expireDate);
+  };
+
   const onSubmit = async (e) => {
     e.preventDefault();
-  
+
     try {
-      // Create a FormData object
       const formData = new FormData();
-  
-      // Append the form data to the FormData object
       formData.append('itemName', itemName);
       formData.append('itemDescription', itemDescription);
       formData.append('stocksAvailable', stocksAvailable);
       formData.append('itemPrice', itemPrice);
-      formData.append('itemImg', itemImg); // Append the file
-  
-      // Make the axios post request with FormData
+      formData.append('expireDate', expireDate);
+      formData.append('itemImg', itemImg);
+
       const result = await axios.post('http://localhost:5000/api/inventory', formData);
-  
-      console.log(result);
+
+      // Update the state with the new stock data
+      setSuppliesList([...Supplies, result.data]);
+
+      // Clear the form fields after successful submission
+      setNewItem('');
+      setDescription('');
+      setStocks('');
+      setPrice('');
+      setImage(null);
+      setExpireDate(new Date());
     } catch (error) {
       console.error(error);
     }
@@ -93,6 +84,18 @@ export default function SuppliesForm() {
           placeholder=" Item Price"
           className="input-supplies"
         />
+        <div className="expiration-container">
+          <label htmlFor='expire-date' id='label-expire'>Expiration Date</label>
+          <DatePicker
+            placeholderText="Expiration Date"
+            className="custom-expireDate custom-datepicker"
+            selected={expireDate}
+            value={expireDate}
+            onChange={handleExpireDateChange}
+            id="expire-date"
+            required
+          />
+        </div>
 
         {/* Add an input field for image upload */}
         <input
@@ -102,8 +105,8 @@ export default function SuppliesForm() {
           accept="image/*"
           className="input-supplies"
         />
-        
-        <Button text={'Add'} type="submit" onClick={handleSuppliesAdd}></Button>
+
+        <Button text={'Add'} type="submit"></Button>
       </form>
     </>
   );
