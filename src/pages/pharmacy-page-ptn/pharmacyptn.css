@@ -238,7 +238,7 @@ main {
   align-items: center;
   justify-content: center;
   margin: 0;
-  margin-top: -10px;
+  margin-top: 5px;
 }
 
 .input-username {
@@ -259,7 +259,10 @@ main {
 }
 
 #radio-label{
-  font-size: medium;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+
 }
 
 .mode-group{
@@ -276,7 +279,7 @@ main {
 #total-p{
   display: flex;
   margin: 0;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 #mode-cod{
@@ -290,10 +293,28 @@ main {
   font-weight:600;
   font-size: 15px;
   margin-bottom: 0;
+  margin-top: 0;
   /* margin: 0; */
 }
 
 #label-min{
   font-size: small;
   color: blue;
+}
+
+#span-stock{
+  font-weight: 600;
+}
+
+#product-stock-p{
+  display: flex;
+  flex-direction: row;
+  gap: 0.3rem;
+  margin: 0;
+  color: green;
+}
+
+#username-pharm{
+  border-radius: 20px;
+  margin: -5px;
 }

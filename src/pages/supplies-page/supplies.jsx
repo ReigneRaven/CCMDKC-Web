@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
-import '../supplies-page/supplies.css'
-import SuppliesForm from "./components/suppliesForm";
+import React from "react";
 import Header from "../employee-page/components/header";
 import Sidebar from "../employee-page/components/sidebar";
+import SuppliesForm from "./components/suppliesForm";
 import SuppliesView from "./components/suppliesView";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Supplies() {
     return (
@@ -20,6 +21,7 @@ export default function Supplies() {
                     </div>
                 </div>
             </div>
+            <ToastContainer />
         </>
-    )
+    );
 }

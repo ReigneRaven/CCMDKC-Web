@@ -23,7 +23,7 @@ const PharmacyCard = ({ item }) => {
           <p className="card-price">{item.price}</p>
           <p className="card-price">₱ {item.itemPrice}</p>
           <button id="add-cart" onClick={handleViewMed}>
-            Add to Cart
+            Buy Now
           </button>
         </div>
       </div>

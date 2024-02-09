@@ -94,15 +94,18 @@ const PharmModal = ({ item, onClose }) => {
 
         <form id="modal-form-pharm" >
           <div className="pharmDetailsMed">
-          <p id="product-name-p">{item.itemName}</p>
             <div className="qty-group">
-            <input
+              <div className="product-info">
+              <p id="product-name-p">{item.itemName}</p>
+              <p id="product-stock-p"><span id="span-stock">{item.stocksAvailable}</span> stocks left</p>
+              </div>
+              <input
                 type="text"
                 value={UserName}
                 onChange={(e) => setUserName(e.target.value)}
                 placeholder=" Username"
                 className="input-username"
-                id="username"
+                id="username-pharm"
               />
               <label htmlFor="quantity-input" id="qty-modal-p">
                 Quantity <span id="label-min">&nbsp;(min 20 capsules)</span>
