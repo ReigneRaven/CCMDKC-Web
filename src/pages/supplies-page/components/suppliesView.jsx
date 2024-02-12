@@ -1,29 +1,58 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Head2 from "../../../components/headers/header";
-import { toast } from 'react-toastify'; // Add this import
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function SuppliesView() {
   const [data, setData] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [editedItem, setEditedItem] = useState(null);
+  const [lowStockAlerts, setLowStockAlerts] = useState([]);
 
   useEffect(() => {
+    let isMounted = true;
+
     axios
       .get("http://localhost:5000/api/inventory")
       .then((response) => {
-        setData(response.data);
-        response.data.forEach(item => {
-          if (parseInt(item.stocksAvailable) <= 60) {
-            toast.error(`Stocks for ${item.itemName} are low. Only ${item.stocksAvailable} pieces left. Restock now!`);
-          }
-        });
+        if (isMounted) {
+          setData(response.data);
+
+          // Check for low stock items
+          const lowStockItems = response.data.filter(item => parseInt(item.stocksAvailable) <= 60);
+          setLowStockAlerts(lowStockItems);
+        }
       })
       .catch((error) => {
         console.error("Error fetching inventory data:", error);
       });
+
+    // Cleanup function to run when the component is unmounted
+    return () => {
+      isMounted = false;
+    };
   }, []);
+
+  useEffect(() => {
+    // Check for low stock items whenever data changes
+    const lowStockItems = data.filter(item => parseInt(item.stocksAvailable) <= 60);
+    setLowStockAlerts(lowStockItems);
+
+    // Dismiss existing toasts before showing new ones
+    toast.dismiss();
+
+    // Show low stock alerts
+    lowStockItems.forEach(item => {
+      const toastId = toast.error(`Stocks for ${item.itemName} are low. Only ${item.stocksAvailable} pieces left. Restock now!`);
+      // You can store the toastId in state if you need to reference it later
+    });
+
+    // Cleanup function to run when the component is unmounted
+    return () => {
+      toast.dismiss();
+    };
+  }, [data]);
 
   const filteredSupplies = data.filter((item) =>
     item.itemName.toLowerCase().includes(searchQuery.toLowerCase())
