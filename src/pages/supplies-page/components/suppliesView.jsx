@@ -8,10 +8,15 @@ export default function SuppliesView() {
   const [data, setData] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [editedItem, setEditedItem] = useState(null);
+  const [editedDate, setEditedDate] = useState("");
   const [lowStockAlerts, setLowStockAlerts] = useState([]);
+  const [expirationAlerts, setExpirationAlerts] = useState([]);
 
   useEffect(() => {
     let isMounted = true;
+
+    // Check if expiration alerts have already been shown
+    const expirationAlertsShown = localStorage.getItem('expirationAlertsShown') === 'true';
 
     axios
       .get("http://localhost:5000/api/inventory")
@@ -22,6 +27,27 @@ export default function SuppliesView() {
           // Check for low stock items
           const lowStockItems = response.data.filter(item => parseInt(item.stocksAvailable) <= 60);
           setLowStockAlerts(lowStockItems);
+
+          // Check for items expiring in the next two weeks
+          const today = new Date();
+          const twoWeeksFromNow = new Date(today);
+          twoWeeksFromNow.setDate(today.getDate() + 14);
+
+          const expiringItems = response.data.filter(item => {
+            const expireDate = new Date(item.expireDate);
+            return expireDate <= twoWeeksFromNow;
+          });
+
+          // Show expiration date alerts if not already shown
+          if (!expirationAlertsShown) {
+            expiringItems.forEach(item => {
+              const toastId = toast.warn(`The item ${item.itemName} will expire two weeks from now at exactly ${formatDate(item.expireDate)}. Restock now!`);
+              setExpirationAlerts(prevAlerts => [...prevAlerts, toastId]);
+            });
+
+            // Mark expiration alerts as shown in local storage
+            localStorage.setItem('expirationAlertsShown', 'true');
+          }
         }
       })
       .catch((error) => {
@@ -31,6 +57,7 @@ export default function SuppliesView() {
     // Cleanup function to run when the component is unmounted
     return () => {
       isMounted = false;
+      toast.dismiss([...lowStockAlerts, ...expirationAlerts]);
     };
   }, []);
 
@@ -39,18 +66,40 @@ export default function SuppliesView() {
     const lowStockItems = data.filter(item => parseInt(item.stocksAvailable) <= 60);
     setLowStockAlerts(lowStockItems);
 
-    // Dismiss existing toasts before showing new ones
-    toast.dismiss();
+    // Dismiss existing low stock toasts before showing new ones
+    toast.dismiss(lowStockAlerts);
 
     // Show low stock alerts
     lowStockItems.forEach(item => {
       const toastId = toast.error(`Stocks for ${item.itemName} are low. Only ${item.stocksAvailable} pieces left. Restock now!`);
-      // You can store the toastId in state if you need to reference it later
+      setLowStockAlerts(prevAlerts => [...prevAlerts, toastId]);
     });
 
     // Cleanup function to run when the component is unmounted
     return () => {
-      toast.dismiss();
+      toast.dismiss(lowStockAlerts);
+    };
+  }, [data]);
+
+  useEffect(() => {
+    // Dismiss existing expiration date toasts before showing new ones
+    toast.dismiss(expirationAlerts);
+
+    // Show expiration date alerts
+    data.forEach(item => {
+      const expireDate = new Date(item.expireDate);
+      const twoWeeksFromNow = new Date();
+      twoWeeksFromNow.setDate(twoWeeksFromNow.getDate() + 14);
+
+      if (expireDate <= twoWeeksFromNow) {
+        const toastId = toast.warn(`The item ${item.itemName} will expire two weeks from now at exactly ${formatDate(item.expireDate)}. Restock now!`);
+        setExpirationAlerts(prevAlerts => [...prevAlerts, toastId]);
+      }
+    });
+
+    // Cleanup function to run when the component is unmounted
+    return () => {
+      toast.dismiss(expirationAlerts);
     };
   }, [data]);
 
@@ -60,27 +109,30 @@ export default function SuppliesView() {
 
   const handleEditClick = (item) => {
     setEditedItem(item);
+    setEditedDate(formatDate(item.expireDate));
   };
 
   const handleSaveClick = () => {
-    // Send a PUT request to update the item's details
+    const editedItemWithFormattedDate = {
+      ...editedItem,
+      expireDate: editedDate,
+    };
+
     axios
-      .put(`http://localhost:5000/api/inventory/${editedItem._id}`, editedItem)
+      .put(`http://localhost:5000/api/inventory/${editedItem._id}`, editedItemWithFormattedDate)
       .then((result) => {
         alert("Do you want to save your changes?");
         setEditedItem(null);
 
-        // Update the local state with the modified data
         setData((prevData) => {
           const updatedData = prevData.map((item) =>
-            item._id === editedItem._id ? editedItem : item
+            item._id === editedItem._id ? editedItemWithFormattedDate : item
           );
           return updatedData;
         });
       })
       .catch((err) => {
         console.error(err);
-        // Handle the error here
       });
   };
 
@@ -89,7 +141,6 @@ export default function SuppliesView() {
   };
 
   const handleDeleteClick = (itemId) => {
-    // Send a DELETE request to remove the item
     axios
       .delete(`http://localhost:5000/api/inventory/${itemId}`)
       .then((result) => {
@@ -98,12 +149,16 @@ export default function SuppliesView() {
       })
       .catch((err) => {
         console.error(err);
-        // Handle the error here
       });
   };
 
   const handleEditChange = (e, item) => {
     const { name, value } = e.target;
+
+    if (name === "expireDate") {
+      setEditedDate(value);
+    }
+
     setEditedItem({
       ...editedItem,
       [name]: value,
@@ -205,7 +260,7 @@ export default function SuppliesView() {
                         type="text"
                         name="expireDate"
                         className="supplies-change supplies-change-input"
-                        value={formatDate(editedItem.expireDate)}
+                        value={editedDate}
                         onChange={(e) => handleEditChange(e, item)}
                       />
                     ) : (
