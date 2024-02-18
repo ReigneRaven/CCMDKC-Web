@@ -44,7 +44,7 @@ export default function PtnHeader() {
                             <div className="drop-links-ptn">
                             <ul>
                             <Link to={`/patient/myprofile/${id}`}><PatientMenu img={User}/>My Profile</Link>
-                            <Link to='/patient/changepassword'><PatientMenu img={Password}/>Change Password</Link>
+                            {/* <Link to='/patient/changepassword'><PatientMenu img={Password}/>Change Password</Link> */}
                             <Link to='/'><PatientMenu img={Logout}/>Logout</Link>
                             </ul>
                             </div>

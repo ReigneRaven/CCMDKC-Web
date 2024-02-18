@@ -32,3 +32,159 @@
    display: flex;
    flex-direction: column;
 }
+
+.add-announcement-adm {
+   height: 170px;
+   margin-left: 50px;
+   margin-bottom: 10px;
+   display: flex;
+   background-color: rgb(243, 243, 243);
+   width: fit-content;
+   padding: 20px;
+   border-radius: 20px;
+   gap: 1.5rem;
+}
+
+#announce-adm-header {
+   font-size: 25px;
+}
+
+.input-announcement {
+   margin-top: 10px;
+   border-radius: 20px; 
+}
+
+#img-upload-announce-adm{
+   margin-top: -5px;
+   border: none;
+   border-radius: 0;
+}
+
+
+/* .grid-container{
+   background-color: rgb(194, 177, 177);
+} */
+
+.grid-scroll-container {
+  overflow-y: auto;
+  max-height: 500px; /* Set the maximum height as per your requirement */
+}
+
+.grid-container {
+   margin-left: 500px;
+   margin-top: -220px;
+   background-color: rgb(243, 243, 243);
+   display: grid;
+   grid-template-columns: repeat(1, 1fr); /* Update this line */
+   width: 65%;
+   height: 80%;
+   gap: 20px;
+   border-radius: 20px;
+   overflow: scroll;
+   overflow-x: hidden;
+ }
+
+.grid-item {
+  border: 0px solid #ccc;
+  padding: 15px;
+  text-align: center;
+  position: relative;
+}
+
+.grid-item img {
+   display: block;
+   margin: 0 auto;
+   cursor: pointer;
+   transition: transform 0.3s ease-in-out;
+ }
+ 
+
+.grid-item img.announcement-image-0 {
+   width: 400px;
+   height: auto;
+ }
+ 
+ .grid-item img.announcement-image-1 {
+   width: 700px;
+   height: auto;
+ }
+ 
+ .grid-item img.announcement-image-2 {
+   width: 400px;
+   height: auto;
+ }
+
+ .grid-item img.announcement-image-3 {
+   width: 400px;
+   height: auto;
+ }
+/* .grid-item img:nth-child(odd) {
+  width: 400px;
+  height: 600px;
+}
+
+.grid-item img:nth-child(even) {
+  width: 300px;
+} */
+
+h6 {
+   margin-top: 10px;
+   margin-bottom: 20px;
+   font-size: 30px;
+   font-weight: 500;
+}
+
+.modal-overlay {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: rgba(0, 0, 0, 0.5);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   z-index: 1000;
+ }
+ 
+ .modal-container.announcement-modal-0 {
+   max-width: 40%;
+   max-height: 90%;
+   overflow: auto;
+ }
+ 
+ .modal-container.announcement-modal-1 {
+   max-width: 60%;
+   max-height: 80%;
+ }
+ 
+ .modal-container.announcement-modal-2 {
+   max-width: 40%;
+   max-height: 90%;
+   overflow: auto;
+ }
+
+ .modal-container.announcement-modal-3 {
+   max-width: 40%;
+   max-height: 90%;
+ }
+ 
+ .modal-container img {
+   width: 100%;
+   height: 100%;
+   object-fit: contain;
+ }
+ 
+ /* Add this style to hide the scrollbar when the modal is open */
+ body.modal-open {
+   overflow: hidden;
+ }
+
+ #delete-btn-announcement-adm {
+   margin-top: 20px;
+   background-color: red;
+ }
+ 
+ #delete-btn-announcement-adm:hover {
+   filter: drop-shadow(0 0 0.2em #FF0000);
+}

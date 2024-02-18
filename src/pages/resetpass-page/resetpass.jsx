@@ -7,13 +7,16 @@ import DiaLogo from '../../components/logo/logo';
 import ClientLogo from '../../assets/ccmdkc-logo.png';
 import axios from 'axios';
 import '../../components/headers/header.css';
-import './forgotpass.css'
+import './resetpass.css'
 
 
-export default function ForgotPassword() {
+export default function ResetPassword() {
     const [loading, setLoading] = useState(false);
     const [openModal, setOpenModal] = useState(false);
     const [email, setEmail] = useState('');
+    const [resetToken, setResetToken] = useState('');
+    const [newPassword, setNewPassword] = useState('');
+
     const navigate = useNavigate();
 
 
@@ -21,12 +24,12 @@ export default function ForgotPassword() {
         e.preventDefault(); // Prevent the form from submitting and page reloading
         if (loading) return;
         setLoading(true);
-        axios.post('http://localhost:5000/api/user/forgotpassword', {email})
+        axios.post('http://localhost:5000/api/user/resetpassword', {email, resetToken, newPassword})
         .then((userResponse)=> {
             console.log('User Response: ', userResponse);
             setOpenModal(true);
             setLoading(false);
-            navigate('/resetpassword')
+            navigate('/')
         })
         .catch((userError) => {
             setLoading(false);
@@ -38,24 +41,51 @@ export default function ForgotPassword() {
         setEmail(e.target.value);
     };
 
+    const handleResetTokenChange = (e) => {
+        setResetToken(e.target.value);
+    };
+
+    const handleNewPasswordChange = (e) => {
+        setNewPassword(e.target.value);
+    };
+
 
     return (
         <>
             <main>
-                <div className='forgotpage'>
-                    <div id='forgotpass-logo'><DiaLogo src={ClientLogo} /></div>
+                <div className='resetpage'>
+                    <div id='resetpass-logo'><DiaLogo src={ClientLogo} /></div>
 
-                    <div id='forgotpass-form'>
+                    <div id='resetpass-form'>
                         <form onSubmit={handleSubmit}>
-                            <Head2 text="Forgot Password"></Head2>
+                            <Head2 text="Reset Password"></Head2>
                             <h3>Please enter the email address you&apos;d <br/> like your password reset information sent to.</h3>
-                            <div className="forgotpass-input">
+                            <div className="resetpass-input">
                                 <input 
                                 value= {email}
                                 placeholder=" Email Address" 
                                 className="user-input" required
                                 onChange={handleEmailChange}
-                                id="forgotpass-inputfield"
+                                id="resetpass-inputfield"
+                                />
+                            </div>
+                            <div className="resetpass-input">
+                                <input 
+                                value= {resetToken}
+                                placeholder=" Reset Token" 
+                                className="user-input" required
+                                onChange={handleResetTokenChange}
+                                id="resetpass-inputfield"
+                                />
+                            </div>
+                            <div className="resetpass-input">
+                                <input 
+                                type='password'
+                                value= {newPassword}
+                                placeholder=" New Password" 
+                                className="user-input" required
+                                onChange={handleNewPasswordChange}
+                                id="resetpass-inputfield"
                                 />
                             </div>
                             <Button label={loading ? "Loading..." : "Send"} type="submit" /> 

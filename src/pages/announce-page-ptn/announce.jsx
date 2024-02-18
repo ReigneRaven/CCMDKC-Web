@@ -5,6 +5,7 @@ import ImgView from '../../components/imgview/imgview'
 import ClientAnnounce from '../../assets/announce - Copy.jpg'
 import Sidebar from '../patient-page/components/sidebar'
 import Header from '../patient-page/components/header'
+import BulletinViewPtn from './components/bulletinview-ptn'
 
 
 
@@ -19,7 +20,8 @@ export default function AnnouncementsPtn(){
         <Sidebar/>
         <div className='announcement-container-ptn'>
             <Head2 text="Bulletin"/>
-            <ImgView src={ClientAnnounce} id="announce-img-ptn"/>
+            <BulletinViewPtn/>
+            {/* <ImgView src={ClientAnnounce} id="announce-img-ptn"/> */}
             
         </div>
         </div>

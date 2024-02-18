@@ -101,7 +101,7 @@ header{
 .dropdown-menu {
     position: absolute;
     top: 80px;
-    right: 30px;
+    right: 25px;
     background-color: #fff;
     border-radius: 20px;
     padding: 10px 20px;
@@ -575,5 +575,3 @@ thead{
   #close-purchase-modal{
     margin-top: 10px;
   }
-
- 

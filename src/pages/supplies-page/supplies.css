@@ -163,6 +163,10 @@ thead {
   margin-top: 10px;
 }
 
+#supplies-delete-btn:hover {
+  filter: drop-shadow(0 0 0.2em #FF0000);
+}
+
 .lowStock{
   background-color: rgb(255, 151, 151);
   font-weight: 600;

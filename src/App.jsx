@@ -1,7 +1,7 @@
 
 import './App.css'
 import Landing from './pages/landing-page/land-pg'
-import { Route, Routes, useParams } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import Register from './pages/register-page/register'
 import Patient from './pages/patient-page/patient-profile'
 import Appointment from './pages/appointment-page/appointment'
@@ -12,6 +12,7 @@ import Employee from './pages/employee-page/employee'
 import MyProfile from './pages/myprofile-page/myprofile'
 import ChangePassword from './pages/changepass-page/changepass'
 import ForgotPassword from './pages/forgotpass-page/forgotpass'
+import ResetPassword from './pages/resetpass-page/resetpass'
 import Supplies from './pages/supplies-page/supplies'
 import PatientRecord from './pages/records-page/patientrecord-page/patientrecord'
 import MedicalRecord from './pages/medicalhistory-page/healthhistory'
@@ -27,6 +28,7 @@ function App() {
           <Route path='/' element={<Landing />} />
           <Route path='/register' element={<Register />}  />
           <Route path='/forgotpassword' element={<ForgotPassword />} />
+          <Route path='/resetpassword' element={<ResetPassword/>} />
 
           {/* PATIENT SIDE */}
           <Route path='/patient/:id' element={<Patient/>}/>
