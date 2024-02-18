@@ -12,6 +12,14 @@ export default function SuppliesView() {
   const [lowStockAlerts, setLowStockAlerts] = useState([]);
   const [expirationAlerts, setExpirationAlerts] = useState([]);
 
+  const calculateDaysUntilExpiration = (expireDate) => {
+    const today = new Date();
+    const expirationDate = new Date(expireDate);
+    const timeDifference = expirationDate.getTime() - today.getTime();
+    const daysDifference = Math.ceil(timeDifference / (1000 * 3600 * 24));
+    return daysDifference;
+  };
+
   useEffect(() => {
     let isMounted = true;
 
@@ -41,7 +49,8 @@ export default function SuppliesView() {
           // Show expiration date alerts if not already shown
           if (!expirationAlertsShown) {
             expiringItems.forEach(item => {
-              const toastId = toast.warn(`The item ${item.itemName} will expire two weeks from now at exactly ${formatDate(item.expireDate)}. Restock now!`);
+              const daysLeft = calculateDaysUntilExpiration(item.expireDate);
+              const toastId = toast.warn(`The item ${item.itemName} will expire in ${daysLeft} days at exactly ${formatDate(item.expireDate)}. Restock now!`);
               setExpirationAlerts(prevAlerts => [...prevAlerts, toastId]);
             });
 
@@ -92,7 +101,8 @@ export default function SuppliesView() {
       twoWeeksFromNow.setDate(twoWeeksFromNow.getDate() + 14);
 
       if (expireDate <= twoWeeksFromNow) {
-        const toastId = toast.warn(`The item ${item.itemName} will expire two weeks from now at exactly ${formatDate(item.expireDate)}. Restock now!`);
+        const daysLeft = calculateDaysUntilExpiration(item.expireDate);
+        const toastId = toast.warn(`The item ${item.itemName} will expire in ${daysLeft} days at exactly ${formatDate(item.expireDate)}. Restock now!`);
         setExpirationAlerts(prevAlerts => [...prevAlerts, toastId]);
       }
     });

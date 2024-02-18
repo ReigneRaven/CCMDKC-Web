@@ -24,3 +24,118 @@
    display: flex;
    flex-direction: column;
 }
+
+.grid-scroll-container {
+   overflow-y: auto;
+   max-height: 500px; /* Set the maximum height as per your requirement */
+ }
+ 
+ .grid-container-ptn {
+    margin-left: 80px;
+    margin-top: -10px;
+    background-color: rgb(243, 243, 243);
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); /* Update this line */
+    width: 90%;
+    height: 80%;
+    gap: 20px;
+    border-radius: 20px;
+    overflow: scroll;
+    overflow-x: hidden;
+  }
+ 
+ .grid-item-ptn {
+   border: 0px solid #ccc;
+   padding: 15px;
+   text-align: center;
+   position: relative;
+ }
+ 
+ .grid-item-ptn img {
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+ 
+ .grid-item-ptn img.announcement-image-0 {
+    width: 400px;
+    height: auto;
+  }
+  
+  .grid-item-ptn img.announcement-image-1 {
+    width: 700px;
+    height: auto;
+  }
+  
+  .grid-item-ptn img.announcement-image-2 {
+    width: 400px;
+    height: auto;
+  }
+ 
+  .grid-item-ptn img.announcement-image-3 {
+    width: 400px;
+    height: auto;
+  }
+ /* .grid-item img:nth-child(odd) {
+   width: 400px;
+   height: 600px;
+ }
+ 
+ .grid-item img:nth-child(even) {
+   width: 300px;
+ } */
+ 
+ h6 {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 30px;
+    font-weight: 500;
+ }
+ 
+ .modal-overlay-ptn {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-container-ptn.announcement-modal-0 {
+    max-width: 40%;
+    max-height: 90%;
+    overflow: auto;
+  }
+  
+  .modal-container-ptn.announcement-modal-1 {
+    max-width: 60%;
+    max-height: 80%;
+  }
+  
+  .modal-container-ptn.announcement-modal-2 {
+    max-width: 40%;
+    max-height: 90%;
+    overflow: auto;
+  }
+ 
+  .modal-container-ptn.announcement-modal-3 {
+    max-width: 40%;
+    max-height: 90%;
+  }
+  
+  .modal-container-ptn img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  /* Add this style to hide the scrollbar when the modal is open */
+  body.modal-open {
+    overflow: hidden;
+  }
