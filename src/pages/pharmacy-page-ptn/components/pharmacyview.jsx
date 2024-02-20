@@ -4,6 +4,7 @@ import Head2 from "../../../components/headers/header";
 import { FaShoppingCart } from "react-icons/fa";
 import PharmacyCard from "./pharmacycard";
 import PharmModal from "../components/pharmacymodal"; // Make sure to import the correct file path
+import Cookies from "js-cookie";
 
 export default function PharmacyView() {
   const [data, setData] = useState([]);
@@ -14,7 +15,7 @@ export default function PharmacyView() {
   const [UserName, setUserName] = useState("")
   
   useEffect(() => {
-    const storedUserId = localStorage.getItem("userId");
+    const storedUserId = Cookies.get("userId");
     setUserId(storedUserId);
 
     if (storedUserId) {

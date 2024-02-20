@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios'
+import Cookies from 'js-cookie';
 
 const PharmModal = ({ item, onClose }) => {
 
@@ -10,7 +11,7 @@ const PharmModal = ({ item, onClose }) => {
   const [UserName, setUserName] = useState('')
 
     const navigate = useNavigate();
-    const userId = localStorage.getItem('userId');
+    const userId = Cookies.get('userId');
 
   useEffect(() => {
     // Update total price whenever quantity or item price changes
@@ -18,7 +19,7 @@ const PharmModal = ({ item, onClose }) => {
   }, [quantity, item.itemPrice]);
 
    const handleQuantityChange = (e) => {
-   const newQuantity = parseInt(e.target.value, 10) || 1;
+   let newQuantity = parseInt(e.target.value, 10) || 1;
      newQuantity = Math.max(newQuantity, 20);
      setQuantity(newQuantity);
    };
@@ -39,8 +40,8 @@ const PharmModal = ({ item, onClose }) => {
   };
 
   const calculateTotalPrice = () => {
-    const rawTotalPrice = quantity * item.itemPrice;
-    const formattedTotalPrice = rawTotalPrice.toFixed(2); // Round to two decimal places
+    let rawTotalPrice = quantity * item.itemPrice;
+    let formattedTotalPrice = rawTotalPrice.toFixed(2); // Round to two decimal places
     return formattedTotalPrice;
   };
   

@@ -5,18 +5,21 @@ import ClientLogo from '../../../assets/ccmdkc-logo.png'
 import Head2 from "../../../components/headers/header";
 import Kidney from '../../../assets/Nephrology_icon.png';
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Logout from '../../../assets/logout.svg';
 import axios from "axios";
+import { toast } from "react-toastify";
+import Cookies from "js-cookie";
 
 export default function Header() {
     // const {id} = useParams()
+    const navigate = useNavigate()
     const [open, setOpen] = useState(false)
     const [adminName, setAdminName] = useState('');
 
     useEffect(() => {
         // Fetch the admin data here
-        const adminId = localStorage.getItem("adminId");
+        const adminId = Cookies.get("adminId");
 
         if (adminId) {
             axios
@@ -30,6 +33,15 @@ export default function Header() {
         }
     }, []);
 
+    const handleLogout =  async () => {
+        await Cookies.remove("userId");
+        await Cookies.remove("userToken");
+        await Cookies.remove("adminId");
+        await Cookies.remove("adminToken");
+        await navigate(`/`)
+        toast.success("You have successfully logout")
+    }
+    
     return(
         <>
              <header>
@@ -54,7 +66,7 @@ export default function Header() {
 
                             <div className="drop-links">
                             <ul>
-                            <Link to='/'><Menu img={Logout}/>Logout</Link>
+                            <Link onClick={handleLogout}><Menu img={Logout}/>Logout</Link>
                             </ul>
                             </div>
                         </div>

@@ -7,8 +7,9 @@ import DiaLogo from '../../components/logo/logo';
 import ClientLogo from '../../assets/ccmdkc-logo.png';
 import axios from 'axios';
 import '../../components/headers/header.css';
-import './resetpass.css'
-
+import './resetpass.css';
+import { RiEyeFill } from 'react-icons/ri';
+import { AiFillEyeInvisible } from 'react-icons/ai';
 
 export default function ResetPassword() {
     const [loading, setLoading] = useState(false);
@@ -16,25 +17,29 @@ export default function ResetPassword() {
     const [email, setEmail] = useState('');
     const [resetToken, setResetToken] = useState('');
     const [newPassword, setNewPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
 
     const navigate = useNavigate();
 
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
 
     const handleSubmit = (e) => {
-        e.preventDefault(); // Prevent the form from submitting and page reloading
+        e.preventDefault();
         if (loading) return;
         setLoading(true);
-        axios.post('http://localhost:5000/api/user/resetpassword', {email, resetToken, newPassword})
-        .then((userResponse)=> {
-            console.log('User Response: ', userResponse);
-            setOpenModal(true);
-            setLoading(false);
-            navigate('/')
-        })
-        .catch((userError) => {
-            setLoading(false);
-            console.error('Error in sending email: ', userError);
-          });
+        axios.post('http://localhost:5000/api/user/resetpassword', { email, resetToken, newPassword })
+            .then((userResponse) => {
+                console.log('User Response: ', userResponse);
+                setOpenModal(true);
+                setLoading(false);
+                navigate('/');
+            })
+            .catch((userError) => {
+                setLoading(false);
+                console.error('Error changing password: ', userError);
+            });
     };
 
     const handleEmailChange = (e) => {
@@ -49,7 +54,6 @@ export default function ResetPassword() {
         setNewPassword(e.target.value);
     };
 
-
     return (
         <>
             <main>
@@ -59,36 +63,41 @@ export default function ResetPassword() {
                     <div id='resetpass-form'>
                         <form onSubmit={handleSubmit}>
                             <Head2 text="Reset Password"></Head2>
-                            <h3>Please enter the email address you&apos;d <br/> like your password reset information sent to.</h3>
+                            <h3>Please enter the email address you'd <br /> like your password reset information sent to.</h3>
                             <div className="resetpass-input">
-                                <input 
-                                value= {email}
-                                placeholder=" Email Address" 
-                                className="user-input" required
-                                onChange={handleEmailChange}
-                                id="resetpass-inputfield"
+                                <input
+                                    value={email}
+                                    placeholder=" Email Address"
+                                    className="user-input" required
+                                    onChange={handleEmailChange}
+                                    id="resetpass-inputfield"
                                 />
                             </div>
                             <div className="resetpass-input">
-                                <input 
-                                value= {resetToken}
-                                placeholder=" Reset Token" 
-                                className="user-input" required
-                                onChange={handleResetTokenChange}
-                                id="resetpass-inputfield"
+                                <input
+                                    value={resetToken}
+                                    placeholder=" Reset Token"
+                                    className="user-input" required
+                                    onChange={handleResetTokenChange}
+                                    id="resetpass-inputfield"
                                 />
                             </div>
                             <div className="resetpass-input">
-                                <input 
-                                type='password'
-                                value= {newPassword}
-                                placeholder=" New Password" 
-                                className="user-input" required
-                                onChange={handleNewPasswordChange}
-                                id="resetpass-inputfield"
-                                />
+                                <div className="input-container-resetpass">
+                                    <input
+                                        type={showPassword ? 'text' : 'password'}
+                                        value={newPassword}
+                                        placeholder=" New Password"
+                                        className="user-input" required
+                                        onChange={handleNewPasswordChange}
+                                        id="resetpass-inputfield-new-password"
+                                    />
+                                    <div className="toggle-eye-new-password" onClick={togglePasswordVisibility}>
+                                        {showPassword ? <RiEyeFill /> : <AiFillEyeInvisible />}
+                                    </div>
+                                </div>
                             </div>
-                            <Button label={loading ? "Loading..." : "Send"} type="submit" /> 
+                            <Button label={loading ? "Loading..." : "Send"} type="submit" />
                         </form>
                         {openModal && <ResetModal closeModal={setOpenModal} />}
                     </div>
@@ -97,4 +106,3 @@ export default function ResetPassword() {
         </>
     );
 }
-    

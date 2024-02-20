@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import socketIOClient from 'socket.io-client';
+import Cookies from "js-cookie";
 
 const socket = socketIOClient('http://localhost:5000');
 
@@ -11,7 +12,7 @@ const PurchaseStatus = () => {
   const [sortBy, setSortBy] = useState("latest"); // "latest" or "oldest"
 
   useEffect(() => {
-    const userId = localStorage.getItem('userId');
+    const userId = Cookies.get('userId');
 
     axios.get(`http://localhost:5000/api/user/${userId}`)
       .then(response => setLoggedInUser(response.data))

@@ -29,7 +29,16 @@ export default function PatientRecordForm() {
         age,
         sex,
       })
-      .then((result) => console.log(result))
+      .then((result) => {
+        console.log(result);
+
+        // Clear the form fields after successful submission
+        setPatientName('');
+        setWeight('');
+        setHeight('');
+        setAge('');
+        setSex('');
+      })
       .catch((err) => console.log(err));
   };
 

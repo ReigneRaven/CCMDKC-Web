@@ -16,3 +16,126 @@
     display: flex;
     margin-left: 50px;
   }
+
+/* .reports-form-container{
+    background-color: rgb(224, 224, 224);
+    display: flex;
+    justify-content: flex-start;
+    width: 20%;
+    margin: 20px;
+    border-radius: 35px;
+    padding: 20px;
+}
+
+.reports-input{
+    width: 200px;
+    border-radius:20px;
+}
+
+#reports-form-btn{
+    width: fit-content;
+} */
+
+.reports-form-container{
+    width: fit-content;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.reports-input{
+    width: 100px;
+    height: 30px;
+    border-radius:20px;
+    margin: -2px;
+    font-size: small;
+}
+#reports-select{
+    height: 34px;
+    width: 140px;
+}
+#reports-form-btn{
+    width: 90px;
+    height: fit-content;
+    padding: 8px;
+    font-size: small;
+    margin: 3px;
+}
+
+/* #reports-select{
+    border-radius: 20px;
+    height: 40px;
+    width: 200px;
+} */
+
+.reports-table-container{
+    background-color: whitesmoke;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.th-reports-table{
+    color: rgb(42, 42, 42);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.highlight {
+    font-weight: 600;
+    background-color: rgba(131, 131, 221, 0.53) ;
+    border-radius: 20px;
+    width: 100% !important;
+    display: block;
+    padding: 5px;
+  }
+
+#reports-table-view{
+    display: flex;
+    flex-direction: column;
+    
+}
+.tbody-tr-reports{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+
+@media screen and (max-width: 1366px){
+    .reports-container{
+        width: 80vw;
+        height: 88vh;
+    }
+    .reports-form-container{
+        width: fit-content;
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+    }
+    
+    .reports-input{
+        width: 100px;
+        height: 30px;
+        border-radius:20px;
+        margin: -2px;
+        font-size: small;
+    }
+    #reports-select{
+        height: 34px;
+        width: 140px;
+    }
+    #reports-form-btn{
+        width: 90px;
+        height: fit-content;
+        padding: 8px;
+        font-size: small;
+        margin: 3px;
+    }
+}

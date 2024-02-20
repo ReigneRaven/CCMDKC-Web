@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import HistoryModalPtn from "./history-tablemodal";
+import Cookies from "js-cookie";
 
 export default function HistoryTablePtn() {
   const [data, setData] = useState([]);
@@ -19,7 +20,7 @@ export default function HistoryTablePtn() {
 
   console.log('filteredName', filteredName)
   useEffect(() => {
-    const storedUserId = localStorage.getItem("userId");
+    const storedUserId = Cookies.get("userId");
     setUserId(storedUserId);
 
     if (storedUserId) {

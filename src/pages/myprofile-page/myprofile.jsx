@@ -37,17 +37,18 @@ export default function MyProfile() {
   }, [id]);
 
   const formatBirthday = (birthday) => {
+    if (!birthday) return "";
     const formattedDate = new Date(birthday);
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const options = { month: 'numeric', day: 'numeric', year: 'numeric' };
     return formattedDate.toLocaleDateString(undefined, options);
   }
 
   const handleEditClick = () => {
     setIsEditing(true);
 
-    // Format the birthday to "YY-MM-DD" if it's not already in that format
-    const formattedBirthday = user.birthday ? user.birthday.slice(0, 10) : "";
-  
+    // Format the birthday to "MM/DD/YYYY" if it's not already in that format
+    const formattedBirthday = user.birthday ? formatBirthday(user.birthday) : "";
+
     setUser({
       ...user,
       birthday: formattedBirthday,
@@ -81,11 +82,11 @@ export default function MyProfile() {
     const { name, value } = e.target;
     let updatedValue = value;
 
-    // If changing the birthday field, ensure it's in the "YY-MM-DD" format
+    // If changing the birthday field, ensure it's in the "MM/DD/YYYY" format
     if (name === 'birthday') {
       // You can add your custom validation logic here
-      // For simplicity, let's assume a basic check for "YY-MM-DD" format
-      if (!/^\d{2}-\d{2}-\d{2}$/.test(value)) {
+      // For simplicity, let's assume a basic check for "MM/DD/YYYY" format
+      if (!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(value)) {
         // If the format is incorrect, you can handle it accordingly
         console.log('Invalid date format');
         updatedValue = ''; // or any default value you prefer
@@ -179,7 +180,7 @@ export default function MyProfile() {
                         type="text"
                         name="birthday"
                         value={user.birthday}
-                        placeholder="YY-MM-DD"
+                        placeholder="MM/DD/YYYY"
                         onChange={handleChange}
                       />
                     </div>

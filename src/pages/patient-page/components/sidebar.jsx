@@ -4,13 +4,14 @@ import { BsFillFileMedicalFill } from "react-icons/bs";
 import { MdSpaceDashboard, MdMedicalServices, MdAnnouncement } from "react-icons/md";
 import { FaHouseMedical } from "react-icons/fa6";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 export default function PtnSidebar() {
   const [userId, setUserId] = useState(null);
   const [showSidebar, setShowSidebar] = useState(true);
 
   useEffect(() => {
-    const storedUserId = localStorage.getItem("userId");
+    const storedUserId = Cookies.get("userId");
     setUserId(storedUserId);
 
     if (storedUserId) {

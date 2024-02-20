@@ -6,7 +6,7 @@ import './appointment.css';
 import Button from '../../components/buttons/button';
 import DiaLogo from '../../components/logo/logo';
 import DatePicker from 'react-datepicker';
-
+import Cookies from 'js-cookie';
 import Consult from '../../assets/consult.png';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -39,7 +39,7 @@ export default function Appointment() {
 
   useEffect(() => {
     // Retrieve user ID from localStorage
-    const userId = localStorage.getItem('userId');
+    const userId = Cookies.get('userId');
 
     if (userId) {
       axios

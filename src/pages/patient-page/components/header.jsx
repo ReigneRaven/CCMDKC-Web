@@ -4,18 +4,25 @@ import DiaLogo from "../../../components/logo/logo";
 import ClientLogo from '../../../assets/ccmdkc-logo.png'
 import Head2 from "../../../components/headers/header";
 import Profile from '../../../assets/Patients_icon.svg'
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import User from '../../../assets/user.svg'
 import Password from '../../../assets/changepassword.svg'
 import Logout from '../../../assets/logout.svg'
 import { useEffect } from "react";
+import Cookies from "js-cookie";
+import { toast } from "react-toastify";
 
 export default function PtnHeader() {
-    
+    const navigate = useNavigate();
     const [open, setOpen] = useState(false)
     const {id} = useParams()
 
-
+    const handleLogout =  async () => {
+        await Cookies.remove("userId");
+        await Cookies.remove("userToken");
+        await navigate(`/`)
+        toast.success("You have successfully logout")
+    }
     return(
         <>
              <header className="ptnheader">
@@ -39,13 +46,13 @@ export default function PtnHeader() {
                         <div className={`dropdown-menu-ptn ${open ? 'active' : 'inactive'}`}
                         id="drop-label-ptn">
                         {/* <p>{userName}</p> */}
-                        <p>Patient</p>
+                        <p>Welcome, Patient!</p>
 
                             <div className="drop-links-ptn">
                             <ul>
                             <Link to={`/patient/myprofile/${id}`}><PatientMenu img={User}/>My Profile</Link>
                             {/* <Link to='/patient/changepassword'><PatientMenu img={Password}/>Change Password</Link> */}
-                            <Link to='/'><PatientMenu img={Logout}/>Logout</Link>
+                            <Link onClick={handleLogout}><PatientMenu img={Logout}/>Logout</Link>
                             </ul>
                             </div>
                         </div>
