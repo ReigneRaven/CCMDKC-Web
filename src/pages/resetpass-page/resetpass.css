@@ -60,6 +60,29 @@
   #resetpass-inputfield{
     border-radius: 20px;
   }
+
+  #resetpass-inputfield-new-password {
+    margin-left: 2px;
+    border-radius: 20px;
+  }
+
+  #toggle-eye-new-password {
+    margin-top: -50px;
+  }
+
+  .input-container-resetpass {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 103%;
+}
+
+.toggle-eye-new-password {
+    position: absolute;
+    top: 12px;
+    right: 10px; /* Adjust the right spacing as needed */
+    cursor: pointer;
+}
   
   h3 {
     font-family: 'Poppins', sans-serif;

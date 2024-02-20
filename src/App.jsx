@@ -18,12 +18,16 @@ import PatientRecord from './pages/records-page/patientrecord-page/patientrecord
 import MedicalRecord from './pages/medicalhistory-page/healthhistory'
 import PharmacyPtn from './pages/pharmacy-page-ptn/pharmacyptn'
 import Reports from './pages/reports-page/reports'
+import ProtectedUserRoutes from './components/protectedroutes/ProtectedUserRoutes'
+import ProtectedAdminRoutes from './components/protectedroutes/ProtectedAdminRoutes'
+import { ToastContainer } from 'react-toastify'
 
 function App() {
 
 
   return (
     <>
+        <ToastContainer/>
         <Routes>
           <Route path='/' element={<Landing />} />
           <Route path='/register' element={<Register />}  />
@@ -31,21 +35,21 @@ function App() {
           <Route path='/resetpassword' element={<ResetPassword/>} />
 
           {/* PATIENT SIDE */}
-          <Route path='/patient/:id' element={<Patient/>}/>
-          <Route path='/appointment/:id' element={<Appointment/>} />
-          <Route path='/confirmation/:id' element={<Booking/>} />
-          <Route path='/healthrecord/:id' element={<MedicalRecord/>} />
-          <Route path='/announcements/:id' element={<AnnouncementsPtn/>}/>
-          <Route path='/pharmacy/:id' element={<PharmacyPtn/>}/>
-          <Route path='/patient/changepassword/:id' element={<ChangePassword/>}/>
-          <Route path='/patient/myprofile/:id' exact element={<MyProfile />} />
+          <Route path='/patient/:id' element={<ProtectedUserRoutes><Patient/></ProtectedUserRoutes>}/>
+          <Route path='/appointment/:id' element={<ProtectedUserRoutes><Appointment/></ProtectedUserRoutes>} />
+          <Route path='/confirmation/:id' element={<ProtectedUserRoutes><Booking/></ProtectedUserRoutes>} />
+          <Route path='/healthrecord/:id' element={<ProtectedUserRoutes><MedicalRecord/></ProtectedUserRoutes>} />
+          <Route path='/announcements/:id' element={<ProtectedUserRoutes><AnnouncementsPtn/></ProtectedUserRoutes>}/>
+          <Route path='/pharmacy/:id' element={<ProtectedUserRoutes><PharmacyPtn/></ProtectedUserRoutes>}/>
+          <Route path='/patient/changepassword/:id' element={<ProtectedUserRoutes><ChangePassword/></ProtectedUserRoutes>}/>
+          <Route path='/patient/myprofile/:id' exact element={<ProtectedUserRoutes><MyProfile /></ProtectedUserRoutes>} />
 
           {/* ADMIN SIDE */}
-          <Route path='/admin/:id' element={<Employee/>}/>
-          <Route path='/admin/supplies/:id' element={<Supplies/>}/>
-          <Route path='/admin/patientrecord/:id' element={<PatientRecord/>}/>
-          <Route path='/admin/reports/:id' element={<Reports/>}/>
-          <Route path='/admin/announcements/:id' element={<AnnouncementsAmn/>}/>
+          <Route path='/admin/:id' element={<ProtectedAdminRoutes><Employee/></ProtectedAdminRoutes>}/>
+          <Route path='/admin/supplies/:id' element={<ProtectedAdminRoutes><Supplies/></ProtectedAdminRoutes>}/>
+          <Route path='/admin/patientrecord/:id' element={<ProtectedAdminRoutes><PatientRecord/></ProtectedAdminRoutes>}/>
+          <Route path='/admin/reports/:id' element={<ProtectedAdminRoutes><Reports/></ProtectedAdminRoutes>}/>
+          <Route path='/admin/announcements/:id' element={<ProtectedAdminRoutes><AnnouncementsAmn/></ProtectedAdminRoutes>}/>
 
 
         </Routes>

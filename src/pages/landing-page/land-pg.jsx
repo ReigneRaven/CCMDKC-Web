@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './land-pg.css';
 import Head2 from '../../components/headers/header';
 import '../../components/headers/header.css';
@@ -7,16 +7,37 @@ import Button from '../../components/buttons/button';
 import DiaLogo from '../../components/logo/logo';
 import ClientLogo from '../../assets/ccmdkc-logo.png';
 import ClientBuilding from '../../assets/ccmdkc-bldg.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { RiEyeFill } from 'react-icons/ri';
 import { AiFillEyeInvisible } from 'react-icons/ai';
 import axios from 'axios';
+import Cookies from 'js-cookie';
+import { toast } from 'react-toastify';
 
 export default function Landing() {
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState('');
   const [UserName, setUserName] = useState('');
  
+
+  useEffect(() => {
+    const adminToken = Cookies.get('adminToken');
+    const adminId = Cookies.get('adminId');
+
+    const userToken = Cookies.get('userToken');
+    const userId = Cookies.get('userId');
+
+    if (adminToken && adminId) {
+      navigate(`/admin/${adminId}`)  
+    }
+
+    if (userToken && userId  && userToken !== undefined && userId !== undefined) {
+      navigate(`/patient/${userId}`)
+    }
+    
+
+  }, [navigate]);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -36,30 +57,32 @@ export default function Landing() {
     console.log('User Response: ', userResponse);
     const { token , userId} = userResponse.data;
 
-      localStorage.setItem('userToken', token)
-      localStorage.setItem('userId', userId)
+      Cookies.set('userToken', token)
+      Cookies.set('userId', userId)
 
-      // Redirect to user page with the user ID parameter
-      window.location.href = `/patient/${userId}`;
+      if (userId === undefined) return;
+      navigate(`/patient/${userId}`)
   })
 
 .catch((userError) => {
+  toast('User Login Error')
   console.error('User Login Error: ', userError);
 })
 
 // Admin login request
 axios
   .post('http://localhost:5000/api/admin/login', { UserName, password })
-  .then((adminResponse) => {
+  .then((adminResponse) => {  
     console.log('Admin Response: ', adminResponse);
     const { token, adminId } = adminResponse.data;
 
     // Store admin token in localStorage
-    localStorage.setItem('adminToken', token);
-    localStorage.setItem('adminId', adminId);
+    Cookies.set('adminToken', token);
+    Cookies.set('adminId', adminId);
 
     // Redirect to admin page
-    window.location.href = `/admin/${adminId}`;
+    if (adminId === undefined) return;
+    navigate(`/admin/${adminId}`)
   })
   .catch((adminError) => {
     console.error('Admin Login Error: ', adminError);

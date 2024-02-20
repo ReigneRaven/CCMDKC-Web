@@ -11,17 +11,17 @@ export default function MedicalRecordForm() {
   const [surgeries, setSurgeries] = useState('');
   const [patientObjectId, setPatientObjectId] = useState(''); 
   const [MedicalRecord, setMedicalRecord] = useState([
-    {MedicalRecord:''},
-  ])
+    { MedicalRecord: '' },
+  ]);
 
   const handleMedicalRecordAdd = () => {
-    setMedicalRecord([...MedicalRecord, {MedicalRecord:''}])
+    setMedicalRecord([...MedicalRecord, { MedicalRecord: '' }]);
   };
 
   const { id } = useParams();
 
   const onSubmit = (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
 
     axios
       .post(`http://localhost:5000/api/records/${patientObjectId}/medical-history`, {
@@ -31,7 +31,17 @@ export default function MedicalRecordForm() {
         temperature,
         surgeries,
       })
-      .then((result) => console.log(result))
+      .then((result) => {
+        console.log(result);
+
+        // Clear the form fields after successful submission
+        setAllergies('');
+        setDiagnosis('');
+        setBloodPressure('');
+        setTemperature('');
+        setSurgeries('');
+        setPatientObjectId('');
+      })
       .catch((err) => console.log(err));
   };
 

@@ -101,12 +101,12 @@
 
 .dropdown-menu-ptn {
     position: absolute;
-    top: 78px;
-    right: 25px;
+    top: 74px;
+    right: 23px;
     background-color: #fff;
     border-radius: 20px;
     padding: 10px 20px;
-    width: 190px;
+    width: 180px;
     box-shadow: 5px 5px 8px #888888;
     z-index: 2;
 }
