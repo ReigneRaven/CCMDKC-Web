@@ -3,12 +3,13 @@ import '../patient-page/patient-profile.css'
 import PtnHeader from "../patient-page/components/header"
 import PtnSidebar from "./components/sidebar"
 import PtnDashboard from "./components/dashboard"
+import Cookies from "js-cookie"
 
 
 
 export default function UserProfile (){
-    const userId = localStorage.getItem("userId");
-    const userName = localStorage.getItem("userName")
+    const userId = Cookies.get("userId");
+    const userName = Cookies.get("userName")
 
     return(
 

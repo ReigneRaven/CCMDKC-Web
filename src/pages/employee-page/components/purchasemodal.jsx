@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios'
+import Cookies from "js-cookie";
 
 export default function PurchaseModal({ onClose, purchase }) {
 
   const [userDetails, setUserDetails] = useState(null);
-  const userId = localStorage.getItem('userId')
+  const userId = Cookies.get('userId')
   useEffect(() => {
     const fetchUserDetails = async () => {
       try {
