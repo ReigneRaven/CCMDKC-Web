@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import ReportsView from "./reportsview"; // Import the ReportsView component
+import ReportsView from "./reportsview";
 
 export default function ReportsForm() {
   const [firstParams, setFirstParams] = useState("");
@@ -51,6 +51,9 @@ export default function ReportsForm() {
 
       // Set the fetched data to the state
       setTableData(responseData);
+
+      // Clear the input field
+      setFirstParams('');
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -73,6 +76,7 @@ export default function ReportsForm() {
         </select>
 
         <input
+          id="reports-inputfield"
           className="reports-input"
           type="text"
           value={firstParams}
@@ -83,7 +87,6 @@ export default function ReportsForm() {
         <button id="reports-form-btn">Generate</button>
       </form>
 
-      {/* Render the ReportsView component with the fetched data */}
       <ReportsView tableData={tableData} selectedType={selectedType} searchedQuery={searchedQuery} />
     </>
   );

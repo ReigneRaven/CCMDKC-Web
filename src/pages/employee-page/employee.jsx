@@ -3,10 +3,11 @@ import './employee.css'
 import Header from "./components/header";
 import Sidebar from "./components/sidebar";
 import Dashboard from "./components/dashboard";
+import Cookies from "js-cookie";
 
 export default function Employee() {
 
-    const adminId = localStorage.getItem("adminId");
+    const adminId = Cookies.get("adminId");
     
 
     return(

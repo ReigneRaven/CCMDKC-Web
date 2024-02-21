@@ -36,6 +36,10 @@
     width: fit-content;
 } */
 
+#reports-inputfield {
+    width: 200px;
+}
+
 .reports-form-container{
     width: fit-content;
     padding: 10px;
@@ -60,20 +64,29 @@
     padding: 8px;
     font-size: small;
     margin: 3px;
+    margin-left: -5px;
 }
 
-/* #reports-select{
+.sort-dropdown-reports {
+    margin-top: -20px;
+    margin-bottom: -10px;
+    margin-right: 1500px;
+}
+
+#reports-select{
     border-radius: 20px;
-    height: 40px;
     width: 200px;
-} */
+}
 
 .reports-table-container{
-    background-color: whitesmoke;
+    /* background-color: whitesmoke;
     width: 100%;
     display: flex;
+    justify-content: center; */
+    margin-top: 10px;
+    overflow-x: auto;
+    display: flex;
     justify-content: center;
-    
 }
 
 .th-reports-table{
@@ -83,11 +96,12 @@
     justify-content: center;
     align-items: center;
     gap: 2rem;
+    margin-top: 10px;
 }
 
 .highlight {
     font-weight: 600;
-    background-color: rgba(131, 131, 221, 0.53) ;
+    background-color: rgba(131, 131, 221, 0.53);
     border-radius: 20px;
     width: 100% !important;
     display: block;
@@ -97,14 +111,35 @@
 #reports-table-view{
     display: flex;
     flex-direction: column;
-    
+    margin-top: 10px;
+    border-collapse: collapse;
+    background-color: #f2f2f2;
+    border-radius: 20px;
+    overflow: hidden;
+    width: calc(100% - 2em);
 }
+
 .tbody-tr-reports{
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    gap: 2rem; /* Use the same gap as in .th-reports-table */
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.th-reports-table {
+    color: rgb(42, 42, 42);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     gap: 2rem;
+    display: table;
+    width: 100%;
+    table-layout: fixed;
 }
 
 
