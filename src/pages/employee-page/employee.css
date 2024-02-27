@@ -335,6 +335,10 @@ main{
     background-color: #fcbebe; 
 }
 
+.appointment-table tbody .cancelled-row {
+    background-color:  #ece59e; 
+}
+
 .request-table-appointment table,
 .request-table-appointment tbody,
 .request-table-appointment tr,

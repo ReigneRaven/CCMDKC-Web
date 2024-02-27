@@ -20,7 +20,7 @@ export default function Request() {
                     return {
                         ...appointment,
                         appointmentDate: formattedDate,
-                        processed: appointment.status === 'Accepted' || appointment.status === 'Denied',
+                        processed: appointment.status === 'Accepted' || appointment.status === 'Denied' || appointment.status === 'Cancelled',
                         createdAt: new Date(appointment.createdAt).getTime(),
                     };
                 });
@@ -106,6 +106,21 @@ export default function Request() {
         });
     }
 
+    const isStatusDisabled = (appointment) => {
+        if (appointment.status === 'Pending') {
+            const appointmentDateTime = new Date(
+                `${appointment.appointmentDate} ${appointment.appointmentTime}`
+            );
+            const currentTime = new Date();
+            const timeDifference = appointmentDateTime.getTime() - currentTime.getTime();
+            const minutesDifference = timeDifference / (1000 * 60);
+
+            return minutesDifference <= 15;
+        }
+
+        return false;
+    };
+
     return (
         <>
             <div className="upcoming-wrapper">
@@ -135,7 +150,8 @@ export default function Request() {
                                 <tr
                                     key={appointment._id}
                                     className={
-                                        appointment.status === 'Accepted' ? 'accepted-row' : appointment.status === 'Denied' ? 'denied-row' : ''
+                                        appointment.status === 'Accepted' ? 'accepted-row' : appointment.status === 'Denied' ? 'denied-row' : 
+                                        appointment.status === 'Cancelled' ? 'cancelled-row' : ''
                                     }>
                                     <td>{appointment.UserName}</td>
                                     <td>{appointment.service}</td>
@@ -148,15 +164,15 @@ export default function Request() {
                                         <div className="buttons-req">
                                             <button
                                                 onClick={() => handleAcceptAppointment(appointment._id)}
-                                                className={appointment.processed ? 'disabled-button' : ''}
-                                                disabled={appointment.processed}
+                                                className={appointment.processed || isStatusDisabled(appointment) ? 'disabled-button' : ''}
+                                                disabled={appointment.processed || isStatusDisabled(appointment)}
                                             >
                                                 Accept
                                             </button>
                                             <button
                                                 onClick={() => handleDenyAppointment(appointment._id)}
-                                                className={appointment.processed ? 'disabled-button' : ''}
-                                                disabled={appointment.processed}
+                                                className={appointment.processed || isStatusDisabled(appointment) ? 'disabled-button' : ''}
+                                                disabled={appointment.processed || isStatusDisabled(appointment)}
                                             >
                                                 Deny
                                             </button>

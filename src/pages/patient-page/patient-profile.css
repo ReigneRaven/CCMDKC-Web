@@ -247,9 +247,14 @@ h3 span {
     background-color: #fcbebe;
 }
 
+.table-appointment tbody  .cancelled {
+    background-color: #ece59e; 
+}
+
 .table-appointment{
     display: flex;
     justify-content: center;
+    table-layout: fixed;
 }
 
 .purchase-wrapper {
@@ -408,3 +413,46 @@ h3 span {
     margin-bottom: 20px;
     margin-left: 30px;
 }
+
+/* .table-appointment th,
+.table-appointment tbody tr {
+  pointer-events: none; 
+} */
+
+ /* #cancel-btn-ptn {
+    margin-top: -4px;
+    margin-bottom: -5px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+} */
+
+.disabled-button-ptn {
+    background-color: #afafaf; 
+    color: #a9a9a9; 
+    cursor: not-allowed; 
+} 
+
+#cancel-btn-ptn :hover{
+    cursor: pointer;
+}
+
+.cancelled-btn {
+    cursor: not-allowed;
+    background-color: #dcdcdc; 
+    color: #a9a9a9; 
+}
+
+.cancel-btn {
+    margin-top: -4px;
+    margin-bottom: -5px;
+}
+  
+  .cancel-btn:disabled {
+    cursor: not-allowed;
+    background-color: #dcdcdc; 
+    color: #a9a9a9; 
+  }
