@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import socketIOClient from 'socket.io-client';
-import PurchaseModal from "./purchasemodal";
+import { useNavigate } from 'react-router-dom';
+import Cookies from "js-cookie";
 
 const socket = socketIOClient('http://localhost:5000');
 
@@ -10,6 +11,7 @@ export default function PurchaseStatus() {
   const [sortBy, setSortBy] = useState("latest");
   const [selectedPurchase, setSelectedPurchase] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,7 +40,8 @@ export default function PurchaseStatus() {
 
   const handleDetailsClick = (purchase) => {
     setSelectedPurchase(purchase);
-    setIsModalOpen(true);
+    const adminId = Cookies.get('adminId');
+    navigate(`/admin/reports/${adminId}`);
   };
 
   const handleSortChange = (e) => {
@@ -74,7 +77,7 @@ export default function PurchaseStatus() {
                 <th>Mode of Payment</th>
                 <th>Total Price</th>
                 <th>Order Status</th>
-                <th>Details</th>
+                <th>More Details</th>
               </tr>
             </thead>
             <tbody>
@@ -100,7 +103,7 @@ export default function PurchaseStatus() {
           </table>
         </div>
       </div>
-      {isModalOpen && (
+      {/* {isModalOpen && (
         <div className="overlay">
           <div className="purchase-modal-container">
             <PurchaseModal
@@ -112,7 +115,7 @@ export default function PurchaseStatus() {
             />
           </div>
         </div>
-      )}
+      )} */}
     </>
   );
 }

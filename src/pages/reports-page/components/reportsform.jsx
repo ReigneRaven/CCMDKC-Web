@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ReportsView from "./reportsview";
 
@@ -7,6 +7,11 @@ export default function ReportsForm() {
   const [selectedType, setSelectedType] = useState("");
   const [tableData, setTableData] = useState([]);
   const [searchedQuery, setSearchedQuery] = useState("");
+
+  // useEffect to clear data when selectedType changes
+  useEffect(() => {
+    setTableData([]); // Clear the data when selectedType changes
+  }, [selectedType]);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -39,6 +44,9 @@ export default function ReportsForm() {
           break;
         case "Inventory":
           apiUrl = "http://localhost:5000/api/inventory/search";
+          break;
+        case "User":
+          apiUrl = "http://localhost:5000/api/user/search";
           break;
         default:
           console.error("Invalid type selected");
@@ -73,6 +81,7 @@ export default function ReportsForm() {
           <option value="Appointments">Appointments</option>
           <option value="Records">Records</option>
           <option value="Inventory">Inventory</option>
+          <option value="User">User</option>
         </select>
 
         <input

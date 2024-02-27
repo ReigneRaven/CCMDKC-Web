@@ -81,8 +81,8 @@ export default function ReportsView({ tableData, selectedType, searchedQuery }) 
             <tr className="th-reports-table">
               {selectedType === "Appointments" ? (
                 <>
-                  <th>Service</th>
                   <th>UserName</th>
+                  <th>Service</th>
                   <th>Appointment Date</th>
                   <th>Appointment Time</th>
                   <th>Status</th>
@@ -95,13 +95,23 @@ export default function ReportsView({ tableData, selectedType, searchedQuery }) 
                   <th>Age</th>
                   <th>Sex</th>
                 </>
-              ) : (
+              ) : selectedType === "Inventory" ? (
                 <>
                   <th>Item Name</th>
                   <th>Item Description</th>
                   <th>Stocks Available</th>
                   <th>Item Price</th>
                   <th>Expire Date</th>
+                </>
+              ): (
+                <>
+                  <th>Full Name</th>
+                  <th>Birthday</th>
+                  <th>Sex</th>
+                  <th>Contact Number</th>
+                  <th>Address</th>
+                  <th>Username</th>
+                  <th>Email</th>
                 </>
               )}
             </tr>
@@ -112,8 +122,8 @@ export default function ReportsView({ tableData, selectedType, searchedQuery }) 
                 <tr key={item._id} className="tbody-tr-reports">
                   {selectedType === "Appointments" ? (
                     <>
-                      <td>{highlightText(item.service)}</td>
                       <td>{highlightText(item.UserName)}</td>
+                      <td>{highlightText(item.service)}</td>
                       <td>{highlightText(item.appointmentDate)}</td>
                       <td>
                         {item.appointmentTime ? (
@@ -122,7 +132,7 @@ export default function ReportsView({ tableData, selectedType, searchedQuery }) 
                             {getAmPmSuffix(new Date(item.appointmentTime).getHours())}
                           </>
                         ) : (
-                          "" // Display "N/A" when appointment time is not available
+                          "" // Display "" when appointment time is not available
                         )}
                       </td>
                       <td>{highlightText(item.status)}</td>
@@ -135,13 +145,23 @@ export default function ReportsView({ tableData, selectedType, searchedQuery }) 
                       <td>{highlightText(item.age)}</td>
                       <td>{highlightText(item.sex)}</td>
                     </>
-                  ) : (
+                  ) :  selectedType === "Inventory" ?  (
                     <>
                       <td>{highlightText(item.itemName)}</td>
                       <td>{highlightText(item.itemDescription)}</td>
                       <td>{highlightText(item.stocksAvailable)}</td>
                       <td>{highlightText(item.itemPrice ? `₱${item.itemPrice}` : "")}</td>
                       <td>{highlightText(formatExpireDate(item.expireDate))}</td>
+                    </>
+                  ) : (
+                    <>
+                      <td>{highlightText(`${item.FirstName} ${item.MiddleName} ${item.LastName}`)}</td>
+                      <td>{highlightText(item.birthday)}</td>
+                      <td>{highlightText(item.sex)}</td>
+                      <td>{highlightText(item.contactNum)}</td>
+                      <td>{highlightText(`${item.houseNum} ${item.street} ${item.brgy} ${item.city} ${item.prov}`)}</td>
+                      <td>{highlightText(item.UserName)}</td>
+                      <td>{highlightText(item.email)}</td>
                     </>
                   )}
                 </tr>

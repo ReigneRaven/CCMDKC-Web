@@ -27,6 +27,7 @@ const UpcomingPtn = () => {
             ...appointment,
             appointmentDate: formattedDate,
             appointmentTime: formattedTime,
+            processed: appointment.status === 'Cancelled' || appointment.status === 'Denied' || appointment.status === 'Accepted',
           };
         });
         setAppointments(formattedAppointments);
@@ -55,6 +56,34 @@ const UpcomingPtn = () => {
     setSortBy(e.target.value);
   };
 
+  const handleCancel = (appointmentId) => {
+    const confirmed = window.confirm('Are you sure you want to cancel this appointment?');
+    
+    if (confirmed) {
+      axios.put(`http://localhost:5000/api/appointments/${appointmentId}/cancel`)
+        .then(response => {
+          const cancelledAppointment = response.data;
+
+          // Update the processed status and keep the original time
+          setAppointments(prevAppointments =>
+            prevAppointments.map(appointment =>
+              appointment._id === cancelledAppointment._id
+                ? { ...cancelledAppointment, processed: true, appointmentTime: appointment.appointmentTime }
+                : appointment
+            )
+          );
+
+          socket.emit('appointmentStatusChanged', {
+            appointmentId: cancelledAppointment._id,
+            status: 'Cancelled',
+          });
+        })
+        .catch(error => {
+          console.error('Error cancelling appointment', error);
+        });
+    }
+  };
+
   const sortedAppointments = [...appointments].sort((a, b) => {
     const dateA = new Date(a.createdAt);
     const dateB = new Date(b.createdAt);
@@ -75,6 +104,13 @@ const UpcomingPtn = () => {
       minute: 'numeric',
       hour12: true,
     });
+  }
+
+  function isUnder15MinutesBeforeAppointment(appointment) {
+    const appointmentDateTime = new Date(`${appointment.appointmentDate} ${appointment.appointmentTime}`);
+    const currentDateTime = new Date();
+    const timeDifferenceInMinutes = (appointmentDateTime - currentDateTime) / (1000 * 60);
+    return timeDifferenceInMinutes <= 15;
   }
 
   return (
@@ -98,22 +134,56 @@ const UpcomingPtn = () => {
               <th>Date</th>
               <th>Time</th>
               <th>Status</th>
+              <th>Cancellation</th>
             </tr>
           </thead>
           <tbody>
-            {filteredAppointments.map(appointment => (
-              <tr
-                key={appointment._id}
-                className={appointment.status === 'Accepted' ? 'accepted' :
-                  appointment.status === 'Denied' ? 'denied' : ''}
-              >
-                <td>{appointment.UserName}</td>
-                <td>{appointment.service}</td>
-                <td>{appointment.appointmentDate}</td>
-                <td>{appointment.appointmentTime}</td>
-                <td>{appointment.status}</td>
-              </tr>
-            ))}
+            {filteredAppointments.map(appointment => {
+              const isPendingAndUnder15Minutes = appointment.status === 'Pending' && isUnder15MinutesBeforeAppointment(appointment);
+
+              return (
+                <tr
+                  key={appointment._id}
+                  className={appointment.status === 'Accepted' ? 'accepted' : appointment.status === 'Denied' ? 'denied' : appointment.status === 'Cancelled' ? 'cancelled' : ''}
+                >
+                  <td>{appointment.UserName}</td>
+                  <td>{appointment.service}</td>
+                  <td>{appointment.appointmentDate}</td>
+                  <td>{appointment.appointmentTime}</td>
+                  <td>{appointment.status}</td>
+                  <td>
+                    {appointment.status === 'Denied' || appointment.status === 'Cancelled' ? (
+                      <button 
+                        className={`cancel-btn ${appointment.status === 'Denied' ? 'denied-btn' : 'cancelled-btn'}`} 
+                        disabled
+                      >
+                        Cancel
+                      </button>
+                    ) : (
+                      <>
+                        {appointment.status === 'Accepted' && isUnder15MinutesBeforeAppointment(appointment) ? (
+                          <button 
+                            className="cancel-btn accepted-btn" 
+                            disabled
+                          >
+                            Cancel
+                          </button>
+                        ) : (
+                          <button 
+                            id={`cancel-btn-ptn-${appointment._id}`} 
+                            onClick={() => handleCancel(appointment._id)}
+                            className={`cancel-btn ${appointment.status === 'Accepted' ? 'accepted-btn' : ''}`}
+                            disabled={isPendingAndUnder15Minutes}
+                          >
+                            Cancel
+                          </button>
+                        )}
+                      </>
+                    )}
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
