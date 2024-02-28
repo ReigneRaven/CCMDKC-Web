@@ -49,7 +49,7 @@ export default function PatientRecordForm() {
           type="text"
           value={patientName}
           onChange={(e) => setPatientName(e.target.value)}
-          placeholder=" Patient Name"
+          placeholder=" UserName"
           className="input-patientrecord"
         />
         <input

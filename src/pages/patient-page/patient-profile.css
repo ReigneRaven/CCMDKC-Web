@@ -240,15 +240,15 @@ h3 span {
 }
   
 .table-appointment tbody  .accepted {
-    background-color: #baebba; 
+    background-color: #96d896; 
 }
   
 .table-appointment tbody  .denied {
-    background-color: #fcbebe;
+    background-color: #e5a0a0;
 }
 
 .table-appointment tbody  .cancelled {
-    background-color: #ece59e; 
+    background-color: #e6dd82; 
 }
 
 .table-appointment{
@@ -303,6 +303,16 @@ h3 span {
     align-items: center;
     margin-left: 40px;
     margin-top: 10px;
+}
+
+#received-btn.disabled-button {
+    cursor: not-allowed;
+    background-color: #dcdcdc; 
+    color: #a9a9a9; 
+}
+
+#received-btn.disabled-button:hover {
+    filter: drop-shadow(0 0 0.2em #000);
 }
 
 /* Add spacing between table rows */
@@ -430,6 +440,10 @@ h3 span {
     margin-left: 10px;
 } */
 
+.table-ptn tbody tr:hover {
+    background-color: #cac6c6; /* Change this to the desired hover color */
+  }
+
 .disabled-button-ptn {
     background-color: #afafaf; 
     color: #a9a9a9; 
@@ -451,8 +465,12 @@ h3 span {
     margin-bottom: -5px;
 }
   
-  .cancel-btn:disabled {
+.cancel-btn:disabled {
     cursor: not-allowed;
     background-color: #dcdcdc; 
     color: #a9a9a9; 
-  }
+}
+
+.cancel-btn:disabled:hover {
+    filter: drop-shadow(0 0 0.2em #000);
+}

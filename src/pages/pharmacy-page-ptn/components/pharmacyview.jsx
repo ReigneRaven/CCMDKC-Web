@@ -42,7 +42,8 @@ export default function PharmacyView() {
   }, []);
 
   const filteredItems = data.filter((item) =>
-    item.itemName.toLowerCase().includes(searchQuery.toLowerCase())
+    //item.itemName.toLowerCase().includes(searchQuery.toLowerCase())
+    item.itemName.toLowerCase().startsWith(searchQuery.toLowerCase())
   );
 
   const openModal = (item) => {

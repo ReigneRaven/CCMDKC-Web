@@ -140,6 +140,7 @@
     display: table;
     width: 100%;
     table-layout: fixed;
+    margin-top: 10px;
 }
 
 .tbody-tr-reports td {

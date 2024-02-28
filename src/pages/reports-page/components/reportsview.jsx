@@ -1,24 +1,31 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 export default function ReportsView({ tableData, selectedType, searchedQuery }) {
   const [sortBy, setSortBy] = useState("latest");
 
   // Function to format date to MM/DD/YYYY
-  const formatExpireDate = (dateString) => {
+  const formatDate = (dateString, isBirthday) => {
     if (!dateString) {
-      return ""; // Display "" for cases where expireDate is not applicable
+      return ""; // Display "" for cases where date is not applicable
     }
 
     const date = new Date(dateString);
     if (isNaN(date.getTime())) {
-      return "Invalid Date"; // Display "Invalid Date" for cases where expireDate is not a valid date
+      return "Invalid Date"; // Display "Invalid Date" for cases where date is not a valid date
     }
 
-    return date.toLocaleDateString('en-US', {
+    const options = {
       year: 'numeric',
       month: '2-digit',
       day: '2-digit',
-    });
+    };
+
+    if (isBirthday) {
+      // Custom format for birthday
+      return date.toLocaleDateString('en-US', options).replace(/\//g, '/');
+    }
+
+    return date.toLocaleDateString('en-US', options);
   };
 
   // Case-insensitive highlighting function
@@ -65,6 +72,16 @@ export default function ReportsView({ tableData, selectedType, searchedQuery }) 
     return sortBy === "latest" ? keyB - keyA : keyA - keyB;
   });
 
+  const filteredTableData = sortedTableData.filter((item) =>
+  Object.values(item).some((value) =>
+    typeof value === 'string' && searchedQuery
+      ? (
+        new RegExp(`\\b${searchedQuery}\\b`, 'i').test(value)
+      )
+      : false
+  )
+);
+
   return (
     <div>
       <div className="sort-dropdown-reports">
@@ -103,7 +120,7 @@ export default function ReportsView({ tableData, selectedType, searchedQuery }) 
                   <th>Item Price</th>
                   <th>Expire Date</th>
                 </>
-              ): (
+              ) : (
                 <>
                   <th>Full Name</th>
                   <th>Birthday</th>
@@ -117,14 +134,14 @@ export default function ReportsView({ tableData, selectedType, searchedQuery }) 
             </tr>
           </thead>
           <tbody>
-            {sortedTableData ? (
-              sortedTableData.map((item) => (
+            {filteredTableData ? (
+              filteredTableData.map((item) => (
                 <tr key={item._id} className="tbody-tr-reports">
                   {selectedType === "Appointments" ? (
                     <>
                       <td>{highlightText(item.UserName)}</td>
                       <td>{highlightText(item.service)}</td>
-                      <td>{highlightText(item.appointmentDate)}</td>
+                      <td>{highlightText(formatDate(item.appointmentDate))}</td>
                       <td>
                         {item.appointmentTime ? (
                           <>
@@ -145,18 +162,18 @@ export default function ReportsView({ tableData, selectedType, searchedQuery }) 
                       <td>{highlightText(item.age)}</td>
                       <td>{highlightText(item.sex)}</td>
                     </>
-                  ) :  selectedType === "Inventory" ?  (
+                  ) : selectedType === "Inventory" ? (
                     <>
                       <td>{highlightText(item.itemName)}</td>
                       <td>{highlightText(item.itemDescription)}</td>
                       <td>{highlightText(item.stocksAvailable)}</td>
                       <td>{highlightText(item.itemPrice ? `₱${item.itemPrice}` : "")}</td>
-                      <td>{highlightText(formatExpireDate(item.expireDate))}</td>
+                      <td>{highlightText(formatDate(item.expireDate))}</td>
                     </>
                   ) : (
                     <>
                       <td>{highlightText(`${item.FirstName} ${item.MiddleName} ${item.LastName}`)}</td>
-                      <td>{highlightText(item.birthday)}</td>
+                      <td>{highlightText(formatDate(item.birthday, true))}</td>
                       <td>{highlightText(item.sex)}</td>
                       <td>{highlightText(item.contactNum)}</td>
                       <td>{highlightText(`${item.houseNum} ${item.street} ${item.brgy} ${item.city} ${item.prov}`)}</td>
