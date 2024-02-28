@@ -39,7 +39,8 @@ export default function PatientRecordView() {
   };
 
   const filteredData = data.filter((record) =>
-    record.patientName.toLowerCase().includes(searchQuery.toLowerCase())
+    //record.patientName.toLowerCase().includes(searchQuery.toLowerCase())
+    record.patientName.toLowerCase().startsWith(searchQuery.toLowerCase())
   );
 
   const handleEditClick = (record) => {

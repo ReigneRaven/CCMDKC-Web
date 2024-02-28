@@ -114,7 +114,8 @@ export default function SuppliesView() {
   }, [data]);
 
   const filteredSupplies = data.filter((item) =>
-    item.itemName.toLowerCase().includes(searchQuery.toLowerCase())
+    //item.itemName.toLowerCase().includes(searchQuery.toLowerCase())
+    item.itemName.toLowerCase().startsWith(searchQuery.toLowerCase())
   );
 
   const handleEditClick = (item) => {
@@ -191,7 +192,7 @@ export default function SuppliesView() {
       <input
         id="searchbar-supplies"
         type="text"
-        placeholder=" Search item by name"
+        placeholder=" Search item by Name"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />

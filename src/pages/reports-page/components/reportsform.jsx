@@ -8,9 +8,10 @@ export default function ReportsForm() {
   const [tableData, setTableData] = useState([]);
   const [searchedQuery, setSearchedQuery] = useState("");
 
-  // useEffect to clear data when selectedType changes
+  // useEffect to clear input field and tableData when selectedType changes
   useEffect(() => {
-    setTableData([]); // Clear the data when selectedType changes
+    setFirstParams(""); // Clear the input field when selectedType changes
+    setTableData([]); // Clear the tableData when selectedType changes
   }, [selectedType]);
 
   const onSubmit = async (e) => {
@@ -61,7 +62,7 @@ export default function ReportsForm() {
       setTableData(responseData);
 
       // Clear the input field
-      setFirstParams('');
+      // setFirstParams('');
     } catch (error) {
       console.error("Error fetching data:", error);
     }

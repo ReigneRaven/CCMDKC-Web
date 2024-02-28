@@ -327,16 +327,20 @@ main{
     cursor: not-allowed; 
 }
 
+.disabled-button:hover {
+    filter: drop-shadow(0 0 0.2em #000);
+}
+
 .appointment-table tbody .accepted-row {
-    background-color: #baebba; 
+    background-color: #96d896; 
 }
 
 .appointment-table tbody .denied-row {
-    background-color: #fcbebe; 
+    background-color: #e5a0a0; 
 }
 
 .appointment-table tbody .cancelled-row {
-    background-color:  #ece59e; 
+    background-color:  #e6dd82; 
 }
 
 .request-table-appointment table,
