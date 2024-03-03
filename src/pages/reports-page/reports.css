@@ -86,7 +86,12 @@
     margin-top: 10px;
     overflow-x: auto;
     display: flex;
-    justify-content: center;
+    flex-direction: column; /* Change to column */
+    align-items: center; /* Center items horizontally */
+}
+
+.printable-header h2 {
+    font-size: 18px; /* Adjust the font size as needed */
 }
 
 /* .th-reports-table{
@@ -146,7 +151,17 @@
 .tbody-tr-reports td {
     word-wrap: break-word;
     max-width: 150px; /* Adjust the max-width as needed */
-  }
+}
+
+#generate-pdf-btn {
+    width: 120px;
+    height: fit-content;
+    padding: 8px;
+    font-size: small;
+    margin: 3px;
+    margin-top: 10px;
+    margin-left: 1400px;
+}
 
 @media screen and (max-width: 1366px){
     .reports-container{

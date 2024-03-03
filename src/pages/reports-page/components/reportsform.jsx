@@ -3,17 +3,20 @@ import axios from "axios";
 import ReportsView from "./reportsview";
 
 export default function ReportsForm() {
+  // State variables for form data and fetched table data
   const [firstParams, setFirstParams] = useState("");
   const [selectedType, setSelectedType] = useState("");
   const [tableData, setTableData] = useState([]);
   const [searchedQuery, setSearchedQuery] = useState("");
+  const [generateButtonClicked, setGenerateButtonClicked] = useState(false);
 
   // useEffect to clear input field and tableData when selectedType changes
   useEffect(() => {
-    setFirstParams(""); // Clear the input field when selectedType changes
-    setTableData([]); // Clear the tableData when selectedType changes
+    setFirstParams("");
+    setTableData([]);
   }, [selectedType]);
 
+  // Function to handle form submission
   const onSubmit = async (e) => {
     e.preventDefault();
 
@@ -36,6 +39,7 @@ export default function ReportsForm() {
 
       setSearchedQuery(firstParams);
 
+      // Determine the API endpoint based on the selectedType
       switch (selectedType) {
         case "Appointments":
           apiUrl = "http://localhost:5000/api/appointments/search";
@@ -54,15 +58,13 @@ export default function ReportsForm() {
           return;
       }
 
+      // Fetch data from the API
       const response = await axios.post(apiUrl, params);
       const responseData = response.data;
-      console.log("Data:", responseData);
 
       // Set the fetched data to the state
       setTableData(responseData);
-
-      // Clear the input field
-      // setFirstParams('');
+      setGenerateButtonClicked(true);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -70,6 +72,7 @@ export default function ReportsForm() {
 
   return (
     <>
+      {/* Form for selecting report type and entering query parameters */}
       <form className="reports-form-container" onSubmit={onSubmit}>
         <select
           id="reports-select"
@@ -97,7 +100,13 @@ export default function ReportsForm() {
         <button id="reports-form-btn">Generate</button>
       </form>
 
-      <ReportsView tableData={tableData} selectedType={selectedType} searchedQuery={searchedQuery} />
+      {/* Display the ReportsView component with the fetched data */}
+      <ReportsView
+        tableData={tableData}
+        selectedType={selectedType}
+        searchedQuery={searchedQuery}
+        generateButtonClicked={generateButtonClicked}
+      />
     </>
   );
 }
