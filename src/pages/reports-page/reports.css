@@ -120,7 +120,8 @@
     border-collapse: collapse;
     background-color: #f2f2f2;
     border-radius: 20px;
-    overflow: hidden;
+    overflow-y: auto;  /* Use overflow-y to enable vertical scrolling */
+    max-height:550px; /* Set a suitable max-height for your table */
     width: calc(100% - 2em);
 }
 
@@ -162,6 +163,7 @@
     margin-top: 10px;
     margin-left: 1400px;
 }
+
 
 @media screen and (max-width: 1366px){
     .reports-container{
