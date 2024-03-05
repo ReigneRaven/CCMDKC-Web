@@ -14,6 +14,7 @@ export default function ReportsForm() {
   useEffect(() => {
     setFirstParams("");
     setTableData([]);
+    setGenerateButtonClicked(false); // Set generateButtonClicked to false when selectedType changes
   }, [selectedType]);
 
   // Function to handle form submission

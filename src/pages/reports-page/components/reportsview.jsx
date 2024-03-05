@@ -65,10 +65,9 @@ class PrintableContent extends React.Component {
                       <td>{highlightText(item.service)}</td>
                       <td>{highlightText(formatDate(item.appointmentDate))}</td>
                       <td>
-                        {item.appointmentTime ? (
+                      {item.appointmentTime ? (
                           <>
-                            {highlightText(item.appointmentTime)}{' '}
-                            {getAmPmSuffix(new Date(item.appointmentTime).getHours())}
+                            {highlightText(`${item.appointmentTime} ${getAmPmSuffix(new Date(item.appointmentTime).getHours())}`)}
                           </>
                         ) : (
                           ""
@@ -90,7 +89,7 @@ class PrintableContent extends React.Component {
                       <td>{highlightText(item.itemDescription)}</td>
                       <td>{highlightText(item.stocksAvailable)}</td>
                       <td>{highlightText(item.itemPrice ? `₱${item.itemPrice}` : "")}</td>
-                      <td>{highlightText(formatDate(item.expireDate))}</td>
+                      <td>{highlightText(formatDate(item.expireDate, false))}</td>
                     </>
                   ) : (
                     <>
@@ -117,7 +116,7 @@ class PrintableContent extends React.Component {
   }
 }
 
-export default function ReportsView({ tableData, selectedType, searchedQuery, generateButtonClicked }) {
+const ReportsView = ({ tableData, selectedType, searchedQuery, generateButtonClicked }) => {
   const [sortBy, setSortBy] = useState("latest");
   const componentRef = React.useRef();
 
@@ -126,32 +125,32 @@ export default function ReportsView({ tableData, selectedType, searchedQuery, ge
     if (!dateString) {
       return "";
     }
-
+  
     const date = new Date(dateString);
     if (isNaN(date.getTime())) {
       return "Invalid Date";
     }
-
+  
     const options = {
       year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
+      month: 'numeric',
+      day: 'numeric',
     };
-
+  
     if (isBirthday) {
-      return date.toLocaleDateString('en-US', options).replace(/\//g, '/');
+      return date.toLocaleDateString('en-US', options).replace(/(^|\/)0+/g, '$1');
     }
-
-    return date.toLocaleDateString('en-US', options);
+  
+    return date.toLocaleDateString('en-US', options).replace(/(^|\/)0+/g, '$1');
   };
 
   // Case-insensitive highlighting function
   const highlightText = (text) => {
     if (!searchedQuery || !text) return text;
-
+  
     const regex = new RegExp(`(${searchedQuery})`, "gi");
     const parts = text.split(regex);
-
+  
     return parts.map((part, index) =>
       index % 2 === 0 ? (
         <span key={index}>{part}</span>
@@ -202,15 +201,50 @@ export default function ReportsView({ tableData, selectedType, searchedQuery, ge
     return sortBy === "latest" ? keyB - keyA : keyA - keyB;
   });
 
-  const filteredTableData = sortedTableData.filter((item) =>
-    Object.values(item).some((value) =>
-      typeof value === 'string' && searchedQuery
-        ? (
-          new RegExp(`\\b${searchedQuery}\\b`, 'i').test(value)
-        )
-        : false
-    )
-  );
+  const filteredTableData = sortedTableData.filter((item) => {
+    return Object.entries(item).some(([key, value]) => {
+      if (typeof value === 'string') {
+        const formattedValue = formatDate(value, true);
+        const isMatch = new RegExp(`\\b${searchedQuery}\\b`, 'i').test(value) || new RegExp(`\\b${searchedQuery}\\b`, 'i').test(formattedValue);
+
+        if (selectedType === "Records" && key === "height") {
+          // Extract feet and inches from the height
+          const [feet, inches] = value.split("'").map(part => parseInt(part));
+          const userSearchQuery = searchedQuery.split("'").map(part => parseInt(part));
+
+          // Compare feet and inches with the user's search query
+          return isMatch || (feet === userSearchQuery[0] && inches === userSearchQuery[1]);
+        }
+
+        // Handle special cases for full name and address search when selectedType is "User"
+        if (selectedType === "User" && (key.includes("Name") || key.includes("houseNum") || key.includes("street") || key.includes("brgy") || key.includes("city") || key.includes("prov"))) {
+          const fullName = `${item.FirstName} ${item.MiddleName} ${item.LastName}`;
+          const fullAddress = `${item.houseNum} ${item.street} ${item.brgy} ${item.city} ${item.prov}`;
+          return isMatch || new RegExp(`\\b${searchedQuery}\\b`, 'i').test(fullName) || new RegExp(`\\b${searchedQuery}\\b`, 'i').test(fullAddress);
+        }
+
+        // Check for currency sign in itemPrice when selectedType is "Inventory"
+        if (selectedType === "Inventory" && key === "itemPrice") {
+          const priceWithCurrencySign = `₱${item.itemPrice}`;
+          const numericPrice = item.itemPrice; // assuming itemPrice is a numeric field
+          const searchQueryWithPesoSign = searchedQuery.replace("₱", ""); // Remove peso sign from the search query
+          return isMatch || new RegExp(`\\b${searchQueryWithPesoSign}\\b`, 'i').test(priceWithCurrencySign) || new RegExp(`\\b${searchedQuery}\\b`, 'i').test(numericPrice);
+        }
+
+        // Check for AM/PM suffix in appointmentTime when selectedType is "Appointments"
+        if (selectedType === "Appointments" && key === "appointmentTime") {
+          const timeWithAmPm = `${item.appointmentTime} ${getAmPmSuffix(new Date(item.appointmentTime).getHours())}`;
+          return isMatch || new RegExp(`\\b${searchedQuery}\\b`, 'i').test(timeWithAmPm);
+        }
+
+        return isMatch;
+      }
+      if (value instanceof Date) {
+        return value.toISOString().includes(searchedQuery);
+      }
+      return false;
+    });
+  });
 
   return (
     <div>
@@ -241,4 +275,6 @@ export default function ReportsView({ tableData, selectedType, searchedQuery, ge
       )}
     </div>
   );
-}
+};
+
+export default ReportsView;
