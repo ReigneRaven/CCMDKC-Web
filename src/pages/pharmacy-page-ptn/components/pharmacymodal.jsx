@@ -9,6 +9,7 @@ const PharmModal = ({ item, onClose }) => {
   const [modeCOD, setModeCOD] = useState(false);
   const [totalPrice, setTotalPrice] = useState(item.itemPrice);
   const [UserName, setUserName] = useState('')
+  const [isValidQuantity, setIsValidQuantity] = useState(true);
 
     const navigate = useNavigate();
     const userId = Cookies.get('userId');
@@ -22,20 +23,26 @@ const PharmModal = ({ item, onClose }) => {
    let newQuantity = parseInt(e.target.value, 10) || 1;
      newQuantity = Math.max(newQuantity, 20);
      setQuantity(newQuantity);
+     setIsValidQuantity(true);
    };
 
   const decrementQuantity = () => {
     if (quantity > 20) {
       setQuantity(quantity - 1);
+    } else {
+      setIsValidQuantity(false);
+      setTimeout(() => {
+        setIsValidQuantity(true);
+      }, 3000); 
     }
   };
   
   const incrementQuantity = () => {
     setQuantity(quantity + 1);
+    setIsValidQuantity(true)
   };
 
   const handleModeChange = () => {
-    // Toggle the mode of payment between true and false
     setModeCOD(!modeCOD);
   };
 
@@ -109,7 +116,7 @@ const PharmModal = ({ item, onClose }) => {
                 id="username-pharm"
               />
               <label htmlFor="quantity-input" id="qty-modal-p">
-                Quantity <span id="label-min">&nbsp;(min 20 capsules)</span>
+                Quantity 
               </label>
               <div className="qty-counter">
                 <button
@@ -135,6 +142,11 @@ const PharmModal = ({ item, onClose }) => {
                   +
                 </button>
               </div>
+              <div className="error-message">
+                {isValidQuantity ? null : (
+                  <p className="min-message">Minimum 20 pieces</p>
+                )}
+                </div>
             </div>
             <div className="mode-section">
               <p id="mode-modal-p">
@@ -163,9 +175,11 @@ const PharmModal = ({ item, onClose }) => {
         </form>
       </div>
 
+      <div className="button-container">
       <button onClick={onClose} id="close-btn-pharm">
         X
       </button>
+      </div>
     </>
   );
 };

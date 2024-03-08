@@ -118,3 +118,36 @@ header .icons span:last-child{
     margin: 0;
     padding: 15px;
 }
+
+@media screen and  (max-width: 1366px){
+    .wrapper{
+        height: 300px;
+    }
+    .wrapper header{
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        color: black;
+        margin: -10px;
+    }
+    #mm-yy-calendar{
+        font-size: 14px;
+        margin-left: 14px;
+        padding: 0;
+    }
+    .weeks{
+        margin-top: 10px;
+    }
+    .days{
+        margin: 0;
+        font-size: 15px;
+    }
+    .calendar .days li{
+        margin-top: 15px;
+    }
+    .calendar .days li::before{
+        width: 30px;
+        height: 30px;
+    }
+}

@@ -38,6 +38,7 @@ main {
 .pharmacy-content-ptn{
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 
 .pharmacy-page-ptn{
@@ -317,4 +318,68 @@ main {
 #username-pharm{
   border-radius: 20px;
   margin: -5px;
+}
+
+@media screen and (max-width: 1366px){
+  .pharmacy-container-ptn{
+    height:565px;
+    width: 1100px;
+  }
+  #pharmacy-header{
+    font-size: 25px;
+  }
+  .pharmacy-table-container{
+    align-items: center;
+  }
+  #searchbar-pharmacy{
+    font-size: 15px;
+    height: 30px;
+    margin-top: 15px;
+    margin-left: 30px;
+  }
+  .modalPharm{
+    height: 70%;
+    width: 65%;
+  }
+  #modal-form-pharm{
+    display: flex;
+    gap: 0.5;
+  }
+  
+.modalPharmImg{
+  width: 50%;
+  height: 100%;
+  } 
+  #buy-now-btn{
+    margin: 0;
+    font-size: 15px;
+    padding: 8px;
+    width: 180px;
+    height: fit-content;
+  }
+  #decrement-btn, #increment-btn{
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #quantity-input{
+    font-size: 15px;
+    height: 30px;
+  }
+  #product-name-p{
+    font-size: 20px;
+  }
+  #close-btn-pharm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .button-container{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin-top: 20px;
+  }
+
 }

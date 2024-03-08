@@ -4,6 +4,7 @@
 
 .profile-container {
   display: flex;
+  justify-content: center;
   /* align-items: center; */
   /* justify-content: space-between; */
 }
@@ -32,7 +33,7 @@
 /* css for patient info textview */
 .profile-view {
   display: flex;
-  background-color: rgb(243, 243, 243);
+  background-color:rgb(245,245,245);
   width: fit-content;
   height: auto;
   padding: 20px;
@@ -63,29 +64,15 @@
 
 /* css for patient info table */
 .patient-info {
+  
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   /* background-color: white;
-  height: 89vh;
-  display: flex !important;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 16px;
-  padding: 20px;
-  border-radius: 20px;
   width: 85vw;
-  margin-top: -10px;
-  margin-right: 100px;
-  gap: 1rem; */
-  gap: 1rem;
-  display: flex !important;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-  width: 85vw;
-  height: 89vh;
+  height: 89vh; */
   border-radius: 20px;
-  margin-left: 20px;
 }
 
 #details-h1 {
@@ -252,4 +239,15 @@
 #phone-icon , #home-icon, #cake-icon, #email-icon, #name-icon{
   font-size:35px;
   display: inline-block;
+}
+
+@media screen and (max-width:1366px) {
+  .medicalrecord-container{
+    height:565px;
+       width: 1100px;
+  }
+  h2{
+    font-size: 25px;
+  }
+
 }

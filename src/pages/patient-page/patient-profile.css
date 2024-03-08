@@ -234,6 +234,9 @@ h3 span {
     font-size: 20px;
     padding: 5px;
 }
+.hamburger-button :hover{
+    cursor: pointer;
+}
 
 .sidenav ul {
     margin-top: 50px;
@@ -473,4 +476,81 @@ h3 span {
 
 .cancel-btn:disabled:hover {
     filter: drop-shadow(0 0 0.2em #000);
+}
+
+@media screen and (max-width: 1366px){
+    .ptnheader{
+        width: 99vw;
+    }
+    .logo-sidebar-ptn{
+        margin-left: 20px;
+    }
+    .dash-patient{
+       height:565px;
+       width: 1100px;
+    }
+    .dashpatient-row{
+        padding: 20px;
+        margin-top: 40px;
+        align-items: self-start;
+    }
+    .dash-patient p{
+        font-size: 15px;
+        margin-left: 25px;
+    }
+    .upcoming-wrapper{
+       height: 300px !important;
+    }
+    #label-sort{
+        font-size: 14px;
+    }
+    #sort{
+        height: 20px;
+        border-radius: 20px;
+    }
+    .sort-dropdown-upcoming{
+        display: flex;
+        align-items: center;
+        margin-top: 8px;
+    }
+    .table-appointment{
+        font-size: 15px;
+    }
+    .purchase-wrapper{
+        margin-left: 20px;
+        padding-left: 20px;
+        width: 67.5%;
+        height: 118px;
+    }
+    .clock-wrapper-ptn{
+        margin-left: 808px;
+        height:118px;
+        margin-top:-158px;
+        width: 21.3%;
+    }
+    #clock-p-ptn{
+        padding: 0;
+        font-size: 0;
+    }
+    #time-p-ptn{
+        padding: 0;
+        font-weight: 300;
+        margin-top: 0;
+        margin-left: 0;
+        font-size: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* margin-left: -5px; */
+    }
+    .table-order-stat{
+        font-size: 15px;
+    }
+    #order-stat{
+        padding: 0;
+    }
+    .sidenav ul{
+        margin: 50px 0px 0px 20px !important; /* Four values: top, right, bottom, left */
+        gap: 20px;
+    }
 }

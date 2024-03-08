@@ -172,10 +172,6 @@ thead {
   font-weight: 600;
 }
 
-.expiredStock {
-  background-color: rgb(246,217,102,255); /* Choose a background color for expired stocks */
-  font-weight: 600;
-}
 
 #expire-date{
   border-radius: 20px;
@@ -193,4 +189,39 @@ thead {
 
 #label-expire{
   font-weight: 500;
+}
+
+@media screen and (max-width:1366px) {
+  .supplies-row {
+    display: flex;
+    flex-direction: column;
+  }
+  .create-stocks{
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    margin-top: 20px;
+    height: 30px;
+    width: fit-content;
+  }
+  .input-supplies{
+    height: 30px;
+    width: fit-content;
+    margin: 0;
+  }
+  #inventory-header{
+    font-size: 20px;
+  }
+  #inventory-header{
+    font-size: 0;
+  }
+  #searchbar-supplies{
+    width: 500px;
+  }
+  .supplies-table-container{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 320px;
+  }
 }
