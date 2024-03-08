@@ -189,7 +189,7 @@ h3 span {
 
 .dash-patient{
     background-color: white;
-    width: 85vw;
+    width: 93vw;
     height: 89vh;
     border-radius: 20px;
     margin-left: 20px;
@@ -334,9 +334,9 @@ h3 span {
 
 .clock-wrapper-ptn {
     margin-top: -220px;
-    margin-left: 1210px;
+    margin-left: 1325px;
     background: rgb(243, 243, 243);
-    width: 20.5%;
+    width: 21%;
     height: 180px;
     padding: 20px;
     border-radius: 20px;
@@ -346,7 +346,7 @@ h3 span {
 .round-clock-ptn {
     position: absolute;
     top: 55%;
-    left: 50%;
+    left: 52%;
     transform: translate(-50%, -50%);
     width: 100px;
     height: 100px;
@@ -404,7 +404,7 @@ h3 span {
     padding: 20px;
     margin: 0;
     margin-top: 80px;
-    margin-left: 115px;
+    margin-left: 128px;
     font-weight: bold;
     font-size: 18px;
 }

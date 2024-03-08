@@ -258,7 +258,7 @@ main{
     height: 89vh;
     border-radius: 20px; */
     background-color: white;
-    width: 86vw;
+    width: 93vw;
     height: 89vh;
     border-radius: 20px;
     margin-left: 20px;
@@ -316,6 +316,10 @@ main{
 
 .sort-dropdown select {
     width: 100px;
+}
+
+#sort {
+    border-radius: 20px;
 }
 
 ::-webkit-scrollbar {
@@ -468,7 +472,7 @@ thead{
 /* ````````````````````````````````````````CLOCK`````````````````````````````````````````````````````````` */
 .clock-wrapper-adm {
     margin-top: -220px;
-    margin-left: 1220px;
+    margin-left: 1328px;
     background: rgb(243, 243, 243);
     width: 21%;
     height: 180px;
@@ -480,7 +484,7 @@ thead{
 .round-clock-adm {
     position: absolute;
     top: 55%;
-    left: 50%;
+    left: 52%;
     transform: translate(-50%, -50%);
     width: 100px;
     height: 100px;
@@ -538,7 +542,7 @@ thead{
     padding: 20px;
     margin: 0;
     margin-top: 80px;
-    margin-left: 120px;
+    margin-left: 128px;
     font-weight: bold;
     font-size: 18px;
 }
