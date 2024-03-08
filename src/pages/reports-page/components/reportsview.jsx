@@ -65,9 +65,9 @@ class PrintableContent extends React.Component {
                       <td>{highlightText(item.service)}</td>
                       <td>{highlightText(formatDate(item.appointmentDate))}</td>
                       <td>
-                      {item.appointmentTime ? (
+                        {item.appointmentTime ? (
                           <>
-                            {highlightText(`${item.appointmentTime} ${getAmPmSuffix(new Date(item.appointmentTime).getHours())}`)}
+                            {highlightText(getAmPmSuffix(item.appointmentTime))}
                           </>
                         ) : (
                           ""
@@ -125,32 +125,32 @@ const ReportsView = ({ tableData, selectedType, searchedQuery, generateButtonCli
     if (!dateString) {
       return "";
     }
-  
+
     const date = new Date(dateString);
     if (isNaN(date.getTime())) {
       return "Invalid Date";
     }
-  
+
     const options = {
       year: 'numeric',
       month: 'numeric',
       day: 'numeric',
     };
-  
+
     if (isBirthday) {
       return date.toLocaleDateString('en-US', options).replace(/(^|\/)0+/g, '$1');
     }
-  
+
     return date.toLocaleDateString('en-US', options).replace(/(^|\/)0+/g, '$1');
   };
 
   // Case-insensitive highlighting function
   const highlightText = (text) => {
     if (!searchedQuery || !text) return text;
-  
+
     const regex = new RegExp(`(${searchedQuery})`, "gi");
     const parts = text.split(regex);
-  
+
     return parts.map((part, index) =>
       index % 2 === 0 ? (
         <span key={index}>{part}</span>
@@ -162,8 +162,21 @@ const ReportsView = ({ tableData, selectedType, searchedQuery, generateButtonCli
     );
   };
 
-  // Helper function to get AM/PM suffix based on hour
-  const getAmPmSuffix = (hours) => (hours >= 12 ? 'pm' : 'am');
+  // Helper function to get AM/PM suffix based on time
+  const getAmPmSuffix = (timeString) => {
+    if (!timeString) {
+      return '';
+    }
+
+    const time = new Date(`1970-01-01T${timeString}`);
+    const hours = time.getHours();
+    const suffix = hours >= 12 ? 'pm' : 'am';
+
+    // Convert hours to 12-hour format
+    const formattedHours = hours % 12 || 12;
+
+    return `${formattedHours}:${String(time.getMinutes()).padStart(2, '0')} ${suffix}`;
+  };
 
   const handleSortChange = (e) => {
     setSortBy(e.target.value);
@@ -233,7 +246,7 @@ const ReportsView = ({ tableData, selectedType, searchedQuery, generateButtonCli
 
         // Check for AM/PM suffix in appointmentTime when selectedType is "Appointments"
         if (selectedType === "Appointments" && key === "appointmentTime") {
-          const timeWithAmPm = `${item.appointmentTime} ${getAmPmSuffix(new Date(item.appointmentTime).getHours())}`;
+          const timeWithAmPm = getAmPmSuffix(item.appointmentTime);
           return isMatch || new RegExp(`\\b${searchedQuery}\\b`, 'i').test(timeWithAmPm);
         }
 
