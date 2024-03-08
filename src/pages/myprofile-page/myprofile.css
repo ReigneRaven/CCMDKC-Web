@@ -64,7 +64,8 @@
 
 /* css for patient info table */
 .patient-info {
-  
+  margin-top: 60px;
+  margin-left: 200px;
   display: flex !important;
   flex-direction: column;
   justify-content: center;

@@ -4,7 +4,7 @@
 
 .supplies-container {
   background-color: white;
-   width: 86vw;
+   width: 93vw;
    height: 89vh;
    border-radius: 20px;
    margin-left: 20px;
@@ -101,7 +101,7 @@ thead {
   margin-top: 30px;
   margin-left: 5px;
   /* width: 250%; */
-  width: 240%;
+  width: 208%;
   max-height: 630px;
   overflow: scroll;
   overflow-x: hidden;
@@ -127,6 +127,7 @@ thead {
   margin-bottom: -10px;
   width: 600px;
   z-index: 1;
+  margin-left: 170px;
 }
   
 #searchbar-supplies{
@@ -134,7 +135,7 @@ thead {
   margin-top: -10px;
   margin-left: 25px;
   border-radius: 20px;
-  width: 1060px;
+  width: 1190px;
   background-color: #f3f3f3;
   z-index: 1;
 }
@@ -172,6 +173,10 @@ thead {
   font-weight: 600;
 }
 
+.expiredStock {
+  background-color: rgb(246,217,102,255); /* Choose a background color for expired stocks */
+  font-weight: 600;
+}
 
 #expire-date{
   border-radius: 20px;
@@ -189,39 +194,4 @@ thead {
 
 #label-expire{
   font-weight: 500;
-}
-
-@media screen and (max-width:1366px) {
-  .supplies-row {
-    display: flex;
-    flex-direction: column;
-  }
-  .create-stocks{
-    display: flex;
-    flex-direction: row;
-    margin: 0;
-    margin-top: 20px;
-    height: 30px;
-    width: fit-content;
-  }
-  .input-supplies{
-    height: 30px;
-    width: fit-content;
-    margin: 0;
-  }
-  #inventory-header{
-    font-size: 20px;
-  }
-  #inventory-header{
-    font-size: 0;
-  }
-  #searchbar-supplies{
-    width: 500px;
-  }
-  .supplies-table-container{
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   height: 320px;
-  }
 }
