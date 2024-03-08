@@ -4,6 +4,11 @@ import PtnHeader from "../patient-page/components/header";
 import PtnSidebar from "../patient-page/components/sidebar";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { MdOutlineMailOutline } from "react-icons/md";
+import { HiOutlineIdentification } from "react-icons/hi";
+import { FiPhoneCall } from "react-icons/fi";
+import { AiOutlineHome } from "react-icons/ai";
+import { LiaBirthdayCakeSolid } from "react-icons/lia";
 
 export default function MyProfile() {
   const [user, setUser] = useState({
@@ -113,21 +118,21 @@ export default function MyProfile() {
               <div className="profile-view">
                 {user && !isEditing && (
                   <div className="myprofile-details">
-                    <p><strong>Name:&nbsp;&nbsp;&nbsp;</strong>
+                    <p><strong><HiOutlineIdentification id="name-icon"/>&nbsp;&nbsp;&nbsp;</strong>
                       {user.FirstName}&nbsp;
                       {user.MiddleName}&nbsp;
                       {user.LastName}&nbsp;
                     </p>
-                    <p><strong>Contact Number:&nbsp;&nbsp;&nbsp;</strong> {user.contactNum}</p>
-                    <p><strong>Address:&nbsp;&nbsp;&nbsp;</strong>
+                    <p><strong><FiPhoneCall id="phone-icon"/>&nbsp;&nbsp;&nbsp;</strong> {user.contactNum}</p>
+                    <p><strong><AiOutlineHome id="home-icon"/>&nbsp;&nbsp;&nbsp;</strong>
                       {user.houseNum} &nbsp;
                       {user.street}  &nbsp;
                       {user.brgy} &nbsp;
                       {user.city} &nbsp;
                       {user.prov}
                     </p>
-                    <p><strong>Birthday:&nbsp;&nbsp;&nbsp;</strong> {formatBirthday(user.birthday)}</p>
-                    <p><strong>Email:&nbsp;&nbsp;&nbsp;</strong> {user.email}</p>
+                    <p><strong><LiaBirthdayCakeSolid id="cake-icon" />&nbsp;&nbsp;&nbsp;</strong> {formatBirthday(user.birthday)}</p>
+                    <p><strong><MdOutlineMailOutline id="email-icon"/>&nbsp;&nbsp;&nbsp;</strong> {user.email}</p>
                     <button id="edit-btn" onClick={handleEditClick}>Edit</button>
                   </div>
                 )}
