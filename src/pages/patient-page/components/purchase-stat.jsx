@@ -96,7 +96,7 @@ const PurchaseStatus = () => {
         <div className="purchase-wrapper">
           <p id="order-stat">Order Tracker</p>
           <div className="sort-dropdown-purchase">
-            <label htmlFor="sort">Sort By:</label>
+            <label htmlFor="sort" id="label-sort">Sort By:</label>
             <select id="sort" value={sortBy} onChange={handleSortChange}>
               <option value="latest">Latest</option>
               <option value="oldest">Oldest</option>

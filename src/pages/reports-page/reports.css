@@ -195,4 +195,24 @@
         font-size: small;
         margin: 3px;
     }
+    #sort-reports{
+        font-size: small;
+        display: flex;
+    }
+    .sort-dropdown-reports{
+        display: flex;
+        flex-direction: row;
+        gap:1rem;
+        padding: 20px;
+        margin:5px;
+        align-items: baseline;
+    }
+    #generate-pdf-btn{
+        margin: 0;
+    }
+    .reports-btn-pdf{
+        display: flex;
+        justify-content: flex-end;
+        padding: 20px;
+    }
 }

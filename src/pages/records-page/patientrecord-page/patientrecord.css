@@ -260,5 +260,85 @@ thead {
   margin-bottom: -45px;
   margin-right: 105px;
 }
+
+@media screen and (max-width: 1366px){
+
+  .column{
+    display: flex;
+    flex-direction: column;
+  }
+  .create-patientrecord{
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    height: auto;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+  }
+  .input-patientrecord{
+    width:fit-content ;
+    font-size: 15px;
+    height: 30px;
+  }
+  .note-btn.submit{
+    margin: 0;
+    height: 35px;
+    
+  }
+  .create-medicalrecord{
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    height: auto;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+  }
+  .input-medicalrecord{
+    height: 30px;
+    margin: 0;
+    width: fit-content;
+  }
+  #medform-btn{
+    height: 35px;
+  }
+  #searchbar-record{
+    margin:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 200px;
+    width: 50%;
+  }
+  .searchbar-record-adm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .record-table-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    table-layout: fixed;
+      margin-left: 100px;
+  }
+  .patientrecord-table-content{
+    display: flex;
+    justify-content: center;
+    
+  }
+  .table-adm{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: fit-content;
+  }
+
+}
   
   

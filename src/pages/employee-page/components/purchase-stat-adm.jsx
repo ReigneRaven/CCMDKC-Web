@@ -57,7 +57,7 @@ export default function PurchaseStatus() {
   return (
     <>
       <div className="purchase-container">
-        <div className="purchase-wrapper">
+        <div className="purchase-wrapper-amn">
           <p id="order-stat">Order Tracker</p>
 
           <div className="sort-dropdown-order-adm">

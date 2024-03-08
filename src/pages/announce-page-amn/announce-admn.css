@@ -26,6 +26,7 @@
 .announce-content-amn{
    display: flex;
    flex-direction: row;
+   justify-content: center;
 }
 
 .announce-page-amn{

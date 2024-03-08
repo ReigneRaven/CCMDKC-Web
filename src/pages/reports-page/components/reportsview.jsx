@@ -262,7 +262,7 @@ const ReportsView = ({ tableData, selectedType, searchedQuery, generateButtonCli
   return (
     <div>
       <div className="sort-dropdown-reports">
-        <label htmlFor="sort">Sort By: </label>
+        <label htmlFor="sort" id='sort-reports'>Sort By: </label>
         <select id="sort" value={sortBy} onChange={handleSortChange}>
           <option value="latest">Latest</option>
           <option value="oldest">Oldest</option>
@@ -282,9 +282,11 @@ const ReportsView = ({ tableData, selectedType, searchedQuery, generateButtonCli
 
       {/* Button to trigger printing */}
       {generateButtonClicked && (
+        <div className="reports-btn-pdf">
         <button id="generate-pdf-btn" onClick={handlePrint}>
           Generate PDF
         </button>
+        </div>
       )}
     </div>
   );
