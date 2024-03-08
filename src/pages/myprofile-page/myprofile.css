@@ -248,3 +248,8 @@
   justify-content: center;
   margin-top: 10px;
 } 
+
+#phone-icon , #home-icon, #cake-icon, #email-icon, #name-icon{
+  font-size:35px;
+  display: inline-block;
+}

@@ -172,6 +172,10 @@ thead {
   font-weight: 600;
 }
 
+.expiredStock {
+  background-color: rgb(246,217,102,255); /* Choose a background color for expired stocks */
+  font-weight: 600;
+}
 
 #expire-date{
   border-radius: 20px;
