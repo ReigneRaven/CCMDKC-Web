@@ -163,6 +163,7 @@ export default function Request() {
                                     <td>
                                         <div className="buttons-req">
                                             <button
+                                                id='buttons-request'
                                                 onClick={() => handleAcceptAppointment(appointment._id)}
                                                 className={appointment.processed || isStatusDisabled(appointment) ? 'disabled-button' : ''}
                                                 disabled={appointment.processed || isStatusDisabled(appointment)}
@@ -170,6 +171,7 @@ export default function Request() {
                                                 Accept
                                             </button>
                                             <button
+                                                id='buttons-request'
                                                 onClick={() => handleDenyAppointment(appointment._id)}
                                                 className={appointment.processed || isStatusDisabled(appointment) ? 'disabled-button' : ''}
                                                 disabled={appointment.processed || isStatusDisabled(appointment)}

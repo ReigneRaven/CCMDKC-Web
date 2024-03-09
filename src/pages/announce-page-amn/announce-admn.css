@@ -189,3 +189,13 @@ h6 {
  #delete-btn-announcement-adm:hover {
    filter: drop-shadow(0 0 0.2em #FF0000);
 }
+
+@media screen and (max-width:1366px) {
+  .announcement-container-amn{
+    width: 90vw;
+    height: 89vh;
+  }
+  .grid-container {
+    width: 680px;
+  }
+}

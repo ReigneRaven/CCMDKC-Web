@@ -45,7 +45,7 @@ export default function HistoryModalPtn({ patientId, onClose }) {
             ))}
           </tbody>
         </table>
-        <button onClick={onClose}>Close</button>
+        <button onClick={onClose} id="close-medhisto">Close</button>
       </div>
     </div>
   );

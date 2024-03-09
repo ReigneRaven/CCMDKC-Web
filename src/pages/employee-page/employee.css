@@ -626,11 +626,17 @@ thead{
     overflow-y: scroll;
     overflow-x: hidden;
 }
-  @media screen and (max-width:1366px) {
+@media screen and (max-width:1366px) {
     .sidenav ul{
         margin: 150px 10px 10px 10px;  /* Four values: top, right, bottom, left */
         padding: 100px 20px  50px;
     }
+
+    .dash-employee{
+        width: 90vw;
+        height: 89vh;
+    }
+
     .purchase-wrapper-amn{
         margin-top: -40px;
         margin-left: 50px;
@@ -642,16 +648,18 @@ thead{
         font-size: 15px;
     }
     .clock-wrapper-adm{
-        margin-left: 850px;
+        margin-left: 895px;
         height:118px;
         margin-top:-158px;
         width: 20%;
     }
     #clock-p-adm{
+        margin-bottom: 120px;
         padding: 0;
         font-size: 0;
     }
     #time-p-adm{
+        margin-top: -30px;
         padding: 0;
         font-weight: 300;
         margin-top: 0;
@@ -662,6 +670,9 @@ thead{
         align-items: center;
         /* margin-left: -5px; */
     }
+    .round-clock-adm {
+        margin-top: -15px;
+    }
     .table-order-stat{
         font-size: 15px;
     }
@@ -671,4 +682,12 @@ thead{
     .appointment-table{
         font-size: 15px;
     }
-  }
+    #buttons-request{
+        font-size: 13px;
+        height:33px;
+    }
+    #purchase-details-btn{
+        font-size: 13px;
+        height: 33px;
+    }
+}
