@@ -167,7 +167,7 @@
 
 @media screen and (max-width: 1366px){
     .reports-container{
-        width: 80vw;
+        width: 90vw;
         height: 88vh;
     }
     .reports-form-container{
@@ -206,7 +206,9 @@
         padding: 20px;
         margin:5px;
         align-items: baseline;
+        margin-bottom: -80px;
     }
+    
     #generate-pdf-btn{
         margin: 0;
     }

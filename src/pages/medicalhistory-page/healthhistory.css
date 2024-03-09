@@ -49,3 +49,18 @@ tbody {
 thead {
   display: table-row-group;
 }
+
+@media screen and (max-width: 1366px){
+  .view-details{
+    font-size: 12px;
+    height: 30px;
+  }
+  #close-medhisto{
+    font-size: 12px;
+    height: 30px;
+  }
+  .medicalrecord-container{
+    width: 90vw;
+  }
+
+}

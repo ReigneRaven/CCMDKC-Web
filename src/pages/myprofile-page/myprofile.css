@@ -251,4 +251,8 @@
     font-size: 25px;
   }
 
+  .myprofile-details p {
+    margin-bottom: 20px;
+  }
+
 }

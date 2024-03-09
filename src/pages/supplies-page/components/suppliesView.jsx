@@ -186,6 +186,7 @@ export default function SuppliesView() {
 
   return (
     <div className="searchbar-supplies">
+      <div className="top-supplies">
       <div className="searchbar-header">
         <Head2 text="Supplies" id="supplies-header" />
       </div>
@@ -196,6 +197,7 @@ export default function SuppliesView() {
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
+      </div>
       <div className="supplies-table-content">
         <div className="supplies-table-container">
           <table className="table">

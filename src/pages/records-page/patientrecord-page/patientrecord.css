@@ -275,17 +275,18 @@ thead {
     gap: 0.5rem;
     align-items: center;
     justify-content: center;
-    padding: 5px;
+    padding: 10px;
+    margin-top: 10px;
   }
   .input-patientrecord{
     width:fit-content ;
-    font-size: 15px;
+    font-size: 12px;
     height: 30px;
   }
   .note-btn.submit{
     margin: 0;
-    height: 35px;
-    
+    height: 30px;
+    font-size: 12px;
   }
   .create-medicalrecord{
     display: flex;
@@ -295,50 +296,90 @@ thead {
     gap: 0.5rem;
     align-items: center;
     justify-content: center;
-    padding: 5px;
+    padding: 10px;
+    margin-left: 37px;
+
   }
   .input-medicalrecord{
     height: 30px;
+    font-size: 12px;
     margin: 0;
-    width: fit-content;
+    width: 150px;
+  }
+  .custom-gender{
+    width: 150px;
   }
   #medform-btn{
-    height: 35px;
+    height: 30px;
   }
   #searchbar-record{
-    margin:0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 200px;
-    width: 50%;
-  }
-  .searchbar-record-adm{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  margin:0;
+   width: 250px;
+   height: 30px;
+   font-size: 13px;
   }
   .record-table-container{
     display: flex;
     justify-content: center;
     align-items: center;
     table-layout: fixed;
-      margin-left: 100px;
+    width: 70%;
+    margin: 40px 200px 0  0;
   }
-  .patientrecord-table-content{
-    display: flex;
-    justify-content: center;
-    
-  }
-  .table-adm{
+  /* .table-adm{
     margin: 0;
     display: flex;
     flex-direction: column;
     height: 100%;
+    width: 120%;
+    justify-content: center;
+    align-items: center;
+    table-layout: fixed;
+  } */
+
+  /* .table-adm th {
+    table-layout: fixed;
+    gap: 0.5rem;
+  } */
+  .editButton{
+    font-size: 12px;
+    height: 30px;
+  }
+  .medicalinput-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
     width: fit-content;
+    margin-left: 0;
   }
 
+  .input-medicalrecord.custom-medical-temp{
+    width: 150px;
+  }
+  /* .patientview{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  } */
+  .patientrecord-table-content{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .top-records{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: baseline;
+    justify-content: space-between;
+    padding-left: 100px;
+    padding-right: 300px;
+  }
+  .sort-dropdown-order-modal-adm{
+    display: flex;
+    font-size: 13px;
+  }
 }
-  
-  

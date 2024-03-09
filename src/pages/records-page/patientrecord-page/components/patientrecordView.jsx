@@ -89,6 +89,7 @@ export default function PatientRecordView() {
 
   return (
     <div className="searchbar-record-adm">
+      <div className="top-records">
       <input
         id="searchbar-record"
         type="text"
@@ -96,6 +97,7 @@ export default function PatientRecordView() {
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
+      </div>
       <div className="sort-dropdown-order-modal-adm">
         <label htmlFor="sort">Sort By:</label>
         <select id="sort" value={sortBy} onChange={handleSortChange}>
