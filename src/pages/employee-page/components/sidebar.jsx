@@ -8,7 +8,10 @@ import Cookies from 'js-cookie';
 
 export default function Sidebar() {
     const [adminId, setAdminId] = useState(null);
-    const [showSidebar, setShowSidebar] = useState(true);
+    const [showSidebar, setShowSidebar] = useState(() => {
+        const storedSidebarState = localStorage.getItem("showSidebar");
+        return storedSidebarState !== null ? JSON.parse(storedSidebarState) : true;
+    });
 
     useEffect(() => {
         const storedAdminId = Cookies.get('adminId');
@@ -26,6 +29,7 @@ export default function Sidebar() {
 
     const toggleSidebar = () => {
         setShowSidebar(!showSidebar);
+        localStorage.setItem("showSidebar", JSON.stringify(!showSidebar));
     };
 
     return (

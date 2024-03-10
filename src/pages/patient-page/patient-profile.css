@@ -215,9 +215,15 @@ h3 span {
 }
 
 /* Additional styles for hiding the sidebar initially */
-.sidenav.hidden {
-    visibility: hidden;
+.sidenav {
+    visibility: visible;
     position: absolute;
+    transition: transform 0.3s ease-in-out;
+}
+
+.sidenav.hidden {
+    transform: translateX(-100%);
+    visibility: hidden;
 }
   
 /* Ensure sidebar-icon is visible even when the sidebar is hidden */
