@@ -218,3 +218,22 @@
         padding: 20px;
     }
 }
+
+@media print {
+    .reports-table-container {
+      text-align: center;
+    }
+  
+    #reports-table-view {
+      margin: 0 auto;
+    }
+  
+    .th-reports-table,
+    .tbody-tr-reports {
+      text-align: center;
+    }
+
+    #reports-table-view td {
+        text-align: center;
+      }
+  }
