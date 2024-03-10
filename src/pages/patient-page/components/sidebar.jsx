@@ -8,7 +8,10 @@ import Cookies from "js-cookie";
 
 export default function PtnSidebar() {
   const [userId, setUserId] = useState(null);
-  const [showSidebar, setShowSidebar] = useState(true);
+  const [showSidebar, setShowSidebar] = useState(() => {
+    const storedSidebarState = localStorage.getItem("showSidebar");
+    return storedSidebarState !== null ? JSON.parse(storedSidebarState) : true;
+  });
 
   useEffect(() => {
     const storedUserId = Cookies.get("userId");
@@ -25,7 +28,9 @@ export default function PtnSidebar() {
   }, []);
 
   const toggleSidebar = () => {
-    setShowSidebar(!showSidebar);
+    const updatedSidebarState = !showSidebar;
+    setShowSidebar(updatedSidebarState);
+    localStorage.setItem("showSidebar", JSON.stringify(updatedSidebarState));
   };
 
   return (
@@ -41,7 +46,7 @@ export default function PtnSidebar() {
           </Link>
 
           <Link to={`/healthrecord/${userId}`} className="link-div" id="history-link">
-            <BsFillFileMedicalFill className="sidebar-icon"/>&nbsp;Health History
+            <BsFillFileMedicalFill className="sidebar-icon"/>&nbsp;Health&nbsp;History
           </Link>
           <Link to={`/pharmacy/${userId}`} className="link-div" id="pharmacy-link">
             <FaHouseMedical className="sidebar-icon"/>&nbsp;Pharmacy
@@ -53,7 +58,7 @@ export default function PtnSidebar() {
       </div>
       <div className="hamburger-button" onClick={toggleSidebar}>
         <strong>
-        ☰
+          ☰
         </strong>
       </div>
     </>
