@@ -283,7 +283,7 @@ main {
   font-weight: 600;
 }
 
-#mode-cod{
+#mode-cod, #mode-pickup{
   height: 40px;
   width: 30px;
 }

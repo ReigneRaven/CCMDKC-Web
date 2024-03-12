@@ -7,6 +7,7 @@ const PharmModal = ({ item, onClose }) => {
 
   const [quantity, setQuantity] = useState(20);
   const [modeCOD, setModeCOD] = useState(false);
+  const [modeOTC, setModeOTC] = useState(false);
   const [totalPrice, setTotalPrice] = useState(item.itemPrice);
   const [UserName, setUserName] = useState('')
   const [isValidQuantity, setIsValidQuantity] = useState(true);
@@ -44,7 +45,14 @@ const PharmModal = ({ item, onClose }) => {
 
   const handleModeChange = () => {
     setModeCOD(!modeCOD);
+    setModeOTC(false)
   };
+
+  const handleOTCChange = () => {
+    setModeOTC(!modeOTC)
+    setModeCOD(false)
+    
+  }
 
   const calculateTotalPrice = () => {
     let rawTotalPrice = quantity * item.itemPrice;
@@ -152,7 +160,7 @@ const PharmModal = ({ item, onClose }) => {
               <p id="mode-modal-p">
                 Mode of Payment
               </p>
-              <div className="mode-group">
+            <div className="mode-group">
                 <input
                   type="radio"
                   id="mode-cod"
@@ -161,6 +169,16 @@ const PharmModal = ({ item, onClose }) => {
                 />
                 <label htmlFor="mode-cod" id="radio-label">
                   Cash On Delivery
+                </label>
+                
+                <input
+                  type="radio"
+                  id="mode-pickup"
+                  checked={modeOTC}
+                  onChange={handleOTCChange}
+                />
+                <label htmlFor="mode-cod" id="radio-label">
+                  Over the Counter
                 </label>
               </div>
             </div>

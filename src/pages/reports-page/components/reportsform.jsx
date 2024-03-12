@@ -21,6 +21,12 @@ export default function ReportsForm() {
   const onSubmit = async (e) => {
     e.preventDefault();
 
+    // Check if firstParams is empty, and return early if true
+    if (!firstParams.trim()) {
+      console.log("Input field is empty. Please enter a query.");
+      return;
+    }
+
     try {
       let apiUrl = "";
       let params = {
@@ -51,8 +57,11 @@ export default function ReportsForm() {
         case "Inventory":
           apiUrl = "http://localhost:5000/api/inventory/search";
           break;
-        case "User":
+        case "Users":
           apiUrl = "http://localhost:5000/api/user/search";
+          break;
+        case "Orders":
+          apiUrl = "http://localhost:5000/api/purchase/search";
           break;
         default:
           console.error("Invalid type selected");
@@ -86,7 +95,8 @@ export default function ReportsForm() {
           <option value="Appointments">Appointments</option>
           <option value="Records">Records</option>
           <option value="Inventory">Inventory</option>
-          <option value="User">User</option>
+          <option value="Users">Users</option>
+          <option value="Orders">Orders</option>
         </select>
 
         <input

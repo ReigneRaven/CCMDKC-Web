@@ -32,6 +32,13 @@ class PrintableContent extends React.Component {
                   <th>Height</th>
                   <th>Age</th>
                   <th>Sex</th>
+                  <th>Medical History</th>
+                  {/* <th>Allergies</th>
+                  <th>Diagnosis</th>
+                  <th>Blood Pressure</th>
+                  <th>Temperature</th>
+                  <th>Surgeries</th> */}
+                  {/* <th>Date created</th> */}
                 </>
               ) : selectedType === "Inventory" ? (
                 <>
@@ -41,7 +48,7 @@ class PrintableContent extends React.Component {
                   <th>Item Price</th>
                   <th>Expire Date</th>
                 </>
-              ) : (
+              ) : selectedType === "Users" ? (
                 <>
                   <th>Full Name</th>
                   <th>Birthday</th>
@@ -51,6 +58,15 @@ class PrintableContent extends React.Component {
                   <th>Username</th>
                   <th>Email</th>
                 </>
+              ) : (
+                <>
+                  <th>Username</th>
+                  <th>Item Name</th>
+                  <th>Quantity</th>
+                  <th>Total Price</th>
+                  <th>Mode of Payment</th>
+                  <th>Status</th>
+                </>
               )}
             </tr>
           </thead>
@@ -58,7 +74,7 @@ class PrintableContent extends React.Component {
             {/* Render table rows based on selectedType */}
             {filteredTableData ? (
               filteredTableData.map((item) => (
-                <tr key={item._id} className="tbody-tr-reports">
+                <tr key={item._id} className={`tbody-tr-reports ${selectedType === "Records" ? "records-row" : ""}`}>
                   {selectedType === "Appointments" ? (
                     <>
                       <td>{highlightText(item.UserName)}</td>
@@ -77,11 +93,25 @@ class PrintableContent extends React.Component {
                     </>
                   ) : selectedType === "Records" ? (
                     <>
-                      <td>{highlightText(item.patientName)}</td>
-                      <td>{highlightText(item.weight)}</td>
-                      <td>{highlightText(item.height)}</td>
-                      <td>{highlightText(item.age)}</td>
-                      <td>{highlightText(item.sex)}</td>
+                      <td id='records-table-pn'>{highlightText(item.patientName)}</td>
+                      <td id='records-table'>{highlightText(item.weight)}</td>
+                      <td id='records-table'>{highlightText(item.height)}</td>
+                      <td id='records-table'>{highlightText(item.age)}</td>
+                      <td id='records-table'>{highlightText(item.sex)}</td>
+
+                      {item.medicalHistory && Array.isArray(item.medicalHistory) && item.medicalHistory.length > 0 ? (
+                        item.medicalHistory.map((historyItem) => (
+                          <div key={historyItem._id} className='medhistory'>
+                            <p>Allergies: {highlightText(historyItem.allergies)}</p>
+                            <p>Diagnosis: {highlightText(historyItem.diagnosis)}</p>
+                            <p>Blood Pressure: {highlightText(historyItem.bloodPressure)}</p>
+                            <p>Temperature: {highlightText(historyItem.temperature)}</p>
+                            <p>Surgeries: {highlightText(historyItem.surgeries)}</p>
+                          </div>
+                        ))
+                      ) : (
+                        <td colSpan={6}>No medical history available</td>
+                      )}
                     </>
                   ) : selectedType === "Inventory" ? (
                     <>
@@ -91,7 +121,7 @@ class PrintableContent extends React.Component {
                       <td>{highlightText(item.itemPrice ? `₱${item.itemPrice}` : "")}</td>
                       <td>{highlightText(formatDate(item.expireDate, false))}</td>
                     </>
-                  ) : (
+                  ) : selectedType === "Users" ? (
                     <>
                       <td>{highlightText(`${item.FirstName} ${item.MiddleName} ${item.LastName}`)}</td>
                       <td>{highlightText(formatDate(item.birthday, true))}</td>
@@ -100,6 +130,15 @@ class PrintableContent extends React.Component {
                       <td>{highlightText(`${item.houseNum} ${item.street} ${item.brgy} ${item.city} ${item.prov}`)}</td>
                       <td>{highlightText(item.UserName)}</td>
                       <td>{highlightText(item.email)}</td>
+                    </>
+                  ) : (
+                    <>
+                      <td>{highlightText(item.UserName)}</td>
+                      <td>{highlightText(item.itemName)}</td>
+                      <td>{highlightText(item.quantity)}</td>
+                      <td>{highlightText(item.totalPrice ? `₱${item.totalPrice}` : "")}</td>
+                      <td>{highlightText(item.modeCOD ? "Cash on Delivery" : "Over the Counter")}</td>
+                      <td>{highlightText(item.status)}</td>
                     </>
                   )}
                 </tr>
@@ -146,10 +185,16 @@ const ReportsView = ({ tableData, selectedType, searchedQuery, generateButtonCli
 
   // Case-insensitive highlighting function
   const highlightText = (text) => {
+    if (typeof text !== 'string' && typeof text !== 'number') {
+      return text;
+    }
+
     if (!searchedQuery || !text) return text;
 
     const regex = new RegExp(`(${searchedQuery})`, "gi");
-    const parts = text.split(regex);
+
+    // Convert numeric values to string before splitting
+    const parts = String(text).split(regex);
 
     return parts.map((part, index) =>
       index % 2 === 0 ? (
@@ -191,7 +236,8 @@ const ReportsView = ({ tableData, selectedType, searchedQuery, generateButtonCli
     Appointments: "Appointments",
     Records: "Records",
     Inventory: "Inventory",
-    User: "User",
+    Users: "Users",
+    Orders: "Orders",
     // Add more headers for other types as needed
   };
 
@@ -216,41 +262,70 @@ const ReportsView = ({ tableData, selectedType, searchedQuery, generateButtonCli
 
   const filteredTableData = sortedTableData.filter((item) => {
     return Object.entries(item).some(([key, value]) => {
+      if (key === 'medicalHistory' && Array.isArray(value)) {
+        // Search within the medical history array
+        return value.some((historyItem) => {
+          return Object.values(historyItem).some((historyValue) => {
+            if (typeof historyValue === 'string' || historyValue instanceof Date) {
+              const formattedHistoryValue = formatDate(historyValue, true);
+              const isMatch = new RegExp(`\\b${searchedQuery}\\b`, 'i').test(historyValue) || new RegExp(`\\b${searchedQuery}\\b`, 'i').test(formattedHistoryValue);
+              return isMatch;
+            }
+            return false;
+          });
+        });
+      }
+
+      if (key === 'modeCOD' && (searchedQuery.toLowerCase() === 'cash on delivery' || searchedQuery.toLowerCase() === 'over the counter')) {
+        const isCashOnDelivery = searchedQuery.toLowerCase() === 'cash on delivery';
+        return value === isCashOnDelivery;
+      }
+
       if (typeof value === 'string') {
-        const formattedValue = formatDate(value, true);
-        const isMatch = new RegExp(`\\b${searchedQuery}\\b`, 'i').test(value) || new RegExp(`\\b${searchedQuery}\\b`, 'i').test(formattedValue);
+        // Generic search logic for other fields
+        if (key !== 'modeCOD') {
+          const formattedValue = formatDate(value, true);
+          const isMatch = new RegExp(`\\b${searchedQuery}\\b`, 'i').test(value) || new RegExp(`\\b${searchedQuery}\\b`, 'i').test(formattedValue);
 
-        if (selectedType === "Records" && key === "height") {
-          // Extract feet and inches from the height
-          const [feet, inches] = value.split("'").map(part => parseInt(part));
-          const userSearchQuery = searchedQuery.split("'").map(part => parseInt(part));
+          if (selectedType === "Records" && key === "height") {
+            // Extract feet and inches from the height
+            const [feet, inches] = value.split("'").map(part => parseInt(part));
+            const userSearchQuery = searchedQuery.split("'").map(part => parseInt(part));
 
-          // Compare feet and inches with the user's search query
-          return isMatch || (feet === userSearchQuery[0] && inches === userSearchQuery[1]);
+            // Compare feet and inches with the user's search query
+            return isMatch || (feet === userSearchQuery[0] && inches === userSearchQuery[1]);
+          }
+
+          // Handle special cases for full name and address search when selectedType is "User"
+          if (selectedType === "Users" && (key.includes("Name") || key.includes("houseNum") || key.includes("street") || key.includes("brgy") || key.includes("city") || key.includes("prov"))) {
+            const fullName = `${item.FirstName} ${item.MiddleName} ${item.LastName}`;
+            const fullAddress = `${item.houseNum} ${item.street} ${item.brgy} ${item.city} ${item.prov}`;
+            return isMatch || new RegExp(`\\b${searchedQuery}\\b`, 'i').test(fullName) || new RegExp(`\\b${searchedQuery}\\b`, 'i').test(fullAddress);
+          }
+
+          // Check for currency sign in itemPrice when selectedType is "Inventory"
+          if (selectedType === "Inventory" && key === "itemPrice") {
+            const priceWithCurrencySign = `₱${item.itemPrice}`;
+            const numericPrice = item.itemPrice; // assuming itemPrice is a numeric field
+            const searchQueryWithPesoSign = searchedQuery.replace("₱", ""); // Remove peso sign from the search query
+            return isMatch || new RegExp(`\\b${searchQueryWithPesoSign}\\b`, 'i').test(priceWithCurrencySign) || new RegExp(`\\b${searchedQuery}\\b`, 'i').test(numericPrice);
+          }
+
+          // Check for AM/PM suffix in appointmentTime when selectedType is "Appointments"
+          if (selectedType === "Appointments" && key === "appointmentTime") {
+            const timeWithAmPm = getAmPmSuffix(item.appointmentTime);
+            return isMatch || new RegExp(`\\b${searchedQuery}\\b`, 'i').test(timeWithAmPm);
+          }
+
+          if (selectedType === "Orders" && key === "totalPrice") {
+            const numericPrice = item.totalPrice; // assuming totalPrice is a numeric field
+            const searchQueryWithPesoSign = searchedQuery.replace("₱", ""); // Remove peso sign from the search query
+
+            return isMatch || new RegExp(`\\b${searchQueryWithPesoSign}\\b`, 'i').test(numericPrice.toString());
+          }
+
+          return isMatch;
         }
-
-        // Handle special cases for full name and address search when selectedType is "User"
-        if (selectedType === "User" && (key.includes("Name") || key.includes("houseNum") || key.includes("street") || key.includes("brgy") || key.includes("city") || key.includes("prov"))) {
-          const fullName = `${item.FirstName} ${item.MiddleName} ${item.LastName}`;
-          const fullAddress = `${item.houseNum} ${item.street} ${item.brgy} ${item.city} ${item.prov}`;
-          return isMatch || new RegExp(`\\b${searchedQuery}\\b`, 'i').test(fullName) || new RegExp(`\\b${searchedQuery}\\b`, 'i').test(fullAddress);
-        }
-
-        // Check for currency sign in itemPrice when selectedType is "Inventory"
-        if (selectedType === "Inventory" && key === "itemPrice") {
-          const priceWithCurrencySign = `₱${item.itemPrice}`;
-          const numericPrice = item.itemPrice; // assuming itemPrice is a numeric field
-          const searchQueryWithPesoSign = searchedQuery.replace("₱", ""); // Remove peso sign from the search query
-          return isMatch || new RegExp(`\\b${searchQueryWithPesoSign}\\b`, 'i').test(priceWithCurrencySign) || new RegExp(`\\b${searchedQuery}\\b`, 'i').test(numericPrice);
-        }
-
-        // Check for AM/PM suffix in appointmentTime when selectedType is "Appointments"
-        if (selectedType === "Appointments" && key === "appointmentTime") {
-          const timeWithAmPm = getAmPmSuffix(item.appointmentTime);
-          return isMatch || new RegExp(`\\b${searchedQuery}\\b`, 'i').test(timeWithAmPm);
-        }
-
-        return isMatch;
       }
       if (value instanceof Date) {
         return value.toISOString().includes(searchedQuery);
@@ -283,9 +358,9 @@ const ReportsView = ({ tableData, selectedType, searchedQuery, generateButtonCli
       {/* Button to trigger printing */}
       {generateButtonClicked && (
         <div className="reports-btn-pdf">
-        <button id="generate-pdf-btn" onClick={handlePrint}>
-          Generate PDF
-        </button>
+          <button id="generate-pdf-btn" onClick={handlePrint}>
+            Generate PDF
+          </button>
         </div>
       )}
     </div>

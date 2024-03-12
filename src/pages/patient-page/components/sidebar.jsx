@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { BsFillFileMedicalFill } from "react-icons/bs";
 import { MdSpaceDashboard, MdMedicalServices, MdAnnouncement } from "react-icons/md";
 import { FaHouseMedical } from "react-icons/fa6";
@@ -12,6 +12,8 @@ export default function PtnSidebar() {
     const storedSidebarState = localStorage.getItem("showSidebar");
     return storedSidebarState !== null ? JSON.parse(storedSidebarState) : true;
   });
+
+  const location = useLocation();
 
   useEffect(() => {
     const storedUserId = Cookies.get("userId");
@@ -27,6 +29,11 @@ export default function PtnSidebar() {
     }
   }, []);
 
+  const hideSidebar = () => {
+    setShowSidebar(false);
+    localStorage.setItem("showSidebar", JSON.stringify(false));
+  };
+
   const toggleSidebar = () => {
     const updatedSidebarState = !showSidebar;
     setShowSidebar(updatedSidebarState);
@@ -37,21 +44,21 @@ export default function PtnSidebar() {
     <>
       <div className={`sidenav ${showSidebar ? "" : "hidden"}`}>
         <ul>
-          <Link to={`/patient/${userId}`} className="link-div">
+          <Link to={`/patient/${userId}`} className="link-div" onClick={hideSidebar}>
             <MdSpaceDashboard className="sidebar-icon" />&nbsp;Dashboard
           </Link>
 
-          <Link to={`/appointment/${userId}`} className="link-div">
+          <Link to={`/appointment/${userId}`} className="link-div" onClick={hideSidebar}>
             <MdMedicalServices className="sidebar-icon" />&nbsp;Appointments
           </Link>
 
-          <Link to={`/healthrecord/${userId}`} className="link-div" id="history-link">
+          <Link to={`/healthrecord/${userId}`} className="link-div" id="history-link" onClick={hideSidebar}>
             <BsFillFileMedicalFill className="sidebar-icon"/>&nbsp;Health&nbsp;History
           </Link>
-          <Link to={`/pharmacy/${userId}`} className="link-div" id="pharmacy-link">
+          <Link to={`/pharmacy/${userId}`} className="link-div" id="pharmacy-link" onClick={hideSidebar}>
             <FaHouseMedical className="sidebar-icon"/>&nbsp;Pharmacy
           </Link>
-          <Link to={`/announcements/${userId}`} className="link-div" id="announce-link">
+          <Link to={`/announcements/${userId}`} className="link-div" id="announce-link" onClick={hideSidebar}>
             <MdAnnouncement className="sidebar-icon"/>&nbsp;Bulletin
           </Link>
         </ul>

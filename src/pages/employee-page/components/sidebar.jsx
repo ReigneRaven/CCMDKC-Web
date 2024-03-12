@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { MdSpaceDashboard, MdMedicalServices, MdAnnouncement } from 'react-icons/md';
 import { FaNotesMedical } from "react-icons/fa";
 import { RiGitRepositoryFill } from "react-icons/ri";
@@ -12,6 +12,8 @@ export default function Sidebar() {
         const storedSidebarState = localStorage.getItem("showSidebar");
         return storedSidebarState !== null ? JSON.parse(storedSidebarState) : true;
     });
+
+    const location = useLocation();
 
     useEffect(() => {
         const storedAdminId = Cookies.get('adminId');
@@ -27,6 +29,11 @@ export default function Sidebar() {
         }
     }, []);
 
+    const hideSidebar = () => {
+        setShowSidebar(false);
+        localStorage.setItem("showSidebar", JSON.stringify(false));
+    };
+
     const toggleSidebar = () => {
         setShowSidebar(!showSidebar);
         localStorage.setItem("showSidebar", JSON.stringify(!showSidebar));
@@ -36,11 +43,11 @@ export default function Sidebar() {
         <>
             <div className={`sidenav ${showSidebar ? "" : "hidden"}`}>
                 <ul>
-                    <Link to={`/admin/${adminId}`} className="link-div"><MdSpaceDashboard className="sidebar-icon" />&nbsp;Dashboard</Link>
-                    <Link to={`/admin/reports/${adminId}`} className="link-div"><RiGitRepositoryFill className="sidebar-icon" />&nbsp;Reports</Link>
-                    <Link to={`/admin/patientrecord/${adminId}`} className="link-div"><FaNotesMedical className="sidebar-icon" />&nbsp;Records</Link>
-                    <Link to={`/admin/supplies/${adminId}`} className="link-div"><MdMedicalServices className="sidebar-icon" />&nbsp;Supplies</Link>
-                    <Link to={`/admin/announcements/${adminId}`} className="link-div" id="announce-link"><MdAnnouncement className="sidebar-icon" />&nbsp;Bulletin</Link>
+                    <Link to={`/admin/${adminId}`} className="link-div" onClick={hideSidebar}><MdSpaceDashboard className="sidebar-icon" />&nbsp;Dashboard</Link>
+                    <Link to={`/admin/reports/${adminId}`} className="link-div" onClick={hideSidebar}><RiGitRepositoryFill className="sidebar-icon" />&nbsp;Reports</Link>
+                    <Link to={`/admin/patientrecord/${adminId}`} className="link-div" onClick={hideSidebar}><FaNotesMedical className="sidebar-icon" />&nbsp;Records</Link>
+                    <Link to={`/admin/supplies/${adminId}`} className="link-div" onClick={hideSidebar}><MdMedicalServices className="sidebar-icon" />&nbsp;Supplies</Link>
+                    <Link to={`/admin/announcements/${adminId}`} className="link-div" id="announce-link" onClick={hideSidebar}><MdAnnouncement className="sidebar-icon" />&nbsp;Bulletin</Link>
                 </ul>
             </div>
             <div className="hamburger-button" onClick={toggleSidebar}>
@@ -49,5 +56,5 @@ export default function Sidebar() {
                 </strong>
             </div>
         </>
-    )
+    );
 }

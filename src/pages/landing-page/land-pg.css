@@ -214,85 +214,12 @@ label.checkbox {
     fill: #333;
 }
 
-@media (max-width: 768px) {
-    #home-form {
-        width: 100%;
+@media screen and (width: 1366px){
+    #login-inputfield, #password-inputfield{
+        width: 200px;
     }
-
-    #home-pic {
-        width: 100%;
-    }
-
-    #root {
-        width: 100%;
-    }
-
-    main {
-        width: 100%;
-    }
-}
-
-/* Media query for Galaxy Fold */
-@media screen and (max-width: 280px) {
-    .login-input {
-        margin-left: 18%;
-        width: 80%;
-    }
-    
-    .user-input {
-        margin-right: 10%;
-        width: 80%; 
-        margin-bottom: 10px; 
-    }
-
-    .password-field {
-        width: 80%;
-    }
-    
-    #home-form {
-        width: 155%;
-        height: 139%;
-        margin: -10% -35%;
-    }
-    
-    #home-logo img {
-        margin-left: 5%;
-    }
-    
-    #home-reg {
-        margin-left: 14%;
-    }
-    
-    button {
-        margin-left: 5%;
-    }
-    
-    .toggle-eye {
-        margin: -1% 14%; 
-    }
-}
-
-
-/* Media query for iPad mini */
-@media screen and (width: 768px) and (height: 1024px) {
-    #home-form {
-        height: 100%;
-        width: 50%;
-    }
-}
-
-/* Media query for nest hub */
-@media screen and (width: 1024px) and (height: 600px) {
-    #home-form {
-        height: 100%;
-    }
-
-    #home-logo img {
-        margin-top: 10%;
-        margin-bottom: -10%;
-    }
-
-    h2 {
-        margin-bottom: 5%;
+    .toggle-eye-login{
+        width: fit-content;
+        right: 35px; 
     }
 }

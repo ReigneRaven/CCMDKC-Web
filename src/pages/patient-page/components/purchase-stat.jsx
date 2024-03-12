@@ -119,7 +119,7 @@ const PurchaseStatus = () => {
                   <td>{purchase.UserName}</td>
                   <td>{purchase.itemName}</td>
                   <td>{purchase.quantity}</td>
-                  <td>{purchase.modeCOD ? 'Cash on Delivery' : 'Other Payment Method'}</td>
+                  <td>{purchase.modeCOD ? 'Cash on Delivery' : 'Over the Counter'}</td>
                   <td id="totalprice-stats">₱{purchase.totalPrice}</td>
                   <button
                     id="received-btn"
