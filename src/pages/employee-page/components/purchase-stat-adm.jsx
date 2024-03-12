@@ -86,7 +86,7 @@ export default function PurchaseStatus() {
                   <td>{status.UserName}</td>
                   <td>{status.itemName}</td>
                   <td>{status.quantity}</td>
-                  <td>{status.modeCOD ? 'Cash on Delivery' : 'Other Payment Method'}</td>
+                  <td>{status.modeCOD ? 'Cash on Delivery' : 'Over the Counter'}</td>
                   <td id="total-admin">₱{status.totalPrice}</td>
                   <td>{status.status}</td>
                   <td>

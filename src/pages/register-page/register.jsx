@@ -122,7 +122,7 @@ export default function Register() {
             <DiaLogo src={ClientLogo} />
           </div>
           <div id="register-form">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} id="form-form-reg">
               <Head2 text="Register" />
 
               <div className="name-container">
@@ -346,11 +346,11 @@ export default function Register() {
 
               <div className="terms">
                 <Link onClick={handleTermsLinkClick}>
-                  <p>Terms of Use and Privacy Policy</p>
+                  <p id="terms-p">Terms of Use and Privacy Policy</p>
                 </Link>
                 {openModal && <Terms closeModal={handleCloseModal} />}
               </div>
-              <Button label="Sign Up" type="submit" />
+              <Button id="signup" label="Sign Up" type="submit" />
             </form>
           </div>
         </div>

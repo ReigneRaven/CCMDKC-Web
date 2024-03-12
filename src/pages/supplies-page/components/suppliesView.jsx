@@ -214,7 +214,7 @@ export default function SuppliesView() {
             </thead>
             <tbody>
               {filteredSupplies.map((item) => (
-                <tr key={item._id} className={`${parseInt(item.stocksAvailable) <= 60 ? 'lowStock' : ''} ${calculateDaysUntilExpiration(item.expireDate) <= 0 ? 'expiredStock' : ''}`}>
+                <tr key={item._id} className={`${parseInt(item.stocksAvailable) <= 60 ? 'lowStock' : ''} ${calculateDaysUntilExpiration(item.expireDate) <= 14 ? 'expiredStock' : ''}`}>
                   <td>
                     {editedItem && editedItem._id === item._id ? (
                       <input

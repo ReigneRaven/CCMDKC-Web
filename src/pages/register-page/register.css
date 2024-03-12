@@ -320,46 +320,44 @@ input {
   border-radius: 20px;
 }
 
-@media (max-width: 768px) {
-  #register-form {
-    margin-right: -70%;
-    height: 170%;
-    width: 180%;
+@media screen and (width: 1366px){
+  *{
+    font-size: 13px;
   }
-
-  #register-pic {
-    width: 100%;
-  }
-
-  #root {
-    width: 100%;
-  }
-
-  main {
-    width: 100%;
-  }
-
-  select.user-input option {
+  #firstName, #middleName, #lastName, #date, #sex, #num,
+  #house, #street, #barangay, #municipality-city, #province,
+  #email, #username, #pass, #confirmpass{
     font-size: 12px;
+    height: 30px;
   }
-}
-
-@media screen and (max-width: 280px) {
-  #register-form {
-    height: 170%;
-    width: 192%;
+  #form-form-reg{
+    width: 80%;
+    
   }
-}
 
-@media screen and (width: 820px) and (height: 1180px) {
-  #register-form {
-    height: 100%;
-    width: 55%;
+  .password-container{
+    gap: 0;
   }
-}
-
-@media screen and (width: 1024px) and (height: 600px) {
-  #register-form {
-    height: 120%;
+  #pass, #confirmpass{
+    width: 235px;
+  }
+  #terms-p{
+   font-size: 11px;
+   display: block;
+  }
+  .terms{
+   
+    margin-left: 26rem;
+  }
+  #signup{
+    font-size: 13px;
+  }
+  .toggle-eye{
+    top:527px;
+    right: 351px;
+  }
+  .toggle-eye-confirm{
+    top: 38px;
+    right: 9px;
   }
 }

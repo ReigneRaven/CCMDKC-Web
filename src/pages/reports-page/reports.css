@@ -45,6 +45,7 @@
     padding: 10px;
     display: flex;
     flex-direction: row;
+    margin-top: -20px;
 }
 
 .reports-input{
@@ -84,7 +85,7 @@
     display: flex;
     justify-content: center; */
     margin-top: 10px;
-    overflow-x: auto;
+    /* overflow-x: auto; */
     display: flex;
     flex-direction: column; /* Change to column */
     align-items: center; /* Center items horizontally */
@@ -164,6 +165,48 @@
     margin-left: 1400px;
 }
 
+/* .medhistory{
+    display:flex;
+    flex-direction: row;
+    margin-left: 60px;
+    gap: 133px;
+} */
+
+.records-row{
+    width: 100%;
+}
+
+.medhistory{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+}
+
+#records-table {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-right: none; /* or border-right: 0; */
+    border-left: none; /* or border-left: 0; */
+}
+
+#records-table-pn {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-right: none; /* or border-right: 0; */
+    border-left: 1px solid black;; /* or border-left: 0; */
+}
+
+/* .multiple-medical-histories {
+    background-color: #ffeeba; 
+    border: 1px solid black;
+  }
+  
+  .history-item {
+    background-color: #ffeeba; 
+    width: 100vw;
+  } */
+
 
 @media screen and (max-width: 1366px){
     .reports-container{
@@ -217,23 +260,77 @@
         justify-content: flex-end;
         padding: 20px;
     }
+    
+    .records-row{
+        width: 100%;
+        justify-content: baseline ;
+    }
+    .medhistory{
+        justify-content: center;
+    }
+    .medhistory p {
+        width: 50px;
+        font-size: 12px;
+    }
 }
 
 @media print {
+    body {
+        margin: 0; /* Reset default margin */
+    }
+
     .reports-table-container {
-      text-align: center;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center items horizontally in the container */
+        margin-top: 50px; /* Allow automatic adjustment based on content height */
+        margin-bottom: auto; /* Allow automatic adjustment based on content height */
+        min-height: 400px; /* Set a minimum height to prevent collapsing */
+        max-height: 400px;
     }
-  
+
     #reports-table-view {
-      margin: 0 auto;
+        width: 100%; /* Use the full width of the page */
+        page-break-after: auto; /* Ensure the table is not split across pages */
     }
-  
+
+    .printable-header {
+        text-align: center;
+        width: 100%;
+        background-color: #fff; /* Set background color to match the page */
+        z-index: 1000; /* Ensure the header is above the table */
+        margin-top: -60px;
+        /*Fixed position to keep it at the top */
+        /* position: fixed; 
+        top: 0; */
+    }
+
     .th-reports-table,
     .tbody-tr-reports {
-      text-align: center;
+        text-align: center;
     }
 
     #reports-table-view td {
         text-align: center;
-      }
-  }
+    }
+    
+    .printable-header h2 {
+        text-align: start; /* Adjust the font size as needed */
+    }
+/* 
+    .records-row {
+        width: 60.5%;
+        margin-top: 20px;
+    }
+
+    .medhistory {
+        margin-left: 40px;
+        gap: 90px;
+    } */
+
+    @page {
+        size: auto; /* Let the browser determine the page size */
+        margin: 10mm; /* Adjust margin as needed */
+    }
+}

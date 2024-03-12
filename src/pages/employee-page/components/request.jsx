@@ -107,18 +107,28 @@ export default function Request() {
     }
 
     const isStatusDisabled = (appointment) => {
+        if (appointment.status === 'Cancelled') {
+            return true;
+        }
+    
         if (appointment.status === 'Pending') {
             const appointmentDateTime = new Date(
                 `${appointment.appointmentDate} ${appointment.appointmentTime}`
             );
             const currentTime = new Date();
-            const timeDifference = appointmentDateTime.getTime() - currentTime.getTime();
-            const minutesDifference = timeDifference / (1000 * 60);
-
-            return minutesDifference <= 15;
+            
+            // Disable buttons if the appointment time has already passed
+            return appointmentDateTime <= currentTime;
         }
-
-        return false;
+    
+        const appointmentDateTime = new Date(
+            `${appointment.appointmentDate} ${appointment.appointmentTime}`
+        );
+        const currentTime = new Date();
+        const timeDifference = appointmentDateTime.getTime() - currentTime.getTime();
+        const minutesDifference = timeDifference / (1000 * 60);
+    
+        return minutesDifference <= 15;
     };
 
     return (

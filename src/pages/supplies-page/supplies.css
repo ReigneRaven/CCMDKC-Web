@@ -174,7 +174,7 @@ thead {
 }
 
 .expiredStock {
-  background-color: rgb(246,217,102,255); /* Choose a background color for expired stocks */
+  background-color: rgb(246, 217, 102, 0.5); /* Adjust background color and opacity for expired stocks */
   font-weight: 600;
 }
 
@@ -259,7 +259,6 @@ thead {
     height: 30px;
   }
   .supplies-table-container{
-   display: flex;
    justify-content: center;
    align-items: center;
    height: 320px;
