@@ -633,22 +633,22 @@ thead{
     }
 
     .dash-employee{
-        width: 90vw;
-        height: 89vh;
+        width: 93vw;
+        height: 565px;
     }
 
     .purchase-wrapper-amn{
         margin-top: -40px;
-        margin-left: 50px;
+        margin-left: 54px;
         padding-left: 20px;
-        width: 64%;
+        width: 64.2%;
         height: 118px;
     }
     .dash-employee p {
         font-size: 15px;
     }
     .clock-wrapper-adm{
-        margin-left: 895px;
+        margin-left: 925px;
         height:118px;
         margin-top:-158px;
         width: 20%;
@@ -689,5 +689,8 @@ thead{
     #purchase-details-btn{
         font-size: 13px;
         height: 33px;
+    }
+    .sort-dropdown-appointment-adm {
+        margin-top: -15px;
     }
 }

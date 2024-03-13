@@ -266,6 +266,12 @@ thead {
   .column{
     display: flex;
     flex-direction: column;
+    justify-content: center; /* `````````````NEWCODE */
+    align-items: center;  /* `````````````NEWCODE */
+  }
+  .patientrecord-container{
+    width: 93vw;
+    height: 565px;
   }
   .create-patientrecord{
     display: flex;
@@ -276,7 +282,8 @@ thead {
     align-items: center;
     justify-content: center;
     padding: 10px;
-    margin-top: 10px;
+    margin-top: 20px;
+    /* margin-left: 0; */
   }
   .input-patientrecord{
     width:fit-content ;
@@ -323,24 +330,10 @@ thead {
     justify-content: center;
     align-items: center;
     table-layout: fixed;
-    width: 70%;
+    width: 80%;  /* `````````````NEWCODE */
     margin: 40px 200px 0  0;
   }
-  /* .table-adm{
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 120%;
-    justify-content: center;
-    align-items: center;
-    table-layout: fixed;
-  } */
-
-  /* .table-adm th {
-    table-layout: fixed;
-    gap: 0.5rem;
-  } */
+ 
   .editButton{
     font-size: 12px;
     height: 30px;
@@ -358,11 +351,6 @@ thead {
   .input-medicalrecord.custom-medical-temp{
     width: 150px;
   }
-  /* .patientview{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  } */
   .patientrecord-table-content{
     width: 100vw;
     display: flex;
@@ -379,7 +367,15 @@ thead {
     padding-right: 300px;
   }
   .sort-dropdown-order-modal-adm{
-    display: flex;
+    /* display: flex; */
+    margin-right: 300px;
     font-size: 13px;
+  }
+
+   /* `````````````NEWCODE */
+  .search-sort-table{
+    display: flex;
+    flex-direction: column;
+    margin-left: 210px;
   }
 }

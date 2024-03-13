@@ -80,8 +80,8 @@ button:hover {
     filter: drop-shadow(0 0 0.2em #3398cc);
 }
 
-#custom-button {
-    width: 50%;
+#forgot-send-btn.custom-button {
+    width: 100px;
 }
 
 
@@ -92,79 +92,8 @@ button:hover {
     width: 80%;
 }
 
-@media (max-width: 768px) {
-    #forgotpass-form {
-        width: 100%;
-    }
-
-    #forgotpass-pic {
-        width: 100%;
-    }
-
-    #home-logo {
-        margin-left: 5%;
-    }
-
-    #root {
-        width: 100%;
-    }
-
-    main {
-        width: 100%;
-    }
-
-    h2 {
-        margin-left: 5%;
-        font-size: 40px;
-    }
-
-    h3 {
-        margin-left: 5%;
-        font-size: 15px;
-    }
-
-    .forgotpass-input {
-        margin-left: 10%;
-        width: 80%;
-    }
-
-    button {
-        margin-left: 5%;
+@media screen and (max-width:1366px) {
+    #forgot-send-btn{
+        width: 100px;
     }
 }
-
-/* Media query for Galaxy Fold */
-@media screen and (max-width: 280px) {
-    .forgotpass-input {
-        margin-left: 22%;
-        width: 80%;
-    }
-
-    .user-input {
-        margin-right: 10%;
-        width: 80%; 
-        margin-bottom: 10px; 
-    }
-    .password-field {
-        width: 80%;
-    }
-    #forgotpass-form {
-        width: 155%;
-        height: 139%;
-        margin: -10% -35%;
-    }
-
-    h2 {
-        margin-left: 18%;
-    }
-
-    h3 {
-        font-size: 15px;
-        margin-left: 18%;
-    }
-
-    button {
-        margin-left: 14%;
-    }
-}
-

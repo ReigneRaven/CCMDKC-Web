@@ -17,6 +17,8 @@ export default function SuppliesForm() {
   const handleImageChange = (e) => {
     // Update the state with the selected image file
     setImage(e.target.files[0]);
+    alert('Image successfully uploaded') 
+    {/*`````````````````NEW CODE*/}
   };
 
   const handleExpireDateChange = (expireDate) => {
@@ -55,6 +57,7 @@ export default function SuppliesForm() {
   return (
     <>
       <form className="create-stocks" onSubmit={onSubmit}>
+      <div className='form-create-stocks'> {/*NEW CODE*/}
         <Head2 text="Enter a Stock" id="inventory-header"></Head2>
         <input
           type="text"
@@ -107,6 +110,7 @@ export default function SuppliesForm() {
         />
 
         <Button text={'Add'} type="submit"></Button>
+        </div>
       </form>
     </>
   );

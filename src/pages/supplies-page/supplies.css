@@ -27,9 +27,15 @@
   border: none;
   border-radius: 0;
 }
+
+#img-upload.input-supplies {
+  margin-top: 20px;
+}
+
 .input-supplies {
   width: 20vw;
   border-radius: 20px;
+  margin-bottom: 20px;
 }
 
 .supplies-row {
@@ -209,10 +215,16 @@ thead {
     align-items: center;
     justify-content: center;
     height: 20px;
-    width: fit-content;
+    /* width: 85vw; */
     padding: 20px;
     margin: 20px 0 0 0;
   }
+
+  .supplies-table-content {
+    margin-left: 50px;
+    width: 580px;
+  }
+
   #img-upload.input-supplies {
     /* margin-left: -15px; */
     font-size: 15px;
@@ -228,8 +240,9 @@ thead {
     /* margin-left: -10px; */
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: baseline;
     justify-content: center;
+    margin-bottom: 0;
   }
   #label-expire{
     font-size: 12px;
@@ -241,6 +254,7 @@ thead {
     height: 30px;
   }
   #inventory-header{
+    margin-left: -180px;
     font-size: 14px;
   }
   #supplies-header{
@@ -248,13 +262,14 @@ thead {
     color: lightslategray;
     margin: 0;
     font-weight: 400;
+    margin-right: 140px;
   }
   .searchbar-header{
     width: fit-content;
   }
   #searchbar-supplies{
     /* margin-left: 350px; */
-    width: 300px;
+    width: 400px;
     font-size: 12px;
     height: 30px;
   }
@@ -278,5 +293,15 @@ thead {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  /* `````````````NEWCODE */
+  .form-create-stocks{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    margin-left: 200px;
   }
 }

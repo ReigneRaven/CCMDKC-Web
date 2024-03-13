@@ -137,7 +137,7 @@ main {
 
 .modalPharm {
   background: whitesmoke;
-  height: 45%; /* Adjust the height based on your design */
+  height: 53%; /* Adjust the height based on your design */
   width: 40%;
   color: black;
   position: fixed;
@@ -323,7 +323,7 @@ main {
 @media screen and (max-width: 1366px){
   .pharmacy-container-ptn{
     height:565px;
-    width: 1100px;
+    width: 93vw;
   }
   #pharmacy-header{
     font-size: 25px;
@@ -380,6 +380,9 @@ main {
     justify-content: center;
     align-items: flex-end;
     margin-top: 20px;
+  }
+  .card-container {
+    margin-top: -25px;
   }
 
 }

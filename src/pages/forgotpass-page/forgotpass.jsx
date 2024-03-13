@@ -58,7 +58,7 @@ export default function ForgotPassword() {
                                 id="forgotpass-inputfield"
                                 />
                             </div>
-                            <Button label={loading ? "Loading..." : "Send"} type="submit" /> 
+                            <Button id="forgot-send-btn" label={loading ? "Loading..." : "Send"} type="submit" /> 
                         </form>
                         {openModal && <ResetModal closeModal={setOpenModal} />}
                     </div>

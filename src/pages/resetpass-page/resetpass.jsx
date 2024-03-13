@@ -97,7 +97,7 @@ export default function ResetPassword() {
                                     </div>
                                 </div>
                             </div>
-                            <Button label={loading ? "Loading..." : "Send"} type="submit" />
+                            <Button id="reset-send-btn"label={loading ? "Loading..." : "Send"} type="submit" />
                         </form>
                         {openModal && <ResetModal closeModal={setOpenModal} />}
                     </div>

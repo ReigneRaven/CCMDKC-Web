@@ -192,10 +192,19 @@ h6 {
 
 @media screen and (max-width:1366px) {
   .announcement-container-amn{
-    width: 90vw;
-    height: 89vh;
-  }
-  .grid-container {
-    width: 680px;
-  }
+    width: 93vw;
+    height: 565px;
+ }
+ .grid-container {
+  width: 730px;
+ }
+ .input-announcement {
+  font-size: 12px;
+}
+.add-announcement-adm{
+  height: 150px;
+  margin-left: 90px;
+  margin-bottom: 28px;
+}
+
 }

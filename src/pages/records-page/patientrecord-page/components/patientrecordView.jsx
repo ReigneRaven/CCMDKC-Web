@@ -98,6 +98,7 @@ export default function PatientRecordView() {
         onChange={(e) => setSearchQuery(e.target.value)}
       />
       </div>
+      <div className="search-sort-table"> {/*NEW CODE*/}
       <div className="sort-dropdown-order-modal-adm">
         <label htmlFor="sort">Sort By:</label>
         <select id="sort" value={sortBy} onChange={handleSortChange}>
@@ -231,6 +232,7 @@ export default function PatientRecordView() {
               ))}
             </tbody>
           </table>
+        </div>
         </div>
         {showMedicalHistory && (
           <div className="overlay">

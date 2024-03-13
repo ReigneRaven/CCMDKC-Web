@@ -215,11 +215,18 @@ label.checkbox {
 }
 
 @media screen and (width: 1366px){
-    #login-inputfield, #password-inputfield{
-        width: 200px;
+    #login-inputfield{
+        width: 260px;
+    }
+    #password-inputfield{
+        width: 260px;
+        margin-left: -2px;
     }
     .toggle-eye-login{
         width: fit-content;
-        right: 35px; 
+        right: 5px; 
+    }
+    .password-options{
+        margin-top: 35px;
     }
 }

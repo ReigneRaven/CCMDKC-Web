@@ -8,6 +8,7 @@
     height: 89vh;
     border-radius: 20px;
     margin-left: 20px;
+    overflow-y:auto;
 }
 
 #reports-title {
@@ -208,10 +209,11 @@
   } */
 
 
-@media screen and (max-width: 1366px){
+  @media screen and (max-width: 1366px){
     .reports-container{
-        width: 90vw;
-        height: 88vh;
+        width: 93vw;
+        height: 565px;
+        overflow-y:auto;
     }
     .reports-form-container{
         width: fit-content;
