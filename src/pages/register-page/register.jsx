@@ -71,9 +71,9 @@ export default function Register() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+  
     if (password !== confirmpassword) {
-      alert('Password and Confirm Password do not match.');
+      alert("An error occurred while registering the user. The password and confirm password do not match."); // Specific error message for password mismatch
     } else {
       axios
         .post('http://localhost:5000/api/user', {
@@ -81,7 +81,11 @@ export default function Register() {
           MiddleName,
           LastName,
           birthday,
-          houseNum,street,brgy,city,prov,
+          houseNum,
+          street,
+          brgy,
+          city,
+          prov,
           sex,
           UserName,
           contactNum,
@@ -92,16 +96,16 @@ export default function Register() {
         .then((userResponse) => {
           console.log('User Response: ', userResponse);
           const { token, userId, isUser, name } = userResponse.data;
-
+  
           // Store user token in localStorage
           if (userId) {
             localStorage.setItem('userToken', token);
             localStorage.setItem('userId', userId); // Store user ID in localStorage
             localStorage.setItem('isUser', isUser); // Store user role in localStorage
             localStorage.setItem('userName', name);
-
+  
             axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-
+  
             // Redirect to user page with the user ID parameter
             window.location.href = `/patient/myprofile/${userId}`;
           } else {
@@ -110,9 +114,19 @@ export default function Register() {
         })
         .catch((userError) => {
           console.error('User Registration Error: ', userError);
+          if (userError.response && userError.response.status === 400) {
+            const errorMessage = userError.response.data.error; // Extracting error message from the response
+            if (errorMessage === "Email already in use") {
+              alert("An error occurred while registering the user. The email is already in use. Please use a different email address."); // Displaying specific error message
+            } else {
+              alert('An error occurred while registering the user. Please try again later.');
+            }
+          } else {
+            alert('An error occurred while registering the user. Please try again later.');
+          }
         });
     }
-  };
+  };    
 
   return (
     <>
