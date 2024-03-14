@@ -259,81 +259,85 @@ const ReportsView = ({ tableData, selectedType, searchedQuery, generateButtonCli
     }
     return sortBy === "latest" ? keyB - keyA : keyA - keyB;
   });
-
   const filteredTableData = sortedTableData.filter((item) => {
-    return Object.entries(item).some(([key, value]) => {
-      if (key === 'medicalHistory' && Array.isArray(value)) {
-        // Search within the medical history array
-        return value.some((historyItem) => {
-          return Object.values(historyItem).some((historyValue) => {
-            if (typeof historyValue === 'string' || historyValue instanceof Date) {
-              const formattedHistoryValue = formatDate(historyValue, true);
-              const isMatch = new RegExp(`\\b${searchedQuery}\\b`, 'i').test(historyValue) || new RegExp(`\\b${searchedQuery}\\b`, 'i').test(formattedHistoryValue);
-              return isMatch;
-            }
-            return false;
+    if (selectedType === "Appointments" && searchedQuery.match(/^\d{1,2}\/\d{1,2}\/\d{4}$/)) {
+      // If it's an appointment search and the searchedQuery is a valid date format
+      return item.appointmentDate === searchedQuery;
+    } else {
+      // Default behavior for other types of searches or invalid date format
+      return Object.entries(item).some(([key, value]) => {
+        if (key === 'medicalHistory' && Array.isArray(value)) {
+          // Search within the medical history array
+          return value.some((historyItem) => {
+            return Object.values(historyItem).some((historyValue) => {
+              if (typeof historyValue === 'string' || historyValue instanceof Date) {
+                const formattedHistoryValue = formatDate(historyValue, true);
+                const isMatch = new RegExp(`\\b${searchedQuery}\\b`, 'i').test(historyValue) || new RegExp(`\\b${searchedQuery}\\b`, 'i').test(formattedHistoryValue);
+                return isMatch;
+              }
+              return false;
+            });
           });
-        });
-      }
-
-      if (key === 'modeCOD' && (searchedQuery.toLowerCase() === 'cash on delivery' || searchedQuery.toLowerCase() === 'over the counter')) {
-        const isCashOnDelivery = searchedQuery.toLowerCase() === 'cash on delivery';
-        return value === isCashOnDelivery;
-      }
-
-      if (typeof value === 'string') {
-        // Generic search logic for other fields
-        if (key !== 'modeCOD') {
-          const formattedValue = formatDate(value, true);
-          const isMatch = new RegExp(`\\b${searchedQuery}\\b`, 'i').test(value) || new RegExp(`\\b${searchedQuery}\\b`, 'i').test(formattedValue);
-
-          if (selectedType === "Records" && key === "height") {
-            // Extract feet and inches from the height
-            const [feet, inches] = value.split("'").map(part => parseInt(part));
-            const userSearchQuery = searchedQuery.split("'").map(part => parseInt(part));
-
-            // Compare feet and inches with the user's search query
-            return isMatch || (feet === userSearchQuery[0] && inches === userSearchQuery[1]);
-          }
-
-          // Handle special cases for full name and address search when selectedType is "User"
-          if (selectedType === "Users" && (key.includes("Name") || key.includes("houseNum") || key.includes("street") || key.includes("brgy") || key.includes("city") || key.includes("prov"))) {
-            const fullName = `${item.FirstName} ${item.MiddleName} ${item.LastName}`;
-            const fullAddress = `${item.houseNum} ${item.street} ${item.brgy} ${item.city} ${item.prov}`;
-            return isMatch || new RegExp(`\\b${searchedQuery}\\b`, 'i').test(fullName) || new RegExp(`\\b${searchedQuery}\\b`, 'i').test(fullAddress);
-          }
-
-          // Check for currency sign in itemPrice when selectedType is "Inventory"
-          if (selectedType === "Inventory" && key === "itemPrice") {
-            const priceWithCurrencySign = `₱${item.itemPrice}`;
-            const numericPrice = item.itemPrice; // assuming itemPrice is a numeric field
-            const searchQueryWithPesoSign = searchedQuery.replace("₱", ""); // Remove peso sign from the search query
-            return isMatch || new RegExp(`\\b${searchQueryWithPesoSign}\\b`, 'i').test(priceWithCurrencySign) || new RegExp(`\\b${searchedQuery}\\b`, 'i').test(numericPrice);
-          }
+        }
+  
+        if (key === 'modeCOD' && (searchedQuery.toLowerCase() === 'cash on delivery' || searchedQuery.toLowerCase() === 'over the counter')) {
+          const isCashOnDelivery = searchedQuery.toLowerCase() === 'cash on delivery';
+          return value === isCashOnDelivery;
+        }
+  
+        if (typeof value === 'string') {
+          // Generic search logic for other fields
+          if (key !== 'modeCOD') {
+            const formattedValue = formatDate(value, true);
+            const isMatch = new RegExp(`\\b${searchedQuery}\\b`, 'i').test(value) || new RegExp(`\\b${searchedQuery}\\b`, 'i').test(formattedValue);
+  
+            if (selectedType === "Records" && key === "height") {
+              // Extract feet and inches from the height
+              const [feet, inches] = value.split("'").map(part => parseInt(part));
+              const userSearchQuery = searchedQuery.split("'").map(part => parseInt(part));
+  
+              // Compare feet and inches with the user's search query
+              return isMatch || (feet === userSearchQuery[0] && inches === userSearchQuery[1]);
+            }
+  
+            // Handle special cases for full name and address search when selectedType is "User"
+            if (selectedType === "Users" && (key.includes("Name") || key.includes("houseNum") || key.includes("street") || key.includes("brgy") || key.includes("city") || key.includes("prov"))) {
+              const fullName = `${item.FirstName} ${item.MiddleName} ${item.LastName}`;
+              const fullAddress = `${item.houseNum} ${item.street} ${item.brgy} ${item.city} ${item.prov}`;
+              return isMatch || new RegExp(`\\b${searchedQuery}\\b`, 'i').test(fullName) || new RegExp(`\\b${searchedQuery}\\b`, 'i').test(fullAddress);
+            }
+  
+            // Check for currency sign in itemPrice when selectedType is "Inventory"
+            if (selectedType === "Inventory" && key === "itemPrice") {
+              const priceWithCurrencySign = `₱${item.itemPrice}`;
+              const numericPrice = item.itemPrice; // assuming itemPrice is a numeric field
+              const searchQueryWithPesoSign = searchedQuery.replace("₱", ""); // Remove peso sign from the search query
+              return isMatch || new RegExp(`\\b${searchQueryWithPesoSign}\\b`, 'i').test(priceWithCurrencySign) || new RegExp(`\\b${searchedQuery}\\b`, 'i').test(numericPrice);
+            }
+  
+            if (selectedType === "Orders" && key === "totalPrice") {
+              const numericPrice = item.totalPrice; // assuming totalPrice is a numeric field
+              const searchQueryWithPesoSign = searchedQuery.replace("₱", ""); // Remove peso sign from the search query
+  
+              return isMatch || new RegExp(`\\b${searchQueryWithPesoSign}\\b`, 'i').test(numericPrice.toString());
+            }
 
           // Check for AM/PM suffix in appointmentTime when selectedType is "Appointments"
           if (selectedType === "Appointments" && key === "appointmentTime") {
             const timeWithAmPm = getAmPmSuffix(item.appointmentTime);
             return isMatch || new RegExp(`\\b${searchedQuery}\\b`, 'i').test(timeWithAmPm);
           }
-
-          if (selectedType === "Orders" && key === "totalPrice") {
-            const numericPrice = item.totalPrice; // assuming totalPrice is a numeric field
-            const searchQueryWithPesoSign = searchedQuery.replace("₱", ""); // Remove peso sign from the search query
-
-            return isMatch || new RegExp(`\\b${searchQueryWithPesoSign}\\b`, 'i').test(numericPrice.toString());
+            return isMatch;
           }
-
-          return isMatch;
         }
-      }
-      if (value instanceof Date) {
-        return value.toISOString().includes(searchedQuery);
-      }
-      return false;
-    });
+        if (value instanceof Date) {
+          return value.toISOString().includes(searchedQuery);
+        }
+        return false;
+      });
+    }
   });
-
+  
   return (
     <div>
       <div className="sort-dropdown-reports">

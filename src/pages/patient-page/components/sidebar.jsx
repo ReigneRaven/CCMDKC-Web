@@ -53,7 +53,7 @@ export default function PtnSidebar() {
           </Link>
 
           <Link to={`/healthrecord/${userId}`} className="link-div" id="history-link" onClick={hideSidebar}>
-            <BsFillFileMedicalFill className="sidebar-icon"/>&nbsp;Health&nbsp;History
+            <BsFillFileMedicalFill className="sidebar-icon"/>&nbsp;Medical&nbsp;History
           </Link>
           <Link to={`/pharmacy/${userId}`} className="link-div" id="pharmacy-link" onClick={hideSidebar}>
             <FaHouseMedical className="sidebar-icon"/>&nbsp;Pharmacy
