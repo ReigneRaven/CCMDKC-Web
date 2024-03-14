@@ -61,14 +61,12 @@ export default function MyProfile() {
   }
 
   const handleSaveClick = () => {
-    // Create a copy of the user object with the updated values
-    const updatedUser = { ...user };
-
     // Send a PUT request to update the user's profile
     axios
-      .put("http://localhost:5000/api/user/" + user._id, updatedUser)
+      .put("http://localhost:5000/api/user/" + user._id, user)
       .then((result) => {
-        // Handle success or error here
+        // Update the originalUser state to reflect the changes
+        setOriginalUser(user);
         setIsEditing(false);
       })
       .catch((err) => {
@@ -79,7 +77,7 @@ export default function MyProfile() {
 
   const handleCancelClick = () => {
     setIsEditing(false);
-    // Restore the user data to its original state
+    // Revert the user data back to its original state
     setUser(originalUser);
   }
 
