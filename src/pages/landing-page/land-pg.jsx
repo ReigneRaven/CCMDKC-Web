@@ -65,7 +65,7 @@ export default function Landing() {
   })
 
 .catch((userError) => {
-  toast('User Login Error')
+  toast('Wrong User Credentials')
   console.error('User Login Error: ', userError);
 })
 
@@ -85,6 +85,7 @@ axios
     navigate(`/admin/${adminId}`)
   })
   .catch((adminError) => {
+    toast('Wrong User Credentials');
     console.error('Admin Login Error: ', adminError);
     // console.log('Admin Response: ', adminResponse);
   });

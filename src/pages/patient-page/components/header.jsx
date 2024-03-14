@@ -20,6 +20,8 @@ export default function PtnHeader() {
     const handleLogout =  async () => {
         await Cookies.remove("userId");
         await Cookies.remove("userToken");
+        await Cookies.remove("adminId");
+        await Cookies.remove("adminToken");
         await navigate(`/`)
         toast.success("You have successfully logout")
     }
