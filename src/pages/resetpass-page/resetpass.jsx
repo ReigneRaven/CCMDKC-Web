@@ -34,6 +34,7 @@ export default function ResetPassword() {
                 console.log('User Response: ', userResponse);
                 setOpenModal(true);
                 setLoading(false);
+                alert('Password changed successfully.')
                 navigate('/');
             })
             .catch((userError) => {

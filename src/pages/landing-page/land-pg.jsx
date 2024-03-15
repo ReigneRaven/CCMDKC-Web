@@ -28,7 +28,7 @@ export default function Landing() {
     const userToken = Cookies.get('userToken');
     const userId = Cookies.get('userId');
 
-    if (adminToken && adminId) {
+    if (adminToken && adminId && adminToken !== undefined && adminId !== undefined) {
       navigate(`/admin/${adminId}`)  
     }
 

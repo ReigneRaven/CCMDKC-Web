@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "all": "^0.0.0",
     "axios": "^1.5.1",
     "bootstrap": "^5.3.1",
     "bootstrap-icons": "^1.10.5",
@@ -27,7 +28,7 @@
     "react-timezone-select": "^2.1.2",
     "react-to-print": "^2.15.1",
     "react-toastify": "^10.0.4",
-    "socket.io-client": "^4.7.2"
+    "socket.io-client": "^4.7.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

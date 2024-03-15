@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import '../announce-admn.css';
 import Button from './buttons';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 export default function BulletinFormAdm() {
   const [announcementDescription, setAnnouncementDescription] = useState('');
@@ -9,8 +11,8 @@ export default function BulletinFormAdm() {
   const [Announcement, setAnnouncementList] = useState([])
 
   const handleImageChange = (e) => {
-    // Update the state with the selected image file
     setAnnouncementImage(e.target.files[0]);
+    alert('Image successfully uploaded')
   };
 
   const onSubmit = async (e) => {
@@ -21,14 +23,15 @@ export default function BulletinFormAdm() {
       formData.append('announcementDescription', announcementDescription);
       formData.append('announcementImg', announcementImg);
 
-      // Add your axios post request here
+      
       const result = await axios.post('http://localhost:5000/api/announcement/', formData);
       setAnnouncementList([...Announcement, result.data]);
       
       // Clear the form fields after successful submission
+
       setAnnouncementDescription('');
       setAnnouncementImage(null);
-
+      
     } catch (error) {
       console.error(error);
     }
