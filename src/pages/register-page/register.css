@@ -258,7 +258,7 @@ input {
 .toggle-eye-confirm {
   position: absolute;
   right: 3px;
-  top: 71%;
+  top: 70%;
   transform: translateY(-50%);
   cursor: pointer;
   display: flex;
