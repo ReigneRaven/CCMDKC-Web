@@ -135,6 +135,26 @@ main {
   border-radius: 20px;
 }
 
+pharm-modal-new{
+  display: flex;
+  flex-direction: column;
+  margin-top: -230px;
+}
+
+.button-container{
+  margin-top: -200px;
+}
+
+#close-btn-pharm{
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  margin-top: 40%;
+  cursor: pointer;
+  margin-left: 400px;
+  /* background-color: #3398CC; */
+}
+
 .modalPharm {
   background: whitesmoke;
   height: 53%; /* Adjust the height based on your design */
@@ -177,14 +197,14 @@ main {
   justify-content: flex-start;
 }
 
-#close-btn-pharm{
+/* #close-btn-pharm{
   width: 50px;
   height: 50px;
   border-radius: 50%;
   margin-top: 40%;
   cursor: pointer;
-  /* background-color: #3398CC; */
-}
+  /* background-color: #3398CC; 
+} */
 
 #qty-modal-p{
   display: flex;
