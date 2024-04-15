@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Button from '../../patientrecord-page/components/button';
 import { useParams } from 'react-router-dom';
+import Head2 from '../../../../components/headers/header';
 
 export default function MedicalRecordForm() {
   const [allergies, setAllergies] = useState('');
@@ -48,6 +49,7 @@ export default function MedicalRecordForm() {
   return (
     <>
       <form className="create-medicalrecord" onSubmit={onSubmit}>
+      <Head2 text="New Medical Record" id="medicalrecord-header" />
         <input
           type="text"
           value={patientObjectId}

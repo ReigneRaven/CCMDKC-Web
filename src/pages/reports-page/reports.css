@@ -4,7 +4,7 @@
 
 .reports-container {
     background-color: white;
-    width: 93vw;
+    width: 96vw;
     height: 89vh;
     border-radius: 20px;
     margin-left: 20px;
@@ -13,10 +13,10 @@
 
 #reports-title {
     color: lightslategrey;
-    font-size: 20px;
+    font-size: 25px;
     display: flex;
-    margin-left: 50px;
-  }
+    margin-left: 900px;
+}
 
 /* .reports-form-container{
     background-color: rgb(224, 224, 224);
@@ -211,7 +211,7 @@
 
   @media screen and (max-width: 1366px){
     .reports-container{
-        width: 93vw;
+        width: 96vw;
         height: 565px;
         overflow-y:auto;
     }
@@ -274,6 +274,13 @@
         width: 50px;
         font-size: 12px;
     }
+    #reports-title {
+        color: lightslategrey;
+        font-size: 20px;
+        display: flex;
+        margin-left: 630px;
+    }
+
 }
 
 @media print {

@@ -12,7 +12,7 @@
 }
 
 .medicalrecord-container{
-  width: 93vw;
+  width: 96vw;
   height: 89vh;
   border-radius: 20px;
   margin-left: 20px;
@@ -60,7 +60,7 @@ thead {
     height: 30px;
   }
   .medicalrecord-container{
-    width: 93vw;
+    width: 96vw;
     height:565px;
   }
 

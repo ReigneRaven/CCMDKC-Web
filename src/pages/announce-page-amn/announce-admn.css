@@ -12,7 +12,7 @@
    align-items: center;
    border-radius: 20px; */
    background-color: white;
-   width: 93vw;
+   width: 96vw;
    height: 89vh;
    border-radius: 20px;
    margin-left: 20px;
@@ -50,9 +50,19 @@
    font-size: 25px;
 }
 
+#bulletin-header{
+  font-size: 25px;
+  color: lightslategray;
+  margin: 0;
+  font-weight: 400;
+  margin-left: 20px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
 .input-announcement {
    margin-top: 10px;
-   border-radius: 20px; 
+   border-radius: 10px; 
 }
 
 #img-upload-announce-adm{
@@ -77,7 +87,7 @@
    background-color: rgb(243, 243, 243);
    display: grid;
    grid-template-columns: repeat(1, 1fr); /* Update this line */
-   width: 69%;
+   width: 70%;
    height: 80%;
    gap: 20px;
    border-radius: 20px;
@@ -131,7 +141,7 @@
 h6 {
    margin-top: 10px;
    margin-bottom: 20px;
-   font-size: 30px;
+   font-size: 25px;
    font-weight: 500;
 }
 
@@ -192,19 +202,77 @@ h6 {
 
 @media screen and (max-width:1366px) {
   .announcement-container-amn{
-    width: 93vw;
+    width: 96vw;
     height: 565px;
  }
  .grid-container {
-  width: 730px;
+  margin-left: 400px;
+  width: 835px;
  }
  .input-announcement {
   font-size: 12px;
 }
 .add-announcement-adm{
   height: 150px;
-  margin-left: 90px;
+  margin-left: 80px;
   margin-bottom: 28px;
 }
+
+h6 {
+  font-size: 25px;
+}
+
+.grid-item img.announcement-image-0 {
+  width: 300px;
+  height: auto;
+}
+
+.grid-item img.announcement-image-1 {
+  width: 500px;
+  height: auto;
+}
+
+.grid-item img.announcement-image-2 {
+  width: 300px;
+  height: auto;
+}
+
+.grid-item img.announcement-image-3 {
+  width: 300px;
+  height: auto;
+}
+
+.modal-container.announcement-modal-0 {
+  max-width: 40%;
+  max-height: 90%;
+  overflow: auto;
+}
+
+.modal-container.announcement-modal-1 {
+  max-width: 60%;
+  max-height: 80%;
+}
+
+.modal-container.announcement-modal-2 {
+  max-width: 40%;
+  max-height: 90%;
+  overflow: auto;
+}
+
+.modal-container.announcement-modal-3 {
+  max-width: 40%;
+  max-height: 90%;
+}
+
+#bulletin-header{
+  font-size: 20px;
+  color: lightslategray;
+  margin: 0;
+  font-weight: 400;
+  margin-right: -30px;
+  margin-top: 25px;
+  margin-bottom: 20px;
+}
+
 
 }

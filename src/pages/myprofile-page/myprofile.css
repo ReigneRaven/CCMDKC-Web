@@ -77,12 +77,12 @@
 }*/
 
 .patient-info {
-  
   display: flex !important;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 20px;
+  margin-right: 80px;
 }
 
 #details-h1 {
@@ -161,53 +161,53 @@
 }
 
 #edit-first{
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 #edit-mid{
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 #edit-last{
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 #edit-num{
-  border-radius: 20px;
+  border-radius: 10px;
   width: 50%;
 }
 
 #edit-birth{
-  border-radius: 20px;
+  border-radius: 10px;
   width: 50%;
 }
 
 #edit-house{
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 #edit-street{
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 #edit-brgy{
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 #edit-city{
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 #edit-prov{
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 #edit-email{
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 #edit-userName{
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 .edit-numbirth-input{
@@ -251,9 +251,41 @@
   display: inline-block;
 }
 
+.edit-myprofile-details {
+  margin-top: 10px;
+  gap: 2rem;
+}
+
+.edit-name-input, .edit-numbirth-input, .edit-address-input, .edit-handler-input {
+  gap: 1rem;
+}
+
+.patient-info {
+  margin-left: 127px;
+}
+
 @media screen and (max-width:1366px) {
   .myprofile-details p {
     margin-bottom: 20px;
   }
 
+  #edit-first, #edit-mid, #edit-last, #edit-birth, #edit-num, #edit-house, #edit-street, #edit-brgy, #edit-city, #edit-prov, #edit-email, #edit-userName, 
+  #cancel-btn-myprofile, #save-btn-myprofile, #edit-btn{
+    font-size: 12px;
+    height: 30px;
+    gap: 1rem;
+  }
+/* NEW CODE 3-19-24 */
+  .edit-myprofile-details {
+    margin-top: 10px;
+    gap: 2rem;
+  }
+
+  .edit-name-input, .edit-numbirth-input, .edit-address-input, .edit-handler-input {
+    gap: 1rem;
+  }
+
+  .patient-info {
+    margin-left: 127px;
+  }
 }

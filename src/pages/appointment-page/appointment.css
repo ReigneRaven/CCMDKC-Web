@@ -107,7 +107,7 @@ button:hover {
 
 #services-select{
     font-family: 'Poppins', sans-serif;
-    border-radius: 20px;
+    border-radius: 10px;
     height: 45px;
     padding: 2px;
    
@@ -132,7 +132,7 @@ button:hover {
 
 #custom-name{
     font-family: 'Poppins', sans-serif;
-    border-radius: 20px; 
+    border-radius: 10px; 
     font-size: 14px;
     margin: 0 !important;
     width: 99%;
@@ -142,19 +142,19 @@ button:hover {
     display: flex;
     flex-direction: row;
     align-items: baseline;
-    gap: 0.2rem;
+    gap: 0.4rem;
 }
 
 #appoint-date{
     font-family: 'Poppins', sans-serif;
-    border-radius: 20px; 
+    border-radius: 10px; 
     font-size: 14px;
     margin: 0 !important;
 }
 
 #appoint-time{
     font-family: 'Poppins', sans-serif;
-    border-radius: 20px; 
+    border-radius: 10px; 
     font-size: 14px;
     width: 100%;
     margin: 0 !important;
@@ -171,43 +171,14 @@ button:hover {
     margin-top: 35px;
 }
 
-@media (max-width: 768px) {
-    #services-form {
-        margin-right: -70px;
-        height: 125%;
-        width: 125%;
+@media screen and (max-width:1366px) {
+    #services-select {
+      height: 42px;
     }
-
-    #services-icon img {
-        margin-left: 30px;
-        height: 200px;
-        width: 200px;
+    #custom-name {
+        height: 36px;
     }
-}
-
-/* Media query for Galaxy Fold */
-@media screen and (max-width: 280px) {
-    #services-form {
-        margin-right: -70%;
-        height: 170%;
-        width: 200%;
+    .custom-button {
+        font-size: 12px;
     }
-
-    #services-icon img {
-        margin-left: 70px;
-    }
-}
-
-/* Media query for iPad mini */
-@media screen and (width: 820px) and (height: 1180px) {
-    #services-form {
-        margin-right: -1%;
-        height: 100%;
-        width: 50%;
-    }
-
-    #services-icon img {
-        height: 200px;
-        width: 200px;
-    }
-}
+  }

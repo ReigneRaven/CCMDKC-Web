@@ -363,7 +363,7 @@ const ReportsView = ({ tableData, selectedType, searchedQuery, generateButtonCli
       {generateButtonClicked && (
         <div className="reports-btn-pdf">
           <button id="generate-pdf-btn" onClick={handlePrint}>
-            Generate PDF
+            Print PDF
           </button>
         </div>
       )}
