@@ -2,9 +2,18 @@
   font-family: 'Poppins', sans-serif;
 }
 
+#records-header {
+  margin-bottom: -10px;
+  margin-left: 505px;
+  color: lightslategrey;
+  font-size: 25px;
+  display: flex;
+  font-weight: normal;
+}
+
 .patientrecord-container {
   background-color: white;
-  width: 93vw;
+  width: 96vw;
   height: 89vh;
   border-radius: 20px;
   margin-left: 20px;
@@ -12,23 +21,38 @@
 
 .create-patientrecord {
   margin-left: 100px;
-  margin-top: 40px;
-  margin-bottom: 20px;
+  margin-top: 15px;
+  margin-bottom: 24px;
   display: flex;
   background-color: rgb(243, 243, 243);
   width: 21vw;
-  height: 36vh;
+  height: 38vh;
   padding: 20px;
   border-radius: 20px;
   gap: 1.5rem;
 }
+
+#patientrecord-header {
+  font-weight: normal;
+  font-size: 18px;
+  margin-bottom: -10px;
+  margin-top: -5px;
+ }
+
+#medicalrecord-header {
+  font-weight: normal;
+  font-size: 18px;
+  margin-bottom: -10px;
+  margin-top: -5px;
+ }
 
 .input-patientrecord {
   width: 20vw;
 }
 
 .note-btn.submit {
-  margin-top: -10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .column {
@@ -67,7 +91,7 @@
 .input-patientrecord {
   width: 20vw;
   height: 2.5rem;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 .savebtn-modal {
@@ -159,7 +183,7 @@ thead {
   display: flex;
   background-color: rgb(243, 243, 243);
   width: 21vw;
-  height: 36vh;
+  height: 38vh;
   padding: 20px;
   border-radius: 20px;
   gap: 1.5rem;
@@ -168,7 +192,7 @@ thead {
 .input-medicalrecord {
   width: 20vw;
   height: 20vh;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 .medical-table-container {
@@ -180,11 +204,11 @@ thead {
 }
 
 .record-change {
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 .modal-change {
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 .editbtn-modal {
@@ -226,7 +250,7 @@ thead {
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
-  width: 40%; 
+  width: 45%; 
   border-radius: 20px;
   z-index: 1000;
   padding: 20px;
@@ -262,75 +286,100 @@ thead {
 }
 
 @media screen and (max-width: 1366px){
-
-  .column{
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* `````````````NEWCODE */
-    align-items: center;  /* `````````````NEWCODE */
+  .forms-container.column {
+    flex-direction: column; /* Change flex direction to column for smaller screens */
   }
+
+  .patientform {
+    width: 100%; /* Ensure both forms take full width */
+  }
+
+  .patientview {
+    width: 100%; /* Ensure both forms take full width */
+  }
+
+  .forms-container.column .patientform {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
   .patientrecord-container{
-    width: 93vw;
+    width: 96vw;
     height: 565px;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
-  .create-patientrecord{
-    display: flex;
-    flex-direction: row;
-    width: fit-content;
-    height: auto;
-    gap: 0.5rem;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    margin-top: 20px;
-    /* margin-left: 0; */
-  }
-  .input-patientrecord{
-    width:fit-content ;
-    font-size: 12px;
-    height: 30px;
-  }
-  .note-btn.submit{
-    margin: 0;
-    height: 30px;
-    font-size: 12px;
-  }
-  .create-medicalrecord{
-    display: flex;
-    flex-direction: row;
-    width: fit-content;
-    height: auto;
-    gap: 0.5rem;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    margin-left: 37px;
 
+  .create-patientrecord{
+    width: 300px;
+    height: 370px;
+    margin-top: 100px;
+    margin-left: 300px;
   }
-  .input-medicalrecord{
-    height: 30px;
+
+  .create-medicalrecord{
+    width: 300px;
+    height: 370px;
+    margin-top: 90px;
+    margin-left: -200px;
+  }
+  
+  .input-patientrecord{
+    width: 100% ;
     font-size: 12px;
-    margin: 0;
-    width: 150px;
+    height: 50px;
   }
+
+  .input-patientrecord.custom-gender{
+    width: 100%;
+  }
+
+  .input-medicalrecord{
+    width: 100% ;
+    font-size: 12px;
+    height: 50px;
+  }
+
+  #records-header{
+    font-size: 20px;
+    color: lightslategray;
+    margin: 0;
+    font-weight: 400;
+    margin-left: 630px;
+    margin-bottom: 515px;
+    margin-top: -530px;
+  }
+
+
+  #medform-btn.note-btn.submit {
+    width: 70px;
+    height: 50px;
+    font-size: 12px;
+  }
+  
   .custom-gender{
     width: 150px;
   }
+
   #medform-btn{
     height: 30px;
   }
+
   #searchbar-record{
-  margin:0;
-   width: 250px;
-   height: 30px;
-   font-size: 13px;
+    margin:0;
+    width: 250px;
+    height: 30px;
+    font-size: 12px;
   }
+
   .record-table-container{
     display: flex;
     justify-content: center;
     align-items: center;
     table-layout: fixed;
-    width: 80%;  /* `````````````NEWCODE */
+    width: 90%;  /* `````````````NEWCODE */
     margin: 40px 200px 0  0;
   }
  
@@ -338,6 +387,7 @@ thead {
     font-size: 12px;
     height: 30px;
   }
+  
   .medicalinput-row{
     display: flex;
     flex-direction: row;
@@ -348,9 +398,16 @@ thead {
     margin-left: 0;
   }
 
-  .input-medicalrecord.custom-medical-temp{
-    width: 150px;
+  .input-medicalrecord.custom-medical{
+    width: 140px;
+    height: 28px;
   }
+
+  .input-medicalrecord.custom-medical-temp{
+    width: 140px;
+    height: 28px;
+  }
+
   .patientrecord-table-content{
     width: 100vw;
     display: flex;
@@ -363,12 +420,20 @@ thead {
     flex-direction: row-reverse;
     align-items: baseline;
     justify-content: space-between;
-    padding-left: 100px;
+    padding-left: 400px;
     padding-right: 300px;
+    margin-bottom: 20px; 
+    margin-right: -395px;
   }
+
+  #searchbar-record {
+    /* margin-right: -190px; */
+    margin-right: 200px;
+  }
+
   .sort-dropdown-order-modal-adm{
     /* display: flex; */
-    margin-right: 300px;
+    margin-right: 110px;
     font-size: 13px;
   }
 
@@ -376,6 +441,23 @@ thead {
   .search-sort-table{
     display: flex;
     flex-direction: column;
-    margin-left: 210px;
+    margin-left: 60px;
+    margin-top: -30px;
+  }
+
+  #patientrecord-header{
+    margin-left: 10px;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: normal;
+  }
+
+  #medicalrecord-header{
+    margin-left: 10px;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: normal;
   }
 }

@@ -124,44 +124,50 @@ export default function SuppliesView() {
   };
 
   const handleSaveClick = () => {
-    const editedItemWithFormattedDate = {
-      ...editedItem,
-      expireDate: editedDate,
-    };
-
-    axios
-      .put(`http://localhost:5000/api/inventory/${editedItem._id}`, editedItemWithFormattedDate)
-      .then((result) => {
-        alert("Do you want to save your changes?");
-        setEditedItem(null);
-
-        setData((prevData) => {
-          const updatedData = prevData.map((item) =>
-            item._id === editedItem._id ? editedItemWithFormattedDate : item
-          );
-          return updatedData;
+    const confirmSave = window.confirm("Do you want to save your changes?");
+    if (confirmSave) {
+      const editedItemWithFormattedDate = {
+        ...editedItem,
+        expireDate: editedDate,
+      };
+  
+      axios
+        .put(`http://localhost:5000/api/inventory/${editedItem._id}`, editedItemWithFormattedDate)
+        .then((result) => {
+          setEditedItem(null);
+  
+          setData((prevData) => {
+            const updatedData = prevData.map((item) =>
+              item._id === editedItem._id ? editedItemWithFormattedDate : item
+            );
+            return updatedData;
+          });
+  
+          alert("Changes saved successfully");
+        })
+        .catch((err) => {
+          console.error(err);
         });
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
+    }
+  };  
 
   const handleCancelClick = () => {
     setEditedItem(null);
   };
 
   const handleDeleteClick = (itemId) => {
-    axios
-      .delete(`http://localhost:5000/api/inventory/${itemId}`)
-      .then((result) => {
-        alert("Do you want to delete this item?");
-        setData((prevData) => prevData.filter((item) => item._id !== itemId));
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
+    const confirmDelete = window.confirm("Do you want to delete this item?");
+    if (confirmDelete) {
+      axios
+        .delete(`http://localhost:5000/api/inventory/${itemId}`)
+        .then((result) => {
+          setData((prevData) => prevData.filter((item) => item._id !== itemId));
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
+  };  
 
   const handleEditChange = (e, item) => {
     const { name, value } = e.target;
@@ -282,13 +288,15 @@ export default function SuppliesView() {
                   </td>
                   <td>
                     {editedItem && editedItem._id === item._id ? (
-                      <input
-                        type="text"
-                        name="itemImg"
-                        className="supplies-change supplies-change-input"
-                        value={editedItem.itemImg}
-                        onChange={(e) => handleEditChange(e, item)}
-                      />
+                      <div className="file-input-container">
+                        <input
+                          id='img-upload-view'
+                          type="file"
+                          onChange={(e) => handleEditChange(e, item)}
+                          accept="image/*"
+                          className="supplies-change supplies-change-input"
+                        />
+                      </div>
                     ) : (
                       <img
                         src={`http://localhost:5000/${item.itemImg}`}

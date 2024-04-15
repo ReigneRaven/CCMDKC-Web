@@ -4,7 +4,7 @@
 
 .announcement-container-ptn{
   background-color: white;
-  width: 93vw;
+  width: 96vw;
   height: 89vh;
   border-radius: 20px;
   margin-left: 20px;
@@ -37,7 +37,7 @@
    background-color: rgb(243, 243, 243);
    display: grid;
    grid-template-columns: repeat(1, 1fr); /* Update this line */
-   width: 90%;
+   width: 91.5%;
    height: 80%;
    gap: 20px;
    border-radius: 20px;
@@ -144,6 +144,10 @@ body.modal-open {
 @media screen and (max-width:1366px) {
   .announcement-container-ptn{
     height:565px;
-    width: 93vw;
+    width: 96vw;
+  }
+
+  .grid-container-ptn {
+    margin-top: 20px;
   }
 }

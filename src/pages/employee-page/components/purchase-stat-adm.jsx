@@ -77,7 +77,7 @@ export default function PurchaseStatus() {
                 <th>Mode of Payment</th>
                 <th>Total Price</th>
                 <th>Order Status</th>
-                <th>More Details</th>
+                {/* <th>More Details</th> */}
               </tr>
             </thead>
             <tbody>
@@ -90,12 +90,12 @@ export default function PurchaseStatus() {
                   <td id="total-admin">₱{status.totalPrice}</td>
                   <td>{status.status}</td>
                   <td>
-                    <button
+                    {/* <button
                       id="purchase-details-btn"
                       onClick={() => handleDetailsClick(status)}
                     >
                       Details
-                    </button>
+                    </button> */}
                   </td>
                 </tr>
               ))}

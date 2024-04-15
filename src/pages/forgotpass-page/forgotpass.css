@@ -58,7 +58,7 @@ form{
 }
 
 #forgotpass-inputfield{
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 h3 {
@@ -95,5 +95,10 @@ button:hover {
 @media screen and (max-width:1366px) {
     #forgot-send-btn{
         width: 100px;
+    }
+    
+    #forgotpass-inputfield.user-input {
+        font-size: 12px;
+        width: 90%;
     }
 }

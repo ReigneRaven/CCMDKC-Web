@@ -58,7 +58,7 @@ export default function SuppliesForm() {
     <>
       <form className="create-stocks" onSubmit={onSubmit}>
       <div className='form-create-stocks'> {/*NEW CODE*/}
-        <Head2 text="Enter a Stock" id="inventory-header"></Head2>
+        <Head2 text="Enter New Product" id="inventory-header"></Head2>
         <input
           type="text"
           value={itemName}

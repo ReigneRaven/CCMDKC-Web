@@ -4,7 +4,7 @@
 
 .supplies-container {
   background-color: white;
-   width: 93vw;
+   width: 96vw;
    height: 89vh;
    border-radius: 20px;
    margin-left: 20px;
@@ -12,8 +12,8 @@
   
 .create-stocks {
   height: 100%;
-  margin-top: 210px;
-  margin-left: 50px;
+  margin-top: 185px;
+  margin-left: 30px;
   margin-bottom: 10px;
   display: flex;
   background-color: rgb(243, 243, 243);
@@ -32,9 +32,26 @@
   margin-top: 20px;
 }
 
+#img-upload-view{
+  margin-left: -20px;
+  border: none;
+  border-radius: 0;
+}
+
+.file-input-container input[type="file"] {
+  margin-left: -10px;
+  width: 200%;
+  height: 100%;
+  cursor: pointer;
+}
+
+#img-upload-view.supplies-change.supplies-change-input {
+  font-size: 14px;
+}
+
 .input-supplies {
   width: 20vw;
-  border-radius: 20px;
+  border-radius: 10px;
   margin-bottom: 20px;
 }
 
@@ -60,7 +77,8 @@
 }
 
 #inventory-header {
-  font-size: 25px;
+  font-size: 20px;
+  font-weight: normal;
 }
   
 .table th,
@@ -107,14 +125,14 @@ thead {
   margin-top: 30px;
   margin-left: 5px;
   /* width: 250%; */
-  width: 208%;
+  width: 200%;
   max-height: 630px;
   overflow: scroll;
   overflow-x: hidden;
 }
 
 .supplies-change {
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 .supplies-change.supplies-change-input {
@@ -125,6 +143,12 @@ thead {
   display: flex;
   justify-content: center;
   margin-left: 200px;
+  color: lightslategrey;
+  font-size: 25px;
+  margin-top: 30px;
+  margin-left: 300px;
+  margin-bottom: 30px;
+  font-weight: normal;
 }
 
 .searchbar-header{
@@ -141,7 +165,7 @@ thead {
   margin-top: -10px;
   margin-left: 25px;
   border-radius: 20px;
-  width: 1190px;
+  width: 1300px;
   background-color: #f3f3f3;
   z-index: 1;
 }
@@ -185,7 +209,7 @@ thead {
 }
 
 #expire-date{
-  border-radius: 20px;
+  border-radius: 10px;
   width: 250px; 
 }
 
@@ -203,21 +227,27 @@ thead {
 }
 
 @media screen and (max-width:1366px) {
+  .supplies-container {
+    width: 96vw;
+    height: 565px;
+    overflow-y:auto;
+    overflow-x: hidden;
+    border-radius: 20px;
+  }
   .supplies-row {
     display: flex;
-    flex-direction: column;
+    flex-direction: row; /*CHANGED*/
     justify-content: center;
     align-items: center;
   }
   .create-stocks{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    height: 389px; /*MODIFIED */
     justify-content: center;
-    height: 20px;
-    /* width: 85vw; */
+    width: 220px;
+    margin-top: 125px; /*CHANGED*/
     padding: 20px;
-    margin: 20px 0 0 0;
+    margin-left: 10px;
+   
   }
 
   .supplies-table-content {
@@ -232,7 +262,7 @@ thead {
  
   .input-supplies{
     height: 30px;
-    width: 100px;
+    width: 200px; /*MODIFIED*/
     margin: 0;
     font-size: 12px;
   }
@@ -254,29 +284,41 @@ thead {
     height: 30px;
   }
   #inventory-header{
-    margin-left: -180px;
-    font-size: 14px;
+    margin-left: 10px;
+    font-weight: normal;
+    font-size: 18px;
   }
   #supplies-header{
     font-size: 20px;
     color: lightslategray;
     margin: 0;
     font-weight: 400;
-    margin-right: 140px;
+    margin-left: -180px;
+    margin-top: -10px;
+    margin-bottom: -70px;
   }
   .searchbar-header{
     width: fit-content;
   }
   #searchbar-supplies{
-    /* margin-left: 350px; */
+    /* margin-left: 350px; MODIFIED*/
+    margin-top: 20px;
     width: 400px;
     font-size: 12px;
     height: 30px;
+    margin-left: 566px;
+  }
+  .table {
+    width: 97%;
+    margin-left: 20px;
   }
   .supplies-table-container{
    justify-content: center;
    align-items: center;
    height: 320px;
+   width: 50%; /*NEW CODE*/
+   margin-top: 0;
+   margin-left: 0;
   }
   .top-supplies{
     display: flex;
@@ -284,24 +326,81 @@ thead {
     justify-content: center;
     align-items: center;
     gap: 2rem;
-    margin-top: 20px;
+    margin-top: -100px; 
 
   }
-  #supplies-edit-btn, #supplies-delete-btn{
+  #supplies-edit-btn, #supplies-delete-btn, #supplies-save-btn{
     font-size: 12px;
     height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
   }
-
+  #supplies-edit-btn {
+    margin-left: -10px;
+    width: 55px;
+  }
+  #supplies-save-btn {
+    margin-left: -10px;
+    width: 55px;
+  }
+ 
   /* `````````````NEWCODE */
   .form-create-stocks{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 1rem;
     justify-content: center;
     align-items: center;
-    margin-left: 200px;
+    /* margin-left: 200px; */
+    width: 400px;
+    font-size: 12px;
+  }
+  .sup-input-error{
+    width: 200px;
+    font-size: 12px;
+  }
+  .sup-valid-input{
+    display: flex;
+    flex-direction: column;
+  }
+  #img-upload{
+    font-size: 12px;
+  }
+  #sup-add{
+    font-size: 12px;
+    height: 30px;
+    margin: 20px;
+  }
+  .supplies-table-content{
+    margin-left: -10px;
+    margin-right: 0;
+    width: 200%;
+  }
+  .file-input-container input[type="file"] {
+    margin-left: -10px;
+    width: 50%;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  #img-upload.input-supplies {
+    margin-top: -10px;
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  
+  #img-upload-view.supplies-change.supplies-change-input {
+    font-size: 12px;
+  }
+
+  #img-upload-view {
+    border-style: none;
+  }
+  .supplies-change {
+    font-size: 12px;
+  }
+  .supplies-change.supplies-change.supplies-change-input {
+    width: 100px;
   }
 }

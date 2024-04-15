@@ -54,7 +54,7 @@
 .container .body {
   flex: 1;
   overflow-y: auto;
-  font-size: 1.1rem;
+  font-size: 16px;
   text-align: left;
 }
 
@@ -71,8 +71,8 @@
 }
 
 .container .footer button {
-  width: 150px;
-  height: 45px;
+  width: 5rem;
+  height: 2.5rem;
   margin: 10px;
   border: none;
   background-color: #3398cc;
@@ -80,6 +80,11 @@
   border-radius: 20px;
   font-size: 20px;
   cursor: pointer;
+  font-size: 16px;
+}
+
+h1 {
+  font-size: 24px;
 }
 
 @media (max-width: 1366px) {
@@ -101,6 +106,7 @@
 
   .container .body {
     font-size: 12px;
+    margin-top: -5px;
   }
 
   .container .footer button {

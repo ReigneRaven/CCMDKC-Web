@@ -22,14 +22,14 @@ main {
   width: 100%;
   /* margin: -20px 2px 30px 50px; */
   margin-top: 40px;
-  margin-left: 50px;
+  margin-left: 200px;
   margin-right: -30px;
   font-size: 35px;
 }
 
 .pharmacy-container-ptn{
   background-color: white;
-  width: 93vw;
+  width: 96vw;
   height: 89vh;
   border-radius: 20px;
   margin-left: 20px;
@@ -54,7 +54,7 @@ main {
 
 #searchbar-pharmacy {
   width: 500%; /* Set a fixed width for the search bar */
-  margin-right: 100px; /* Add some margin to separate the items */
+  margin-right: 200px; /* Add some margin to separate the items */
   margin-top: 10px;
   background-color: #f3f3f3;
 }
@@ -336,40 +336,56 @@ pharm-modal-new{
 }
 
 #username-pharm{
-  border-radius: 20px;
+  border-radius: 10px;
   margin: -5px;
 }
 
 @media screen and (max-width: 1366px){
   .pharmacy-container-ptn{
     height:565px;
-    width: 93vw;
+    width: 96vw;
   }
+
   #pharmacy-header{
     font-size: 25px;
   }
+
   .pharmacy-table-container{
     align-items: center;
   }
+
+  #quantity-input{
+    font-size: 12px;
+    height: 30px;
+  }
+
+  #username-pharm{
+    font-size: 12px;
+    height: 30px;
+  }
+
   #searchbar-pharmacy{
-    font-size: 15px;
+    font-size: 12px;
     height: 30px;
     margin-top: 15px;
     margin-left: 30px;
   }
+
   .modalPharm{
     height: 70%;
     width: 65%;
   }
+
   #modal-form-pharm{
     display: flex;
     gap: 0.5;
   }
   
-.modalPharmImg{
-  width: 50%;
-  height: 100%;
+  .modalPharmImg{
+    width: 50%;
+    height: 100%;
   } 
+
   #buy-now-btn{
     margin: 0;
     font-size: 15px;
@@ -377,32 +393,39 @@ pharm-modal-new{
     width: 180px;
     height: fit-content;
   }
+
   #decrement-btn, #increment-btn{
     height: 25px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
+
   #quantity-input{
     font-size: 15px;
     height: 30px;
   }
+
   #product-name-p{
     font-size: 20px;
   }
+
   #close-btn-pharm{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: -400px;
   }
+
   .button-container{
     display: flex;
     justify-content: center;
     align-items: flex-end;
     margin-top: 20px;
   }
+
   .card-container {
     margin-top: -25px;
   }
-
+  
 }

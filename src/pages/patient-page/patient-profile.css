@@ -189,7 +189,7 @@ h3 span {
 
 .dash-patient{
     background-color: white;
-    width: 93vw;
+    width: 96vw;
     height: 89vh;
     border-radius: 20px;
     margin-left: 20px;
@@ -236,7 +236,7 @@ h3 span {
 .hamburger-button {
     display: flex;
     justify-content: center;
-    margin: 10px 5px 0px 20px; /* Four values: top, right, bottom, left */
+    margin: 30px 5px 0px 16px; /* Four values: top, right, bottom, left */
     font-size: 20px;
     padding: 5px;
 }
@@ -266,11 +266,16 @@ h3 span {
     table-layout: fixed;
 }
 
+.wrapper {
+    margin-left: 20px;
+    width: 10px;
+}
+
 .purchase-wrapper {
     margin-top: -10px;
     margin-left: 50px;
     background: rgb(243, 243, 243);
-    width: 66%;
+    width: 73%;
     height: 180px;
     padding: 20px;
     border-radius: 20px;
@@ -299,6 +304,7 @@ h3 span {
 .table-order-stat td:nth-child(5), /* Total Price column */
 #received-btn {
     text-align: center; /* Align center for Quantity, Total Price, and Status button */
+    margin-right: -40px;
 }
 
 #totalprice-stats {
@@ -340,9 +346,9 @@ h3 span {
 
 .clock-wrapper-ptn {
     margin-top: -220px;
-    margin-left: 1325px;
+    margin-left: 1460px;
     background: rgb(243, 243, 243);
-    width: 21%;
+    width: 16%;
     height: 180px;
     padding: 20px;
     border-radius: 20px;
@@ -352,7 +358,7 @@ h3 span {
 .round-clock-ptn {
     position: absolute;
     top: 55%;
-    left: 52%;
+    left: 49%;
     transform: translate(-50%, -50%);
     width: 100px;
     height: 100px;
@@ -410,9 +416,13 @@ h3 span {
     padding: 20px;
     margin: 0;
     margin-top: 80px;
-    margin-left: 128px;
+    margin-left: 80px;
     font-weight: bold;
     font-size: 18px;
+}
+
+#sort {
+    margin-left: -2px;
 }
 
 .sort-dropdown-upcoming {
@@ -493,16 +503,18 @@ h3 span {
     }
     .dash-patient{
        height:565px;
-       width: 90vw;
+       width: 96vw;
     }
     .dashpatient-row{
-        padding: 20px;
-        margin-top: 40px;
+        margin-top: 35px;
         align-items: self-start;
+        padding:50px;
+        height: 260px;
     }
     .dash-patient p{
         font-size: 15px;
         margin-left: 25px;
+        margin-bottom: -30px;
     }
     .upcoming-wrapper{
        height: 300px !important;
@@ -514,28 +526,36 @@ h3 span {
         height: 20px;
         border-radius: 20px;
     }
+    .dropdown-menu-ptn {
+        top: 58px;
+        right: 13px;
+    }
     .sort-dropdown-upcoming{
         display: flex;
         align-items: center;
-        margin-top: 8px;
+        margin-top: -15px;
+    }
+    #label-sort {
+        font-size: 13px;
     }
     .table-appointment{
         font-size: 15px;
     }
     .purchase-wrapper{
-        margin-left: 20px;
+        margin-left: 50px;
         padding-left: 20px;
-        width: 67.5%;
+        width: 69.5%;
         height: 118px;
     }
     .clock-wrapper-ptn{
-        margin-left: 910px;
-        height:118px;
+        margin-left: 1020px;
+        height: 118px;
         margin-top:-158px;
-        width: 21.3%;
+        width: 15.5%;
     }
     #clock-p-ptn{
-        margin-bottom: 120px;
+        margin-top: -25px;
+        margin-bottom: 130px;
         padding: 0;
         font-size: 0;
     }
@@ -544,11 +564,12 @@ h3 span {
         padding: 0;
         font-weight: 300;
         margin-top: 0;
-        margin-left: 0;
+        margin-left: 5px;
         font-size: 15px;
         display: flex;
         justify-content: center;
         align-items: center;
+        font-weight: bold;
         /* margin-left: -5px; */
     }
 
@@ -575,7 +596,11 @@ h3 span {
     #received-btn{
         font-size: 12px;
         margin: 0;
-        margin-left: 10px;
+        margin-left: 50px;
         height: 30px;
+    }
+
+    h2 {
+        font-size: 25px;
     }
 }

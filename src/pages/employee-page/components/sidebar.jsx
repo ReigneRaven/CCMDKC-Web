@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { MdSpaceDashboard, MdMedicalServices, MdAnnouncement } from 'react-icons/md';
 import { FaNotesMedical } from "react-icons/fa";
 import { RiGitRepositoryFill } from "react-icons/ri";
+import { IoHome } from "react-icons/io5"; // Importing IoHome icon
 import axios from "axios";
 import Cookies from 'js-cookie';
 
@@ -52,7 +53,7 @@ export default function Sidebar() {
             </div>
             <div className="hamburger-button" onClick={toggleSidebar}>
                 <strong>
-                    ☰
+                    <IoHome /> {/* Replacing hamburger icon ☰ with IoHome */}
                 </strong>
             </div>
         </>

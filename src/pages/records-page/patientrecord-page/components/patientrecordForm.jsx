@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import '../patientrecord';
 import Button from './button';
+import Head2 from '../../../../components/headers/header';
 
 export default function PatientRecordForm() {
   const [patientName, setPatientName] = useState('');
@@ -45,6 +46,7 @@ export default function PatientRecordForm() {
   return (
     <>
       <form className="create-patientrecord" onSubmit={onSubmit}>
+      <Head2 text="New Patient Record" id="patientrecord-header" />
         <input
           type="text"
           value={patientName}

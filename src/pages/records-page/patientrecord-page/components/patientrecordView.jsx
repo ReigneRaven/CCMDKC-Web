@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import MedicalRecordModal from "./medicalrecordModal";
 import { useParams } from "react-router-dom";
+import Head2 from "../../../../components/headers/header";
 
 export default function PatientRecordView() {
   const [data, setData] = useState([]);
@@ -48,22 +49,26 @@ export default function PatientRecordView() {
   };
 
   const handleSaveClick = () => {
-    const { _id, ...updatedData } = editingRecord;
-    axios
-      .put(`http://localhost:5000/api/records/${_id}`, updatedData)
-      .then((result) => {
-        setData((prevData) => {
-          const updatedData = prevData.map((record) =>
-            record._id === _id ? editingRecord : record
-          );
-          return updatedData;
+    const confirmation = window.confirm("Are you sure you want to save your changes?");
+    if (confirmation) {
+      const { _id, ...updatedData } = editingRecord;
+      axios
+        .put(`http://localhost:5000/api/records/${_id}`, updatedData)
+        .then((result) => {
+          setData((prevData) => {
+            const updatedData = prevData.map((record) =>
+              record._id === _id ? editingRecord : record
+            );
+            return updatedData;
+          });
+          setEditingRecord(null);
+          alert("Changes saved successfully.");
+        })
+        .catch((err) => {
+          console.error(err);
         });
-        setEditingRecord(null);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
+    }
+  };  
 
   const handleCancelClick = () => {
     setEditingRecord(null);
@@ -89,6 +94,7 @@ export default function PatientRecordView() {
 
   return (
     <div className="searchbar-record-adm">
+      <Head2 text="Records" id="records-header" />
       <div className="top-records">
       <input
         id="searchbar-record"

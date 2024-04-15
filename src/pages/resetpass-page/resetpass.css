@@ -58,12 +58,12 @@
   }
   
   #resetpass-inputfield{
-    border-radius: 20px;
+    border-radius: 10px;
   }
 
   #resetpass-inputfield-new-password {
     margin-left: 2px;
-    border-radius: 20px;
+    border-radius: 10px;
   }
 
   #toggle-eye-new-password {
@@ -121,14 +121,27 @@
     width: 80%;
   }
   
-  @media screen and (max-width:1366px){
-    .toggle-eye-new-password svg {
-      width: 20px;
-      height: 20px;
-      fill: #333;
-      margin-top:-3px;
-    }
-    #reset-send-btn{
-      width: 100px;
-    }
+@media screen and (max-width:1366px){
+  .toggle-eye-new-password svg {
+    width: 20px;
+    height: 20px;
+    fill: #333;
+    margin-top:-3px;
+    margin-right: 15px;
   }
+
+  #reset-send-btn{
+    width: 100px;
+  }
+
+  #resetpass-inputfield.user-input {
+    font-size: 12px;
+    width: 90%;
+  }
+
+  #resetpass-inputfield-new-password.user-input {
+    margin-left: 18px;
+    font-size: 12px;
+    width: 87%;
+  }
+}
